@@ -38,6 +38,8 @@ Package-github generates release/ashen-VERSION-windows-x64.zip, manifest.json an
 
 ## Saves and legacy import
 
+The launcher includes embedded Expedition artwork and a meadow crest. On first launch, use **Choose...** to select the game install folder, then **Check / Update**. Later launches automatically check for updates to an installed build. The folder choice is remembered in the stable LocalApplicationData/AshenMeadow/GodotPlaytest/launcher.json preferences file. Changing the folder does not move or delete previous downloads; selecting the original folder restores access. Game builds and temporary downloads use the selected folder, while Godot character saves retain their stable application-data location. Keep the supplied launcher.json beside AshenLauncher.exe for the initial GitHub configuration.
+
 Godot user:// uses a stable AshenMeadowExpedition application-data folder, outside updater version folders. Character and per-seed world/build data live in expedition/profile.json, with atomic writes and a .bak. Corrupt profiles are protected from overwriting.
 
 Esc -> Import Old Expedition Character reads a selected legacy profiles/expedition-loot.json and compatible structures from the sibling worlds folder. Import intentionally replaces the active Godot character and preserves the prior Godot save as .bak. Old files are only read. Skills, equipment, crafting, wounds/needs/camps, journal and world changes transfer; position resets to the meadow. Some decorative object placement differs between renderers, so imported removals may not line up visually. Import is explicit, never automatic.
