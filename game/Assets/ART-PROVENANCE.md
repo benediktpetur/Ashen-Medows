@@ -1,0 +1,7 @@
+# Graphic novel material atlas
+
+Generated with the built-in image_gen tool; saved as graphic-novel-atlas-v1.png and used in Godot shaders. No CLI fallback. The in-game screenshots are renderer captures, not generated scene images.
+
+Final prompt:
+
+Use case: stylized-concept. Asset type: production game material atlas. Create ONE square 2x2 texture atlas, exactly FOUR equally sized square quadrants touching with no border or gutter. Orthographic flat surface textures, NOT objects or a scene. Graphic-novel ink style for a mature zombie survival FPS: hand-drawn black fine contours, restrained crosshatching and dry brush stippling, desaturated earthy palette, crisp believable surface detail, no photorealism, no cartoon icons. TOP LEFT: weathered horizontal brown timber planks with grain, knots and small iron nail heads. TOP RIGHT: aged pale gray-beige brick masonry with fine mortar and hairline cracks, occasional small dark weather stains. BOTTOM LEFT: dark charcoal asphalt with branching thin cracks, scattered grit and faded flecks, NO road markings. BOTTOM RIGHT: muted olive-brown forest floor earth with tiny leaf litter, pebbles and irregular moss flecks, NO grass tufts sticking up. Each quadrant is a standalone repeating material swatch of consistent scale; even neutral lighting without cast shadows, perspective, vignette or highlights. Fill each quadrant completely. No lettering, numbers, captions, logos, watermarks, margins or background. Strong hand-inked graphic-novel aesthetic, all four panels harmonious.

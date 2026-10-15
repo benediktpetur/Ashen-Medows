@@ -1,0 +1,52 @@
+name: Build and publish playtest
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'game/**'
+      - 'launcher/**'
+      - 'scripts/**'
+      - '.github/workflows/playtest.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: playtest-release
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      PLAYTEST_VERSION: 0.1.${{ github.run_number }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Check repository visibility
+        shell: pwsh
+        run: |
+          $visibility = gh api "repos/$env:GH_REPO" --jq .visibility
+          if ($LASTEXITCODE -ne 0 -or $visibility -ne 'public') { throw 'The no-login launcher needs a public release repository. See README for private source options.' }
+      - name: Install pinned Godot .NET and templates
+        shell: pwsh
+        run: ./scripts/setup-godot.ps1 -Templates
+      - name: Build, smoke test and export Windows game
+        shell: pwsh
+        run: ./scripts/build-game.ps1 -Export
+      - name: Test launcher and package release
+        shell: pwsh
+        run: ./scripts/package-github.ps1 -Repository $env:GH_REPO -Version $env:PLAYTEST_VERSION -Notes "Godot playtest / commit $env:GITHUB_SHA"
+      - name: Publish complete release
+        shell: pwsh
+        run: |
+          $tag = "v$env:PLAYTEST_VERSION"
+          gh release create $tag --repo $env:GH_REPO --target $env:GITHUB_SHA --draft --title "Playtest $env:PLAYTEST_VERSION" --notes "Godot migration playtest. Download AshenLauncher.zip once; future builds update through the launcher."
+          if ($LASTEXITCODE -ne 0) { throw 'Release creation failed (versions cannot be reused).' }
+          gh release upload $tag ./release/manifest.json ./release/AshenLauncher.zip "./release/ashen-$env:PLAYTEST_VERSION-windows-x64.zip" --repo $env:GH_REPO
+          if ($LASTEXITCODE -ne 0) { throw 'Upload failed; draft left unpublished.' }
+          gh release edit $tag --repo $env:GH_REPO --draft=false --latest
+          if ($LASTEXITCODE -ne 0) { throw 'Release publication failed.' }
