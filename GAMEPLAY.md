@@ -12,9 +12,9 @@ This ports the existing Expedition game logic into Godot .NET. Survival base def
 - B: building mode; 1–8: foundation/floor/wall/half wall/pillar/beam/stairs/roof; Q/E: rotate (Ctrl fine); G: snap; Page Up/Down: elevation; +/-: reach; R: reset orientation/height; left click: place; right click: remove if supports remain valid.
 - T: chop/hold to continue; P: clear/hold to extend paths; O: dig well (bench 1, 4 timber, 8 stone).
 - F6: place crafted sleeping bags, bind respawn, travel and rest.
-- N: journal; F8: existing encrypted relay connection probe.
+- N: journal; F8: Godot co-op host/join/session menu (see MULTIPLAYER.md).
 
-Menus pause gameplay, needs and wound timers. Mouse capture resumes when you close a menu. Settings currently reset each launch; saved character/world state does not.
+Solo menus pause gameplay, needs and wound timers. Online menus keep the world and timers running. Mouse capture resumes when you close a menu. Settings currently reset each launch; saved character/world state does not.
 
 ## Preserved rules
 
@@ -26,7 +26,7 @@ Crafting includes all old benches, tiered guns/armor, rounds, sleeping bag kits,
 
 Strength trains on trees; Agility/Stamina on actual sprinting; Marksmanship on hits/kills; Crafting on recipes; Survival on gathering. Higher Strength accesses harder trees. Death clears partial XP in all six attributes and retains earned levels/items. Night infected and gun drops provide catalysts/scavenged-quality bonuses. Gun quality is per weapon type, matching the prior loadout data model.
 
-Bites add individual wounds. One open wound has 600 seconds of blood; each open wound drains all remaining blood timers N times faster. H patches one wound without healing health; patched wounds recover after 1200 active seconds. Timers/needs persist and don't advance offline. Health recovers at 0.08 HP/s (plus Survival) after 60 seconds without damage, sufficient hunger/water and no open bleeding. Health impact itself may kill sooner. Menus pause these timers.
+Bites add individual wounds. One open wound has 600 seconds of blood; each open wound drains all remaining blood timers N times faster. H patches one wound without healing health; patched wounds recover after 1200 active seconds. Timers/needs persist and don't advance offline. Health recovers at 0.08 HP/s (plus Survival) after 60 seconds without damage, sufficient hunger/water and no open bleeding. Health impact itself may kill sooner. Solo menus pause these timers; online menus do not.
 
 Sleeping bags need workshop 2. Fast travel is same-seed, daylight, no wounds, safe camps, one provision, one water, 25 energy and ten-minute cooldown. Rest at a safe bag restores fatigue reserve. Respawn falls back to the meadow if a camp is blocked or nearby enemies make it unsafe. Camps, buildings, clock and terrain edits are per-seed; character gear/attributes travel between seeds via pause-menu world selection.
 
@@ -40,4 +40,4 @@ Esc → Import Old Expedition Character reads the selected legacy profile and co
 
 ## Remaining migration work
 
-The retained relay probe tests TLS transport only. Expedition multiplayer sessions, replicated world state, host authority and cross-server character validation have not been implemented. Full skeletal characters, cinematic animations, authored environmental art, the old detailed room dressing and richer ambient audio are not reproduced by this logic port. The journal retains the six stories with simplified abandoned-location interaction. No release is published remotely until you upload and run the GitHub workflow.
+Godot direct-connect co-op and shared world state are implemented; read MULTIPLAYER.md for usage and current party/session limits. Cross-server character validation, public matchmaking, relay traversal and dedicated-server mode are not implemented. Full skeletal characters, cinematic animations, authored environmental art, the old detailed room dressing and richer ambient audio are not reproduced by this logic port. The journal retains the six stories with simplified abandoned-location interaction. No release is published remotely until you upload and run the GitHub workflow.
