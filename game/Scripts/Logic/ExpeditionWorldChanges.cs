@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 [DataContract] sealed class ExpeditionEarthPatch { [DataMember] public double X,Z,Height; }
-[DataContract] sealed class ExpeditionWorldChanges {
+[DataContract] sealed partial class ExpeditionWorldChanges {
  [DataMember] public double Time;
  [DataMember] public int Seed;[DataMember] public string Version="south-block-1";
  [DataMember] public List<string> CutTrees=new List<string>(),BurnedCars=new List<string>();
  [DataMember] public List<ExpeditionEarthPatch> Paths=new List<ExpeditionEarthPatch>(),Wells=new List<ExpeditionEarthPatch>(),Stumps=new List<ExpeditionEarthPatch>();
  Dictionary<long,List<ExpeditionEarthPatch>> pathIndex,wellIndex;HashSet<string> cutIndex,burnedIndex;
  static long CellKey(double x,double z){return ((long)(int)Math.Floor(x/32)<<32)|(uint)(int)Math.Floor(z/32);}
- public void Index(){if(CutTrees==null)CutTrees=new List<string>();if(BurnedCars==null)BurnedCars=new List<string>();if(Paths==null)Paths=new List<ExpeditionEarthPatch>();if(Wells==null)Wells=new List<ExpeditionEarthPatch>();if(Stumps==null)Stumps=new List<ExpeditionEarthPatch>();cutIndex=new HashSet<string>(CutTrees);burnedIndex=new HashSet<string>(BurnedCars);pathIndex=new Dictionary<long,List<ExpeditionEarthPatch>>();wellIndex=new Dictionary<long,List<ExpeditionEarthPatch>>();foreach(var p in Paths)AddIndex(pathIndex,p,3);foreach(var p in Wells)AddIndex(wellIndex,p,2);}
+ public void Index(){IndexTerrainFootprints();if(CutTrees==null)CutTrees=new List<string>();if(BurnedCars==null)BurnedCars=new List<string>();if(Paths==null)Paths=new List<ExpeditionEarthPatch>();if(Wells==null)Wells=new List<ExpeditionEarthPatch>();if(Stumps==null)Stumps=new List<ExpeditionEarthPatch>();cutIndex=new HashSet<string>(CutTrees);burnedIndex=new HashSet<string>(BurnedCars);pathIndex=new Dictionary<long,List<ExpeditionEarthPatch>>();wellIndex=new Dictionary<long,List<ExpeditionEarthPatch>>();foreach(var p in Paths)AddIndex(pathIndex,p,3);foreach(var p in Wells)AddIndex(wellIndex,p,2);}
  static void AddIndex(Dictionary<long,List<ExpeditionEarthPatch>> index,ExpeditionEarthPatch p,double r){for(int x=(int)Math.Floor((p.X-r)/32);x<=(int)Math.Floor((p.X+r)/32);x++)for(int z=(int)Math.Floor((p.Z-r)/32);z<=(int)Math.Floor((p.Z+r)/32);z++){long k=((long)x<<32)|(uint)z;if(!index.ContainsKey(k))index[k]=new List<ExpeditionEarthPatch>();index[k].Add(p);}}
  public bool Cut(string id){if(cutIndex==null)Index();return id!=null&&cutIndex.Contains(id);}
  public bool Burned(string id){if(burnedIndex==null)Index();return burnedIndex.Contains(id);}
@@ -23,5 +23,5 @@ using System.Runtime.Serialization;
 }
 partial class ExpeditionWorld {
  public ExpeditionWorldChanges Changes;
- public double Height(double x,double z){double h=BaseHeight(x,z);return Changes==null?h:Changes.Height(x,z,h);}
+ public double Height(double x,double z){double h=BaseHeight(x,z);if(Changes!=null){double w=Changes.LegacyTerrainWeight(x,z);if(w>0)h=h*(1-w)+LegacyBaseHeight(x,z)*w;}return Changes==null?h:Changes.Height(x,z,h);}
 }

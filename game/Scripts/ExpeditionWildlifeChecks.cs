@@ -1,0 +1,18 @@
+using Godot;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+public partial class MigrationScene {
+ async Task WildlifeChecks(){
+  ClearEnemies();foreach(string kind in new[]{"deer","rabbit","boar","dog"}){string id="fauna/"+kind+"/integration";AddEnemy(id,0,7,kind is "deer" or "rabbit"?1:2);var e=infected.Find(e=>e.Id==id);MigrationChecks.Assert(e!=null&&e.Visual.HasNode("Leg3"),"Animal rig / "+kind);MigrationChecks.Assert(((CapsuleShape3D)e.Body.GetChild<CollisionShape3D>(0).Shape).Height<1.8f,"Animal collision / "+kind);await ToSignal(GetTree(),SceneTree.SignalName.PhysicsFrame);e.Memory=5;e.Target=player.Position;double health=game.Life.Health;TickAnimal(e,.016);if(Peaceful(id)){MigrationChecks.Assert(game.Life.Health==health,"Peaceful animal damage");MigrationChecks.Assert(e.Body.Velocity.Dot(e.Body.Position-player.Position)>0,"Animal flee direction");}int food=game.Life.Food;var guns=game.Craft.Weapons.Count;AnimalLoot(e);AnimalLoot(e);MigrationChecks.Assert(game.Life.Food==food+(kind=="dog"?0:kind=="rabbit"?1:3),"Animal food/duplicate reward");MigrationChecks.Assert(game.Craft.Weapons.Count==guns,"Animal dropped gun");RemoveEnemy(e);}
+  SpawnFauna();MigrationChecks.Assert(infected.Any(e=>Peaceful(e.Id)),"Starter wildlife seeding");foreach(var e in infected)MigrationChecks.Assert(e.Tier==game.World.Tier(e.Home.X,e.Home.Z)&&Peaceful(e.Id)==(e.Tier==1),"Wildlife biome tier");int count=infected.Count;SpawnFauna();MigrationChecks.Assert(infected.Count==count,"Duplicate fauna spawning");ClearEnemies();GD.Print("PASS / wildlife: quadruped rigs, low colliders, fleeing, peaceful damage, food, contaminated meat, duplicate rewards and biome seeding");
+ }
+ async void CaptureWildlife(){try{
+  testing=true;CloseMenu();paused=true;hudRoot.Visible=false;terrainRoot.Visible=worldRoot.Visible=buildRoot.Visible=false;if(distantTerrain!=null)distantTerrain.Visible=false;ClearEnemies();weaponRoot.Visible=false;game.World.Changes.Time=900;
+  var stage=new Node3D();AddChild(stage);Box(stage,new(0,-.08f,0),new(14,.16f,8),new(.22f,.25f,.23f));stage.AddChild(new DirectionalLight3D{RotationDegrees=new(-30,145,0),LightColor=new(.8f,.85f,.9f),LightEnergy=.85f});
+  string[] kinds={"deer","rabbit","boar","dog"};for(int i=0;i<4;i++){var n=new Node3D{Position=new((1.5f-i)*1.7f,0,0),RotationDegrees=new(0,35,0)};stage.AddChild(n);AnimalArt(n,kinds[i]);stage.AddChild(new Label3D{Text=(i<2?"LVL 1 / ":"LVL 2 / ")+(i==3?"INFECTED DOG":kinds[i].ToUpperInvariant()),Position=n.Position+Vector3.Up*1.95f,FontSize=30,PixelSize=.003f,Billboard=BaseMaterial3D.BillboardModeEnum.Enabled});}
+  camera.Fov=42;camera.GlobalPosition=new(0,2,-8);camera.LookAt(new Vector3(0,.85f,0));await ArtShot("wildlife-01-four-models");stage.QueueFree();terrainRoot.Visible=worldRoot.Visible=buildRoot.Visible=true;if(distantTerrain!=null)distantTerrain.Visible=true;hudRoot.Visible=true;Teleport(0,12);SpawnInfected();camera.Position=new(0,1.65f,0);camera.Rotation=Vector3.Zero;player.Rotation=Vector3.Zero;camera.Fov=65;
+  var deer=infected.FirstOrDefault(e=>Peaceful(e.Id));if(deer!=null){camera.GlobalPosition=deer.Body.Position+new Vector3(3,1.6f,-4);camera.LookAt(deer.Body.Position+Vector3.Up*.7f);}await ArtShot("wildlife-02-starting-valley");
+  ClearEnemies();Teleport(game.World.RouteX(-650),-650);SpawnInfected();var danger=infected.FirstOrDefault(e=>Species(e.Id) is "boar" or "dog");if(danger!=null){camera.GlobalPosition=danger.Body.Position+new Vector3(3,1.6f,-4);camera.LookAt(danger.Body.Position+Vector3.Up*.6f);}await ArtShot("wildlife-03-woodland");GD.Print("PASS / wildlife GPU captures");GetTree().Quit();
+ }catch(Exception ex){GD.PushError(ex.ToString());GetTree().Quit(1);}}
+}

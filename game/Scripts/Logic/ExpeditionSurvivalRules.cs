@@ -16,6 +16,7 @@ using System.Runtime.Serialization;
  [OnDeserializing] void Defaults(StreamingContext c){Hunger=Hydration=Energy=Health=100;Bandages=Food=3;}
  public void Normalize(){if(WeaponQuality==null||WeaponQuality.Length!=6)WeaponQuality=new int[6];if(Wounds==null)Wounds=new List<ExpeditionWound>();if(Camps==null)Camps=new List<ExpeditionBag>();Hunger=Clamp(Hunger);Hydration=Clamp(Hydration);Energy=Clamp(Energy);Health=Math.Max(1,Math.Min(200,Health));Bandages=Math.Max(0,Bandages);Food=Math.Max(0,Food);Bags=Math.Max(0,Bags);NightEssence=Math.Max(0,NightEssence);}
  static double Clamp(double v){return double.IsNaN(v)||double.IsInfinity(v)?100:Math.Max(0,Math.Min(100,v));}
- public bool TickWounds(double dt){int open=Wounds.FindAll(w=>!w.Patched).Count;foreach(var w in Wounds){if(w.Patched)w.Recovery-=dt;else w.Blood-=dt*open;}Wounds.RemoveAll(w=>w.Patched&&w.Recovery<=0);return Wounds.Exists(w=>!w.Patched&&w.Blood<=0);}
+ public bool TickWounds(double dt){if(!double.IsFinite(dt)||dt<=0)return Wounds.Exists(w=>!w.Patched&&w.Blood<=0);int open=Wounds.FindAll(w=>!w.Patched).Count;foreach(var w in Wounds){if(w.Patched)w.Recovery-=dt;else w.Blood-=dt*open;}Wounds.RemoveAll(w=>w.Patched&&w.Recovery<=0);return Wounds.Exists(w=>!w.Patched&&w.Blood<=0);}
+ public bool Unpatch(int index){if(index<0||index>=Wounds.Count||!Wounds[index].Patched)return false;Wounds[index].Patched=false;Wounds[index].Recovery=1200;return true;}
  public bool Patch(){var w=Wounds.FindAll(a=>!a.Patched);w.Sort((a,b)=>a.Blood.CompareTo(b.Blood));if(Bandages<1||w.Count==0)return false;Bandages--;w[0].Patched=true;w[0].Recovery=1200;return true;}
 }

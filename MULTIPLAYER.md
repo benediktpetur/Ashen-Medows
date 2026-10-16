@@ -20,8 +20,9 @@ Guest character progress saves to their own normal profile. Solo seed, position,
 
 ## First-version limits
 
-- Explore as a party within **120 metres of the host**, which preserves the existing 49-chunk streaming budget. The host can regroup stragglers automatically. Independent distant expeditions are not implemented.
-- The host enters, descends and exits dungeons for the whole party. Guests can fight and loot inside. Dungeon death respawns at the room entrance; surface respawns use a safe personal bag or fall back near the host when the bag is outside the party area.
+- Players can explore the surface independently across the whole playable map. Each client renders at most 49 terrain chunks. The host keeps its own 49 full-detail chunks plus physics-only windows around other players: overlapping windows are shared, with at most 392 total chunks for eight widely separated players. Remote simulation omits scenery, foliage and character artwork outside the host view. Chunks unload when nobody needs them.
+- Outdoor infected spawn around every player, capped at 48 per area and 384 globally. Empty areas unload their enemies; enemy snapshots only include threats within 150m of each recipient (up to 96) and use compressed packets below the network MTU. Partly damaged enemies outside every active area can reset when later respawned, matching the prototype despawn behavior.
+- The host enters, descends and exits dungeons for the whole party. Surface entry requires everyone within 24m of the host; a distant explorer is never pulled into a dungeon automatically. Guests can fight and loot inside. Dungeon death respawns at the room entrance; surface respawns use a safe personal bag regardless of host distance, or fall back to the starting meadow when no safe bag is bound.
 - Fast travel is disabled online. Menus do **not** pause the online world, needs or bleeding. Solo menus still pause.
 - A host leaving ends the session. Guests return to their own solo world with the latest saved character progress. This first version does not provide an always-running dedicated world.
 - Guest sleeping bags use the existing per-seed personal camp format; separate hosts running the same seed do not yet have distinct camp namespaces. Do not rely on bags as permanent cross-server camp bookmarks yet.
@@ -29,6 +30,8 @@ Guest character progress saves to their own normal profile. Solo seed, position,
 
 ## Repeatable tests
 
-`scripts/build-game.ps1 -Export` runs solo logic/engine checks plus `scripts/test-coop.ps1`, which starts separate host/client Godot processes on localhost UDP 29748 with isolated test profiles. It verifies handshake, visible peer creation, host seed adoption, independent crafting, rotated shared building, resource gathering, authoritative gunfire, wound patching, death XP reset, party dungeon travel, reconnect, host shutdown, solo-world restoration and saved character progress. Test logs are under ignored `build/coop-checks`.
+`scripts/build-game.ps1 -Export` runs solo logic/engine checks plus `scripts/test-coop.ps1`, which starts separate host/client Godot processes on localhost UDP 29748 with isolated test profiles. It additionally separates two players by over 600m and verifies bounded physics-only streaming, per-player enemy sensing and snapshot filtering, remote combat/gather/build/path changes, distant bag respawn, and refusal of party dungeon entry while split. It verifies handshake, visible peer creation, host seed adoption, independent crafting, rotated shared building, resource gathering, authoritative gunfire, wound patching, death XP reset, party dungeon travel, reconnect, host shutdown, solo-world restoration and saved character progress. Test logs are under ignored `build/coop-checks`.
 
 When reusing the original local Godot download, run `./scripts/build-game.ps1 -Export -ToolsRoot ../.tools` from this repository. CI uses its own default `.tools` location.
+
+Networking protocol is now version 3. Update everyone together; older co-op builds are rejected at handshake.

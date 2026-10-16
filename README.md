@@ -22,7 +22,7 @@ Read GAMEPLAY.md for controls, timing, save import and current limits. Original 
 
 The artwork/animation and room dressing are still simple procedural models/materials. This is a gameplay migration, not the visual fidelity of the style-3 concept. Cars remain explosive wrecks; drivable vehicles, NPC communities, bosses and river expansions are future features that were not implemented in the old Expedition.
 
-Godot ENet co-op now supports a host and up to seven friends. Press F8 or use Esc -> Multiplayer to host/join. The host controls shared enemies, resources, structures and world time, and guests retain their own character progress. Read MULTIPLAYER.md for UDP 28748 internet setup, the 120m party range, party dungeon travel and test coverage. The old relay server is not required and was not reconfigured.
+Godot ENet co-op now supports a host and up to seven friends. Press F8 or use Esc -> Multiplayer to host/join. The host controls shared enemies, resources, structures and world time, and guests retain their own character progress. Read MULTIPLAYER.md for UDP 28748 internet setup, independent surface exploration, party dungeon travel and test coverage. The old relay server is not required and was not reconfigured.
 
 ## Run and build locally (PowerShell 7)
 
