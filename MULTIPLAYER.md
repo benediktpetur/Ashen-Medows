@@ -34,7 +34,7 @@ Guest character progress saves to their own normal profile. Solo seed, position,
 
 When reusing the original local Godot download, run `./scripts/build-game.ps1 -Export -ToolsRoot ../.tools` from this repository. CI uses its own default `.tools` location.
 
-Networking protocol is now version 6. Update everyone together; older co-op builds are rejected at handshake.
+Networking protocol is now version 8. Update everyone together; older co-op builds are rejected at handshake.
 
 Base extension: the host validates research spending, blueprint unlocks, construction costs, station proximity, storage transfers and driving authority. World snapshots include station stocks, door state, durability, fuel, production timers and mobile positions. Two-process tests cover guest research costs and deposit/withdraw conservation without changing the host's personal inventory.
 

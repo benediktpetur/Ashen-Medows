@@ -10,6 +10,7 @@ using System.Runtime.Serialization;
 [DataContract] sealed class ExpeditionLife {
  [DataMember] public double Hunger=100,Hydration=100,Energy=100,Health=100,TravelCooldown;
  [DataMember] public int[] WeaponQuality=new int[8];
+ [DataMember] public int MillCores;
  [DataMember] public int Medicine;[DataMember] public double RecoveryBoost;
  [DataMember] public int Bandages=3,Food=3,Bags,NightEssence;
  [DataMember] public List<ExpeditionWound> Wounds=new List<ExpeditionWound>();

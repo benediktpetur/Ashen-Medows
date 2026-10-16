@@ -1,0 +1,4 @@
+using Godot;
+public partial class MigrationScene {
+ void MillEntranceRamp(){float end=(float)(game.World.Height(MillX,MillZ+49)-millFloor);var surface=new SurfaceTool();surface.Begin(Mesh.PrimitiveType.Triangles);Vector3 a=new(-3,0,24),b=new(3,0,24),c=new(3,end,49),d=new(-3,end,49);foreach(var vertex in new[]{a,c,b,a,d,c})surface.AddVertex(vertex);surface.GenerateNormals();var mesh=surface.Commit();millRoot.AddChild(new MeshInstance3D{Mesh=mesh,MaterialOverride=Material(Wood)});var body=new StaticBody3D();body.AddChild(new CollisionShape3D{Shape=mesh.CreateTrimeshShape()});millRoot.AddChild(body);for(int x=-1;x<=1;x+=2)for(int z=-1;z<=1;z+=2){float height=(float)(millFloor-game.World.Height(MillX+x*23,MillZ+z*23));if(height>0)Box(millRoot,new(x*23,-height/2,z*23),new(.5f,height,.5f),Wood,true);}}
+}

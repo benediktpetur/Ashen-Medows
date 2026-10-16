@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 sealed partial class ExpeditionGame {
  public double MedicalRecovery=>Building==null?1:Building.Pieces.Where(p=>p.Def.Function=="medical"&&Distance(p.X,p.Z,Save.X,Save.Z)<3&&Building.Pieces.Any(g=>g.Def.Function=="power"&&g.Charge>0&&Distance(g.X,g.Z,p.X,p.Z)<24)).Select(p=>p.Def.Tier==5?3.0:2.0).DefaultIfEmpty(1).Max();
- public string ResearchTab(ExpeditionRecipe r)=>r.Kind=="build"?BuildDefinition.All[r.Result].Tab:r.Kind is "weapon" or "armor" or "night" or "attachment"?"Weapons and armor":r.Kind=="bench"?"Buildings":"Survival";
+ public string ResearchTab(ExpeditionRecipe r)=>r.Kind=="build"?BuildDefinition.All[r.Result].Tab:r.Kind is "weapon" or "armor" or "night" or "attachment" or "mill"?"Weapons and armor":r.Kind=="bench"?"Buildings":"Survival";
  public bool FreeBlueprint(ExpeditionRecipe r)=>r.Kind=="bench"||r.Kind=="build"&&r.Result<8||r.Kind is "bandage" or "food" or "ammo" or "arrow";
  public int ResearchCost(ExpeditionRecipe r)=>FreeBlueprint(r)?0:r.Tier;
  public bool Knows(ExpeditionRecipe r)=>FreeBlueprint(r)||Craft.Researched.Contains(ResearchId(r));

@@ -6,6 +6,7 @@ sealed partial class ExpeditionGame {
   "bench"=>Craft.BenchTier>=r.Result,
   "weapon"=>Craft.Weapons.Contains(r.Result),
   "armor"=>Profile.Items.Any(i=>i.Level>=r.Tier&&i.GearSlot==(r.Result==11?"head":r.Result==12?"hands":r.Result==13?"feet":"chest")),
+  "mill"=>Life.WeaponQuality[Craft.Weapon]>=20,
   "attachment"=>Life.WeaponQuality[Craft.Weapon]>=r.Result,
   "build"=>Building!=null&&Building.Pieces.Any(p=>p.Kind==r.Result),
   "night"=>Life.WeaponQuality[Craft.Weapon]>=25,

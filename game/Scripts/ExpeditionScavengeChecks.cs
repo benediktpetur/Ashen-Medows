@@ -1,0 +1,16 @@
+using Godot;
+using System;
+using System.Linq;
+public partial class MigrationScene {
+ void ScavengeChecks(){
+  ClearEnemies();Teleport(game.World.RouteX(-600)+12,-600);game.World.Changes.TrapCooldown=0;game.World.Changes.ScavengeAlarm=null;
+  string id=Enumerable.Range(0,1000).Select(i=>"trap-test/"+i).First(s=>TrapRoll(game.World,s)<22);var node=new Node3D{Position=player.Position};worldRoot.AddChild(node);var p=new WorldProp{Id=id,Kind=9,Node=node,Position=node.Position,Tier=2,Material=3,Amount=2};props.Add(p);int material=game.Craft.Materials[3];
+  MigrationChecks.Assert(SearchSupply()&&game.Craft.Materials[3]==material+2,"Trap preserves normal loot");var alarm=game.World.Changes.ScavengeAlarm;MigrationChecks.Assert(alarm!=null&&game.World.Changes.SpentTraps.Contains(id),"Loot triggers seeded trap and spent flag");
+  MigrationChecks.Assert(infected.Count==0,"Trap spawns no enemies instantly");TickScavengeTraps(5);MigrationChecks.Assert(infected.Count==0,"Trap escape warning");TickScavengeTraps(1);MigrationChecks.Assert(alarm.Waves==1&&infected.Any(e=>e.Id.StartsWith("ambush/")),"Trap delayed wave");MigrationChecks.Assert(infected.All(e=>Distance(player.Position,e.Body.Position)>=18),"Trap minimum spawn distance");
+  game.Persist();var loaded=new ExpeditionGame(game.PathName);MigrationChecks.Assert(loaded.World.Changes.ScavengeAlarm?.Waves==1&&loaded.World.Changes.SpentTraps.Contains(id),"Trap saved across reload");
+  MigrationChecks.Assert(SilenceScavengeTrap()&&game.World.Changes.ScavengeAlarm==null,"Trap can be silenced");int enemies=infected.Count;TickScavengeTraps(20);MigrationChecks.Assert(infected.Count==enemies,"Silencing prevents reinforcement wave");TryScavengeTrap(p);MigrationChecks.Assert(game.World.Changes.ScavengeAlarm==null,"Trap cooldown and spent protection");game.World.Changes.TrapCooldown=0;TryScavengeTrap(p);MigrationChecks.Assert(game.World.Changes.ScavengeAlarm==null,"Spent trap never retriggers");
+  p.Id=Enumerable.Range(1000,1000).Select(i=>"trap-test/"+i).First(s=>TrapRoll(game.World,s)<22);p.Tier=1;TryScavengeTrap(p);MigrationChecks.Assert(game.World.Changes.ScavengeAlarm==null,"Starter zone trap exclusion");p.Tier=2;TryScavengeTrap(p);MigrationChecks.Assert(game.World.Changes.ScavengeAlarm!=null,"New eligible trap can trigger after cooldown");TickScavengeTraps(31);MigrationChecks.Assert(game.World.Changes.ScavengeAlarm==null,"Trap ends automatically");
+  ClearEnemies();game.World.Changes.TrapCooldown=0;Teleport(0,12);GD.Print("PASS / scavenging traps: real loot, seeded trigger, warning, delayed wave, spawn distance, saved state, silence, cooldown, spent protection, starter safety, timeout");
+ }
+ async void CaptureScavengeTrap(){try{CloseMenu();ClearEnemies();game.World.Changes.Time=1050;Teleport(game.World.RouteX(-600)+12,-600);var at=Ground(player.Position.X,player.Position.Z-3);game.World.Changes.ScavengeAlarm=new(){Id="trap-preview",X=at.X,Y=at.Y,Z=at.Z,Tier=2,Kind=2,Age=4};camera.Position=new(0,1.65f,0);camera.LookAt(at+Vector3.Up*1.2f);await ArtShot("scavenging-01-flare-surprise");TickScavengeTraps(3);await ArtShot("scavenging-02-infected-inbound");GD.Print("PASS / scavenging trap GPU captures");GetTree().Quit();}catch(Exception ex){GD.PushError(ex.ToString());GetTree().Quit(1);}}
+}
