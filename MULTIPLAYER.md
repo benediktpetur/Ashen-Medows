@@ -34,4 +34,8 @@ Guest character progress saves to their own normal profile. Solo seed, position,
 
 When reusing the original local Godot download, run `./scripts/build-game.ps1 -Export -ToolsRoot ../.tools` from this repository. CI uses its own default `.tools` location.
 
-Networking protocol is now version 3. Update everyone together; older co-op builds are rejected at handshake.
+Networking protocol is now version 6. Update everyone together; older co-op builds are rejected at handshake.
+
+Base extension: the host validates research spending, blueprint unlocks, construction costs, station proximity, storage transfers and driving authority. World snapshots include station stocks, door state, durability, fuel, production timers and mobile positions. Two-process tests cover guest research costs and deposit/withdraw conservation without changing the host's personal inventory.
+
+Character talents: main XP and talents are serialized in the portable survivor profile. The host validates talent prerequisites and point budgets, handles respecs, and retains talents when current main XP resets on death. Two-process checks verify guest purchases do not affect host talents and guest death retains the purchased talent.

@@ -19,11 +19,8 @@ public partial class MigrationScene {
   Bevel(n,new(-2.6f,.25f,-2),new(.76f,.5f,.48f),Wood);StoryPaper(n,new(-2.6f,.51f,-2));Bevel(n,new(-2.12f,.23f,-2),new(.16f,.46f,.16f),Steel);n.AddChild(new OmniLight3D{Position=new(-2.12f,.55f,-2),LightColor=new(1,.65f,.29f),LightEnergy=.6f,OmniRange=4,DistanceFadeEnabled=true,DistanceFadeBegin=35,DistanceFadeLength=15});
  }
  bool StoryObstacle(double x,double z){foreach(var p in props)if(p.Kind==8&&p.Node.HasMeta("story_kind")){var q=p.Node.ToLocal(Ground(x,z));int kind=p.Node.GetMeta("story_kind").AsInt32();if(kind==0&&Math.Abs(q.X)<1.9&&Math.Abs(q.Z)<1.5||kind==2&&Math.Abs(q.X)<3&&Math.Abs(q.Z)<1.35||kind==4&&(Math.Abs(q.X-3.8)<.5&&Math.Abs(q.Z)<2.3||Math.Abs(q.Z+2)<.5&&q.X>-1.3&&q.X<4.1||Math.Abs(q.X-2)<.9&&Math.Abs(q.Z)<1.2)||kind==5&&Math.Abs(q.X)<2.9&&Math.Abs(q.Z-4)<.65)return true;}return false;}
- void ReadStory(int kind,string id){if(kind<0||kind>=6)return;if(!game.Change(()=>{if(!game.Profile.Journal.Seen.Contains(id))game.Profile.Journal.Seen.Add(id);}))return;if(CoopHost&&coopActor>0)RpcId(coopActor,nameof(CoopStoryLetter),kind);else ShowLetter(kind);}
+ void ReadStory(int kind,string id){if(kind<0||kind>=6)return;if(!game.Change(()=>{if(!game.Profile.Journal.Seen.Contains(id))game.Profile.Journal.Seen.Add(id);game.AwardResearch("discovery/manual/"+kind,25);}))return;if(CoopHost&&coopActor>0)RpcId(coopActor,nameof(CoopStoryLetter),kind);else ShowLetter(kind);}
  [Rpc(MultiplayerApi.RpcMode.Authority,TransferMode=MultiplayerPeer.TransferModeEnum.Reliable)]void CoopStoryLetter(int kind){if(CoopClient&&kind>=0&&kind<6){ShowLetter(kind);coopCheckLetterShown=true;}}
  bool ReadDungeonRecord(){for(int i=0;i<3;i++)if(Distance(player.Position,dungeonRecords[i])<2.5){ReadStory(dungeonRecordKinds[i],$"{game.Save.Seed}/vault/{dungeon.Id}/note/{dungeonRecordKinds[i]}");return true;}return false;}
  void DressDungeonRecords(){for(int i=0;i<3;i++){var p=dungeonRecords[i];if(i>0)Box(dungeonRoot,p+new Vector3(0,.35f,0),new(.8f,.7f,.6f),Wood,true);StoryPaper(dungeonRoot,p+new Vector3(0,i==0?.98f:.72f,0));}for(int i=0;i<2;i++){float z=-2-i*4;Box(dungeonRoot,new(24.3f,.5f,z),new(1.2f,.20f,2),Steel,true);Box(dungeonRoot,new(24.3f,.67f,z),new(1.15f,.16f,1.9f),Cloth);Box(dungeonRoot,new(24.3f,.80f,z-.55f),new(1,.12f,.6f),new(.55f,.54f,.43f));}Box(dungeonRoot,new(25.4f,1.1f,-8),new(.45f,2.2f,1.4f),Steel,true);for(int i=0;i<4;i++)Box(dungeonRoot,new(25.1f,.3f+i*.45f,-8),new(.65f,.05f,1.3f),Wood);}
 }
-
-
-

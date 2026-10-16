@@ -1,6 +1,6 @@
 # Item catalogue
 
-The current supported catalogue contains 48 visual definitions. These are authored Godot meshes, integrated with existing item rules rather than a new inventory/save format. All 27 crafting recipes resolve to an appropriate item model. Materials use these models in the world; crafting and inventory detail panels render them in a lit 3D preview. Weapon variants are also used in first person. Equipped chest armor is shown on the local inventory portrait.
+The current supported catalogue contains 139 visual definitions. These are authored Godot meshes, integrated with existing item rules rather than a new inventory/save format. All 126 crafting and construction recipes resolve to an appropriate item model. Materials use these models in the world; crafting and inventory detail panels render them in a lit 3D preview. Weapon variants are also used in first person. Equipped chest armor is shown on the local inventory portrait.
 
 | Group | Entries |
 | --- | --- |
@@ -19,3 +19,5 @@ The utility tools are models for existing key-driven actions. They are not new e
 Model coverage is checked for all definitions and every recipe. `--item-preview` renders seven category galleries plus crafting and inventory captures using isolated saves. Review images are copied into ignored `build/item-catalogue`.
 
 Survival update adds seven head/hand/foot recipes and their preview models, bringing the catalogue to 48 definitions. T equips the axe and each left click performs a deliberate swing.
+
+The four-tab expansion includes eight weapon models, twenty armor variants, 83 buildable objects (40 structural pieces across five material tiers and 43 functional base objects), three tuning kits, arrows and medical kit previews. Every recipe has a model. Utility props use beveled surfaces and the existing graphic-novel materials; doors and windows have collision matching their openings.

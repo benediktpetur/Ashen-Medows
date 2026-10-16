@@ -16,7 +16,7 @@ public partial class MigrationScene {
  };}
  void ShowProgression(){
   var box=Panel("SURVIVOR / LEARN BY DOING");menu.Position=new(40,45);menu.Size=new(1200,610);
-  var intro=new Label{Text=$"HEALTH {game.Life.Health:0}/{game.MaxHealth:0}  /  STAMINA {game.Stamina:0}/{game.MaxStamina:0}  /  ARMOR {game.GearArmor}  /  RUN x{game.Speed:0.00}  /  DAMAGE {game.Damage(false):0}"};box.AddChild(intro);
+  var intro=new Label{Text=$"HEALTH {game.Life.Health:0}/{game.MaxHealth:0}  /  STAMINA {game.Stamina:0}/{game.MaxStamina:0}  /  ARMOR {game.GearArmor+game.Talent("armor")*8}  /  RUN x{game.Speed:0.00}  /  DAMAGE {game.Damage(false):0}"};box.AddChild(intro);
   var grid=new GridContainer{Columns=2,SizeFlagsHorizontal=Control.SizeFlags.ExpandFill};grid.AddThemeConstantOverride("h_separation",18);grid.AddThemeConstantOverride("v_separation",12);box.AddChild(grid);
   skillReadouts=new Label[6];skillBars=new ProgressBar[6];var skills=LocalSkills();
   for(int i=0;i<6;i++){

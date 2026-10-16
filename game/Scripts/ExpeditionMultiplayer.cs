@@ -33,7 +33,7 @@ using System.Runtime.Serialization;
 }
 
 public partial class MigrationScene {
- const int CoopProtocol=3,CoopPort=28748;
+ const int CoopProtocol=6,CoopPort=28748;
  ENetMultiplayerPeer coopPeer;bool coopReady,coopApplying,coopExecuting,coopHosting;
  bool CoopActive=>coopPeer!=null;
  bool CoopClient=>CoopActive&&!coopHosting;
@@ -53,7 +53,7 @@ public partial class MigrationScene {
  }
  void InitCoop(){
   Multiplayer.PeerConnected+=id=>{if(CoopHost)coopPending[id]=Time.GetTicksMsec()/1000.0;};
-  Multiplayer.PeerDisconnected+=id=>{coopPending.Remove(id);if(coopActors.Remove(id,out var a)){if(a.Game!=null)coopCharacters[a.Identity]=a.Game;RemoveChild(a.Body);a.Body.QueueFree();}coopStatus="Co-op / player disconnected";};
+  Multiplayer.PeerDisconnected+=id=>{foreach(string key in vehicleDrivers.Where(p=>p.Value==id).Select(p=>p.Key).ToArray())vehicleDrivers.Remove(key);coopPending.Remove(id);if(coopActors.Remove(id,out var a)){if(a.Game!=null)coopCharacters[a.Identity]=a.Game;RemoveChild(a.Body);a.Body.QueueFree();}coopStatus="Co-op / player disconnected";};
   Multiplayer.ConnectedToServer+=()=>{RpcId(1,nameof(CoopHello),CoopProtocol,coopIdentity,coopName,Json.Write(game.Profile));};
   Multiplayer.ConnectionFailed+=()=>StopCoop("Could not connect. Check the address and UDP port.");
   Multiplayer.ServerDisconnected+=()=>StopCoop("Host disconnected. Character saved; returned to your solo world.");
@@ -105,7 +105,7 @@ public partial class MigrationScene {
  [Rpc(MultiplayerApi.RpcMode.Authority,TransferMode=MultiplayerPeer.TransferModeEnum.Reliable)]
  void CoopWorldUpdate(string json){if(CoopClient&&coopReady)ApplyCoopWorld(json);}
  [Rpc(MultiplayerApi.RpcMode.Authority,TransferMode=MultiplayerPeer.TransferModeEnum.Reliable)]
- void CoopPersonal(string json,string message,Vector3 correction,bool teleport){if(!CoopClient||!coopReady)return;ApplyCoopProfile(json);if(message!=""){game.Notice=message;if(paused){if(coopMenu=="craft")ComicCrafting();else if(coopMenu=="equipment")ComicEquipment();else if(coopMenu=="camps")ShowCamps();else if(coopMenu=="wounds")ShowWounds();}}if(teleport){player.Position=correction;player.Velocity=Vector3.Zero;}}
+ void CoopPersonal(string json,string message,Vector3 correction,bool teleport){if(!CoopClient||!coopReady)return;ApplyCoopProfile(json);if(message!=""){game.Notice=message;if(paused){if(coopMenu=="talents")ShowTalentTree();else if(coopMenu=="research")ShowResearchTree();else if(coopMenu=="craft")ResearchWorkshop();else if(coopMenu=="equipment")ComicEquipment();else if(coopMenu=="camps")ShowCamps();else if(coopMenu=="wounds")ShowWounds();else if(coopMenu=="base"){var station=game.Building.Pieces.FirstOrDefault(p=>p.Id==basePanelId);if(station!=null)ShowBaseStation(station);}}}if(teleport){player.Position=correction;player.Velocity=Vector3.Zero;}}
  [Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode=MultiplayerPeer.TransferModeEnum.UnreliableOrdered,TransferChannel=1)]
  void CoopPose(Vector3 position,float yaw,float look,bool sprint){if(!CoopHost||!coopActors.TryGetValue(Multiplayer.GetRemoteSenderId(),out var a)||!Finite(position)||!float.IsFinite(yaw+look))return;double now=Time.GetTicksMsec()/1000.0,elapsed=Math.Clamp(now-a.LastPose,.02,.5);if(position.DistanceTo(a.Body.Position)>Math.Max(3,elapsed*13)||dungeon==null&&!game.World.Playable(position.X,position.Z)||dungeon!=null&&!ExpeditionDungeon.Free(position.X,position.Z)){RpcId(a.Id,nameof(CoopPersonal),CoopProfileJson(a.Game),"Movement corrected / invalid position or excessive speed",a.Body.Position,true);return;}a.Body.Position=position;a.Target=position;a.Yaw=yaw;a.Pitch=Math.Clamp(look,-1.4f,1.4f);a.Body.Rotation=new Vector3(0,yaw,0);a.LastPose=now;a.Sprint=sprint;}
  static bool Finite(Vector3 v)=>float.IsFinite(v.X)&&float.IsFinite(v.Y)&&float.IsFinite(v.Z);
@@ -123,11 +123,18 @@ public partial class MigrationScene {
  void ExecuteCoopAction(string operation,string data){switch(operation){
   case "shoot":Shoot();break;case "reload":StartReload();break;case "chop":ChopTree();break;case "path":PaintPath();break;case "well":DigWell();break;
   case "interact":CoopInteract();break;
+  case "talent":game.LearnTalent(data);break;case "talentreset":game.ResetTalents();break;
+  case "research":if(int.TryParse(data,out int research))game.Research(research);break;
+  case "drive":DriveBlueprint(data);break;
+  case "dismount":if(vehicleDrivers.TryGetValue(data,out long driver)&&driver==coopActor)vehicleDrivers.Remove(data);break;
+  case "baseuse":UseBlueprint(data);break;
+  case "researchgoal":if(int.TryParse(data,out int goal))game.TrackResearch(goal);break;
   case "craft":if(int.TryParse(data,out int r)&&r>=0&&r<ExpeditionRecipe.All.Length)game.CraftRecipe(ExpeditionRecipe.All[r]);break;
-  case "equip":if(int.TryParse(data,out int gun)&&gun>=0&&gun<6)game.Change(()=>game.Equip(gun));break;
+  case "equip":if(int.TryParse(data,out int gun)&&gun>=0&&gun<ExpeditionGame.GunNames.Length)game.Change(()=>game.Equip(gun));break;
   case "armor":if(game.Profile.Items.Any(i=>i.Id==data))game.Change(()=>game.EquipGear(data));break;
   case "unpatch":if(int.TryParse(data,out int woundIndex))game.Change(()=>game.Life.Unpatch(woundIndex));break;
   case "unequip":game.Change(()=>game.UnequipGear(data));break;
+  case "medicine":game.Change(()=>{if(game.Life.Medicine>0){game.Life.Medicine--;game.Life.RecoveryBoost=300;}});break;
   case "bandage":game.Change(()=>game.Notice=game.Life.Patch()?"Bandaged one wound":"No open wound or no bandages");break;
   case "eat":game.Change(()=>{if(game.Life.Food>0){game.Life.Food--;game.Life.Hunger=Math.Min(100,game.Life.Hunger+40);}});break;
   case "drink":game.Change(()=>{if(game.Craft.Water>0){game.Craft.Water--;game.Life.Hydration=Math.Min(100,game.Life.Hydration+45);}});break;
@@ -138,14 +145,14 @@ public partial class MigrationScene {
   case "rest":var camp=game.Life.Camps.Find(c=>c.Seed==game.Save.Seed&&ExpeditionGame.Distance(c.X,c.Z,player.Position.X,player.Position.Z)<4);if(camp!=null&&CampSafe(camp)&&!game.Life.Wounds.Exists(w=>!w.Patched))game.Change(()=>game.Life.Energy=100);break;
   case "travel":game.Notice="Fast travel is disabled during co-op; explore together.";break;
  }}
- void CoopPlace(BuildPiece p){if(p==null||p.Kind<0||p.Kind>=BuildDefinition.All.Length||!double.IsFinite(p.X+p.Y+p.Z+p.Yaw)||ExpeditionGame.Distance(p.X,p.Z,player.Position.X,player.Position.Z)>12||Math.Abs(p.Y-player.Position.Y)>12||dungeon!=null||!game.World.Playable(p.X,p.Z))return;var valid=game.Building.Placement(p);if(!valid.Valid||StaticPlacementBlocked(p)){game.Notice=valid.Reason;return;}if(game.Change(()=>game.Building.Pieces.Add(p)))SyncStructures();}
+ void CoopPlace(BuildPiece p){if(p==null||p.Kind<0||p.Kind>=BuildDefinition.All.Length||!double.IsFinite(p.X+p.Y+p.Z+p.Yaw)||ExpeditionGame.Distance(p.X,p.Z,player.Position.X,player.Position.Z)>12||Math.Abs(p.Y-player.Position.Y)>12||dungeon!=null||!game.World.Playable(p.X,p.Z))return;var valid=game.Building.Placement(p);if(!valid.Valid||StaticPlacementBlocked(p)){game.Notice=valid.Reason;return;}if(game.PlaceBlueprint(p))SyncStructures();}
  void CoopInteract(){if(dungeon==null){var portal=ExpeditionDungeon.Nearby(game.World,0,0).Find(d=>Distance(player.Position,Ground(d.X,d.Z))<3.5);if(portal!=null){game.Notice="Ask the host to enter the dungeon; the party enters together.";return;}}
   if(dungeon!=null&&(Distance(player.Position,new Vector3(0,0,3))<2||dungeon.Tier==4&&!dungeon.Deep&&Distance(player.Position,new Vector3(0,0,-26))<2.2)){game.Notice="The host controls party dungeon travel.";return;}Interact();if(paused)CloseMenu();}
  string CoopProfileJson(ExpeditionGame character){var profile=Json.Read<ExpeditionLootSave>(Json.Write(character.Profile));profile.Worlds=new List<ExpeditionWorldChanges>();var actor=coopActors.Values.FirstOrDefault(a=>ReferenceEquals(a.Game,character));return Json.Write(new CoopPersonalState{Profile=profile,Stamina=character.Stamina,Shield=character.Shield,Reload=ReferenceEquals(character,game)?reloadClock:actor?.Reload??0});}void CoopTick(double dt){if(!CoopActive)return;coopConnectClock+=dt;if(CoopClient&&!coopReady){if(coopConnectClock>15)StopCoop("Connection timed out. Check the host address and UDP port.");return;}
   if(CoopClient){foreach(var a in coopActors.Values){float speed=a.Body.Position.DistanceTo(a.Target);a.Body.Position=a.Body.Position.Lerp(a.Target,(float)Math.Min(1,dt*14));a.Body.Visible=dungeon!=null||Distance(a.Body.Position,player.Position)<220;a.Body.Rotation=new Vector3(0,Mathf.LerpAngle(a.Body.Rotation.Y,a.Yaw,(float)Math.Min(1,dt*14)),0);float swing=speed>.04f?(float)Math.Sin(game.Clock*7)*.25f:0;PoseFigure(a.Visual,(float)game.Clock*7,speed>.04f?1:0,false);}
    coopFrameClock+=dt;if(coopFrameClock>=.1){coopFrameClock=0;RpcId(1,nameof(CoopPose),player.Position,player.Rotation.Y,pitch,!paused&&Input.IsPhysicalKeyPressed(Key.Shift)&&player.Velocity.Length()>5);}return;}
   double now=Time.GetTicksMsec()/1000.0;foreach(var id in coopPending.Keys.ToArray())if(now-coopPending[id]>10){coopPeer.DisconnectPeer((int)id);coopPending.Remove(id);}
-  foreach(var a in coopActors.Values.ToArray()){WithCoopActor(a,()=>{shotClock=Math.Max(0,shotClock-dt);double time=game.World.Changes.Time;if(game.Tick(dt,a.Sprint))CoopDie();game.World.Changes.Time=time;if(reloadClock>0){reloadClock-=dt;if(reloadClock<=0)game.Reload();}game.Save.X=player.Position.X;game.Save.Z=player.Position.Z;});}
+  foreach(var a in coopActors.Values.ToArray()){WithCoopActor(a,()=>{shotClock=Math.Max(0,shotClock-dt);double time=game.World.Changes.Time;if(game.Tick(dt,a.Sprint))CoopDie();if(a.Sprint)Noise(game.Talent("quiet")>0?8.4:14);game.World.Changes.Time=time;if(reloadClock>0){reloadClock-=dt;if(reloadClock<=0)game.Reload();}game.Save.X=player.Position.X;game.Save.Z=player.Position.Z;});}
   coopFrameClock+=dt;coopWorldClock+=dt;if(coopFrameClock>=.1){coopFrameClock=0;foreach(var a in coopActors.Values)SendCoopFrame(a.Id,FrameFor(a.Body.Position));}
   if(coopWorldClock>=1){coopWorldClock=0;if(coopActors.Count>0)Rpc(nameof(CoopWorldUpdate),Json.Write(WorldSnapshot()));foreach(var a in coopActors.Values){WithCoopActor(a,SpawnObjects);RpcId(a.Id,nameof(CoopPersonal),CoopProfileJson(a.Game),"",a.Body.Position,false);}}
  }
@@ -164,7 +171,7 @@ public partial class MigrationScene {
  [Rpc(MultiplayerApi.RpcMode.Authority,TransferMode=MultiplayerPeer.TransferModeEnum.Reliable)]
  void CoopRoom(string room,Vector3 hostPosition){if(!CoopClient||!coopReady)return;ApplyCoopRoom(room);player.Position=room==""?hostPosition+new Vector3(3,0,0):new Vector3(2,.2f,2);player.Velocity=Vector3.Zero;}
  void ApplyCoopRoom(string room){coopApplying=true;if(room!="")coopCheckSawDungeon=true;try{if(room==""){ExitDungeon();return;}bool deep=room.EndsWith("/deep");string id=deep?room.Substring(0,room.Length-5):room;var d=ExpeditionDungeon.Nearby(game.World,0,0).Find(x=>x.Id==id);if(d==null)return;if(deep)d=new ExpeditionDungeon{Id=room,X=d.X,Z=d.Z,Tier=5,Deep=true,Name="SEALED LOWER WARD"};if(dungeon!=null)ExitDungeon(false);EnterDungeon(d);ClearEnemies();coopGhostEnemies.Clear();}finally{coopApplying=false;}}
- void StopCoop(string message){if(!CoopActive)return;bool guest=CoopClient;coopReady=false;coopPeer.Close();Multiplayer.MultiplayerPeer=new OfflineMultiplayerPeer();coopPeer.Dispose();coopPeer=null;foreach(var a in coopActors.Values){RemoveChild(a.Body);a.Body.QueueFree();}coopActors.Clear();coopCharacters.Clear();coopPending.Clear();coopGhostEnemies.Clear();coopApplying=true;ExitDungeon();coopApplying=false;ClearEnemies();
+ void StopCoop(string message){mountedBlueprint=null;vehicleDrivers.Clear();if(!CoopActive)return;bool guest=CoopClient;coopReady=false;coopPeer.Close();Multiplayer.MultiplayerPeer=new OfflineMultiplayerPeer();coopPeer.Dispose();coopPeer=null;foreach(var a in coopActors.Values){RemoveChild(a.Body);a.Body.QueueFree();}coopActors.Clear();coopCharacters.Clear();coopPending.Clear();coopGhostEnemies.Clear();coopApplying=true;ExitDungeon();coopApplying=false;ClearEnemies();
   if(guest&&coopOfflineSave!=null){var original=Json.Read<ExpeditionGameSave>(coopOfflineSave);var profile=game.Profile;profile.Worlds=original.Profile.Worlds;profile.Crafting.Gathered=original.Profile.Crafting.Gathered;profile.Survivor.Defeated=original.Profile.Survivor.Defeated;profile.Claimed=original.Profile.Claimed;original.Profile=profile;game.Save=original;game.GuestOriginal=null;game.Normalize();coopOfflineSave=null;}
   coopNightTimes.Clear();coopWorld=null;ClearChildren(worldRoot);props.Clear();uniqueObjects.Clear();RebuildTerrain();SyncStructures();Teleport(game.Save.X,game.Save.Z);game.Persist();coopStatus=message;game.Notice=message;
  }
