@@ -13,7 +13,7 @@ using System.Runtime.Serialization;
 public partial class MigrationScene {
  Node3D scavengeSource;AudioStreamPlayer3D scavengeAudio;string scavengeVisualId;Label scavengeLabel;
  static int TrapRoll(ExpeditionWorld world,string id)=> (int)(world.Hash(id.GetHashCodeStable(),491)%100);
- bool TrapEligible(WorldProp p)=>p.Tier>=2&&TrapRoll(game.World,p.Id)<22&&!InMill(p.Position.X,p.Position.Z,80)&&!game.Life.Camps.Any(c=>c.Seed==game.Save.Seed&&ExpeditionGame.Distance(c.X,c.Z,p.Position.X,p.Position.Z)<40);
+ bool TrapEligible(WorldProp p)=>p.Tier>=2&&(!Community.Established||ExpeditionGame.Distance(p.Position.X,p.Position.Z,Community.X,Community.Z)>50)&&TrapRoll(game.World,p.Id)<22&&!InMill(p.Position.X,p.Position.Z,80)&&!game.Life.Camps.Any(c=>c.Seed==game.Save.Seed&&ExpeditionGame.Distance(c.X,c.Z,p.Position.X,p.Position.Z)<40);
  void TryScavengeTrap(WorldProp p){if(CoopClient||!TrapEligible(p))return;var world=game.World.Changes;if(world.TrapCooldown>0||world.ScavengeAlarm!=null||world.SpentTraps.Contains(p.Id))return;
   if(!game.Change(()=>{world.SpentTraps.Add(p.Id);world.TrapCooldown=240;world.ScavengeAlarm=new(){Id=p.Id,X=p.Position.X,Y=p.Position.Y,Z=p.Position.Z,Tier=p.Tier,Kind=(int)(game.World.Hash(p.Id.GetHashCodeStable(),857)%3)};}))return;
   game.Notice="OH SHIT / "+TrapName(world.ScavengeAlarm.Kind)+"! Silence it with F or get away!";if(CoopHost&&coopActors.Count>0)Rpc(nameof(CoopWorldUpdate),Json.Write(WorldSnapshot()));

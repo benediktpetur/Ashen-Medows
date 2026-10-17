@@ -5,7 +5,7 @@ public partial class MigrationScene {
  // Species is encoded in the stable actor ID, shared by host and replicas.
  static string Species(string id)=>id.StartsWith("fauna/")?id.Split('/')[1]:"";
  static bool Peaceful(string id)=>Species(id) is "deer" or "rabbit";
- void ActorArt(Node3D root,string id,int tier,int night){if(IsMillBoss(id)){ForemanModel(root);return;}string kind=Species(id);if(kind!=""){AnimalArt(root,kind);return;}int model=night==1?5:night==2?6:Math.Clamp(tier-1,0,4);uint h=(uint)id.GetHashCodeStable();if(night==0&&tier==2&&h%4==0)model=0;if(night==0&&tier==4)model=h%3==0?4:3;HumanCharacter(root,tier,night,false,model);}
+ void ActorArt(Node3D root,string id,int tier,int night){if(IsCheckpointGuard(id)){CheckpointGuardArt(root,id);return;}if(IsSammy(id)){SammyArt(root);return;}if(IsMillBoss(id)){ForemanModel(root);return;}string kind=Species(id);if(kind!=""){AnimalArt(root,kind);return;}int model=night==1?5:night==2?6:Math.Clamp(tier-1,0,4);uint h=(uint)id.GetHashCodeStable();if(night==0&&tier==2&&h%4==0)model=0;if(night==0&&tier==4)model=h%3==0?4:3;HumanCharacter(root,tier,night,false,model);}
  void SpawnFauna(){if(dungeon!=null||CoopClient)return;var centers=CoopHost?ActiveSurfaceCenters():new System.Collections.Generic.List<Vector3>{player.Position};
   foreach(var center in centers){int cx=(int)Math.Floor(center.X/64),cz=(int)Math.Floor(center.Z/64);int local=infected.Count(e=>Species(e.Id)!=""&&Distance(e.Body.Position,center)<112);
    for(int dx=-1;dx<=1;dx++)for(int dz=-1;dz<=1;dz++){int x=cx+dx,z=cz+dz;uint h=game.World.Hash(x+1741,z-217);double px=x*64+10+h%42,pz=z*64+10+(h>>8)%42;int tier=game.World.Tier(px,pz);if(tier>2||!game.World.Playable(px,pz)||Distance(Ground(px,pz),center)>100||!ChunkLoaded(Ground(px,pz)))continue;

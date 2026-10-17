@@ -1,0 +1,10 @@
+using Godot;
+using System;
+using System.Linq;
+public partial class MigrationScene {
+ void SpawnAbandonedStops(){int band=(int)Math.Floor(-player.Position.Z/260);for(int i=band-1;i<=band+1;i++){if(i<1)continue;uint h=game.World.Hash(i+771,183);double z=-i*260-30-h%100,x=game.World.RouteX(z)+(h%2==0?-1:1)*(22+(h>>8)%34);string id=$"abandoned/{game.Save.Seed}/{i}";if(uniqueObjects.Contains(id)||Distance(player.Position,Ground(x,z))>160||InMill(x,z,80))continue;var site=new ExpeditionStorySite{Id=id,X=x,Z=z,Kind=4};if(!StoryAllowed(site))continue;int kind=(int)((h>>12)%2);var n=new Node3D{Position=Ground(x,z),RotationDegrees=new(0,(h>>16)%360,0)};worldRoot.AddChild(n);DressAbandonedStop(n,kind);props.Add(new(){Id=id,Kind=16,Material=kind,Node=n,Position=n.Position});uniqueObjects.Add(id);}}
+ void DressAbandonedStop(Node3D n,int kind){if(kind==0){var roof=Box(n,new(0,1.8f,0),new(4,.10f,3.6f),new(.32f,.36f,.26f));roof.RotationDegrees=new(0,0,-18);for(int side=-1;side<=1;side+=2)Tube(n,new(side*1.8f,0,1.5f),new(side*1.8f,side<0?2.4f:1.25f,1.5f),.065f,Wood);Box(n,new(0,.14f,0),new(1,.28f,2.2f),Cloth);Box(n,new(0,.34f,-.7f),new(.85f,.13f,.5f),new(.48f,.49f,.37f));Tube(n,new(1.4f,.12f,-1),new(1.4f,1.7f,-1),.035f,Wood);Tube(n,new(1.4f,1.7f,-1),new(1.4f,1.7f,-1.7f),.018f,Steel);PhysicsObstacle(n,new BoxShape3D{Size=new(1,.3f,2.2f)},new(0,.15f,0));for(int i=0;i<5;i++)Ellipsoid(n,new(2.5f+Mathf.Sin(i)*.4f,.12f,Mathf.Cos(i)*.4f),new(.16f,.12f,.16f),new Color(.40f,.42f,.37f));}
+  else{Box(n,new(0,.9f,0),new(2.7f,.18f,1),Wood,true);for(int side=-1;side<=1;side+=2)Box(n,new(side*1.1f,.45f,0),new(.15f,.9f,.8f),Steel,true);for(int i=0;i<3;i++){Tube(n,new(2,.35f,i*.3f-.3f),new(2,.58f,i*.3f-.3f),.42f,Ink);Bevel(n,new(-2+i*.45f,.35f,0),new(.3f,.7f,.5f),new(.44f,.35f,.19f));}Tube(n,new(-.6f,1.03f,0),new(.4f,1.03f,0),.025f,Steel);Box(n,new(.5f,1.1f,0),new(.3f,.14f,.22f),Steel);Box(n,new(0,.04f,-1.4f),new(1.7f,.08f,.8f),Cloth);}
+  n.AddChild(new Label3D{Text=kind==0?"ABANDONED HUNTING SHELTER":"ROADSIDE REPAIR STOP",Position=new(0,2.8f,0),FontSize=24,PixelSize=.007f,Billboard=BaseMaterial3D.BillboardModeEnum.Enabled,Modulate=new(.79f,.73f,.55f)});
+ }
+}

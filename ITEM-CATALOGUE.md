@@ -1,6 +1,6 @@
 # Item catalogue
 
-The current supported catalogue contains 141 visual definitions. These are authored Godot meshes, integrated with existing item rules rather than a new inventory/save format. All 127 crafting and construction recipes resolve to an appropriate item model. Materials use these models in the world; crafting and inventory detail panels render them in a lit 3D preview. Weapon variants are also used in first person. Equipped chest armor is shown on the local inventory portrait.
+The current supported catalogue contains 142 visual definitions. These are authored Godot meshes, integrated with existing item rules rather than a new inventory/save format. All 128 crafting and construction recipes resolve to an appropriate item model. Materials use these models in the world; crafting and inventory detail panels render them in a lit 3D preview. Weapon variants are also used in first person. Equipped chest armor is shown on the local inventory portrait.
 
 | Group | Entries |
 | --- | --- |
