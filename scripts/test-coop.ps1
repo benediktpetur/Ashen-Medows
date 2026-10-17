@@ -1,4 +1,4 @@
-param([Parameter(Mandatory=$true)][string]$GodotExecutable,[switch]$Exported)
+param([Parameter(Mandatory=$true)][string]$GodotExecutable,[switch]$Exported,[ValidateRange(0,240)][int]$MaxFps=0)
 $ErrorActionPreference='Stop'
 $repoRoot=Split-Path $PSScriptRoot -Parent
 $project=Join-Path $repoRoot 'game'
@@ -8,6 +8,7 @@ $processes=@()
 try{
  foreach($role in @('host','client')){
   $arguments=if($Exported){@('--headless','--',"--coop-check-$role")}else{@('--headless','--path',('"'+$project+'"'),'--',"--coop-check-$role")}
+  if($MaxFps -gt 0){$arguments=@('--max-fps',$MaxFps.ToString())+$arguments}
   $processes+=Start-Process -FilePath $GodotExecutable -ArgumentList $arguments -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $logs "$role.log") -RedirectStandardError (Join-Path $logs "$role-error.log")
  }
  $deadline=[DateTime]::UtcNow.AddSeconds(150)
@@ -25,7 +26,7 @@ try{
      Get-Content -LiteralPath $logFile -Tail 80
     }
    }
-   throw "Co-op $role failed. See diagnostics above and $logs"
+   $failure=(($output -join "`n") -split "\r?\n" | Where-Object {$_ -match '^ERROR:'} | Select-Object -First 1);if(!$failure){$failure='Missing success marker'};throw "Co-op $role failed: $failure. See diagnostics above and $logs"
   }
  }
  foreach($process in $processes){if($process.ExitCode -ne 0){throw 'Co-op test process failed.'}}

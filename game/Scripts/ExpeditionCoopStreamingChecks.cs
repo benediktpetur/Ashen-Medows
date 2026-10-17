@@ -21,6 +21,8 @@ public partial class MigrationScene {
   if(rendered>49||chunks.Count>98)throw new Exception("Two-player streaming budget exceeded");
   if(!chunks[(ExpeditionWorld.Cell(far.X),ExpeditionWorld.Cell(far.Z))].GetMeta("simulation_only",false).AsBool())throw new Exception("Remote area is rendering full scenery on host");
   if(CoopPartyReady())throw new Exception("Party dungeon entry allowed with a distant guest");
+  // Pursuit was verified above; keep the hitscan target still for the separate gunfire assertion.
+  enemy.Stagger=30;enemy.AttackState="";enemy.AttackTime=0;
   SendCoopPersonal(a.Id,CoopProfileJson(a.Game),"",far,true);
   RpcId(a.Id,nameof(CoopCheckStage),"explore",far);
   await CoopWait(()=>game.Skills.Defeated.Contains("coop-check/far-infected"),"Remote gunfire failed",20);
@@ -39,8 +41,10 @@ public partial class MigrationScene {
   await CoopWait(()=>infected.Any(e=>e.Id=="coop-check/far-infected"),"Remote enemy not replicated");
   if(infected.Any(e=>e.Id=="coop-check/nearby-only"))throw new Exception("Out-of-range enemy replica present");
   if(chunks.Count>49)throw new Exception("Client rendered multiple players' terrain");
-  player.Rotation=Vector3.Zero;pitch=0;camera.Rotation=Vector3.Zero;await CoopDelay(.3);CoopRequest("shoot");
-  await CoopWait(()=>game.Skills.Defeated.Contains("coop-check/far-infected"),"Remote kill reward missing");
+  var enemy=infected.Single(e=>e.Id=="coop-check/far-infected");
+  await AimCoopFixture(enemy,1.3f,true);
+  CoopRequest("shoot","ads");
+  await CoopWait(()=>game.Skills.Defeated.Contains("coop-check/far-infected"),"Remote kill reward missing");aiming=false;
   CoopRequest("interact");await CoopDelay(.3);CoopRequest("path");
   BuildPiece piece=null;foreach(int dx in new[]{7,-7,10,-10})foreach(int dz in new[]{0,3,-3}){var candidate=new BuildPiece{Kind=0,X=target.X+dx,Z=target.Z+dz,Y=game.World.Height(target.X+dx,target.Z+dz),Yaw=45};if(game.Building.Placement(candidate).Valid&&!StaticPlacementBlocked(candidate)){piece=candidate;break;}}
   if(piece==null)throw new Exception("No clear remote building position");CoopRequest("place",Json.Write(piece));
