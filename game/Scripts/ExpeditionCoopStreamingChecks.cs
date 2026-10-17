@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 public partial class MigrationScene {
  async Task CheckIndependentExploration(CoopActor a){
   a.Body.Position=Ground(game.World.RouteX(-640),-640)+Vector3.Up*.2f;a.Target=a.Body.Position;
-  RpcId(a.Id,nameof(CoopPersonal),CoopProfileJson(a.Game),"Independent exploration check",a.Body.Position,true);
+  SendCoopPersonal(a.Id,CoopProfileJson(a.Game),"Independent exploration check",a.Body.Position,true);
   await CoopWait(()=>chunks.Count>90,"Remote physics chunks were not streamed",20);WithCoopActor(a,SpawnObjects);
   bool clear=false;foreach(var node in props.Where(p=>p.Kind==1&&Distance(p.Position,a.Body.Position)<60).ToArray()){
    a.Body.Position=node.Position+Vector3.Up*.2f;a.Yaw=a.Pitch=0;WithCoopActor(a,()=>clear=OutdoorFree(player.Position.X,player.Position.Z)&&ToolPoint(out _));if(clear)break;
@@ -21,7 +21,7 @@ public partial class MigrationScene {
   if(rendered>49||chunks.Count>98)throw new Exception("Two-player streaming budget exceeded");
   if(!chunks[(ExpeditionWorld.Cell(far.X),ExpeditionWorld.Cell(far.Z))].GetMeta("simulation_only",false).AsBool())throw new Exception("Remote area is rendering full scenery on host");
   if(CoopPartyReady())throw new Exception("Party dungeon entry allowed with a distant guest");
-  RpcId(a.Id,nameof(CoopPersonal),CoopProfileJson(a.Game),"",far,true);
+  SendCoopPersonal(a.Id,CoopProfileJson(a.Game),"",far,true);
   RpcId(a.Id,nameof(CoopCheckStage),"explore",far);
   await CoopWait(()=>game.Skills.Defeated.Contains("coop-check/far-infected"),"Remote gunfire failed",20);
   await CoopWait(()=>game.Building.Pieces.Count==2,"Remote building failed",20);
