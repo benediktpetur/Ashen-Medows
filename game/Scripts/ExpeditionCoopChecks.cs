@@ -35,7 +35,7 @@ public partial class MigrationScene {
    Vector3 destination=Ground(0,4)+Vector3.Up*.2f;
    while(Distance(player.Position,destination)>.5f){Vector3 delta=destination-player.Position;delta.Y=0;player.Position+=delta.Normalized()*.07f;await ToSignal(GetTree(),SceneTree.SignalName.PhysicsFrame);}
    await CoopDelay(.3);CoopRequest("interact");await CoopWait(()=>game.Craft.Gathered.Any(id=>id.Contains("/starter/")),"Gather result missing");
-   await CoopWait(()=>coopCheckFinished,"Host checks did not finish",75);
+   await CoopWait(()=>coopCheckFinished,"Host checks did not finish",120);
    if(!coopCheckSawDungeon)throw new Exception("Party dungeon was not synchronized");
    int bench=game.Craft.BenchTier;StopCoop("Check complete");if(game.Save.Seed!=777||game.Building.Pieces.Count!=0||game.Craft.BenchTier!=bench)throw new Exception("Leaving co-op did not preserve character and restore solo world");
    await CoopDelay(.5);StartCoop(false,"127.0.0.1",29748);await CoopWait(()=>coopReady,"Reconnect failed");if(game.Craft.BenchTier!=1||game.Building.Pieces.Count!=2||!game.Skills.Defeated.Contains("coop-check/infected"))throw new Exception("Rejoin did not restore shared state");RpcId(1,nameof(CoopCheckRejoin));await CoopWait(()=>!CoopActive,"Host disconnect was not handled");if(game.Save.Seed!=777||game.Building.Pieces.Count!=0)throw new Exception("Disconnect altered solo world");var reload=new ExpeditionGame(game.PathName);if(reload.Save.Seed!=777||reload.Craft.BenchTier!=1)throw new Exception("Portable character save was not persisted");

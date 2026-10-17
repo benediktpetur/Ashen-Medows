@@ -37,6 +37,13 @@ jobs:
       - name: Build, smoke test and export Windows game
         shell: pwsh
         run: ./scripts/build-game.ps1 -Export
+      - name: Preserve co-op failure logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coop-failure-logs
+          path: build/coop-checks/*.log
+          if-no-files-found: ignore
       - name: Test launcher and package release
         shell: pwsh
         run: ./scripts/package-github.ps1 -Repository $env:GH_REPO -Version $env:PLAYTEST_VERSION -Notes "Godot playtest / commit $env:GITHUB_SHA"
