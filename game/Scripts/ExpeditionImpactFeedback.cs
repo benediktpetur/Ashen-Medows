@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 public partial class MigrationScene {
- bool axeEquipped,axePending;double hurtShake;double axeSwingStarted=-10,hitUntil;Label hitMarker;double feedbackHealth=-1;
+ int lastHeldWeapon=-1;bool axeEquipped,axePending;double hurtShake;double axeSwingStarted=-10,hitUntil;Label hitMarker;double feedbackHealth=-1;
  readonly List<(Node3D Node,Vector3 Velocity,double Until)> impactBits=new();
  readonly List<(Node3D Node,double Until)> remains=new();
- void BuildHeldTool(){weaponRoot.Rotation=Vector3.Zero;if(!axeEquipped){ArtGun();return;}ClearChildren(weaponRoot);ItemTool(weaponRoot,0);weaponRoot.Scale=Vector3.One;}
+ void BuildHeldTool(){if(lastHeldWeapon!=game.Craft.Weapon){lastHeldWeapon=game.Craft.Weapon;weaponRoot.Position=new(.23f,-.23f,-.65f);aiming=false;viewGunApplied=false;}weaponRoot.Rotation=Vector3.Zero;if(!axeEquipped){ArtGun();return;}ClearChildren(weaponRoot);ItemTool(weaponRoot,0);weaponRoot.Scale=Vector3.One;}
  void BeginAxeSwing(){if(axePending||game.Clock<nextChop)return;AxeSwing();axePending=true;}
  void AxeSwing(){if(coopExecuting)return;axeSwingStarted=Time.GetTicksMsec()/1000.0;}
  WorldProp AimedTree(){
@@ -25,7 +25,7 @@ public partial class MigrationScene {
  void TickImpactFeedback(double dt){double now=Time.GetTicksMsec()/1000.0;if(axePending&&now-axeSwingStarted>=.24&&!paused){axePending=false;ChopTree();}
   if(feedbackHealth>=0&&game.Life.Health<feedbackHealth&&!paused&&!coopExecuting){hurtShake=.28;ImpactParticles(camera.GlobalPosition-camera.GlobalBasis.Z*.5f,new Color(.42f,.035f,.025f),5,.025f);Sound(4);}feedbackHealth=game.Life.Health;hurtShake=Math.Max(0,hurtShake-dt);camera.HOffset=(float)(Math.Sin(now*83)*hurtShake*.025);camera.VOffset=(float)(Math.Sin(now*97)*hurtShake*.018);
   if(hitMarker!=null){hitMarker.Position=GetViewport().GetVisibleRect().Size*.5f-new Vector2(9,17);hitMarker.Visible=now<hitUntil;}
-  if(axeEquipped){float t=(float)(now-axeSwingStarted);weaponRoot.RotationDegrees=t<.65f?new Vector3(-25*Mathf.Sin(t/.65f*Mathf.Pi),0,65*Mathf.Sin(t/.65f*Mathf.Pi)):Vector3.Zero;}
+  if(!axeEquipped&&ExpeditionGame.IsMelee(game.Craft.Weapon)){float swing=(float)(now-primitiveSwing);weaponRoot.RotationDegrees=swing<.5f?new(-15*Mathf.Sin(swing*6.28f),45*Mathf.Sin(swing*6.28f),20*Mathf.Sin(swing*6.28f)):Vector3.Zero;}if(axeEquipped){float t=(float)(now-axeSwingStarted);weaponRoot.RotationDegrees=t<.65f?new Vector3(-25*Mathf.Sin(t/.65f*Mathf.Pi),0,65*Mathf.Sin(t/.65f*Mathf.Pi)):Vector3.Zero;}
   for(int i=impactBits.Count-1;i>=0;i--){var bit=impactBits[i];if(now>bit.Until){bit.Node.QueueFree();impactBits.RemoveAt(i);continue;}bit.Velocity+=Vector3.Down*8*(float)dt;bit.Node.Position+=bit.Velocity*(float)dt;impactBits[i]=bit;}
   for(int i=remains.Count-1;i>=0;i--)if(now>remains[i].Until){remains[i].Node.QueueFree();remains.RemoveAt(i);}
  }

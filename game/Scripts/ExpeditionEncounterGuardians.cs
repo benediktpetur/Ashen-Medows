@@ -1,0 +1,14 @@
+using Godot;
+using System;
+using System.Linq;
+public partial class MigrationScene {
+ bool EncounterPursuitFloor(float x,float z,out float height){foreach(var site in props){if(site.Kind!=27)continue;var center=site.Node.Position;float dx=x-center.X,dz=z-center.Z;if(Math.Abs(dx)<5.9f&&Math.Abs(dz)<4.99f){height=center.Y;return true;}if(Math.Abs(dx)<1.35f&&dz>=5&&dz<=18){height=Mathf.Lerp(center.Y,Ground(center.X,center.Z+18).Y,(dz-5)/13);return true;}}height=0;return false;}
+ static bool IsEncounterGuardian(string id)=>id.StartsWith("story/vignette-guardian/");
+ string EncounterGuardianId(int i)=>$"story/vignette-guardian/{game.Save.Seed}/{i}";
+ int EncounterGuardianIndex(string id)=>int.TryParse(id[(id.LastIndexOf('/')+1)..],out int i)?i:-1;
+ bool QuietEncounterGuardian(Infected e)=>IsEncounterGuardian(e.Id)&&!game.World.Changes.EncounterChoices.Contains(EncounterGuardianIndex(e.Id));
+ bool PassiveStoryEnemy(Infected e)=>DormantWeeper(e)||SammyDormant(e)||QuietEncounterGuardian(e);
+ void SpawnEncounterGuardians(){if(CoopClient)return;foreach(var site in props.Where(p=>p.Kind==27&&p.Material is 5 or 6&&NearActiveSurface(p.Node.Position,130)).ToArray()){int i=site.Material;string id=EncounterGuardianId(i);if(game.Skills.Defeated.Contains(id)||infected.Any(e=>e.Id==id))continue;var point=site.Node.ToGlobal(i==5?new Vector3(0,0,-1.6f):new Vector3(-4,0,0));AddEnemy(id,point.X,point.Z,Math.Max(2,game.World.Tier(point.X,point.Z)));var guardian=infected.FirstOrDefault(e=>e.Id==id);if(guardian==null)continue;guardian.Body.Position=point;guardian.Home=point;guardian.Body.Rotation=new(0,i==5?Mathf.Pi:-Mathf.Pi/2,0);TickEncounterGuardian(guardian,.01);}}
+ bool TickEncounterGuardian(Infected e,double dt){if(!IsEncounterGuardian(e.Id))return false;if(!QuietEncounterGuardian(e)){if(e.BossState!="encounter-awake"){e.BossState="encounter-awake";e.Visual.Position=Vector3.Zero;e.Memory=12;e.Target=player.Position;e.Cooldown=1;}return false;}e.BossState="encounter-seated";e.Memory=0;e.AttackState="";e.Body.Velocity=Vector3.Zero;e.Visual.Position=new(0,-.43f,0);if(!e.Visual.HasNode("Torso"))return true;PoseFigure(e.Visual,0,0,false);foreach(string side in new[]{"Left","Right"}){e.Visual.GetNode<Node3D>(side+"Leg").Rotation=new(1.4f,0,0);e.Visual.GetNode<Node3D>(side+"Leg/Knee").Rotation=new(-1.35f,0,0);}return true;}
+ void EncounterGuardianArt(Node3D root,string id,int tier){int i=EncounterGuardianIndex(id);HumanCharacter(root,tier,0,false,i==5?4:2);var torso=root.GetNode<Node3D>("Torso");if(i==6){Bevel(torso,new(0,.06f,-.23f),new(.4f,.5f,.05f),new(.33f,.40f,.26f));var head=torso.GetNode<Node3D>("Head");Tube(head,new(0,.18f,0),new(0,.24f,0),.21f,new(.36f,.32f,.19f));}else{var hand=root.GetNode<Node3D>("RightArm/Elbow/Hand");var gun=new Node3D{Scale=Vector3.One*.7f};hand.AddChild(gun);ItemWeapon(gun,0);}}
+}

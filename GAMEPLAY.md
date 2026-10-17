@@ -146,3 +146,88 @@ A house east of the late woodland route (Z=-1216) contains a spatial, original m
 Three exhausted, armed survivors hold a bridge over a small creek on the outskirts road at Z=-1520. F at the south barrier opens their demand: two food portions for passage. Paying charges the acting player once and opens the crossing for the whole party. After crossing north, a one-time scene plays behind you: gunshots, a frightened traveller surrendering his pack, and the guards taking the food. The traveller remains alive. Refusing, or attacking a guard, starts a firefight with visible aiming wind-ups, physical bullets, cover and dodgeable captured aim. Retreat remains possible.
 
 Choose to step back and watch, or simply wait with the feeding door in view from 8–38m. Twelve active seconds of observation reveals a guard carrying food through the slot to children in a locked keeper's room. Empty bowls and the guards' thin figures support the discovery. Inspect the room with F to recover a journal entry and optionally leave one food portion; this donation can happen only once. The room can also be understood after the guards are defeated. Children are protected story figures with no damage colliders. Decisions, payment, discovery, donation and robbery state save per world; guests keep their own costs and journals. Bridge, rails, barrier, approaches and room have physical collision. The existing expansion river stays closed. Network protocol 17 requires everyone to update together.
+
+## Primitive combat and roadside stories
+
+Fresh survivors begin with a sturdy stick and a hand stone, no firearm and no ammunition. Gather loose timber, stone and fiber; craft a stone chopping axe in Survival before using T to chop trees. Existing saves retain their old axe access and owned weapons. Firearms require both character level 2 and discovery of tier 2 materials, including when equipping an already-owned gun. Tier 1 enemies cannot drop firearms. Pistol and ammunition crafting now start at tier 2.
+
+| Stage | Craftable weapons |
+| --- | --- |
+| T1, hand crafting | Sticks, stones, wooden clubs, stone spears, simple bows, baseball bats, arrows, stone chopping axe |
+| T2 workshop | Woodland bow, claw hammer, iron rod, iron spear, pistol and woodland rifle |
+| T3 workshop | Chainsaw, recurve bow, machete, scrap shotgun and industrial carbine |
+| T4 workshop | Crossbow, sledgehammer, precision rifle |
+| T5 workshop | Experimental rifle and existing endgame tuning |
+
+Left click swings the equipped melee weapon or fires the equipped bow/gun. T switches to a crafted chopping axe; I selects weapons. Spears have 3.6m reach; most clubs/bats/rods 2.6m; heavy weapons hit harder and swing more slowly. Melee swings have a contact delay, stamina costs and physical obstruction checks. Chainsaw bursts also spend fuel, crafted from resin and salvage at workshop 2 after discovering T3 materials. Bows use crafted arrows with visible flight, gravity and physical segment collision. R reloads firearms; arrows and melee never consume firearm ammunition.
+
+Melee, bow and gun proficiency are separate portable character skills. Successful hits grant 4 XP, ranged headshots grant 8 XP, and direct infected kills grant 18 XP in the relevant class. Misses and building strikes award none. Each proficiency level adds 1% damage to its own class. Melee proficiency also reduces stamina cost by 1% per level, capped at 25%. The existing gun skill is retained as gun proficiency; old gun levels are preserved. Death resets partial XP in all three classes, preserving earned levels. Defenses and companion kills do not train the weapon in your hands.
+
+Twenty additional environmental encounters occupy deterministic, seed-dependent plots down the progression route. They stream near active players, reserve their plots from procedural trees/buildings, and avoid dungeon entrances. These are short interactive story scenes with props, a journal entry and a persistent choice, rather than twenty multi-stage questlines. Supplies and gifts resolve only once per world; in co-op, the acting player spends or receives the supplies. Protected narrative people have no combat damage collider.
+
+1. The Last School Run: crashed school bus, backpacks, farmhouse teacher and cellar provisions.
+2. One More Ring: an abandoned bell-ringer's promise.
+3. Borrowed Medicine: a veterinary clinic needing clean dressings.
+4. Till Death: wedding rings and an unanswered vow.
+5. Baby Girl Doe: an empty crib and a forgotten chart.
+6. Prepared For Everything: untouched bunker provisions and a lonely note.
+7. Twenty-Three Places: a camp mess-hall register and twenty-two remembered names.
+8. Sam Is Still Here: a boarded cupboard, food and a protected child waiting for further help.
+9. The Ferryman's Queue: luggage, a dock and a blue signal cloth.
+10. The Empty Bowl: a missing dog's food bowl.
+11. Weather Report: a radio operator's final forecast.
+12. A Table For Two: an untouched second cup.
+13. The Red Scarf: a signpost left along an evacuation route.
+14. The Night Shift: an unfinished ambulance repair and boxed parts.
+15. Please Knock: a request for one last courtesy.
+16. The Orchard Promise: a jar saved for a neighbour.
+17. The Last Lesson: a teacher's address book.
+18. Signal At The Crossing: a railway worker's vigil.
+19. The Unsent Apology: a letter beside a dead telephone.
+20. The Little Library: leave food for the next reader.
+
+Random event: DISTRESS DRONE. After ten active world minutes, a survivor exploring T2+ has a 45% chance at each three-minute opportunity to encounter a fallen delivery drone about 35m away. Its blinking beacon and original looping alarm warn of danger. An unsilenced beacon can draw three waves of up to three infected, placed away from players, before its three-minute battery expires. Salvage it for timber, resin and bandages, or destroy the beacon and forfeit those supplies. Silencing stops further waves; already-arrived enemies remain. The host runs the event, the outcome is shared, the acting player receives supplies once, and event state/retry time persist. The next opportunity follows a seeded 12â€“18 minute recovery interval. No offline timer and no automatic starter-valley event.
+
+Quick combat selection: 1 cycles owned melee weapons, 2 cycles bows/crossbows, and 3 cycles usable firearms. These shortcuts leave the chopping-axe mode; number keys still choose blueprints while building. An already-fired arrow retains its source weapon damage/proficiency if you switch weapons during flight. The journal's encounter list scrolls to keep all recovered entries accessible. The bunker occupant and adult camp counselor remain seated until their associated supplies/table are disturbed; companion and automated defenses ignore them while passive.
+
+### Noise and sneaking
+Hold **Ctrl** outside building mode to sneak at a slower pace. The HUD noise meter rises with footsteps, chopping and weapon use, and fades while quiet. Walking carries farther than sneaking; sprinting, chainsaws and gunfire are much louder. Repeated activity expands hearing range. Walls muffle sound; explosions and the distress beacon draw existing zombies toward their actual source. Sound does not create extra zombies by itself.
+
+Sneaking is a separate portable skill. Moving within 24m of an unaware zombie on a similar floor earns 3 XP per second; standing still or sneaking without nearby threats earns none. Higher levels reduce sneak footstep noise (up to 55%) and initial visual detection distance. Sneaking also reduces peripheral detection, but touching-distance enemies can still see you, and already alerted enemies remain dangerous. Death clears current sneak XP without removing earned levels.
+
+### Physical crouching and noisy ground
+**Hold Ctrl to crouch.** Your capsule becomes 1.1m tall and your viewpoint lowers to 1m. Releasing Ctrl stands you up only if the full 1.75m body fits; leave a low ceiling before standing. Sprinting and jumping are disabled while crouched. Other players see your crouched stance.
+
+Movement noise uses actual distance moved, with low crouching, mid walking and high sprinting levels. Surface multipliers: grass x1, woodland leaf litter x1.5, visible bushes x2.4, dirt trail x0.9, player-made path x0.85, road x1.2, raised/indoor floor x1.1. Bushes use the same streamed locations for their visuals and rustling. Floors above vegetation do not rustle the plants below. Leaf litter and bushes have crunchier footstep audio; muting audio does not disable zombie hearing.
+
+### South Bank campaign and new infected
+**F4 opens Your Journey**, also available from the journal, map and pause menu. A survivor field guide stands beside the southeast trailhead. Prepare primitive tools, shelter and bandages, then resin, workshop 2, a sleeping bag and woodland weapons. The open world remains explorable; the challenge consoles follow this sequence:
+
+1. **The Foreman** at Ashen Lumber Mill (T2): existing slam, bile and log-stopping charge encounter; core tempering.
+2. **The Wrecker** in a T3 highway recovery yard: committed ram, broad sweep, wreck obstacles and long recovery windows. Rewards a road helmet, alloy, ammunition/arrows, provisions and research.
+3. **The Bellkeeper** at a T4 civic square: calls bounded reinforcements, marks a falling-debris target and sweeps nearby players. Rewards armored gloves, electronics, provisions and research.
+4. **The Broodheart** in the T5 pumping-station dungeon: hatches worms, marks bile pools and releases a warned rupture ring. Rewards a cuirass, bioalloy and one legendary heart per character/world. A final worm hatch still needs clearing.
+
+Use F at each console. The pumping station is entered as a party by the host, with a usable exit throughout. Boss health scales with nearby players when the encounter starts. Warnings shorten below half health; recovery grants 50% bonus damage. Retreating beyond the encounter for eight seconds allows a fresh attempt. Rewards and cleared sites save per world; personal claims are deduplicated. A late-arriving player can claim their own reward at an already-cleared console. The river remains closed for future expansions.
+
+**Legendary ascension** is researched/crafted at workshop 5 under Weapons and armor. It consumes one legendary heart, 6 alloy, 6 electronics and 8 bioalloy. Equip a maximum-tier weapon: T5 gun, T4 crossbow or T4 sledgehammer. It raises actual weapon quality to +50%, with a legendary inventory/HUD name.
+
+Regional models retain valley civilian clothes, woodland logger workwear, highway reflective gear, city office/security uniforms and contaminated details in the depths. Habitat populations add runners, heavy bruisers and armored infected (body damage resistance; headshots remain effective). Starter-valley habitat spawns remain basic drifters.
+
+**Weeper:** sits sobbing with long claws. Its cry attracts nearby infected without waking the weeper. Leave it alone or deliberately provoke it with damage. It has substantial health, a visible committed claw rush, damaging bleeding slices and a recovery opening; walls stop its charge. Camp defenses and companions leave a passive weeper alone.
+
+**Bloater:** slow, swollen silhouette with green sacs. Death leaves a 1.25-second green hatch warning, then 3–5 segmented worms. Worms are physical, killable targets, bite for small direct damage with a wind-up, and do not produce food/ammunition loot. They cannot recursively hatch more worms. Night bloaters also retain catalyst rewards. Hatch warnings and worms replicate to co-op clients.
+
+## Gun handling and blade progression
+
+Right click toggles aiming. Hold Shift while stationary and aimed to steady the sight, consuming stamina; the breath window starts at five seconds and grows with gun proficiency. Moving or running out of breath breaks the hold and requires recovery. Precision and experimental rifles use a scope overlay. Gunfire follows a repeatable recoil pattern, with bloom increasing during rapid fire and recovering between shots. Movement and jumping worsen accuracy; crouching helps. Hold left click for the carbine or powered saws.
+
+Ammunition is separate: 9mm pistol rounds, 7.62mm rifle rounds (including precision rifles), 5.56mm carbine rounds, 12-gauge shells and experimental energy cells. Craft the matching recipe at the required tier/workshop. Magazines remain loaded when switching weapons. Older shared ammunition migrates once into the equipped gun's ammunition class, preserving its quantity. Shared storage and vehicle cargo preserve each type independently.
+
+New craftable melee progression: T1 stone knife; T2 hunting knife and scrap sword; T3 forged sword; T4 alloy longsword; T5 Stormfire chain sword, requiring an owned chainsaw. Swords can cleave up to three nearby enemies with physical wall checks. Stormfire contact uses one fuel and one energy cell, with electrical stagger. Press Q outside building mode to reverse the sword and fire its rear flame exhaust: 20 stamina, eight fuel, four cells, 1.4-second burst, ten-second cooldown. Flame range is 5.5 metres, blocked by walls, with a short lingering burn. The sword and ammunition have inventory/crafting models.
+
+## Infected hound packs
+
+Zombie dogs roam in seeded packs: three in T2 woodland near roads, four along T3 highways, and five near T4+ city roads. They do not spawn in the T1 starting valley, indoors, or within 28 metres of an active player. Streaming and existing fauna/enemy caps bound their numbers; defeated dogs retain their stable saved IDs.
+
+Seeing or being struck by a player alerts nearby members of the same pack. Dogs also investigate the noise system, while crouching and sneak proficiency reduce their visual detection range. They run, spread out around their target and use existing obstacle routing and physical collision. A crouch and growl precede a short committed lunge; packmates wait their turn before lunging, giving the player a chance to sidestep or interrupt. Dog bites deal damage but add a bleeding wound only when the player has no existing wounds. Infected meat is discarded. Dogs have visible teeth, damaged flanks, collars and animated jaws, with spatial barks and growls replicated from their shared attack state.

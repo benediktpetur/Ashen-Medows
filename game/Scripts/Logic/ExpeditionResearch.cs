@@ -10,9 +10,10 @@ sealed partial class ExpeditionGame {
   "attachment"=>Life.WeaponQuality[Craft.Weapon]>=r.Result,
   "build"=>Building!=null&&Building.Pieces.Any(p=>p.Kind==r.Result),
   "night"=>Life.WeaponQuality[Craft.Weapon]>=25,
+  "legendary"=>Life.WeaponQuality[Craft.Weapon]>=50,
   _=>false
  };
- public string ResearchAccess(ExpeditionRecipe r){if(Craft.UnlockedTier<r.Tier)return "Explore tier "+r.Tier+" for materials";if(Craft.BenchTier<r.Station)return "Requires workshop "+r.Station;if(r.Kind=="weapon"&&r.Tier>=3&&Skills.Crafting.Level<r.Tier-1)return "Requires Crafting "+(r.Tier-1);if(r.Kind=="night"&&Skills.Crafting.Level<2)return "Requires Crafting 2";return "Unlocked";}
+ public string ResearchAccess(ExpeditionRecipe r){if(r.Kind=="weapon"&&WeaponGate(r.Result)!="Ready")return WeaponGate(r.Result);if(Craft.UnlockedTier<r.Tier)return "Explore tier "+r.Tier+" for materials";if(Craft.BenchTier<r.Station)return "Requires workshop "+r.Station;if(r.Kind=="weapon"&&r.Tier>=3&&Skills.Crafting.Level<r.Tier-1)return "Requires Crafting "+(r.Tier-1);if(r.Kind=="night"&&Skills.Crafting.Level<2)return "Requires Crafting 2";return "Unlocked";}
  public void TrackResearch(int index){if(index<0||index>=ExpeditionRecipe.All.Length)return;Change(()=>Craft.ResearchTarget=ResearchId(ExpeditionRecipe.All[index]));Notice="Tracking: "+ExpeditionRecipe.All[index].Name;}
  public ExpeditionRecipe TrackedResearch=>ExpeditionRecipe.All.FirstOrDefault(r=>ResearchId(r)==Craft.ResearchTarget);
 }
