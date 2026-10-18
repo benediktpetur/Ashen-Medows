@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 public partial class MigrationScene {
  bool encounterFixture;bool EncountersEnabled=>!((testing||coopCheckRole!=null)&&!encounterFixture);
- bool InEncounterLot(double x,double z)=>ExpeditionEncounter.InLot(game.World,x,z)||InCampaignLot(x,z);
+ bool InEncounterLot(double x,double z)=>ExpeditionContentSite.InLot(game.World,x,z)||ExpeditionEncounter.InLot(game.World,x,z)||InCampaignLot(x,z);
  void SpawnEncounters(){if(!EncountersEnabled||dungeon!=null)return;for(int i=0;i<ExpeditionEncounter.All.Length;i++){var p=ExpeditionEncounter.Place(game.World,i);if(!NearActiveSurface(Ground(p.X,p.Z),200))continue;string id=$"story/vignette/{game.Save.Seed}/{i}";if(!uniqueObjects.Add(id))continue;double floor=LetterFloor(p.X,p.Z,6,5);var n=new Node3D{Name="Encounter_"+i,Position=new((float)p.X,(float)floor,(float)p.Z)};worldRoot.AddChild(n);props.Add(new(){Id=id,Kind=27,Material=i,Node=n,Position=n.ToGlobal(new Vector3(0,0,3.5f))});DressEncounter(n,i);}SpawnEncounterGuardians();}
  void DressEncounter(Node3D n,int index){var e=ExpeditionEncounter.All[index];int t=e.Theme;var worn=new Color(.34f,.36f,.30f);LetterFoundation(n,n.Position.X,n.Position.Z,n.Position.Y,6,5);LetterRamp(n,n.Position.X,n.Position.Z,n.Position.Y,5,18);
  if(t is 1 or 2 or 3 or 4 or 5){Box(n,new(-5,1.6f,0),new(.2f,3.2f,8),worn,true);Box(n,new(5,1.6f,0),new(.2f,3.2f,8),worn,true);Box(n,new(0,1.6f,-4),new(10,3.2f,.2f),worn,true);Box(n,new(0,3.3f,0),new(10.3f,.18f,8.4f),Wood);}

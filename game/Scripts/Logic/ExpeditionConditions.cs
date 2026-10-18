@@ -19,7 +19,7 @@ sealed partial class ExpeditionGame {
   if(Life.SurvivalTech.Contains(2)&&Life.Camps.Any(c=>c.Seed==Save.Seed&&Distance(c.X,c.Z,Save.X,Save.Z)<8))Life.Comfort=Math.Max(Life.Comfort,300);Life.Sickness=Math.Max(0,Life.Sickness-dt);Life.Trauma=Math.Max(0,Life.Trauma-dt);Life.Comfort=Math.Max(0,Life.Comfort-dt);
   Life.Morale=Math.Clamp(Life.Morale+dt*(Life.Comfort>0?.012:Night?-.002:Life.Hunger>60?.001:0),0,100);
   Life.TickSoftWounds(dt);if(Life.Hunger<=0)Life.Health-=dt*.025;if(Life.Hydration<=0)Life.Health-=dt*.04;
-  if(Clock-LastDamage>30&&Life.Hunger>25&&Life.Hydration>25&&Life.BleedRate==0&&Life.Health<RecoveryCeiling)Life.Health=Math.Min(RecoveryCeiling,Life.Health+dt*.08*(1+Math.Min(20,Skills.Survival.Level-1)*.02)*(1+Talent("recovery")*.15)*(Life.Sickness>0?.4:1)*(Life.Comfort>0?1.4:1)*(Life.RecoveryBoost>0?2:1)*MedicalRecovery);
+  if(Clock-LastDamage>30&&Life.Hunger>25&&Life.Hydration>25&&Life.BleedRate==0&&Life.Health<RecoveryCeiling)Life.Health=Math.Min(RecoveryCeiling,Life.Health+dt*.08*(1+Math.Min(20,Skills.Survival.Level-1)*.02)*(1+Talent("recovery")*.15)*(Life.Sickness>0?.4:1)*(Life.Comfort>0?1.4:1)*(Life.RecoveryBoost>0?2:1)*MedicalRecovery*ArmorRecovery);
   return Life.Health<=0;
  }
  public bool Drink(bool untreated=false){

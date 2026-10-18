@@ -1,0 +1,1 @@
+Twelve screenshots rendered by the final exported Windows content-atlas build. Prepared preview states show locations, a generator record, the field guide, trader, night freight cache, courier vault and compact F7 navigation. These are actual engine captures, not concept art or an existing player save. Other screenshot folders represent older builds.

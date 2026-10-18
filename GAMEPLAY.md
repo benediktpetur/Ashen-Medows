@@ -239,3 +239,83 @@ See LIVING-WORLD.md for the full current systems, timings, research branches and
 The unique rescue dog and personal relationships are documented in LIVING-WORLD.md. Use F beside the dog; F7 opens care/commands and the People reputation ledger. The dog's death is permanent within that world.
 
 Settlement progression now includes three branching chapters per friendly community, visible development and finite reputation-gated markets. A fourth city faction, the Black Ledger, offers a reputation-selected assault/infiltration order against an early settlement, with a costly warning/defense alternative and actual camp retaliation. See LIVING-WORLD.md for deadlines, costs, consequences and controls.
+
+The field atlas content expansion adds the places, activities, field requests, dungeon caches and roaming events documented in CONTENT-ATLAS.md. Site choices/loot persist in the world; the field guide is available through F7 and the journal. Multiplayer protocol 28.
+
+## Tier 5 Soulbound hunts
+
+Defeat the Broodheart, then return to the pump station and descend again. At the chamber console, open **Soulbound armory / T5 mega hunts**. The same management page is available from Inventory. Each summon costs eight night catalysts; the world cooldown is five active minutes. Retreat consumes the summon cost and resets the fight. Each living player within 65m at victory receives private, character-bound loot. Rewards persist across death and servers; duplicate requests do not reroll them.
+
+| Boss | Mechanics | Guaranteed personal loot | Extra roll |
+| --- | --- | --- | --- |
+| Iron Mourner | 6,000 base HP; telegraphed bursts of moving scrap projectiles, cover blocks shots; targeted explosive canisters; five-second overheat window | One rolled Soulbound weapon + one weapon upgrade | 20% second weapon upgrade |
+| Sump Colossus | 8,400 base HP; slow pursuit, rupture slam and short charge; three amber growths break under targeted hits, opening five-second exposure windows; broken shell stays weaker | One rolled Soulbound armor piece + three reinforcement plates | 25% rare armor ward |
+| Brood Matriarch | 5,000 base HP; three destroyable nests; waves of 3 + 2 per surviving nest; clear a wave for twelve seconds of vulnerability; heavily resistant during waves | One rolled camp module + three community parts | 25% companion harness |
+
+Health gains 40% per additional nearby player. The three bosses share the existing pumping chamber, with distinct procedural models and combat behavior. They do not add three new regions. Armor weakpoint state, enemy waves and projectile visuals replicate to co-op clients. Compatible builds use protocol 30.
+
+### Weapon table
+
+Each base type has equal weight: Trail rifle, Woodland rifle, Industrial carbine, Precision rifle, Experimental rifle, Scrap shotgun, Crossbow, Iron spear, Sledgehammer, Alloy longsword, Stormfire chain sword, Hunting knife. Each copy stores a unique ID, permanent stat rolls and its owner. Gun stats affect damage, magazine capacity, spread and reload time. Bow stats affect damage, arrow velocity, draw recovery and noise. Melee stats affect damage, stamina cost, attack recovery and noise. Existing proficiency, talents and workshop quality still apply. Switching preserves ammunition.
+
+Weapon upgrades roll one of five types with equal weight, at 15–30% power: armor penetration, recoil reduction, faster bow draw, chance to save chainsaw fuel, or reduced melee stamina cost. One upgrade is active per character, applies only to its matching action, and can be changed in the armory. No research is granted by equipping loot.
+
+### Armor table
+
+Head, chest, hands and feet have equal weight. Each piece rolls a Bulwark, Mirestalker or Lifekeeper profile, varying armor/vitality, movement, stamina, footstep noise and recovery. Heavy pieces have movement/stamina/noise drawbacks. Rolled gear uses the real four equipment slots; bound armor cannot be equipped by another owner. Three reinforcement plates add three armor, up to three times per piece. A rare ward adds eight armor and five percent recovery once per piece. These do not stop bleeding or provide instant healing.
+
+### Community table
+
+Each module type has equal weight and rolls +20–45% effectiveness with 1–3 upkeep per five active minutes. Three slots per world camp; equal types cannot stack. Install/remove/tune within 20m of camp. Only the owner can remove their module. Camp stores pay upkeep when the camp is occupied; unfunded modules stop, and modules provide no bonus to unobserved camps. Destroyed required stations also stop their modules.
+
+- Waterworks: faster water-station production; needs a built water station and an already crafted researched charcoal/membrane filter. Food upkeep.
+- Workshop heart: faster food-station production; requires workshop 5. Crafting is currently instantaneous, so this does not invent a crafting-time bonus. Food upkeep.
+- Watchtower relay: stronger camp guard damage/range and additional raid preparation seconds; requires a built alarm or turret. Food upkeep.
+- Greenhouse regulator: faster crop production; requires a built farm. Water upkeep.
+- Expedition board: faster resident timber/supply work; requires a recruited resident. It improves the existing jobs rather than adding a separate expedition-mission system. Food upkeep.
+
+Three community parts tune a module by +5 percentage points, capped at 60%, while increasing upkeep by one. A companion harness rolls +15–30% damage and +10–20% attack speed for the owning character's following human companion; one active harness. Existing camp shelter, food, injury, ammunition and research requirements remain.
+
+Automated checks cover actual projectile damage and wall occlusion, nest-dependent waves, shell breaks, specialist rewards and duplicate protection, equipment stats, save roundtrips, research/station/location gates, module upkeep and production. Solo balance and the strongest roll combinations still need playtesting.
+
+## Ten additional infected types
+
+These replace up to one fifth of eligible habitat, night and ordinary dungeon population slots when a matching local habitat exists; existing streaming, heatmaps and enemy caps remain. Story actors and authored field-site guard types are preserved. Tier 1 receives none of the new types. Enemy selection is deterministic from its saved ID and tier/night category. F4 > Infected / ten new field threats lists their counters.
+
+| Enemy | Tier | Behavior / counter |
+| --- | --- | --- |
+| Mossback | 2–3 | Moss and branches disguise a crouched woodland ambusher; close approach, noise or damage wakes it. |
+| Bell-throat | 2+ | A 1.8-second raised-head warning precedes a scream that alerts existing zombies within 80m, reduced by walls. Hit it to interrupt. |
+| Bilecaster | 2+ | Marks your current position before leaving a six-second acid patch. Move out of the green marker or interrupt the cast. |
+| Gravecrawler | 2+ | Low ambusher with an actual 1.1m collider; short-range activation and a crouched crawling silhouette. Look down. |
+| Roadbreaker | 3+ | Reinforced roadworker charges toward a fixed point after a warning. Sidestep it; collisions/end of rush cause long recovery. |
+| Cinder Host | 3+ | On lethal damage, ignites for 1.8 seconds before an explosion and five-second burning patch. Repeated hits do not reset/duplicate the death. |
+| Riot Husk | 4+ | Shield resists frontal body damage. Flank or aim above it; penetration upgrades help. |
+| Wirebound | 3+ | A purple target marker precedes an eight-damage lash draining 35 stamina. It does not root or stun-lock the player. |
+| Blooddrinker | 4+ | Actual successful melee damage restores 30 health, capped at its maximum. Dodged/shielded strikes do not heal it. |
+| Pale Hunter | 4+ | Appears in night encounters and Tier 5 depths. Flanks before a committed, telegraphed claw rush. |
+
+All have distinct additions to the existing adult infected rigs, server-authoritative combat, attack warning/recovery states and matching co-op replicas. New specialist kills add one zone-appropriate crafting material; the four high-health elites/brutes add two and bonus career XP. Pale Hunters add two night catalysts. Defeated IDs prevent duplicate rewards. Fire/acid patches share the existing bounded hazard system, including player, dog and survivor damage; colors replicate to clients.
+
+Validation: --threat-check exercises seeding, all ten models and mechanics, interruption, hearing, crawler collider, shield facing, life-steal, finite death/fire and saved rewards. --threat-preview captures two five-enemy galleries and ten individual models in the engine. Co-op checks exercise all ten replicas, a guest-interrupted howl, shared hearing and Cinder self-removal/fire replication. Multiplayer protocol is 31. Balance still needs live playtesting.
+
+## Habitat-based enemy placement
+
+The ten added infected now require both a suitable tier and matching surroundings at their spawn point. The in-game F4 infected guide lists each habitat. They can pursue players beyond that habitat after spawning.
+
+| Enemy | Spawn surroundings |
+| --- | --- |
+| Mossback | Dense Tier 2 woodland more than 45m from the main route |
+| Bell-throat | Woods, roads, abandoned city housing and ruins |
+| Bilecaster | Clinics, hospitals, drains/sewers, pump works and contaminated sites |
+| Gravecrawler | Church/grave surroundings, discovered woodland grave sites and ruins |
+| Roadbreaker | Tier 3+ main roads, garages and industrial works |
+| Cinder Host | Tier 3+ garages, rail/utility sites, factories and mine interiors |
+| Riot Husk | Tier 4+ evacuation/security checkpoints, civic square, hospital security and tower interiors |
+| Wirebound | Tier 3+ utility/industrial sites, checkpoints and sewers |
+| Blooddrinker | Tier 4+ medical sites and abandoned city housing |
+| Pale Hunter | Suitable Tier 4+ city/ruin habitats at night, or suitable Tier 5 underground habitats |
+
+Surface context uses actual route distance, woodland density, building clusters, authored content-site themes (within 90m), dungeon entrances (75m), checkpoints/civic security (85m), church surroundings (80m), and the discovered woodland grave (65m). These are area affinities, not extra spawn generators. Existing authored story encounters and reserved lots retain their protections. Dungeon pools follow their identity: mines favor industrial/ruin types; clinics and hospitals favor medical types; drains and sewers favor sewer types; towers favor residential/security types.
+
+A deterministic kind tag travels with the spawn ID, so clients and rewards retain the server's selected type even when the enemy moves elsewhere. Old defeated slot IDs still suppress new tagged spawns; kills save both the kind-tagged ID and original slot ID, preventing repeat rewards if local conditions later change. Brood children retain unique IDs. Night spawns use their actual landing-point tier and skip Tier 1/sanctuary points. Population and streaming limits are unchanged. Protocol 32.

@@ -16,13 +16,14 @@ public partial class MigrationScene {
   game.Notice=ExpeditionCampaign.Names[index].ToUpperInvariant()+" / watch the warning, dodge, punish recovery";
  }
  void AddCampaignBoss(string id,double x,double z){
-  int index=ExpeditionCampaign.BossIndex(id);if(index<0||infected.Any(e=>e.Id==id)||game.World.Changes.CampaignBosses.Contains(index))return;
+  int index=ExpeditionCampaign.BossIndex(id);if(index<0||infected.Any(e=>e.Id==id)||!IsMega(id)&&game.World.Changes.CampaignBosses.Contains(index))return;
   var body=new CharacterBody3D{Name=ExpeditionCampaign.Names[index].Replace(" ",""),Position=dungeon==null?Ground(x,z):new((float)x,0,(float)z),FloorSnapLength=.5f};
   float height=index==2?3.4f:3.0f;
   body.AddChild(new CollisionShape3D{Shape=new CapsuleShape3D{Radius=index==2?1.15f:.85f,Height=height},Position=new(0,height/2,0)});
-  var visual=new Node3D();body.AddChild(visual);CampaignBossArt(visual,index);AddChild(body);
+  var visual=new Node3D();body.AddChild(visual);CampaignBossArt(visual,index);if(IsMega(id))MegaArt(visual,MegaVariant(id));AddChild(body);
+  if(IsMega(id)&&MegaVariant(id)==0)for(int i=0;i<3;i++){var growth=visual.GetNode<Node3D>("Torso/Growth"+i);body.AddChild(new CollisionShape3D{Name="GrowthCollider"+i,Shape=new SphereShape3D{Radius=.38f},Position=body.ToLocal(growth.GlobalPosition)});}
   int players=CoopHost?MillPlayers().Count(p=>Distance(p.Body.Position,body.Position)<65):1;
-  double hp=(index==0?1100:index==1?1600:2400)*(1+.4*Math.Max(0,players-1));
+  double hp=(IsMega(id)?MegaVariant(id)==0?8400:MegaVariant(id)==1?5000:6000:index==0?1100:index==1?1600:2400)*(1+.4*Math.Max(0,players-1));
   infected.Add(new(){Id=id,Body=body,Visual=visual,Tier=index+3,Hp=hp,MaxHp=hp,Home=body.Position,Target=body.Position,BossState="hunt",BossTime=3});
  }
  void CampaignBossArt(Node3D root,int index){
@@ -33,6 +34,7 @@ public partial class MigrationScene {
   if(index==2){torso.Scale=new(2,1.1f,1.8f);for(int i=0;i<5;i++)Ellipsoid(torso,new((i%2==0?-1:1)*.13f,.02f+i*.07f,-.22f),new(.09f,.08f,.08f),new(.42f,.57f,.17f));head.Scale=new(1.1f,1.2f,1.1f);}
  }
  void TickCampaignBoss(Infected boss,double dt){
+  if(IsMega(boss.Id)){TickMega(boss,dt);return;}
   int index=ExpeditionCampaign.BossIndex(boss.Id);
   var players=MillPlayers().Where(p=>p.Game.Life.Health>0&&Distance(p.Body.Position,boss.Home)<65).ToArray();
   if(players.Length==0){boss.Memory+=dt;if(boss.Memory>8){campaignParticipants.Remove(boss.Id);RemoveEnemy(boss);ClearBrood();ClearMillPools();}return;}
@@ -42,7 +44,7 @@ public partial class MigrationScene {
   foreach(var p in players)participants.Add(p.Game);
   if(boss.BossState=="hunt"){
    var direction=PursuitDirection(boss,target.Body.Position,dt);if(Distance(boss.Body.Position,target.Body.Position)>4)SpecialMove(boss,direction.Normalized()*(index==0?1.7f:index==1?1.5f:1.1f),dt);
-   if(boss.BossTime<=0){boss.BossStep++;boss.BossAim=target.Body.Position;boss.BossHits.Clear();boss.BossState=index==0?boss.BossStep%2==1?"ram-windup":"sweep-windup":index==1?boss.BossStep%3==1?"alarm-windup":boss.BossStep%3==2?"knell-windup":"sweep-windup":boss.BossStep%3==1?"brood-windup":boss.BossStep%3==2?"bile-windup":"rupture-windup";boss.BossTime=(index==2?2.5:2)*(angry?.8:1);}
+   if(boss.BossTime<=0){boss.BossStep++;boss.BossAim=target.Body.Position;boss.BossHits.Clear();boss.BossState=index==0?boss.BossStep%2==1?"ram-windup":"sweep-windup":index==1?boss.BossStep%3==1?"alarm-windup":boss.BossStep%3==2?"knell-windup":"sweep-windup":boss.BossStep%3==1?"brood-windup":boss.BossStep%3==2?"bile-windup":"rupture-windup";if(IsMega(boss.Id)){int variant=MegaVariant(boss.Id);boss.BossState=variant==0?(boss.BossStep%2==0?"bile-windup":"rupture-windup"):variant==1?(boss.BossStep%2==0?"brood-windup":"alarm-windup"):(boss.BossStep%2==0?"knell-windup":"sweep-windup");}boss.BossTime=(index==2?2.5:2)*(angry?.8:1);}
    return;
   }
   if(boss.BossState=="ram"){
@@ -63,9 +65,10 @@ public partial class MigrationScene {
  }
  void SummonCampaignAdds(Infected boss,int count){
   if(infected.Count(e=>e.Id.StartsWith(boss.Id+"/add/"))>=6)return;
-  for(int i=0;i<count;i++){float a=(i+boss.BossStep)*2.4f;var p=boss.Home+new Vector3(Mathf.Sin(a)*17,0,Mathf.Cos(a)*17);if(dungeon==null)p=Ground(p.X,p.Z);if(MillPlayers().Any(t=>Distance(t.Body.Position,p)<10))continue;string id=boss.Id+"/add/"+boss.BossStep+"/"+i;AddEnemy(id,p.X,p.Z,boss.Tier);var add=infected.FirstOrDefault(e=>e.Id==id);if(add!=null){add.Memory=10;add.Target=boss.Target;}}
+  for(int i=0;i<count;i++){float a=(i+boss.BossStep)*2.4f;var p=boss.Home+new Vector3(Mathf.Sin(a)*17,0,Mathf.Cos(a)*17);if(dungeon==null)p=Ground(p.X,p.Z);else p=new Vector3(Math.Clamp(p.X,-10,10),0,Math.Clamp(p.Z,-24,1));if(MillPlayers().Any(t=>Distance(t.Body.Position,p)<10))continue;string id=boss.Id+"/add/"+boss.BossStep+"/"+i;AddEnemy(id,p.X,p.Z,boss.Tier);var add=infected.FirstOrDefault(e=>e.Id==id);if(add!=null){add.Memory=10;add.Target=boss.Target;}}
  }
  void DefeatCampaignBoss(Infected boss){
+  if(IsMega(boss.Id)){DefeatMega(boss);return;}
   int index=ExpeditionCampaign.BossIndex(boss.Id);var authority=CoopHost?coopHostGame:game;
   if(authority.World.Changes.CampaignBosses.Contains(index)){RemoveEnemy(boss);return;}
   if(!authority.Change(()=>authority.World.Changes.CampaignBosses.Add(index))){boss.Hp=1;boss.BossState="recover";boss.BossTime=4;return;}
@@ -78,7 +81,7 @@ public partial class MigrationScene {
  }
  void ClaimCampaignReward(ExpeditionGame character,int index){
   var world=CoopHost?coopHostGame.World:game.World;if(!world.Changes.CampaignBosses.Contains(index))return;
-  string reward=$"campaign/{game.Save.Seed}/{index}/reward";if(character.Craft.ResearchAwards.Contains(reward))return;
+  string reward=$"campaign/{game.Save.Seed}/{index}/reward";if(index==2)character.ClaimSoul(reward+"/soul","The Broodheart",Guid.NewGuid().GetHashCode());if(character.Craft.ResearchAwards.Contains(reward))return;
   character.Change(()=>{
    character.AwardResearch(reward,15+index*8);character.Career.Gain(350+index*250);character.Craft.Reserve+=72+index*24;character.Craft.Arrows+=24;character.Life.Bandages+=4;character.Life.Food+=3;
    int tier=index+3;character.Craft.UnlockedTier=Math.Max(tier,character.Craft.UnlockedTier);character.Craft.Materials[tier+1]+=8;character.AwardResearch("zone/"+tier,10+tier*5);

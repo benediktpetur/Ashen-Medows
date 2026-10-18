@@ -10,7 +10,7 @@ public partial class MigrationScene {
  void Noise(double range){if(CoopClient)return;HearNoise(player.Position,game.RaiseNoise(range));}
  void HearNoise(Vector3 position,double radius){
   if(CoopClient)return;
-  foreach(var e in infected){
+  foreach(var e in dogPackSource??infected){
    if(PassiveStoryEnemy(e)||Species(e.Id)!=""&&Species(e.Id)!="dog")continue;
    double distance=e.Body.Position.DistanceTo(position);if(distance>radius)continue;
    var query=PhysicsRayQueryParameters3D.Create(position+Vector3.Up,e.Body.Position+Vector3.Up);

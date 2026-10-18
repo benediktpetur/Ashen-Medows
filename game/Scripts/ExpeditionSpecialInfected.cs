@@ -11,23 +11,24 @@ using System.Runtime.Serialization;
 }
 
 public partial class MigrationScene {
- float EnemyHeadHeight(Infected e)=>IsMillBoss(e.Id)?3.7f:IsCampaignBoss(e.Id)?e.Tier==5?2.8f:2.45f:IsSammy(e.Id)?.86f:InfectedKind(e)=="worm"?100:DormantWeeper(e)?.9f:InfectedKind(e) is "bloater" or "bruiser"?1.7f:1.35f;
+ float EnemyHeadHeight(Infected e)=>IsMillBoss(e.Id)?3.7f:IsCampaignBoss(e.Id)?e.Tier==5?2.8f:2.45f:IsSammy(e.Id)?.86f:InfectedKind(e)=="gravecrawler"?.85f:InfectedKind(e)=="worm"?100:DormantWeeper(e)?.9f:InfectedKind(e) is "bloater" or "bruiser"?1.7f:1.35f;
  string InfectedKind(Infected e)=>ExpeditionCampaign.Kind(e.Id,e.Tier,e.Night);
  bool IsCampaignBoss(string id)=>ExpeditionCampaign.BossIndex(id)>=0;
  bool DormantWeeper(Infected e)=>InfectedKind(e)=="weeper"&&e.BossState=="weeping";
  sealed class BroodHatch {public string Id;public Vector3 Point;public int Tier,Count;public double Time=1.25;public Node3D Warning;}
  readonly List<BroodHatch> broodHatches=new();
  void ConfigureSpecial(Infected e){
-  string kind=InfectedKind(e);if(kind=="walker")return;
+  if(IsMegaNest(e.Id))return;string kind=InfectedKind(e);if(kind=="walker")return;
   e.Hp=e.MaxHp=ExpeditionCampaign.Hp(kind,e.Tier);
   if(kind=="weeper")e.BossState="weeping";
+  if(ExpeditionThreat.Find(kind) is {} spec){e.BossState=kind is "mossback" or "gravecrawler"?"threat-hidden":"threat-hunt";e.BossTime=3;var capsule=e.Body.GetChild<CollisionShape3D>(0);if(kind=="gravecrawler"){capsule.Shape=new CapsuleShape3D{Radius=.38f,Height=1.1f};capsule.Position=new(0,.55f,0);}return;}
   var shape=e.Body.GetChild<CollisionShape3D>(0);
   if(kind=="weeper"){shape.Shape=new CapsuleShape3D{Radius=.4f,Height=1.2f};shape.Position=new(0,.6f,0);}
   if(kind=="worm"){shape.Shape=new CapsuleShape3D{Radius=.15f,Height=.3f};shape.Position=new(0,.15f,0);e.BossTime=90;}
   else if(kind=="bloater"||kind=="bruiser"){shape.Shape=new CapsuleShape3D{Radius=.55f,Height=2.1f};shape.Position=new(0,1.05f,0);}
  }
- double InfectedResistance(Infected e,bool head)=>IsCampaignBoss(e.Id)?e.BossState=="recover"?1.5:1:InfectedKind(e)=="armored"&&!head?.65:1;
- float InfectedSpeed(Infected e,float normal)=>InfectedKind(e) switch{"runner"=>normal*1.5f,"stalker"=>normal*1.35f,"bloater"=>normal*.65f,"bruiser"=>normal*.8f,_=>normal};
+ double InfectedResistance(Infected e,bool head)=>IsCampaignBoss(e.Id)?IsMega(e.Id)?MegaResistance(e):e.BossState=="recover"?1.5:1:InfectedKind(e)=="riot"&&!head?RiotResistance(e):InfectedKind(e)=="armored"&&!head?.65+game.UpgradePower(0)/100.0:1;
+ float InfectedSpeed(Infected e,float normal)=>ExpeditionThreat.Find(InfectedKind(e)) is {} spec?normal*(float)spec.Speed:InfectedKind(e) switch{"runner"=>normal*1.5f,"stalker"=>normal*1.35f,"bloater"=>normal*.65f,"bruiser"=>normal*.8f,_=>normal};
  void QueueBrood(Infected e,int count=0){
   if(CoopClient||broodHatches.Any(h=>h.Id==e.Id))return;
   var warning=new Node3D{Position=e.Body.Position};AddChild(warning);MillRing(warning,2.2f,new(.62f,.8f,.13f,.85f));
@@ -55,7 +56,7 @@ public partial class MigrationScene {
    hatch.Time=state.Time;
   }
  }
- bool TickSpecialInfected(Infected e,double dt){
+ bool TickSpecialInfected(Infected e,double dt){if(IsMegaNest(e.Id))return true;if(TickNewThreat(e,dt))return true;
   string kind=InfectedKind(e);if(kind!="weeper"&&kind!="worm")return false;
   if(kind=="worm"){TickWorm(e,dt);return true;}
   if(DormantWeeper(e)&&e.Hp<e.MaxHp)ReactEnemyHit(e,false);
@@ -92,6 +93,7 @@ public partial class MigrationScene {
    e.BossHits.Add(p.Body.GetInstanceId());MillDamage(p.Game,p.Body,damage,wound);
   }
   if(Dog.Rescued&&!Dog.Dead&&DogPresent&&Distance(DogPoint,e.Body.Position)<radius&&e.BossHits.Add(rescueDogActor.Body.GetInstanceId())&&SpecialLine(e.Body.Position,rescueDogActor.Body))HurtRescueDog(damage);
+  if(ContentEnabled&&FieldEvent.Stage==1&&FieldEvent.Kind>0&&Distance(Ground(FieldEvent.X,FieldEvent.Z),e.Body.Position)<radius&&e.BossHits.Add(0xF13DUL))HurtFieldCivilian(damage);
   foreach(var npc in Community.Survivors.Where(n=>n.Member&&n.Health>0))if(Distance(NpcPoint(npc),e.Body.Position)<radius&&!e.BossHits.Contains((ulong)npc.Id.GetHashCodeStable())){e.BossHits.Add((ulong)npc.Id.GetHashCodeStable());HurtCommunity(npc,damage);}
  }
  void SpecialMove(Infected e,Vector3 direction,double dt){

@@ -23,11 +23,26 @@ public partial class MigrationScene {
   await CoopWait(()=>infected.Any(e=>e.Id==CampaignBossId(2)),"Guest could not activate final encounter",15);var finalBoss=infected.Single(e=>e.Id==CampaignBossId(2));finalBoss.Hp=1;finalBoss.BossState="recover";finalBoss.BossTime=30;
   await CoopWait(()=>campaignAck>=3,"Guest final boss reward/journal missing",20);
   MigrationChecks.Assert(!paused&&game.World.Changes.CampaignBosses.Contains(2)&&actor.Game.Life.LegendaryCores==guestHearts+1&&game.Life.LegendaryCores==hostHearts+1,"Final reward isolation and shared completion");
+  MigrationChecks.Assert(actor.Game.Life.Souls.Count==1&&game.Life.Souls.Count==1&&actor.Game.Life.SoulOwner!=game.Life.SoulOwner,"Soulbound rewards belong to distinct characters");
+  game.Life.NightEssence=8;player.Position=new(0,.1f,-18.5f);shotClock=reloadClock=0;SoulAction("mega:1");var mega=infected.Single(e=>IsMega(e.Id));
+  mega.BossTime=30;actor.Shot=actor.Reload=0;SendCoopPersonal(actor.Id,CoopProfileJson(actor.Game),"",actor.Body.Position,true);RpcId(actor.Id,nameof(CoopCheckStage),"campaign-soul",actor.Body.Position);
+  await CoopWait(()=>campaignAck>=4,"Guest mega replica or Soulbound equip missing",20);
+  DefeatCampaignBoss(mega);await CoopWait(()=>campaignAck>=5,"Guest private mega drop missing",20);
+  MigrationChecks.Assert(actor.Game.MegaLootCount==2&&game.MegaLootCount==2&&game.ActiveSoul==null,"Mega drops private and guest equip isolated from host");
+  GD.Print("PASS / two-process Soulbound: distinct owners, mega boss replica, private rolls, guest equip and duplicate-safe rewards");
   ExitDungeon();Teleport(0,12);actor.Body.Position=HostPosition+Vector3.Right*3;SendCoopPersonal(actor.Id,CoopProfileJson(actor.Game),"",actor.Body.Position,true);
   GD.Print("PASS / two-process campaign: passive weeper/guest aggression, bloater hatch warning and worms, custom dungeon travel, guest boss activation/projectile kill, shared victory and duplicate-safe personal legendary rewards");
+  await NewThreatCoopChecks(actor);
  }
  async Task ClientCampaignChecks(string stage,Vector3 target){
   await CoopWait(()=>Distance(player.Position,target)<1,"Campaign test position missing",15);
+  if(stage=="campaign-threats"){await ClientNewThreatChecks();return;}
+  if(stage=="campaign-soul"){
+   await CoopWait(()=>infected.Any(e=>IsMega(e.Id))&&game.Life.Souls.Count==1,"Mega replica missing",15);
+   string soulId=game.Life.Souls[0].Id;CoopRequest("campaign","soul:"+soulId);await CoopWait(()=>game.ActiveSoul?.Id==soulId,"Soulbound equip not authoritative",15);
+   RpcId(1,nameof(CoopCampaignAck),4);await CoopWait(()=>game.MegaLootCount==2,"Mega drop not replicated",15);
+   RpcId(1,nameof(CoopCampaignAck),5);return;
+  }
   if(stage=="campaign-heart"){
    await CoopWait(()=>InHeartRoom,"Custom heart dungeon not replicated",15);int before=game.Life.LegendaryCores;
    CoopRequest("campaign","heart");await CoopWait(()=>infected.Any(e=>IsCampaignBoss(e.Id)),"Final boss replica missing",15);

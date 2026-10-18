@@ -19,21 +19,22 @@ static class ExpeditionCampaign {
  public static (double X,double Z) Site(ExpeditionWorld world,int index)=>Sites.GetValue(world,CreateSites)[index];
 
  public static bool InLot(ExpeditionWorld world,double x,double z,double margin=0){for(int i=0;i<3;i++){var p=Site(world,i);if(Math.Abs(x-p.X)<27+margin&&Math.Abs(z-p.Z)<27+margin)return true;}return false;}
- public static int BossIndex(string id){if(id==null||!id.StartsWith("boss/campaign/"))return -1;var parts=id.Split('/');return parts.Length==4&&int.TryParse(parts[3],out int n)&&n>=0&&n<3?n:-1;}
+ public static int BossIndex(string id){if(id==null||!id.StartsWith("boss/campaign/"))return -1;var parts=id.Split('/');return (parts.Length==4||parts.Length==7&&parts[4]=="mega")&&int.TryParse(parts[3],out int n)&&n>=0&&n<3?n:-1;}
  public static string Kind(string id,int tier,int night){
   if(id.StartsWith("brood/worm/"))return "worm";
   if(id.StartsWith("special/"))return id.Split('/')[1];
-  if(!(id.StartsWith("habitat/")||id.StartsWith("night/")||id.Contains("/vault/")))return "walker";
-  uint roll=(uint)id.GetHashCodeStable();
+  if(!(id.StartsWith("field-site/")||id.StartsWith("field-event/")||id.StartsWith("habitat/")||id.StartsWith("night/")||id.Contains("/vault/")))return "walker";
+  string extra=ExpeditionThreat.Population(id,tier,night);if(extra!=null)return extra;
+  id=ExpeditionThreat.SpawnKey(id);uint roll=(uint)id.GetHashCodeStable();
   if(night==2)return "bloater";if(night==1)return "stalker";
   if(tier==1)return "walker";
-  if(roll%19==0)return "weeper";
+  if(id.StartsWith("field-event/"))return tier>=3&&roll%4==0?"bruiser":"walker";if(roll%19==0)return "weeper";
   if(roll%9==0||tier>=5&&roll%3==0)return "bloater";
   if(tier>=4&&roll%3==0)return "armored";
   if(tier>=3&&roll%5==0)return "bruiser";
   return roll%4==0?"runner":"walker";
  }
- public static double Hp(string kind,int tier)=>kind switch{"worm"=>18,"weeper"=>280+tier*40,"bloater"=>120+tier*32,"armored"=>100+tier*24,"bruiser"=>150+tier*25,"runner"=>40+tier*17,_=>45+tier*20};
+ public static double Hp(string kind,int tier)=>ExpeditionThreat.Find(kind) is {} t?t.Health+Math.Max(0,tier-t.Min)*18:kind switch{"worm"=>18,"weeper"=>280+tier*40,"bloater"=>120+tier*32,"armored"=>100+tier*24,"bruiser"=>150+tier*25,"runner"=>40+tier*17,_=>45+tier*20};
 }
 sealed partial class ExpeditionWorldChanges {
  [DataMember] public List<int> CampaignBosses=new();

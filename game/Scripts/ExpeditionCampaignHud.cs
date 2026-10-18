@@ -13,17 +13,18 @@ public partial class MigrationScene {
   campaignBossLabel.Visible=campaignHealth.Visible=boss!=null;
   if(boss==null){if(GodotObject.IsInstanceValid(campaignWarning))campaignWarning.Visible=false;return;}
   int index=ExpeditionCampaign.BossIndex(boss.Id);
-  string cue=boss.BossState switch{"ram-windup"=>"RAM / dodge sideways; wrecks stop him","ram"=>"CHARGING!","sweep-windup"=>"SWEEP / leave the orange ring","alarm-windup"=>"ALARM / reinforcements incoming","knell-windup"=>"FALLING DEBRIS / leave the target circle","brood-windup"=>"BROOD HATCH / clear the worms","bile-windup"=>"BILE / move away from the target circle","rupture-windup"=>"RUPTURE / leave the green ring","recover"=>"EXPOSED / 50% bonus damage",_=>boss.Hp<boss.MaxHp*.5?"ENRAGED / faster warnings":"Watch the wind-up. Save stamina for a dodge."};
-  campaignBossLabel.Text=$"{ExpeditionCampaign.Names[index].ToUpperInvariant()}  {boss.Hp:0}/{boss.MaxHp:0}\n{cue}";campaignHealth.Value=boss.Hp/boss.MaxHp;
+  string cue=boss.BossState switch{"volley-windup"=>"SUPPRESSION / leave the marked firing lanes","volley"=>"SCRAP BURST / dodge moving projectiles; use cover","grenade-windup"=>"CANISTER / leave the target circle","hatch-windup"=>"WAVE INCOMING / destroy nests to reduce the horde","wave"=>"CLEAR THE HORDE / nests determine the next wave size","ram-windup"=>"RAM / dodge sideways; wrecks stop him","ram"=>"CHARGING!","sweep-windup"=>"SWEEP / leave the orange ring","alarm-windup"=>"ALARM / reinforcements incoming","knell-windup"=>"FALLING DEBRIS / leave the target circle","brood-windup"=>"BROOD HATCH / clear the worms","bile-windup"=>"BILE / move away from the target circle","rupture-windup"=>"RUPTURE / leave the green ring","recover"=>"EXPOSED / 50% bonus damage",_=>boss.Hp<boss.MaxHp*.5?"ENRAGED / faster warnings":"Watch the wind-up. Save stamina for a dodge."};
+  campaignBossLabel.Text=$"{(IsMega(boss.Id)?MegaNames[MegaVariant(boss.Id)]:ExpeditionCampaign.Names[index]).ToUpperInvariant()}  {boss.Hp:0}/{boss.MaxHp:0}\n{cue}";campaignHealth.Value=boss.Hp/boss.MaxHp;
   string key=boss.Id+"/"+boss.BossState+"/"+boss.BossStep;
   if(key!=campaignWarningKey){
    campaignWarningKey=key;if(GodotObject.IsInstanceValid(campaignWarning))campaignWarning.QueueFree();campaignWarning=new();AddChild(campaignWarning);
-   if(boss.BossState=="ram-windup"){
+   if(boss.BossState is "ram-windup" or "volley-windup"){
     var dir=boss.BossAim-boss.Body.Position;dir.Y=0;dir=dir.Normalized();
     var lane=Box(campaignWarning,dir*9+Vector3.Up*.08f,new(3,.05f,18),new(.8f,.22f,.06f));lane.Rotation=new(0,Mathf.Atan2(-dir.X,-dir.Z),0);
-   }else if(boss.BossState.EndsWith("windup")||boss.BossState=="recover")MillRing(campaignWarning,boss.BossState=="rupture-windup"?6.5f:boss.BossState=="sweep-windup"?5:boss.BossState is "knell-windup" or "bile-windup"?3.6f:2.2f,boss.BossState=="recover"?new(.23f,.75f,.83f,.9f):boss.BossState is "rupture-windup" or "brood-windup"?new(.5f,.8f,.13f,.9f):new Color(.9f,.48f,.08f,.9f));
+   }else if(boss.BossState.EndsWith("windup")||boss.BossState=="recover")MillRing(campaignWarning,boss.BossState=="rupture-windup"?6.5f:boss.BossState=="sweep-windup"?5:boss.BossState is "knell-windup" or "bile-windup" or "grenade-windup"?3.6f:2.2f,boss.BossState=="recover"?new(.23f,.75f,.83f,.9f):boss.BossState is "rupture-windup" or "brood-windup"?new(.5f,.8f,.13f,.9f):new Color(.9f,.48f,.08f,.9f));
   }
-  campaignWarning.Visible=true;campaignWarning.Position=boss.BossState is "knell-windup" or "bile-windup"?boss.BossAim:boss.Body.Position;
+  campaignWarning.Visible=true;campaignWarning.Position=boss.BossState is "knell-windup" or "bile-windup" or "grenade-windup"?boss.BossAim:boss.Body.Position;
+  if(IsMega(boss.Id)){PoseMega(boss);return;}
   if(boss.Visual.HasNode("Torso")){
    PoseFigure(boss.Visual,(float)game.Clock*3,boss.BossState=="hunt"?.4f:0,true);
    foreach(string side in new[]{"Left","Right"})boss.Visual.GetNode<Node3D>(side+"Arm").RotationDegrees=new(boss.BossState.EndsWith("windup")?-120:boss.BossState=="recover"?10:-20,0,side=="Left"?-20:20);

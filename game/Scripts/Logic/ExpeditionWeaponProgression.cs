@@ -11,7 +11,7 @@ sealed partial class ExpeditionGame {
  public string WeaponGate(int id)=>IsGun(id)&&!GunsUnlocked?"Guns require character level 2 and tier 2 exploration":"Ready";
  public static double WeaponReach(int id)=>id is 22 or 23?1.65:id is >=24 and <=27?3.1:id is 11 or 16?3.6:id is 8 or 10 or 13 or 15 or 21?2.6:2;
  public static double WeaponDelay(int id)=>IsPoweredSaw(id)?.22:id is 22 or 23?.4:id is >=24 and <=26?.85:id is 11 or 16?.85:id==21?1.25:id==9?.65:.7;
- public double MeleeCost=>Math.Max(3,(IsPoweredSaw(Craft.Weapon)?6:Craft.Weapon is 22 or 23?5:Craft.Weapon is >=24 and <=26?12:Craft.Weapon==21?18:9)*(1-Math.Min(25,Skills.Melee.Level-1)*.01));
+ public double MeleeCost=>Math.Max(3,SoulStaminaCost*(1-UpgradePower(4)/100.0)*(IsPoweredSaw(Craft.Weapon)?6:Craft.Weapon is 22 or 23?5:Craft.Weapon is >=24 and <=26?12:Craft.Weapon==21?18:9)*(1-Math.Min(25,Skills.Melee.Level-1)*.01));
  public void TrainWeapon(double xp)=>WeaponProficiency.Gain(xp);
  public static IEnumerable<ExpeditionRecipe> PrimitiveRecipes(){
   yield return new("Stone chopping axe","tool",1,0,0,2,3,2,0,0,0,0);

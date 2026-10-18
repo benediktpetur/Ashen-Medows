@@ -1,0 +1,9 @@
+using Godot;
+using System;
+using System.Linq;
+public partial class MigrationScene {
+ async void CaptureContentAtlas(){try{contentFixture=true;game.NoDiskSave=true;game.World.Changes.Time=900;CloseMenu();ClearEnemies();weaponRoot.Visible=false;var overview=new Camera3D{Current=true,Fov=60};AddChild(overview);
+  async System.Threading.Tasks.Task View(int i,string name){var at=ExpeditionContentSite.Place(game.World,i);Teleport(at.X,at.Z+7);ClearEnemies();SpawnContentAtlas();var root=contentRoots[i];overview.Position=root.Position+new Vector3(0,9,20);overview.LookAt(root.Position+Vector3.Up);await ArtShot(name);}
+  await View(0,"content-01-farm-stand");await View(7,"content-02-pump-works");await View(10,"content-03-woodland-clinic");player.Position=props.First(p=>p.Kind==36&&p.Material==10).Position;ShowFieldSite(10);await ArtShot("content-04-generator-record");CloseMenu();await View(14,"content-05-recovery-garage");await View(24,"content-06-quarantine-works");for(int i=0;i<14;i++){Field(i).Seen=Field(i).Read=true;}Field(6).Accepted=true;ShowFieldGuide();await ArtShot("content-07-field-guide");CloseMenu();ShowCommunity();await ArtShot("content-12-community-navigation");CloseMenu();
+  var at=Ground(game.World.RouteX(-600),-600);Teleport(at.X,at.Z);StartFieldEvent(1,at);SpawnFieldEvent();overview.Position=at+new Vector3(8,5,9);overview.LookAt(at+Vector3.Up);await ArtShot("content-08-trading-cart");ShowFieldEvent();await ArtShot("content-09-travelling-trader");CloseMenu();game.World.Changes.Time=2300;await View(27,"content-10-night-freight");var dungeon=ExpeditionDungeon.Nearby(game.World,0,0).First();EnterDungeon(dungeon);ClearEnemies();overview.Position=new(3,2.5f,1);overview.LookAt(new Vector3(-1,1,-5));await ArtShot("content-11-courier-vault");GD.Print("PASS / content atlas GPU captures");GetTree().Quit();}catch(Exception ex){GD.PushError(ex.ToString());GetTree().Quit(1);}}
+}

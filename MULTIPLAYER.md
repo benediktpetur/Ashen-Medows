@@ -57,3 +57,13 @@ The Waterline update uses protocol 25. Communities, the Noah/Lily arc, graves, e
 The rescue dog/reputation update uses protocol 26. Dog state and individual standings belong to the host world, keyed by the acting player's identity; care and rescue spend only that player's food. All players must update together.
 
 Settlement campaigns use protocol 27. Development, casualties, quest outcomes, stock, sabotage and armed retaliation are shared host-world state. Individual purchases and rebuilding costs are applied to the requesting character. Update all players together.
+
+Field atlas content uses protocol 28. Location depletion, reserved cases, deliveries and event health/timers are host-world state. The host checks site/settlement proximity and gives loot or payments only to the actor. Update all clients together.
+
+Soulbound update: protocol 30. Mega-hunt summons and equipment selection use server-validated campaign actions. Each eligible character receives its own bound roll; world completion and cooldowns remain shared.
+
+Mega specialist update: protocol 30. Separate weapon/armor/community rewards, replicated breakable shells and nests, and server-authoritative moving projectile damage. Installed camp modules are shared world state; personal drops and upgrades remain character-owned.
+
+Ten-threat update: protocol 31. Fire-pool visual type replicates alongside position/lifetime. Server enemy ticks merge self-removing actors back into the shared population; sound propagation reads the full population during per-player simulation. These are covered by Cinder death and Bell-throat co-op checks.
+
+Habitat update: protocol 32. The server stamps selected enemy kinds onto natural spawn IDs; clients use that selection rather than classifying the enemy from its current/chase position. Old defeated slot IDs remain honored, and tagged kills record the canonical slot to prevent respawn/reward duplication.

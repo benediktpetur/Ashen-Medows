@@ -17,7 +17,7 @@ sealed partial class ExpeditionWorldChanges {
 }
 sealed partial class ExpeditionGame {
  public static readonly string[] SettlementNames={"Emberstead","Switchyard","Mercy Row","Black Ledger"};
- public void LivingNormalize(){World.Changes.Ledger??=new();World.Changes.Dog??=new();World.Changes.Relationships??=new();if(World.Changes.FeverStory.ArcVersion==0&&World.Changes.FeverStory.Stage<4)World.Changes.FeverStory.ArcVersion=1;World.Changes.Settlements??=new();World.Changes.Explored??=new();World.Changes.Consequences??=new();for(int i=0;i<4;i++)if(!World.Changes.Settlements.Any(s=>s.Index==i)){double z=new[]{-790d,-1460d,-2050d,-2290d}[i];World.Changes.Settlements.Add(new(){Index=i,X=World.RouteX(z)+(i==1?-105:130),Z=z,NextNeed=World.Changes.Time+900});}}
+ public void LivingNormalize(){World.Changes.FieldSites??=new();World.Changes.FieldEvent??=new();World.Changes.Ledger??=new();World.Changes.Dog??=new();World.Changes.Relationships??=new();if(World.Changes.FeverStory.ArcVersion==0&&World.Changes.FeverStory.Stage<4)World.Changes.FeverStory.ArcVersion=1;World.Changes.Settlements??=new();World.Changes.Explored??=new();World.Changes.Consequences??=new();for(int i=0;i<4;i++)if(!World.Changes.Settlements.Any(s=>s.Index==i)){double z=new[]{-790d,-1460d,-2050d,-2290d}[i];World.Changes.Settlements.Add(new(){Index=i,X=World.RouteX(z)+(i==1?-105:130),Z=z,NextNeed=World.Changes.Time+900});}}
  public void WorldDecision(string key,string text){if(World.Changes.Consequences.Contains(key))return;World.Changes.Consequences.Add(key);Profile.Journal.Seen.Add("world/"+key+" / "+text);}
  public void TickLivingWorld(){
   var f=World.Changes.FeverStory;

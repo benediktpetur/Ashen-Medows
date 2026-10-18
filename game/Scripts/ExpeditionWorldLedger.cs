@@ -7,6 +7,6 @@ public partial class MigrationScene {
  void GuardShot(Infected guard,Infected target){
   var query=PhysicsRayQueryParameters3D.Create(guard.Body.Position+Vector3.Up*1.3f,target.Body.Position+Vector3.Up*.8f);query.Exclude=PursuitExclusions();if(GetWorld3D().DirectSpaceState.IntersectRay(query).Count>0)return;
   target.Hp-=25;guard.Cooldown=2;ReactEnemyHit(target,false);CheckpointGunshot(guard.Body.Position);
-  if(target.Hp<=0){if(IsSettlementActor(target.Id)||IsSettlementMission(target.Id)){SettlementCombatDeath(target);return;}if(InfectedKind(target)=="bloater")QueueBrood(target);game.Skills.Defeated.Add(target.Id);RemoveLivingActor(target);}
+  if(target.Hp<=0){ContentEnemyDeath(target);if(IsSettlementActor(target.Id)||IsSettlementMission(target.Id)){SettlementCombatDeath(target);return;}if(InfectedKind(target)=="bloater")QueueBrood(target);game.Skills.Defeated.Add(target.Id);RemoveLivingActor(target);}
  }
 }

@@ -54,7 +54,7 @@ public partial class MigrationScene {
    MigrationChecks.Assert(game.Life.LegendaryCores==0&&game.Life.WeaponQuality[19]==50&&game.ResearchComplete(recipe),"Legendary craft consumes heart and improves actual weapon");
    var world=Json.Read<ExpeditionWorldChanges>(Json.Write(game.World.Changes));world.Index();var life=Json.Read<ExpeditionLife>(Json.Write(game.Life));
    MigrationChecks.Assert(world.CampaignBosses.SequenceEqual(new[]{0,1,2})&&life.LegendaryCores==0&&life.WeaponQuality[19]==50,"Completion and legendary currency serialize");
-   ShowCampaignGuide();CloseMenu();ExitDungeon();GD.Print("PASS / weeper passivity/cry/rush, once-only wound, bloater hatch/killable worms, safe starter, regional models, boss order/retry/telegraphs/rewards, final dungeon, legendary max-tier crafting and persistence");
+   await SoulboundChecks();ShowCampaignGuide();CloseMenu();ExitDungeon();GD.Print("PASS / weeper passivity/cry/rush, once-only wound, bloater hatch/killable worms, safe starter, regional models, boss order/retry/telegraphs/rewards, final dungeon, legendary max-tier crafting and persistence");
   }finally{if(dungeon!=null)ExitDungeon();ClearEnemies();if(art!=null){RemoveChild(art);art.QueueFree();}game=old;camera.Transform=oldEye;Teleport(0,12);}
  }
  bool IsCampaignEnemy(Infected e)=>IsCampaignBoss(e.Id);

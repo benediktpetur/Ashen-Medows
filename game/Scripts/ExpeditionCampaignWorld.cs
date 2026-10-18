@@ -46,12 +46,13 @@ public partial class MigrationScene {
   return game.World.Changes.CampaignBosses.Contains(site.Material)?"F / CLEARED SITE / YOUR JOURNEY":site.Material==2?"F / DESCEND TO THE PUMPING HEART":"F / CHALLENGE "+ExpeditionCampaign.Names[site.Material].ToUpperInvariant();
  }
  bool CampaignInteract(){
-  string prompt=CampaignPrompt();if(prompt=="")return false;
+  string prompt=CampaignPrompt();if(prompt=="")return InHeartRoom;
   string action=InHeartRoom?Distance(player.Position,new(0,0,4))<2?"exit":game.World.Changes.CampaignBosses.Contains(2)?"claim":"heart":NearProp(30,3)!=null?"guide":"site";
   if(!CoopRequest("campaign",action))CampaignAction(action);return true;
  }
  void CampaignAction(string action){
   if(CoopClient)return;
+  if(action.StartsWith("soul:")||action.StartsWith("mega:")){SoulAction(action);return;}
   if(InHeartRoom){
    if(action=="exit"&&Distance(player.Position,new(0,0,4))<2){if(coopActor>0){game.Notice="The host controls party travel.";return;}ExitDungeon();return;}
    if(Distance(player.Position,new(0,0,-19))>=3)return;
@@ -61,7 +62,7 @@ public partial class MigrationScene {
   if(dungeon!=null)return;
   if(action=="guide"&&NearProp(30,3)!=null){OpenCampaignGuide();return;}
   var site=NearProp(29,4);if(action!="site"||site==null)return;int index=site.Material;
-  if(game.World.Changes.CampaignBosses.Contains(index)){ClaimCampaignReward(game,index);OpenCampaignGuide();return;}
+  if(game.World.Changes.CampaignBosses.Contains(index)){ClaimCampaignReward(game,index);if(index==2){if(coopActor>0){game.Notice="The host controls party travel.";return;}EnterDungeon(HeartDungeon());}else OpenCampaignGuide();return;}
   if(CampaignGate(index)!="Ready"){game.Notice=CampaignGate(index);OpenCampaignGuide();return;}
   if(index==2){if(coopActor>0){game.Notice="Ask the host to enter the pumping station together.";return;}EnterDungeon(HeartDungeon());}else StartCampaignFight(index);
  }
@@ -72,8 +73,10 @@ public partial class MigrationScene {
   Text(content,"1 / MAKE TOMORROW POSSIBLE\nGather wood, stone and fibre. K crafts an axe, club, spear, bow and bandages by hand. Build a workbench and a small shelter. Practise combat in the quiet southeast. Avoid bites: bandages stop bleeding, not damage.");
   Text(content,"2 / THE WOODLAND\nGather resin to unlock workshop 2, guns and a sleeping bag. Place and bind a safe respawn before expeditions. Rescue a companion if you want help. Read the mill warnings and ring the yard bell when prepared.\nTHE FOREMAN / "+(game.World.Changes.MillDefeated?"DEFEATED":"Lumber mill, "+(int)MillX+", -780"));
   for(int i=0;i<3;i++){var p=ExpeditionCampaign.Site(game.World,i);Text(content,$"{i+3} / {ExpeditionCampaign.Names[i].ToUpperInvariant()} / "+(game.World.Changes.CampaignBosses.Contains(i)?"CLEARED":CampaignGate(i))+ $"\n{(int)p.X}, {(int)p.Z} / "+(i==0?"T3 highway recovery yard. Dodge the ram; punish recovery. Salvage alloy and upgrade your workshop.":i==1?"T4 civic square. The bell calls reinforcements. Read the orange target marker, move, then counterattack. Collect electronics.":"T5 pump station below the city. Clear the worms, avoid rupture rings and bile pools. The heart is your route to legendary equipment."));}
-  Text(content,"AFTER THE HEART\nA legendary heart upgrades a maximum-tier weapon at workshop 5 (K / Weapons and armor). The south bank is secured; the river remains the current world's edge. Keep building your community, exploring stories and mastering your equipment.");
+  Text(content,"AFTER THE HEART\nA legendary heart upgrades a maximum-tier weapon at workshop 5 (K / Weapons and armor). The heart also drops a Soulbound gun. Return to this pump station for repeatable Tier 5 mega hunts: open the Soulbound armory at the chamber console. Each hunt costs 8 night catalysts. The river remains the current world's edge.");
   Text(content,"FIELD WARNINGS\nSobbing: a seated weeper is avoidable. Attacking it unleashes a tanky clawed rush. Sidestep its committed charge, then strike during recovery.\nBloated infected: leave room after a kill. Worms hatch after a short green warning.\nHighway runners are fast; city armor resists body shots. Aim for the head or use recovery windows. Night catalysts improve weapon tuning.");
+  Button(box,"INFECTED / TEN NEW FIELD THREATS",ShowThreatGuide);
+  Button(box,"SOULBOUND ARMORY / T5 MEGA HUNTS",ShowSoulArmory);
   Button(box,"BACK TO EXPEDITION",CloseMenu);
  }
  void BuildHeartArena(){

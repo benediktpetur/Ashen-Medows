@@ -12,7 +12,7 @@ sealed class ExpeditionDungeon {
  public static bool Free(double x,double z){for(int i=-1;i<=1;i+=2)for(int j=-1;j<=1;j+=2)if(!Tile((int)Math.Floor((x+i*.3)/2),(int)Math.Floor((z+j*.3)/2)))return false;return true;}
  public static readonly double[] ChestX={-4,0,21},ChestZ={-3,-23,-5};
 }
-[DataContract] sealed class ExpeditionRelic {
+[DataContract] sealed partial class ExpeditionRelic {
  [DataMember] public string Name,Origin,Id;[DataMember] public string Slot; public string GearSlot=>string.IsNullOrEmpty(Slot)?"chest":Slot;[DataMember] public int Level,Armor,Vitality;
  public static ExpeditionRelic Roll(int seed,ExpeditionDungeon dungeon,int chest){var random=new Random(unchecked(seed*397+dungeon.Id.GetHashCodeStable()*17+chest*7919));string[] origins={"the Lost Colony","the Old Guard","the Ashen Foundry","the Highway Wardens","the Forgotten Expedition","the Sunken Vault"};string origin=origins[random.Next(origins.Length)];return new ExpeditionRelic{Name="Chest plate of "+origin,Origin=origin,Id="block1/"+seed+"/"+dungeon.Id+"/"+chest,Level=dungeon.Tier,Armor=dungeon.Tier*10+random.Next(0,5),Vitality=dungeon.Tier*3+random.Next(0,3)};}
 }

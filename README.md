@@ -55,3 +55,5 @@ This configuration requires public GitHub Releases because the launcher has no p
 Standard public GitHub-hosted build runners are free under GitHub's current policy. Releases hold the builds; the workflow does not retain large permanent Actions artifacts or use Git LFS. Each ZIP must stay under GitHub's 2 GiB release-asset limit. Never commit server certificates/configuration, passwords, saves, downloaded tools or export binaries.
 
 The current graphic-novel art/UI pass is documented in ART-PASS.md. Generated material provenance is in game/Assets/ART-PROVENANCE.md.
+
+World content expansion: see [CONTENT-ATLAS.md](CONTENT-ATLAS.md) for 28 exploration locations, 12 named field requests, generators/repairs/night caches, exploration gear, dungeon themes and three roaming event types. Open F7 → Field guide in game.

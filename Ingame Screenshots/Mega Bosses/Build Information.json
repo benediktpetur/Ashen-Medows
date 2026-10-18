@@ -1,0 +1,8 @@
+{
+  "Build": "Tier 5 specialist mega bosses",
+  "CapturedUtc": "2026-10-18T21:24:01.4128421Z",
+  "Protocol": 30,
+  "PackSHA256": "63E5737305D087DC294AE6B4AE9014B29B6BE5F85F8A9BFF4FE402E956038FF4",
+  "DllSHA256": "0ECFB9B11E3CAB8A70C2B72D7348872171ACB5611758177E6FD96DC3B267CA03",
+  "Source": "Exported Windows game, --mega-preview; prepared in-engine encounters, HUD hidden, titles rendered in-engine; not concept art"
+}

@@ -18,7 +18,7 @@ sealed class ExpeditionGunHandling {
   if(SinceShot>1.1)Streak=0;
  }
  public double Sway=>!Aiming?0:(HoldingBreath?.012:BreathCooldown>0?.28:.14)*(1+Speed*.08);
- public double Spread(ExpeditionGame game)=>((Aiming?.10:.55)+Bloom*.30+Speed*.10+(Airborne?1.5:0))*(game.Sneaking?.72:1)*(HoldingBreath?.6:1);
+ public double Spread(ExpeditionGame game)=>((Aiming?.10:.55)+Bloom*.30+Speed*.10+(Airborne?1.5:0))*(game.Sneaking?.72:1)*(HoldingBreath?.6:1)*game.SoulSpread;
  public (double X,double Y) AimOffset()=> (RecoilX+Math.Sin(Age*1.9)*Sway,RecoilY+Math.Sin(Age*2.7+.7)*Sway);
  public void Shot(int weapon){
   if(Weapon!=weapon){Weapon=weapon;Streak=0;Bloom=0;}
@@ -31,7 +31,7 @@ sealed class ExpeditionGunHandling {
  public (double X,double Y) ShotOffset(ExpeditionGame game,int pellet){
   uint h=game.World.Hash(Serial*31+pellet*71,game.Craft.Weapon+627);
   double angle=(h%65536)/65536.0*Math.PI*2,r=Math.Sqrt((h>>16)/65535.0)*Spread(game);
-  var aim=AimOffset();return(aim.X+Math.Cos(angle)*r,aim.Y+Math.Sin(angle)*r);
+  var aim=AimOffset();return(aim.X-RecoilX*game.UpgradePower(1)/100.0+Math.Cos(angle)*r,aim.Y-RecoilY*game.UpgradePower(1)/100.0+Math.Sin(angle)*r);
  }
 }
 sealed partial class ExpeditionGame {public readonly ExpeditionGunHandling Handling=new();}
