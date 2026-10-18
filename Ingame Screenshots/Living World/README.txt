@@ -1,0 +1,1 @@
+The Waterline update: these eight screenshots were captured from the exported Windows game using a prepared capture save. They show the new communities, Lily's teddy, door choices, woodland grave, Mercy Row, research specialization and health/water menu. Earlier screenshots in the parent folder describe previous builds and may show the superseded health/research rules.

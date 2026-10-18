@@ -3,7 +3,7 @@ using System.Linq;
 sealed partial class ExpeditionGame {
  public static string ResearchId(ExpeditionRecipe r)=>r.Kind+"/"+r.Tier+"/"+r.Result;
  public bool ResearchComplete(ExpeditionRecipe r)=>r.Kind switch{
-  "bench"=>Craft.BenchTier>=r.Result,
+  "survival-tech"=>Life.SurvivalTech.Contains(r.Result),"bench"=>Craft.BenchTier>=r.Result,
   "weapon"=>Craft.Weapons.Contains(r.Result),
   "armor"=>Profile.Items.Any(i=>i.Level>=r.Tier&&i.GearSlot==(r.Result==11?"head":r.Result==12?"hands":r.Result==13?"feet":"chest")),
   "mill"=>Life.WeaponQuality[Craft.Weapon]>=20,

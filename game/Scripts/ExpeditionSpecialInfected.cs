@@ -91,6 +91,7 @@ public partial class MigrationScene {
   foreach(var p in MillPlayers())if(p.Game.Life.Health>0&&Distance(p.Body.Position,e.Body.Position)<radius&&Math.Abs(p.Body.Position.Y-e.Body.Position.Y)<2.5&&!e.BossHits.Contains(p.Body.GetInstanceId())&&SpecialLine(e.Body.Position,p.Body)){
    e.BossHits.Add(p.Body.GetInstanceId());MillDamage(p.Game,p.Body,damage,wound);
   }
+  if(Dog.Rescued&&!Dog.Dead&&DogPresent&&Distance(DogPoint,e.Body.Position)<radius&&e.BossHits.Add(rescueDogActor.Body.GetInstanceId())&&SpecialLine(e.Body.Position,rescueDogActor.Body))HurtRescueDog(damage);
   foreach(var npc in Community.Survivors.Where(n=>n.Member&&n.Health>0))if(Distance(NpcPoint(npc),e.Body.Position)<radius&&!e.BossHits.Contains((ulong)npc.Id.GetHashCodeStable())){e.BossHits.Add((ulong)npc.Id.GetHashCodeStable());HurtCommunity(npc,damage);}
  }
  void SpecialMove(Infected e,Vector3 direction,double dt){

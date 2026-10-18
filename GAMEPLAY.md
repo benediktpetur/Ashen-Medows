@@ -231,3 +231,11 @@ New craftable melee progression: T1 stone knife; T2 hunting knife and scrap swor
 Zombie dogs roam in seeded packs: three in T2 woodland near roads, four along T3 highways, and five near T4+ city roads. They do not spawn in the T1 starting valley, indoors, or within 28 metres of an active player. Streaming and existing fauna/enemy caps bound their numbers; defeated dogs retain their stable saved IDs.
 
 Seeing or being struck by a player alerts nearby members of the same pack. Dogs also investigate the noise system, while crouching and sneak proficiency reduce their visual detection range. They run, spread out around their target and use existing obstacle routing and physical collision. A crouch and growl precede a short committed lunge; packmates wait their turn before lunging, giving the player a chance to sidestep or interrupt. Dog bites deal damage but add a bleeding wound only when the player has no existing wounds. Infected meat is discarded. Dogs have visible teeth, damaged flanks, collars and animated jaws, with spatial barks and growls replicated from their shared attack state.
+
+## The Waterline / current health and consequence rules (2026-10-18)
+
+See LIVING-WORLD.md for the full current systems, timings, research branches and Noah/Lily outcomes. This update supersedes the older fatal-bite countdown descriptions above. Use Y for health/conditions/purification, F7 -> The Waterline for neighboring communities and the world record. Research now has a 48-point lifetime award cap and permanent advanced specializations. Existing learned blueprints are preserved; older completed fever outcomes are not rewritten. Wells supply untreated water rather than clean drinks. Co-op protocol 25 requires matching builds.
+
+The unique rescue dog and personal relationships are documented in LIVING-WORLD.md. Use F beside the dog; F7 opens care/commands and the People reputation ledger. The dog's death is permanent within that world.
+
+Settlement progression now includes three branching chapters per friendly community, visible development and finite reputation-gated markets. A fourth city faction, the Black Ledger, offers a reputation-selected assault/infiltration order against an early settlement, with a costly warning/defense alternative and actual camp retaliation. See LIVING-WORLD.md for deadlines, costs, consequences and controls.

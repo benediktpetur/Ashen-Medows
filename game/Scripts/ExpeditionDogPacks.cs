@@ -18,20 +18,20 @@ public partial class MigrationScene {
  }
  void TickDog(Infected dog,double dt){
   dog.Cooldown=Math.Max(0,dog.Cooldown-dt);dog.Stagger=Math.Max(0,dog.Stagger-dt);dog.Memory=Math.Max(0,dog.Memory-dt);
-  bool sees=DogSees(dog);if(sees)AlertDogPack(dog,player.Position);
+  bool companionTarget=DogCanBeTarget(dog,Distance(dog.Body.Position,player.Position));bool sees=companionTarget||DogSees(dog);if(sees)AlertDogPack(dog,companionTarget?DogPoint:player.Position);
   if(dog.Stagger>0){dog.AttackState="";dog.AttackTime=0;dog.Cooldown=Math.Max(.45,dog.Cooldown);}
-  float distance=Distance(dog.Body.Position,player.Position);
+  float distance=Distance(dog.Body.Position,companionTarget?DogPoint:player.Position);
   if(dog.AttackState!=""){
    dog.AttackTime-=dt;
    if(dog.AttackTime<=0){
     if(dog.AttackState=="dog-windup"){dog.AttackState="dog-lunge";dog.AttackTime=.28;}
     else if(dog.AttackState=="dog-lunge"){
-     if(distance<1.5f&&Math.Abs(dog.Body.Position.Y-player.Position.Y)<1&&AnimalSight(dog,1.5f)){game.Hurt(1,game.Life.Wounds.Count==0);game.Notice="Infected hound bite / dodge the crouch before it lunges";if(game.Life.Health<=0){Die();return;}}
+     if(companionTarget&&distance<1.5f){HurtRescueDog(18);}else if(!companionTarget&&distance<1.5f&&Math.Abs(dog.Body.Position.Y-player.Position.Y)<1&&AnimalSight(dog,1.5f)){game.Hurt(1,game.Life.Wounds.Count==0);game.Notice="Infected hound bite / dodge the crouch before it lunges";if(game.Life.Health<=0){Die();return;}}
      dog.AttackState="dog-recover";dog.AttackTime=.9;dog.Cooldown=1.6;
     }else dog.AttackState="";
    }
   }else if(dog.Stagger<=0&&dog.Cooldown<=0&&distance<2.7&&sees&&!DogMates(dog).Any(e=>e.AttackState is "dog-windup" or "dog-lunge")){
-   dog.AttackState="dog-windup";dog.AttackTime=.55;dog.BossAim=player.Position;
+   dog.AttackState="dog-windup";dog.AttackTime=.55;dog.BossAim=companionTarget?DogPoint:player.Position;
   }
   var goal=DogGoal(dog);var direction=dog.AttackState=="dog-lunge"?dog.BossAim-dog.Body.Position:dog.AttackState==""&&dog.Stagger<=0?PursuitDirection(dog,goal,dt):Vector3.Zero;direction.Y=0;
   float speed=dog.AttackState=="dog-lunge"?6:dog.Memory>0?4.1f:.85f;

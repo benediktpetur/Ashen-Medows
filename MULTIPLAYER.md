@@ -51,3 +51,9 @@ Physical crouching uses protocol 22: host-validated capsule/headroom and crouch 
 Campaign/infected expansion uses protocol 23. Shared snapshots carry boss state, weeper aggression, brood hatch warnings and campaign completion; personal profiles carry legendary hearts and upgrade quality. The custom pumping-station dungeon has its own host-validated movement bounds. All players must use the same build.
 
 Gunplay uses protocol 24; all players must update together. Aiming/held-breath input is validated and stamina, ammunition, loaded magazines, recoil state and special cooldown are synchronized per character. The host resolves electric contacts, flame cones, wall occlusion and burns; clients receive visual effects. Each player's fuel and energy cells remain independent.
+
+The Waterline update uses protocol 25. Communities, the Noah/Lily arc, graves, explored cells and consequences belong to the hosted world. Research specializations, water quality inventory and health conditions belong to each character; guests cannot spend the host's supplies. See LIVING-WORLD.md.
+
+The rescue dog/reputation update uses protocol 26. Dog state and individual standings belong to the host world, keyed by the acting player's identity; care and rescue spend only that player's food. All players must update together.
+
+Settlement campaigns use protocol 27. Development, casualties, quest outcomes, stock, sabotage and armed retaliation are shared host-world state. Individual purchases and rebuilding costs are applied to the requesting character. Update all players together.

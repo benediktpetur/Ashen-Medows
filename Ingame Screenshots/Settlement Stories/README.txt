@@ -1,0 +1,1 @@
+Five actual engine captures from the current settlement-stories Windows build. Scenes use prepared preview states to show development, branching projects, trade, the city faction and its extermination offer. These are not concept art or an existing player save. Older screenshot folders show earlier builds.
