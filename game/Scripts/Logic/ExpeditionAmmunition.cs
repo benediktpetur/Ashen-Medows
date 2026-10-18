@@ -21,7 +21,7 @@ sealed partial class ExpeditionCraftState {
 }
 sealed partial class ExpeditionGame {
  public static readonly string[] AmmoNames={"9mm pistol rounds","7.62mm rifle rounds","5.56mm carbine rounds","12-gauge shells","Energy cells"};
- public static int AmmoClassFor(int weapon)=>weapon is 1 or 2 or 4?1:weapon==3?2:weapon==7?3:weapon==5?4:0;
+ public static int AmmoClassFor(int weapon)=>weapon is 1 or 2 or 4 or 31?1:weapon==3?2:Shotgun(weapon)?3:weapon==5?4:0;
  public static bool IsPoweredSaw(int id)=>id is 17 or 27;
  public static bool IsSword(int id)=>id is >=24 and <=26;
  public bool HasChainPower=>Craft.Fuel>0&&Craft.Stock(4)>0;

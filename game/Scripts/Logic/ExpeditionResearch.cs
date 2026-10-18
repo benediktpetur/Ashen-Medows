@@ -1,10 +1,12 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 sealed partial class ExpeditionGame {
  public static string ResearchId(ExpeditionRecipe r)=>r.Kind+"/"+r.Tier+"/"+r.Result;
  public bool ResearchComplete(ExpeditionRecipe r)=>r.Kind switch{
   "survival-tech"=>Life.SurvivalTech.Contains(r.Result),"bench"=>Craft.BenchTier>=r.Result,
   "weapon"=>Craft.Weapons.Contains(r.Result),
+  "weapon-mod"=>Craft.SpareParts.GetValueOrDefault(r.Result)>0||Craft.FittedParts.Values.Any(parts=>parts.Contains(r.Result)),
   "armor"=>Profile.Items.Any(i=>i.Level>=r.Tier&&i.GearSlot==(r.Result==11?"head":r.Result==12?"hands":r.Result==13?"feet":"chest")),
   "mill"=>Life.WeaponQuality[Craft.Weapon]>=20,
   "attachment"=>Life.WeaponQuality[Craft.Weapon]>=r.Result,

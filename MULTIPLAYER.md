@@ -67,3 +67,6 @@ Mega specialist update: protocol 30. Separate weapon/armor/community rewards, re
 Ten-threat update: protocol 31. Fire-pool visual type replicates alongside position/lifetime. Server enemy ticks merge self-removing actors back into the shared population; sound propagation reads the full population during per-player simulation. These are covered by Cinder death and Bell-throat co-op checks.
 
 Habitat update: protocol 32. The server stamps selected enemy kinds onto natural spawn IDs; clients use that selection rather than classifying the enemy from its current/chase position. Old defeated slot IDs remain honored, and tagged kills record the canonical slot to prevent respawn/reward duplication.
+
+
+Weapon workshop update: current protocol 33. Research/crafting and fitting/removal use host-validated actions. Parts belong to each character; save/profile snapshots carry spare stock and per-weapon slots. Invalid compatibility, missing parts, active weapon actions and duplicate fitting are rejected. Two-process coverage checks private costs, actual stamina effects and remove/refit conservation. All players must use this build.

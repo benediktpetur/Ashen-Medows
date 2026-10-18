@@ -45,9 +45,9 @@ sealed partial class ExpeditionGame {
  public double ArmorRecovery=>1+Math.Clamp(SoulArmor.Sum(i=>i.Recovery),0,60)/100.0;
  public SoulUpgrade ActiveUpgrade=>Life.SoulUpgrades.Find(i=>i.Id==Life.ActiveUpgrade&&i.Owner==Life.SoulOwner);
  public int UpgradePower(int kind)=>ActiveUpgrade?.Kind==kind?Math.Clamp(ActiveUpgrade.Power,0,35):0;
- public double SoulBowDelay=>.8*(1+(ActiveSoul is {} s?s.Accuracy/200.0:0))*(1-UpgradePower(2)/100.0);
- public double SoulArrowSpeed=>1+(ActiveSoul is {} s?s.Capacity/200.0:0);
- public double SoulMeleeDelay=>WeaponDelay(Craft.Weapon)*(1+(ActiveSoul is {} s?s.Accuracy/200.0:0));
+ public double SoulBowDelay=>(Craft.Weapon==32?1.0:.8)*PartFactor(Craft.Weapon,p=>p.Delay)*(1+(ActiveSoul is {} s?s.Accuracy/200.0:0))*(1-UpgradePower(2)/100.0);
+ public double SoulArrowSpeed=>PartFactor(Craft.Weapon,p=>p.Velocity)*(1+(ActiveSoul is {} s?s.Capacity/200.0:0));
+ public double SoulMeleeDelay=>WeaponDelay(Craft.Weapon)*PartFactor(Craft.Weapon,p=>p.Delay)*(1+(ActiveSoul is {} s?s.Accuracy/200.0:0));
  public double SoulStaminaCost=>1-(ActiveSoul is {} s?s.Capacity/200.0:0);
  public double SoulWeaponNoise=>1+(ActiveSoul is {} s&&!IsGun(s.Weapon)?s.Reload/100.0:0);
  public double CompanionDamage=>1+(Life.SoulCompanions.Find(i=>i.Id==Life.ActiveCompanionGear&&i.Owner==Life.SoulOwner)?.Damage??0)/100.0;

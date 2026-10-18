@@ -101,3 +101,6 @@ Ten additional threats: --threat-check; full integration also runs this suite. I
 Co-op fixtures now acknowledge ordinary server-validated movement before the first gather interaction, avoiding a reliable action overtaking an unreliable pose. The Soulbound fixture explicitly resets the previous arrow cooldown before testing equipment selection. Production movement/action validation is unchanged.
 
 Habitat checks: environmental exclusion matrix across tiers and day/night, all ten reachable in matching pools, no daytime surface hunter, Tier 5 underground hunter, actual route/woodland/clinic/security classification across three seeds, themed dungeon IDs, old-save kill compatibility, duplicate reward suppression and independent brood child IDs. Co-op includes a tagged Riot Husk replica in a different current environment to verify authoritative type preservation.
+
+
+Weapon workshop: `--workshop-check` validates acyclic and reachable predecessors, specialization, zone materials, six models, compatibility and real part effects, ammo conservation, duplicates, saved stock and older 28-weapon array migration. Integration invokes these checks and the item-model catalogue. Co-op additionally exercises client research, part crafting, fitting, duplicate rejection, removal/refitting and host/guest isolation. `--armory-preview` captures research and fitting screens.

@@ -1,0 +1,11 @@
+{
+  "CapturedUtc": "2026-10-18T22:54:52.9257599Z",
+  "Protocol": 33,
+  "Build": "Windows release",
+  "PckSha256": "070EA23670958BD93F74E46F87C7074AAD541C5075BC5ACEF7D8EEBB973975FE",
+  "CaptureMode": "--armory-preview",
+  "Screenshots": [
+    "workshop-01-research.png",
+    "workshop-02-parts.png"
+  ]
+}
