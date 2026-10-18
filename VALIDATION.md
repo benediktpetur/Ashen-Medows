@@ -104,3 +104,6 @@ Habitat checks: environmental exclusion matrix across tiers and day/night, all t
 
 
 Weapon workshop: `--workshop-check` validates acyclic and reachable predecessors, specialization, zone materials, six models, compatibility and real part effects, ammo conservation, duplicates, saved stock and older 28-weapon array migration. Integration invokes these checks and the item-model catalogue. Co-op additionally exercises client research, part crafting, fitting, duplicate rejection, removal/refitting and host/guest isolation. `--armory-preview` captures research and fitting screens.
+
+
+Expedition loop: standard builds run --journey-check for seeded weather, physical cover/exposure, hearing/sight, last-position searches, resource-cost stone projectiles, destination/return records, timed themed lockers, loud alerts, camp resource costs/art/condition repair and persistence. Gameplay integration and two-process co-op passed; Windows exported --journey-check passes and exits cleanly. Exported --journey-preview captures five current-build views under Ingame Screenshots/Expedition Loop with PCK hash metadata.

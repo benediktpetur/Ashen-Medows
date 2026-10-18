@@ -9,7 +9,7 @@ public partial class MigrationScene {
  Label noiseLabel;
  void Noise(double range){if(CoopClient)return;HearNoise(player.Position,game.RaiseNoise(range));}
  void HearNoise(Vector3 position,double radius){
-  if(CoopClient)return;
+  if(CoopClient)return;radius*=game.WeatherHearing;
   foreach(var e in dogPackSource??infected){
    if(PassiveStoryEnemy(e)||Species(e.Id)!=""&&Species(e.Id)!="dog")continue;
    double distance=e.Body.Position.DistanceTo(position);if(distance>radius)continue;
@@ -17,11 +17,11 @@ public partial class MigrationScene {
    query.Exclude=PursuitExclusions();
    double audible=GetWorld3D().DirectSpaceState.IntersectRay(query).Count>0?radius*.45:radius;
    if(distance>audible)continue;
-   e.Memory=Math.Max(e.Memory,Math.Clamp(4+radius*.06,4,14));e.Target=position;
+   e.Memory=Math.Max(e.Memory,Math.Clamp(4+radius*.06,4,14));e.Target=position;e.Searching=false;e.SearchTime=0;
   }
  }
  void TickStealth(double dt,bool sprint){
-  game.FadeNoise(dt);var trail=soundTrails.GetOrCreateValue(game);
+  ProbeWeatherCover(dt);game.FadeNoise(dt);var trail=soundTrails.GetOrCreateValue(game);
   trail.Elapsed+=dt;
   double moved=trail.Ready?Distance(trail.Position,player.Position):0;
   trail.Ready=true;trail.Position=player.Position;

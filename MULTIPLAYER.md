@@ -70,3 +70,6 @@ Habitat update: protocol 32. The server stamps selected enemy kinds onto natural
 
 
 Weapon workshop update: current protocol 33. Research/crafting and fitting/removal use host-validated actions. Parts belong to each character; save/profile snapshots carry spare stock and per-weapon slots. Invalid compatibility, missing parts, active weapon actions and duplicate fitting are rejected. Two-process coverage checks private costs, actual stamina effects and remove/refit conservation. All players must use this build.
+
+
+Expedition update: current protocol 34. World time/seed determine shared weather; exposure and journey plans are character-specific. Specialist lockers carry shared open/search state and credit only the initiating character after a timed nearby search. Stone throws spend the requesting player's stone/stamina on the host, with replicated projectile visuals. Enemy snapshots include search state and target positions. Camp improvement stages and visible resident spaces use shared camp state. New two-process checks cover plans, distractions, timed specialist loot, duplicate rejection and cancellation.

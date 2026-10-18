@@ -43,7 +43,7 @@ sealed class ExpeditionContentSite {
  public static (double X,double Z) Place(ExpeditionWorld w,int i)=>Places.GetValue(w,Build)[i];
  public static bool InLot(ExpeditionWorld w,double x,double z,double margin=0){foreach(var p in Places.GetValue(w,Build))if(Math.Abs(x-p.X)<18+margin&&Math.Abs(z-p.Z)<27+margin)return true;return false;}
 }
-[DataContract] sealed class ContentSiteState {
+[DataContract] sealed partial class ContentSiteState {
  [DataMember] public int Index,DeadGuards;
  [DataMember] public bool Seen,Read,Recovered,Stripped,Delivered,Accepted,Repaired,Secured;
  [DataMember] public double PowerLeft,RestAt,NoiseAt;

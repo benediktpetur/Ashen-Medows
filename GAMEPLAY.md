@@ -324,3 +324,8 @@ A deterministic kind tag travels with the spawn ID, so clients and rewards retai
 ## Weapon research and removable parts
 
 The current build has 34 weapons, 179 recipes and 193 item models. Research branch filters show actual predecessors for weapons, armor, building upgrades and water purification. The 48-point lifetime budget and advanced weapon specializations remain. Armor has a separate chain, so Ballistics and Ranger characters can research protection. See WEAPON-WORKSHOP.md for the six additional weapons, twelve compatible parts and fitting instructions. Spare parts appear in inventory; fitting and removal return replaced parts and conserve ammunition. Existing quality calibration remains separate from fitted parts.
+
+
+## Expedition loop
+
+F5 opens departure planning and a supply/weather checklist, with destination and return-refuge tracking on HUD/map. G throws a resource-cost stone distraction outside building mode. Existing specialist sites gain finite timed shutters with quiet/loud choices and themed upgrade supplies. Ordinary infected search their last seen/heard position. Shared seeded weather adds rain, fog and cold wind; physical cover, armor and warmth affect gradual exposure. F7 camp life offers three paid shared improvement stages, personal resident spaces, a hearth/workyard, evening routines and written homecoming greetings. Real structural damage adds visible wear marks which repairs remove. See EXPEDITION-LOOP.md for controls, costs, effects and persistence.

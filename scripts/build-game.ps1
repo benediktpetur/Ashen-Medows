@@ -16,7 +16,7 @@ try{
  if($LASTEXITCODE -ne 0){throw 'Godot import failed'}
  & $godotExe --headless --path $gameRoot --quit-after 10 2>&1 | Tee-Object -Variable smokeOutput
  if($LASTEXITCODE -ne 0 -or ($smokeOutput -join "`n") -match '(?m)^ERROR:'){throw 'Godot smoke test failed'}
- foreach($testMode in @('--logic-check','--music-check','--integration-check')){
+ foreach($testMode in @('--logic-check','--music-check','--journey-check','--integration-check')){
   & $godotExe --headless --path $gameRoot -- $testMode 2>&1 | Tee-Object -Variable testOutput
   if($LASTEXITCODE -ne 0 -or ($testOutput -join "`n") -match '(?m)^ERROR:'){throw "Godot gameplay checks failed: $testMode"}
  }

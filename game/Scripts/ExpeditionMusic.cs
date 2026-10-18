@@ -42,7 +42,7 @@ public partial class MigrationScene {
  }catch(Exception ex){GD.PrintErr(ex);GetTree().Quit(1);}}
  // Only an engaged, audible/visible threat can escalate the score. Proximity alone never reveals ambushes.
  string ScoreContext(){
-  var engaged=infected.Where(e=>e.Hp>0&&e.Memory>0&&Distance(player.Position,e.Body.Position)<32
+  var engaged=infected.Where(e=>e.Hp>0&&e.Memory>0&&(!JourneyEnabled||!e.Searching&&Distance(e.Target,player.Position)<4)&&Distance(player.Position,e.Body.Position)<32
    &&!Peaceful(e.Id)&&!PassiveStoryEnemy(e)&&!CheckpointPassive(e)
    &&(AnimalSight(e,32)||Distance(player.Position,e.Body.Position)<7)).ToArray();
   var boss=infected.FirstOrDefault(e=>e.Hp>0&&(IsMillBoss(e.Id)||IsCampaignBoss(e.Id))&&Distance(player.Position,e.Body.Position)<65&&AnimalSight(e,65));
