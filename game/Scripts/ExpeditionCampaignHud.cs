@@ -7,7 +7,7 @@ public partial class MigrationScene {
  void DrawCampaign(){
   if(journeyLabel==null){journeyLabel=HudLabel(12);journeyLabel.Position=new(970,72);}
   var clears=game.World.Changes.CampaignBosses;
-  journeyLabel.Text=!game.World.Changes.MillDefeated?"JOURNEY / PREPARE FOR THE FOREMAN":!clears.Contains(0)?"JOURNEY / THE WRECKER":!clears.Contains(1)?"JOURNEY / THE BELLKEEPER":!clears.Contains(2)?"JOURNEY / THE BROODHEART":"JOURNEY / SOUTH BANK SECURED";
+  journeyLabel.Visible=!game.FirstDayVisible;journeyLabel.Text=!game.World.Changes.MillDefeated?"JOURNEY / PREPARE FOR THE FOREMAN":!clears.Contains(0)?"JOURNEY / THE WRECKER":!clears.Contains(1)?"JOURNEY / THE BELLKEEPER":!clears.Contains(2)?"JOURNEY / THE BROODHEART":"JOURNEY / SOUTH BANK SECURED";
   if(campaignBossLabel==null){campaignBossLabel=HudLabel(16);campaignBossLabel.Position=new(380,160);campaignHealth=new(){Position=new(380,212),Size=new(520,12),ShowPercentage=false,MaxValue=1};hudRoot.AddChild(campaignHealth);campaignHealth.AddThemeStyleboxOverride("background",new StyleBoxFlat{BgColor=new(.08f,.10f,.09f)});campaignHealth.AddThemeStyleboxOverride("fill",new StyleBoxFlat{BgColor=new(.64f,.22f,.12f)});}
   var boss=infected.FirstOrDefault(e=>IsCampaignBoss(e.Id)&&Distance(e.Body.Position,player.Position)<75);
   campaignBossLabel.Visible=campaignHealth.Visible=boss!=null;

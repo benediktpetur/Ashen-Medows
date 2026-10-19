@@ -23,11 +23,11 @@ public partial class MigrationScene {
   var scroll=new ScrollContainer{CustomMinimumSize=new(1150,420),HorizontalScrollMode=ScrollContainer.ScrollMode.Disabled};box.AddChild(scroll);var grid=new GridContainer{Columns=3,SizeFlagsHorizontal=Control.SizeFlags.ExpandFill};grid.AddThemeConstantOverride("h_separation",18);grid.AddThemeConstantOverride("v_separation",12);scroll.AddChild(grid);
   skillReadouts=new Label[SkillNames.Length];skillBars=new ProgressBar[SkillNames.Length];var skills=LocalSkills();
   for(int i=0;i<SkillNames.Length;i++){
-   var panel=new PanelContainer{CustomMinimumSize=new(350,110),SizeFlagsHorizontal=Control.SizeFlags.ExpandFill};grid.AddChild(panel);
+   var panel=new PanelContainer{CustomMinimumSize=new(350,showDetailedInfo?110:70),SizeFlagsHorizontal=Control.SizeFlags.ExpandFill};grid.AddChild(panel);
    var margin=new MarginContainer();foreach(var k in new[]{"margin_left","margin_right","margin_top","margin_bottom"})margin.AddThemeConstantOverride(k,12);panel.AddChild(margin);var card=new VBoxContainer();margin.AddChild(card);
    skillReadouts[i]=new Label();skillReadouts[i].AddThemeFontSizeOverride("font_size",16);skillReadouts[i].AddThemeColorOverride("font_color",new Color(.87f,.76f,.49f));card.AddChild(skillReadouts[i]);
    skillBars[i]=new ProgressBar{MaxValue=1,ShowPercentage=false,CustomMinimumSize=new(0,8)};card.AddChild(skillBars[i]);
-   var training=new Label{Text=SkillTraining[i],AutowrapMode=TextServer.AutowrapMode.WordSmart,CustomMinimumSize=new(320,25)};training.AddThemeFontSizeOverride("font_size",12);card.AddChild(training);card.AddChild(new Label{Text=SkillBenefit(i,skills[i].Level),AutowrapMode=TextServer.AutowrapMode.WordSmart,CustomMinimumSize=new(320,30)});
+   var training=new Label{Text=SkillTraining[i],Visible=showDetailedInfo,AutowrapMode=TextServer.AutowrapMode.WordSmart,CustomMinimumSize=new(320,25)};training.AddThemeFontSizeOverride("font_size",12);card.AddChild(training);card.AddChild(new Label{Visible=showDetailedInfo,Text=SkillBenefit(i,skills[i].Level),AutowrapMode=TextServer.AutowrapMode.WordSmart,CustomMinimumSize=new(320,30)});
   }
   box.AddChild(new Label{Text=$"DEATH / All skills lose only their current XP. Earned levels stay.  •  Deaths: {game.Skills.Deaths}\nSkills save with your portable character, including when you join a friend's world. Maximum skill level: 100."});
   Button(box,"BACK TO EXPEDITION",CloseMenu);UpdateProgression();
@@ -38,7 +38,7 @@ public partial class MigrationScene {
   for(int i=0;i<SkillNames.Length;i++){
    if(skills[i].Level>seenSkillLevels[i]){
     if(levelToast==null){levelToast=new Label{Position=new(410,90),MouseFilter=Control.MouseFilterEnum.Ignore};levelToast.AddThemeFontSizeOverride("font_size",24);levelToast.AddThemeColorOverride("font_color",new Color(.96f,.83f,.48f));hudRoot.AddChild(levelToast);}
-    levelToast.Text=$"LEVEL UP / {SkillNames[i]} {skills[i].Level}\n{SkillBenefit(i,skills[i].Level)}";levelToastUntil=Time.GetTicksMsec()/1000.0+6;
+    levelToast.Text=$"LEVEL UP / {SkillNames[i]} {skills[i].Level}"+InfoSuffix(SkillBenefit(i,skills[i].Level));levelToastUntil=Time.GetTicksMsec()/1000.0+6;
    }
    seenSkillLevels[i]=skills[i].Level;
    if(skillReadouts!=null&&GodotObject.IsInstanceValid(skillReadouts[i])&&skillReadouts[i].IsInsideTree()){

@@ -17,13 +17,13 @@ public partial class MigrationScene {
  async Task ClientWeaponPartChecks(){
   // The production host permits 20 actions/second with an eight-action burst.
   // Fast CI round trips can exhaust that burst before the final equip request.
-  // Pace each request; do not retry mutations or bypass the real rate limiter.
-  async Task Send(string operation,string data){await CoopDelay(.075);CoopRequest(operation,data);}
+  // Pace against the same monotonic clock as the host limiter. A scene timer\n  // can count the frame in which it is created, shortening a 75ms delay.\n  // Do not retry mutations or bypass the real rate limiter.
+  async Task Send(string operation,string data){ulong ready=Time.GetTicksMsec()+75;while(Time.GetTicksMsec()<ready)await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);CoopRequest(operation,data);}
   workshopBudgetReady=false;RpcId(1,nameof(CoopCheckWorkshopBudget));
   await CoopWait(()=>workshopBudgetReady,"Workshop rate-budget fixture acknowledgement missing");
 
   foreach(var recipe in new[]{ExpeditionRecipe.All.First(r=>r.Kind=="weapon"&&r.Result==10),ExpeditionRecipe.All.First(r=>r.Kind=="weapon-mod"&&r.Result==0)}){
-   int index=Array.IndexOf(ExpeditionRecipe.All,recipe);await Send("research",index.ToString());await CoopWait(()=>game.Knows(recipe),"Weapon workshop research did not replicate");await Send("craft",index.ToString());await CoopWait(()=>recipe.Kind=="weapon"?game.Craft.Weapons.Contains(10):game.Craft.SpareParts.GetValueOrDefault(0)==1,"Weapon workshop crafting did not replicate");
+   int index=Array.IndexOf(ExpeditionRecipe.All,recipe);await Send("research",index.ToString());try{await CoopWait(()=>game.Knows(recipe),"Weapon workshop research did not replicate");}catch(Exception ex){throw new Exception($"Weapon workshop research failed / {recipe.Name} / {game.ResearchReason(recipe)} / {game.Craft.ResearchPoints} RP / host notice: {game.Notice}",ex);}await Send("craft",index.ToString());await CoopWait(()=>recipe.Kind=="weapon"?game.Craft.Weapons.Contains(10):game.Craft.SpareParts.GetValueOrDefault(0)==1,"Weapon workshop crafting did not replicate");
   }
   await Send("equip","10");await CoopWait(()=>game.Craft.Weapon==10,"Workshop equip missing");double stamina=game.MeleeCost;
   await Send("weaponpart","0|fit");await CoopWait(()=>game.Craft.FittedParts.TryGetValue(10,out var list)&&list.Contains(0),"Guest weapon part was not fitted by host");

@@ -12,7 +12,7 @@ public partial class MigrationScene {
  const float ScoreVolume=.24f;
  double musicLevel=65;float scoreIntensity=1;
  void SetMusicLevel(double value){musicLevel=Math.Clamp(value,0,100);int bus=AudioServer.GetBusIndex("Music");if(bus>=0)AudioServer.SetBusVolumeDb(bus,musicLevel<=0?-80:Mathf.LinearToDb((float)(musicLevel/100)));}
- void ShowMusicSettings(){var b=Panel("AUDIO / MUSIC");Text(b,"Quiet regional music follows the world, night and active danger. Music pauses in menus. U mutes all sound.");var value=new Label{Text="Music volume: "+(int)musicLevel+"%"};b.AddChild(value);var slider=new HSlider{MinValue=0,MaxValue=100,Step=1,Value=musicLevel,CustomMinimumSize=new Vector2(360,36)};b.AddChild(slider);slider.ValueChanged+=v=>{SetMusicLevel(v);value.Text="Music volume: "+(int)v+"%";var settings=new ConfigFile();settings.SetValue("audio","music",musicLevel);settings.Save("user://audio.cfg");};Button(b,"BACK",ShowPause);}
+ void ShowMusicSettings(){var b=Panel("AUDIO / MUSIC");Text(b,"Quiet regional music follows the world, night and active danger. Music pauses in menus. U mutes all sound.");var value=new Label{Text="Music volume: "+(int)musicLevel+"%"};b.AddChild(value);var slider=new HSlider{MinValue=0,MaxValue=100,Step=1,Value=musicLevel,CustomMinimumSize=new Vector2(360,36)};b.AddChild(slider);slider.ValueChanged+=v=>{SetMusicLevel(v);value.Text="Music volume: "+(int)v+"%";var settings=new ConfigFile();settings.SetValue("audio","music",musicLevel);settings.Save("user://audio.cfg");};Button(b,"BACK",ShowOptions);}
  void InitMusic(){
   if(testing||coopCheckRole!=null||DisplayServer.GetName()=="headless")return;
   int bus=AudioServer.GetBusIndex("Music");

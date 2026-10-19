@@ -24,7 +24,7 @@ sealed partial class ExpeditionGame {
  }
  public bool Drink(bool untreated=false){
   if(untreated){if(Life.RawWater<1){Notice="No untreated water";return false;}Life.RawWater--;Life.Drinks++;bool ill=World.Hash(Life.Drinks,Skills.Deaths+989)%100<35;if(ill){Life.Sickness=Math.Max(Life.Sickness,600);Life.Morale=Math.Max(0,Life.Morale-5);}Notice=ill?"Untreated water / stomach illness for 10 active minutes":"Drank untreated water / you avoided illness this time";}
-  else{if(Craft.Water<1){Notice="No clean water / boil or filter untreated water in Y";return false;}Craft.Water--;Notice="Drank clean water";}
+  else{if(Craft.Water<1){Notice="No clean water / boil or filter untreated water in Y";return false;}Craft.Water--;MarkFirstDay(0);Notice="Drank clean water";}
   Life.Hydration=Math.Min(100,Life.Hydration+45);return true;
  }
  public bool TreatWater(bool filter){bool membrane=Life.SurvivalTech.Contains(1);int count=Math.Min(Life.SurvivalTech.Contains(5)?4:2,Life.RawWater);if(count==0){Notice="Collect untreated water at a well first";return false;}if(filter){if(membrane?Craft.Fuel<1:!Life.SurvivalTech.Contains(0)||Craft.Materials[3]<1){Notice=membrane?"Membrane purification needs 1 fuel":"Needs a crafted charcoal filter and 1 forest resin";return false;}}else if(Craft.BenchTier<1||Craft.Materials[0]<2){Notice="Boiling needs a workbench and 2 timber";return false;}

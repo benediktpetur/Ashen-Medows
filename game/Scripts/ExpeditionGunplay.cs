@@ -26,7 +26,7 @@ public partial class MigrationScene {
   viewGunApplied=gun;
   if(gun){var offset=h.AimOffset();double brake=game.PartFactor(game.Craft.Weapon,p=>p.Recoil);offset.X-=h.RecoilX*(1-brake);offset.Y-=h.RecoilY*(1-brake);camera.Rotation=new(pitch+(float)(offset.Y*Math.PI/180),(float)(-offset.X*Math.PI/180),0);float kick=(float)Math.Max(0,1-h.SinceShot/.16);weaponRoot.RotationDegrees=new(kick*6,0,kick*2);}
   else camera.Rotation=new(pitch,0,0);
-  camera.Fov=Mathf.MoveToward(camera.Fov,Scoped?32:aiming?52:75,(float)dt*100);
+  float blend=(float)(1-Math.Exp(-dt*14));camera.Fov=Mathf.Lerp(camera.Fov,Scoped?32:aiming?52:75,blend);weaponRoot.Position=weaponRoot.Position.Lerp(aiming?new Vector3(0,-.15f,-.65f):new Vector3(.23f,-.23f,-.65f),blend);
   if(weaponCrosshair!=null){weaponCrosshair.Scoped=Scoped;weaponCrosshair.Spread=gun?(float)Math.Min(55,h.Spread(game)*6):0;weaponCrosshair.QueueRedraw();}
   if(handlingLabel==null){handlingLabel=HudLabel(13);ammoTypeLabel=HudLabel(11);}
   var size=GetViewport().GetVisibleRect().Size;
