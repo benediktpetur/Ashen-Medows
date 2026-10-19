@@ -3,20 +3,20 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-[DataContract] sealed class SoulUpgrade {
+[DataContract] sealed partial class SoulUpgrade {
  [DataMember] public string Id,Owner;
  [DataMember] public int Kind,Power;
  public static readonly string[] Names={"Penetrator core","Gyro stabilizer","Quickdraw limbs","Efficient drive","Balanced grip"};
  public string Description=>Names[Kind]+" / "+Power+"% "+(Kind==0?"bonus against armor":Kind==1?"less recoil":Kind==2?"faster bow draw":Kind==3?"chance to save saw fuel":"less melee stamina cost");
 }
-[DataContract] sealed class SoulModule {
+[DataContract] sealed partial class SoulModule {
  [DataMember] public string Id,Owner;
  [DataMember] public int Kind,Power,Upkeep;
  [DataMember] public double Charge;
  public static readonly string[] Names={"Waterworks core","Workshop heart","Watchtower relay","Greenhouse regulator","Expedition board"};
  public string Description=>Names[Kind]+" / +"+Power+"% "+new[]{"water production","station production speed","guard damage and detection range","crop production speed","resident work speed"}[Kind]+" / "+Upkeep+(Kind==3?" camp water":" camp food")+" per 5 active minutes";
 }
-[DataContract] sealed class SoulCompanionGear {
+[DataContract] sealed partial class SoulCompanionGear {
  [DataMember] public string Id,Owner;
  [DataMember] public int Damage,Speed;
  public string Description=>$"Pathfinder harness / companion damage +{Damage}% / attack speed +{Speed}%";

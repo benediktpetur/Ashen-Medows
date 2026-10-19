@@ -37,7 +37,7 @@ public partial class MigrationScene {
   scoreElapsed=170;MigrationChecks.Assert(ScoreContext()=="","Exploration includes silence");
   scoreElapsed=0;scoreDangerUntil=0;game.Life.Camps.Add(new(){Id="music-check",Seed=game.Save.Seed,X=player.Position.X,Z=player.Position.Z});MigrationChecks.Assert(ScoreContext()=="home","Camp warmth overrides region");
   for(int i=0;i<2;i++){scorePlayers[i]=new AudioStreamPlayer{Stream=GD.Load<AudioStream>("res://Audio/Music/home.wav")};AddChild(scorePlayers[i]);scorePlayers[i].Play();}scoreName="home";scoreGain[0]=.1f;paused=true;TickMusic(.1);MigrationChecks.Assert(scorePlayers[0].StreamPaused,"Menu pauses score");paused=false;muted=true;TickMusic(.1);MigrationChecks.Assert(scorePlayers[0].StreamPaused,"Global mute pauses score");
-  foreach(var music in scorePlayers){music.Stop();music.Stream=null;music.QueueFree();}scorePlayers[0]=scorePlayers[1]=null;await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
+  foreach(var music in scorePlayers){music.Stop();music.Stream=null;music.QueueFree();}scorePlayers[0]=scorePlayers[1]=null;SetProcess(false);SetPhysicsProcess(false);ClearChildren(worldRoot);ClearChildren(terrainRoot);ClearChildren(buildRoot);props.Clear();chunks.Clear();await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);await ToSignal(GetTree(),SceneTree.SignalName.PhysicsFrame);
   GD.Print("PASS / Adaptive music: 15 looping resources, regions, night, threat hold/release, camp, silence, pause and mute");GetTree().Quit();
  }catch(Exception ex){GD.PrintErr(ex);GetTree().Quit(1);}}
  // Only an engaged, audible/visible threat can escalate the score. Proximity alone never reveals ambushes.

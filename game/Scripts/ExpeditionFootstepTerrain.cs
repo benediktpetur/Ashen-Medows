@@ -19,7 +19,7 @@ public partial class MigrationScene {
  // Render and hearing use the same seeded foliage positions, including remote simulation chunks.
  List<Vector3> BrushPositions(int cx,int cz){
   var result=new List<Vector3>();var random=new Random(unchecked((int)game.World.Hash(cx+8041,cz-2303)));
-  for(int i=0;i<10;i++){
+  for(int i=0;i<28;i++){
    double x=cx*64+3+random.NextDouble()*58,z=cz*64+3+random.NextDouble()*58;
    int tier=game.World.Tier(x,z);
    if(tier>2||tier==1&&i>1||!game.World.Playable(x,z)||Math.Abs(x-game.World.RouteX(z))<9||game.World.Changes.OnPath(x,z))continue;

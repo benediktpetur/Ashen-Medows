@@ -1,0 +1,10 @@
+{
+  "PckSHA256": "E5E9F8BC5F10F034163DBDFAC3458EC3DC3C2287E3D5E40B4E87E2B0ABCD60F4",
+  "ForestView": "RouteX(-820)+170, Z=-820; eye-level interior",
+  "Seed": 431,
+  "NearbyTreesAfter": 166,
+  "Description": "Actual Godot screenshots from the exported Windows build. Wildlife is naturally seeded; hunting-crafting inventory quantities are staged in a disposable test profile. forest-before.png is the pre-change screenshot at the same viewpoint.",
+  "CapturedUtc": "2026-10-19T17:01:08.7234811Z",
+  "Protocol": 39,
+  "NearbyTreesBefore": 50
+}

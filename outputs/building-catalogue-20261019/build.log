@@ -1,0 +1,4 @@
+{"kind":"table","sheet":"Buildings","address":"A7:L11","rows":5,"cols":12,"values":[["ID","Building / piece","Category","Tier","Function","Width (m)","Height (m)","Depth (m)","Condition","Own weight","Load capacity","Capacity less own weight"],[0,"Foundation","Buildings",1,"structure",3,0.5,3,100,35,600,565],[1,"Floor","Buildings",1,"structure",3,0.2,3,100,12,110,98],[2,"Wall","Buildings",1,"structure",3,2.5,0.2,100,18,220,202],[3,"Half wall","Buildings",1,"structure",3,1.25,0.2,100,10,150,140]]}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Inspect result written to file: C:\Users\bened\Desktop\Forrit i vinslu\Leikur\AshenMeadow-Godot\Ashen-Medows\outputs\building-catalogue-20261019\Ashen-Meadows-Building-Catalogue.xlsx.inspect.ndjson
+Verified 105 buildables, 5 workshop upgrades, 105 capacity formulas and 7 live material totals.

@@ -1,0 +1,4 @@
+{"kind":"table","sheet":"Tier 2","address":"A7:F13","rows":7,"cols":6,"values":[["Enemy / encounter","Group","Tier","Solo / base HP","Basic attack damage","Chase speed (m/s)"],["Walker","Infected",2,85,13,1.6600000000000001],["Runner","Infected",2,74,13,2.49],["Bloater","Infected",2,184,13,1.0790000000000002],["Weeper","Special infected",2,360,32,3.4],["Night stalker","Night infected",2,85,13,4.201875000000001],["Night bloater","Night infected",2,184,13,1.3487500000000003]]}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Inspect result written to file: C:\Users\bened\Desktop\Forrit i vinslu\Leikur\AshenMeadow-Godot\Ashen-Medows\outputs\enemy-catalogue-20261019\Ashen-Meadows-Enemy-Catalogue.xlsx.inspect.ndjson
+{"tierEntries":[1,24,18,22,22],"totalTierEntries":87,"uniqueTemplates":41,"bosses":7,"specialists":10}

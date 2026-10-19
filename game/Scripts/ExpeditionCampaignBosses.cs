@@ -73,7 +73,8 @@ public partial class MigrationScene {
   if(authority.World.Changes.CampaignBosses.Contains(index)){RemoveEnemy(boss);return;}
   if(!authority.Change(()=>authority.World.Changes.CampaignBosses.Add(index))){boss.Hp=1;boss.BossState="recover";boss.BossTime=4;return;}
   if(!campaignParticipants.TryGetValue(boss.Id,out var participants))participants=new();foreach(var p in MillPlayers())if(Distance(p.Body.Position,boss.Home)<70)participants.Add(p.Game);
-  foreach(var character in participants)ClaimCampaignReward(character,index);
+  var eligible=MillPlayers().Where(p=>Distance(p.Body.Position,boss.Home)<70).Select(p=>p.Game).ToArray();
+  foreach(var character in participants){var before=character.BossTradeItems().Select(i=>i.Id).ToHashSet();ClaimCampaignReward(character,index);character.BindBossRewards(before,boss.Id,eligible.Select(c=>c.Life.SoulOwner).Append(character.Life.SoulOwner));}
   campaignParticipants.Remove(boss.Id);ClearBrood();if(index==2)QueueBrood(boss,6);BloodImpact(boss.Body.Position+Vector3.Up,Vector3.Up,30);DeathRemains(boss);RemoveEnemy(boss);
   foreach(var add in infected.Where(e=>e.Id.StartsWith(boss.Id+"/add/")).ToArray())RemoveEnemy(add);
   ClearMillPools();authority.Notice=index==2?"SOUTH BANK SECURED / legendary heart recovered. Upgrade a maximum-tier weapon at workshop 5.":ExpeditionCampaign.Names[index].ToUpperInvariant()+" DEFEATED / new equipment, supplies and research";

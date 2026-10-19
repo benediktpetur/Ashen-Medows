@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 public partial class MigrationScene {
  async System.Threading.Tasks.Task MegaSpecialistChecks(){
+  BossTradingLogicChecks();
   var sample=new ExpeditionGame(System.IO.Path.Combine(System.IO.Path.GetTempPath(),"ashen-mega-"+Guid.NewGuid()+".json")){NoDiskSave=true};
   for(int v=0;v<3;v++)for(int i=0;i<40;i++)sample.ClaimMegaLoot($"table/{v}/{i}",v,MegaNames[v],($"roll/{v}/{i}").GetHashCodeStable());
   MigrationChecks.Assert(sample.Life.Souls.Count==40&&sample.Profile.Items.Count==40&&sample.Life.SoulModules.Count==40,"Each boss grants only its specialist primary loot");

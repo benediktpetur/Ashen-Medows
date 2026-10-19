@@ -30,6 +30,8 @@ sealed partial class ExpeditionCraftState {
 sealed partial class ExpeditionGame {
  public static int WeaponParent(int id)=>id switch{10=>8,11=>9,6=>12,14=>10,15=>10,16=>11,17=>14,18=>6,19=>18,20=>23,21=>14,23=>22,24=>23,25=>24,26=>25,27=>17,3=>2,4=>3,5=>4,7=>0,28=>0,29=>0,30=>7,31=>2,32=>18,33=>16,_=>-1};
  public ExpeditionRecipe ResearchParent(ExpeditionRecipe r){
+  if(r.Kind=="build"&&BuildDefinition.All[r.Result].Opening is "doorway" or "window")return ExpeditionRecipe.All.FirstOrDefault(p=>p.Kind=="build"&&p.Tier==r.Tier&&BuildDefinition.All[p.Result].Function=="structure"&&BuildDefinition.All[p.Result].BaseKind==2);
+  if(r.Kind=="build"&&BuildDefinition.All[r.Result].Opening=="gate")return ExpeditionRecipe.All.FirstOrDefault(p=>p.Kind=="build"&&p.Tier==r.Tier-1&&BuildDefinition.All[p.Result].Opening=="gate");
   if(r.Kind=="armor")return ExpeditionRecipe.All.Where(p=>p.Kind=="armor"&&p.Result==r.Result&&p.Tier<r.Tier).OrderByDescending(p=>p.Tier).FirstOrDefault();
   if(r.Kind=="survival-tech"&&r.Result is 1 or 5)return ExpeditionRecipe.All.FirstOrDefault(p=>p.Kind=="survival-tech"&&p.Result==0);
   if(r.Kind=="build"&&r.Tier>1){var d=BuildDefinition.All[r.Result];return ExpeditionRecipe.All.Where(p=>p.Kind=="build"&&p.Tier<r.Tier&&ResearchFamily(p)==ResearchFamily(r)&&BuildDefinition.All[p.Result].Function==d.Function&&(d.Function!="structure"||BuildDefinition.All[p.Result].BaseKind==d.BaseKind)).OrderByDescending(p=>p.Tier).FirstOrDefault();}

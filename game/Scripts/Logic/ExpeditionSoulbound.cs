@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-[DataContract] sealed class SoulboundWeapon {
+[DataContract] sealed partial class SoulboundWeapon {
  [DataMember] public string Id,Owner,Name,Source;
  [DataMember] public int Weapon,Damage,Capacity,Accuracy,Reload;
  public string Stats=>ExpeditionGame.IsGun(Weapon)?$"Damage {Damage:+0;-0;0}% / magazine {Capacity:+0;-0;0}% / spread {Accuracy:+0;-0;0}% / reload time {Reload:+0;-0;0}%":$"Damage {Damage:+0;-0;0}% / {(ExpeditionGame.IsBow(Weapon)?"arrow speed":"stamina efficiency")} {Capacity/2.0:+0.0;-0.0;0}% / {(ExpeditionGame.IsBow(Weapon)?"draw time":"attack recovery")} {Accuracy/2.0:+0.0;-0.0;0}% / noise {Reload:+0;-0;0}%";

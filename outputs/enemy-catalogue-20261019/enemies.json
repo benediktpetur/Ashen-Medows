@@ -1,0 +1,588 @@
+{
+  "date": "2026-10-19",
+  "seed": 431,
+  "special": [
+    {
+      "kind": "mossback",
+      "name": "Mossback",
+      "min": 2,
+      "max": 3,
+      "health": 105.0,
+      "speed": 0.9,
+      "night": false,
+      "role": "Woodland ambusher",
+      "counter": "Watch the moss-covered silhouette; it wakes at close range or from noise.",
+      "habitat": "Dense woodland away from the main route"
+    },
+    {
+      "kind": "howler",
+      "name": "Bell-throat",
+      "min": 2,
+      "max": 5,
+      "health": 90.0,
+      "speed": 1.0,
+      "night": false,
+      "role": "Alarm infected",
+      "counter": "Interrupt its raised-head scream before it alerts nearby infected.",
+      "habitat": "Woodland, roads, abandoned homes and ruins"
+    },
+    {
+      "kind": "bilecaster",
+      "name": "Bilecaster",
+      "min": 2,
+      "max": 5,
+      "health": 100.0,
+      "speed": 0.8,
+      "night": false,
+      "role": "Ranged area denial",
+      "counter": "Leave the green target circle; close the gap during recovery.",
+      "habitat": "Medical sites, drains, sewers and contaminated works"
+    },
+    {
+      "kind": "gravecrawler",
+      "name": "Gravecrawler",
+      "min": 2,
+      "max": 5,
+      "health": 85.0,
+      "speed": 0.8,
+      "night": false,
+      "role": "Low ambusher",
+      "counter": "Look down near graves and ruins; its low body can approach under your aim.",
+      "habitat": "Grave sites and ruined buildings"
+    },
+    {
+      "kind": "roadbreaker",
+      "name": "Roadbreaker",
+      "min": 3,
+      "max": 5,
+      "health": 230.0,
+      "speed": 1.05,
+      "night": false,
+      "role": "Charging brute",
+      "counter": "Sidestep the committed rush, then punish its long recovery.",
+      "habitat": "Highways, garages and industrial works"
+    },
+    {
+      "kind": "cinder",
+      "name": "Cinder Host",
+      "min": 3,
+      "max": 5,
+      "health": 140.0,
+      "speed": 0.8,
+      "night": false,
+      "role": "Volatile rare",
+      "counter": "Back away when it ignites on death; the remains leave burning ground.",
+      "habitat": "Garages, rail yards, utility sites and industrial works"
+    },
+    {
+      "kind": "riot",
+      "name": "Riot Husk",
+      "min": 4,
+      "max": 5,
+      "health": 310.0,
+      "speed": 0.65,
+      "night": false,
+      "role": "Shielded elite",
+      "counter": "Flank the shield or aim above it. Frontal body hits are heavily resisted.",
+      "habitat": "Checkpoints, civic security sites, hospital security and tower interiors"
+    },
+    {
+      "kind": "wirebound",
+      "name": "Wirebound",
+      "min": 3,
+      "max": 5,
+      "health": 160.0,
+      "speed": 0.95,
+      "night": false,
+      "role": "Stamina disruptor",
+      "counter": "Dodge the purple strike marker. Its wire lash drains stamina without rooting you.",
+      "habitat": "Utility sites, industrial works, checkpoints and sewers"
+    },
+    {
+      "kind": "blooddrinker",
+      "name": "Blooddrinker",
+      "min": 4,
+      "max": 5,
+      "health": 245.0,
+      "speed": 1.2,
+      "night": false,
+      "role": "Sustaining elite",
+      "counter": "Avoid its melee strikes; successful hits restore its health.",
+      "habitat": "Hospitals, medical sites and abandoned city housing"
+    },
+    {
+      "kind": "palehunter",
+      "name": "Pale Hunter",
+      "min": 4,
+      "max": 5,
+      "health": 360.0,
+      "speed": 1.45,
+      "night": true,
+      "role": "Night/depths elite",
+      "counter": "Track its flanking approach and sidestep the telegraphed leap.",
+      "habitat": "City homes/ruins at night; suitable Tier 5 underground areas"
+    }
+  ],
+  "health": [
+    {
+      "tier": 1,
+      "kind": "walker",
+      "hp": 65.0
+    },
+    {
+      "tier": 1,
+      "kind": "runner",
+      "hp": 57.0
+    },
+    {
+      "tier": 1,
+      "kind": "stalker",
+      "hp": 65.0
+    },
+    {
+      "tier": 1,
+      "kind": "bloater",
+      "hp": 152.0
+    },
+    {
+      "tier": 1,
+      "kind": "bruiser",
+      "hp": 175.0
+    },
+    {
+      "tier": 1,
+      "kind": "armored",
+      "hp": 124.0
+    },
+    {
+      "tier": 1,
+      "kind": "weeper",
+      "hp": 320.0
+    },
+    {
+      "tier": 1,
+      "kind": "worm",
+      "hp": 18.0
+    },
+    {
+      "tier": 1,
+      "kind": "mossback",
+      "hp": 105.0
+    },
+    {
+      "tier": 1,
+      "kind": "howler",
+      "hp": 90.0
+    },
+    {
+      "tier": 1,
+      "kind": "bilecaster",
+      "hp": 100.0
+    },
+    {
+      "tier": 1,
+      "kind": "gravecrawler",
+      "hp": 85.0
+    },
+    {
+      "tier": 1,
+      "kind": "roadbreaker",
+      "hp": 230.0
+    },
+    {
+      "tier": 1,
+      "kind": "cinder",
+      "hp": 140.0
+    },
+    {
+      "tier": 1,
+      "kind": "riot",
+      "hp": 310.0
+    },
+    {
+      "tier": 1,
+      "kind": "wirebound",
+      "hp": 160.0
+    },
+    {
+      "tier": 1,
+      "kind": "blooddrinker",
+      "hp": 245.0
+    },
+    {
+      "tier": 1,
+      "kind": "palehunter",
+      "hp": 360.0
+    },
+    {
+      "tier": 2,
+      "kind": "walker",
+      "hp": 85.0
+    },
+    {
+      "tier": 2,
+      "kind": "runner",
+      "hp": 74.0
+    },
+    {
+      "tier": 2,
+      "kind": "stalker",
+      "hp": 85.0
+    },
+    {
+      "tier": 2,
+      "kind": "bloater",
+      "hp": 184.0
+    },
+    {
+      "tier": 2,
+      "kind": "bruiser",
+      "hp": 200.0
+    },
+    {
+      "tier": 2,
+      "kind": "armored",
+      "hp": 148.0
+    },
+    {
+      "tier": 2,
+      "kind": "weeper",
+      "hp": 360.0
+    },
+    {
+      "tier": 2,
+      "kind": "worm",
+      "hp": 18.0
+    },
+    {
+      "tier": 2,
+      "kind": "mossback",
+      "hp": 105.0
+    },
+    {
+      "tier": 2,
+      "kind": "howler",
+      "hp": 90.0
+    },
+    {
+      "tier": 2,
+      "kind": "bilecaster",
+      "hp": 100.0
+    },
+    {
+      "tier": 2,
+      "kind": "gravecrawler",
+      "hp": 85.0
+    },
+    {
+      "tier": 2,
+      "kind": "roadbreaker",
+      "hp": 230.0
+    },
+    {
+      "tier": 2,
+      "kind": "cinder",
+      "hp": 140.0
+    },
+    {
+      "tier": 2,
+      "kind": "riot",
+      "hp": 310.0
+    },
+    {
+      "tier": 2,
+      "kind": "wirebound",
+      "hp": 160.0
+    },
+    {
+      "tier": 2,
+      "kind": "blooddrinker",
+      "hp": 245.0
+    },
+    {
+      "tier": 2,
+      "kind": "palehunter",
+      "hp": 360.0
+    },
+    {
+      "tier": 3,
+      "kind": "walker",
+      "hp": 105.0
+    },
+    {
+      "tier": 3,
+      "kind": "runner",
+      "hp": 91.0
+    },
+    {
+      "tier": 3,
+      "kind": "stalker",
+      "hp": 105.0
+    },
+    {
+      "tier": 3,
+      "kind": "bloater",
+      "hp": 216.0
+    },
+    {
+      "tier": 3,
+      "kind": "bruiser",
+      "hp": 225.0
+    },
+    {
+      "tier": 3,
+      "kind": "armored",
+      "hp": 172.0
+    },
+    {
+      "tier": 3,
+      "kind": "weeper",
+      "hp": 400.0
+    },
+    {
+      "tier": 3,
+      "kind": "worm",
+      "hp": 18.0
+    },
+    {
+      "tier": 3,
+      "kind": "mossback",
+      "hp": 123.0
+    },
+    {
+      "tier": 3,
+      "kind": "howler",
+      "hp": 108.0
+    },
+    {
+      "tier": 3,
+      "kind": "bilecaster",
+      "hp": 118.0
+    },
+    {
+      "tier": 3,
+      "kind": "gravecrawler",
+      "hp": 103.0
+    },
+    {
+      "tier": 3,
+      "kind": "roadbreaker",
+      "hp": 230.0
+    },
+    {
+      "tier": 3,
+      "kind": "cinder",
+      "hp": 140.0
+    },
+    {
+      "tier": 3,
+      "kind": "riot",
+      "hp": 310.0
+    },
+    {
+      "tier": 3,
+      "kind": "wirebound",
+      "hp": 160.0
+    },
+    {
+      "tier": 3,
+      "kind": "blooddrinker",
+      "hp": 245.0
+    },
+    {
+      "tier": 3,
+      "kind": "palehunter",
+      "hp": 360.0
+    },
+    {
+      "tier": 4,
+      "kind": "walker",
+      "hp": 125.0
+    },
+    {
+      "tier": 4,
+      "kind": "runner",
+      "hp": 108.0
+    },
+    {
+      "tier": 4,
+      "kind": "stalker",
+      "hp": 125.0
+    },
+    {
+      "tier": 4,
+      "kind": "bloater",
+      "hp": 248.0
+    },
+    {
+      "tier": 4,
+      "kind": "bruiser",
+      "hp": 250.0
+    },
+    {
+      "tier": 4,
+      "kind": "armored",
+      "hp": 196.0
+    },
+    {
+      "tier": 4,
+      "kind": "weeper",
+      "hp": 440.0
+    },
+    {
+      "tier": 4,
+      "kind": "worm",
+      "hp": 18.0
+    },
+    {
+      "tier": 4,
+      "kind": "mossback",
+      "hp": 141.0
+    },
+    {
+      "tier": 4,
+      "kind": "howler",
+      "hp": 126.0
+    },
+    {
+      "tier": 4,
+      "kind": "bilecaster",
+      "hp": 136.0
+    },
+    {
+      "tier": 4,
+      "kind": "gravecrawler",
+      "hp": 121.0
+    },
+    {
+      "tier": 4,
+      "kind": "roadbreaker",
+      "hp": 248.0
+    },
+    {
+      "tier": 4,
+      "kind": "cinder",
+      "hp": 158.0
+    },
+    {
+      "tier": 4,
+      "kind": "riot",
+      "hp": 310.0
+    },
+    {
+      "tier": 4,
+      "kind": "wirebound",
+      "hp": 178.0
+    },
+    {
+      "tier": 4,
+      "kind": "blooddrinker",
+      "hp": 245.0
+    },
+    {
+      "tier": 4,
+      "kind": "palehunter",
+      "hp": 360.0
+    },
+    {
+      "tier": 5,
+      "kind": "walker",
+      "hp": 145.0
+    },
+    {
+      "tier": 5,
+      "kind": "runner",
+      "hp": 125.0
+    },
+    {
+      "tier": 5,
+      "kind": "stalker",
+      "hp": 145.0
+    },
+    {
+      "tier": 5,
+      "kind": "bloater",
+      "hp": 280.0
+    },
+    {
+      "tier": 5,
+      "kind": "bruiser",
+      "hp": 275.0
+    },
+    {
+      "tier": 5,
+      "kind": "armored",
+      "hp": 220.0
+    },
+    {
+      "tier": 5,
+      "kind": "weeper",
+      "hp": 480.0
+    },
+    {
+      "tier": 5,
+      "kind": "worm",
+      "hp": 18.0
+    },
+    {
+      "tier": 5,
+      "kind": "mossback",
+      "hp": 159.0
+    },
+    {
+      "tier": 5,
+      "kind": "howler",
+      "hp": 144.0
+    },
+    {
+      "tier": 5,
+      "kind": "bilecaster",
+      "hp": 154.0
+    },
+    {
+      "tier": 5,
+      "kind": "gravecrawler",
+      "hp": 139.0
+    },
+    {
+      "tier": 5,
+      "kind": "roadbreaker",
+      "hp": 266.0
+    },
+    {
+      "tier": 5,
+      "kind": "cinder",
+      "hp": 176.0
+    },
+    {
+      "tier": 5,
+      "kind": "riot",
+      "hp": 328.0
+    },
+    {
+      "tier": 5,
+      "kind": "wirebound",
+      "hp": 196.0
+    },
+    {
+      "tier": 5,
+      "kind": "blooddrinker",
+      "hp": 263.0
+    },
+    {
+      "tier": 5,
+      "kind": "palehunter",
+      "hp": 378.0
+    }
+  ],
+  "storyGuardians": [
+    {
+      "index": 5,
+      "tier": 2
+    },
+    {
+      "index": 6,
+      "tier": 2
+    }
+  ]
+}

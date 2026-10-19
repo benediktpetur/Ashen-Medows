@@ -29,8 +29,8 @@ public partial class MigrationScene {
   if(!authority.Change(()=>authority.World.Changes.MegaVictories++)){boss.Hp=1;return;}
   if(!campaignParticipants.TryGetValue(boss.Id,out var participants))participants=new();
   foreach(var p in MillPlayers().Where(p=>p.Game.Life.Health>0&&Distance(p.Body.Position,boss.Home)<65))participants.Add(p.Game);
-  foreach(var character in participants.Where(c=>MillPlayers().Any(p=>p.Game==c&&c.Life.Health>0&&Distance(p.Body.Position,boss.Home)<65)))
-   character.ClaimMegaLoot(boss.Id+"/soul",MegaVariant(boss.Id),MegaNames[MegaVariant(boss.Id)],Guid.NewGuid().GetHashCode());
+  var eligible=participants.Where(c=>MillPlayers().Any(p=>p.Game==c&&c.Life.Health>0&&Distance(p.Body.Position,boss.Home)<65)).ToArray();
+  foreach(var character in eligible){var before=character.BossTradeItems().Select(i=>i.Id).ToHashSet();character.ClaimMegaLoot(boss.Id+"/soul",MegaVariant(boss.Id),MegaNames[MegaVariant(boss.Id)],Guid.NewGuid().GetHashCode());character.BindBossRewards(before,boss.Id,eligible.Select(c=>c.Life.SoulOwner));}
   ClearMegaChildren(boss);campaignParticipants.Remove(boss.Id);ClearBrood();ClearMillPools();BloodImpact(boss.Body.Position+Vector3.Up,Vector3.Up,40);DeathRemains(boss);RemoveEnemy(boss);
   foreach(var add in infected.Where(e=>e.Id.StartsWith(boss.Id+"/add/")).ToArray())RemoveEnemy(add);
   authority.Notice="MEGA BOSS DEFEATED / Soulbound drop in Inventory > Soulbound armory";
@@ -39,7 +39,7 @@ public partial class MigrationScene {
  void ShowSoulArmory(){
   var box=Panel("SOULBOUND / ARMORY AND CAMP RELICS");var scroll=new ScrollContainer{CustomMinimumSize=new(900,400)};box.AddChild(scroll);var list=new VBoxContainer{CustomMinimumSize=new(860,0)};scroll.AddChild(list);
   void Action(string label,string op){Button(list,label,()=>{if(!CoopRequest("campaign","soul:"+op))SoulAction("soul:"+op);ShowSoulArmory();});}
-  Text(list,"TIER 5 / THREE DISTINCT LOOT TABLES\n8 night catalysts per hunt; five-minute world cooldown. Summon at the pumping chamber console after defeating the Broodheart. One guaranteed specialist drop for each living player present at victory. All relics belong to your character across death and servers.");
+  Text(list,"TIER 5 / THREE DISTINCT LOOT TABLES\n8 night catalysts per hunt; five-minute world cooldown. Summon at the pumping chamber console after defeating the Broodheart. One guaranteed specialist drop for each living player present at victory. Relics persist across death and servers. New drops can be traded only within their original kill group.");
   foreach(int i in new[]{2,0,1}){int n=i;Text(list,MegaNames[i].ToUpperInvariant()+" / "+(i==2?"WEAPONS: legendary gun, bow or melee weapon + one upgrade; 20% second upgrade. Dodge scrap volleys and canisters; counterattack during overheat.":i==0?"ARMOR: one legendary rolled armor piece + 3 reinforcement plates; 25% rare ward. Break the amber growths to expose its shell. Slow slams and charges.":"COMMUNITY: one rolled camp module + 3 community parts; 25% companion harness. Destroy nests to shrink each wave, then attack during the recovery break."));Button(list,"SUMMON / "+MegaNames[i],()=>{if(!CoopRequest("campaign","mega:"+n))SoulAction("mega:"+n);});}
   Text(list,"WEAPON COPIES / positive damage and capacity improve stats; negative spread/reload is better. Bows roll arrow speed, draw time and noise; melee rolls stamina efficiency, attack recovery and noise.");
   foreach(var item in game.Life.Souls){Text(list,item.Name+" / "+item.Source+"\n"+item.Stats);Action(game.ActiveSoul?.Id==item.Id?"EQUIPPED":"EQUIP THIS COPY",item.Id);}
@@ -51,6 +51,6 @@ public partial class MigrationScene {
   foreach(var m in game.World.Changes.CampModules){Text(list,"INSTALLED / "+m.Description+$" / funded {m.Charge:0}s");if(m.Owner==game.Life.SoulOwner)Action("REMOVE MODULE","remove/"+m.Id);}
   foreach(var m in game.Life.SoulModules){Text(list,m.Description+" / "+game.ModuleGate(m.Kind));Action("INSTALL MODULE","install/"+m.Id);Action("TUNE MODULE / 3 PARTS","tune/"+m.Id);}
   foreach(var m in game.Life.SoulCompanions)Action((game.Life.ActiveCompanionGear==m.Id?"ACTIVE / ":"")+m.Description,"companion/"+m.Id);
-  Text(box,game.Notice);Button(box,"BACK TO EXPEDITION",CloseMenu);
+  Button(box,"TRADE WITH YOUR BOSS KILL GROUP",ShowBossTrades);Text(box,game.Notice);Button(box,"BACK TO EXPEDITION",CloseMenu);
  }
 }
