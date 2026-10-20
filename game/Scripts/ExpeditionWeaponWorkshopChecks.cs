@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public partial class MigrationScene {
  void WeaponWorkshopChecks(){var original=game;try{
   game=new ExpeditionGame(ProjectSettings.GlobalizePath("user://tests/workshop-"+Guid.NewGuid()+".json")){NoDiskSave=true};
-  game.Craft.BenchTier=game.Craft.UnlockedTier=5;game.Career.Level=2;game.Skills.Crafting.Level=5;game.Craft.Materials=Enumerable.Repeat(200,7).ToArray();
+  game.Craft.BenchTier=game.Craft.UnlockedTier=5;game.Career.Level=2;game.Skills.Crafting.Level=5;game.Craft.Materials=Enumerable.Repeat(200,7).ToArray();game.Craft.ScrapMetal=200;
   foreach(var recipe in ExpeditionRecipe.All){var visited=new HashSet<string>();var node=recipe;while(node!=null){MigrationChecks.Assert(visited.Add(ExpeditionGame.ResearchId(node)),"Acyclic research graph / "+recipe.Name);node=game.ResearchParent(node);}}
   var smg=ExpeditionRecipe.All.First(r=>r.Kind=="weapon"&&r.Result==29);MigrationChecks.Assert(game.ResearchReason(smg).Contains("Trail pistol"),"Real predecessor blocks research");
   var pistol=ExpeditionRecipe.All.First(r=>r.Kind=="weapon"&&r.Result==0);game.Craft.Researched.Add(ExpeditionGame.ResearchId(pistol));MigrationChecks.Assert(game.ResearchReason(smg)=="Ready","Weapon path available after foundation");
@@ -24,7 +24,7 @@ public partial class MigrationScene {
   game.Equip(33);Make(0);Make(1);double cost=game.MeleeCost,damage=game.Damage(false);game.FitPart(0);MigrationChecks.Assert(game.MeleeCost<cost,"Grip reduces actual stamina cost");game.FitPart(1);MigrationChecks.Assert(game.Damage(false)>damage&&game.SoulMeleeDelay>ExpeditionGame.WeaponDelay(33),"Weighted head affects actual damage and timing");
   MigrationChecks.Assert(PackItems().Any(i=>i.Kind=="weapon-mod"&&i.Index==3&&i.Count==1),"Spare parts appear as real inventory entries");
   var state=Json.Read<ExpeditionGameSave>(Json.Write(game.Save));MigrationChecks.Assert(state.Profile.Crafting.FittedParts[33].Count==2&&state.Profile.Crafting.SpareParts[3]==1,"Portable saved parts and inventory");
-  game.Life.WeaponQuality=new int[28];game.Craft.Magazines=new int[28];game.Normalize();MigrationChecks.Assert(game.Life.WeaponQuality.Length==34&&game.Craft.Magazines.Length==34,"Old saves expand without losing weapons");
+  game.Life.WeaponQuality=new int[28];game.Craft.Magazines=new int[28];game.Normalize();MigrationChecks.Assert(game.Life.WeaponQuality.Length==ExpeditionGame.GunNames.Length&&game.Craft.Magazines.Length==ExpeditionGame.GunNames.Length,"Old saves expand without losing weapons");
   MigrationChecks.Assert(ExpeditionRecipe.All.Where(r=>r.Kind=="weapon-mod").Sum(game.ResearchCost)>0&&ExpeditionRecipe.All.Sum(game.ResearchCost)>ExpeditionGame.ResearchBudget,"Finite research cannot buy every branch");
   GD.Print("PASS / weapon workshop: acyclic dependencies, specialization, six craftable weapon models, twelve compatible parts, real stats, slots, ammo conservation, duplicate rejection and portable old-save migration");
  }finally{game=original;}}

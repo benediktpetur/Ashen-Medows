@@ -32,7 +32,7 @@ public partial class MigrationScene {
   var size=GetViewport().GetVisibleRect().Size;
   handlingLabel.Position=new(size.X*.5f-175,size.Y-240);
   handlingLabel.Text=gun&&aiming?h.HoldingBreath?$"BREATH HELD / {Math.Max(0,h.BreathLimit(game.Skills.Marksmanship.Level)-h.BreathTime):0.0}s / STAMINA {game.Stamina:0}":h.BreathCooldown>0?$"CATCH YOUR BREATH / {h.BreathCooldown:0.0}s":h.Speed>=.35?"STOP MOVING / SHIFT TO STEADY AIM":"HOLD SHIFT / STEADY AIM":game.Craft.Weapon==27?$"Q / FLAME EXHAUST / {(h.SpecialCooldown>0?$"{h.SpecialCooldown:0.0}s":"READY")} / 8 FUEL + 4 CELLS":"";
-  ammoTypeLabel.Position=new(size.X-270,size.Y-48);ammoTypeLabel.Text=gun?ExpeditionGame.AmmoNames[game.Craft.AmmoClass].ToUpperInvariant():game.Craft.Weapon==27?$"ENERGY CELLS {game.Craft.Stock(4)} / ELECTRIC CHAIN":"";
+  ammoTypeLabel.Position=new(size.X-270,size.Y-48);ammoTypeLabel.Text=game.Craft.Weapon==34?"FLAMETHROWER / FUEL "+game.Craft.Fuel:ExpeditionGame.IsBow(game.Craft.Weapon)?ExpeditionGame.ArrowNames[game.Craft.ArrowType].ToUpperInvariant():gun?ExpeditionGame.AmmoNames[game.Craft.AmmoClass].ToUpperInvariant():game.Craft.Weapon==27?$"ENERGY CELLS {game.Craft.Stock(4)} / ELECTRIC CHAIN":"";
  }
  void AmmoPackModel(Node3D root,int type){
   Color color=type==0?new(.45f,.38f,.19f):type==1?new(.25f,.37f,.25f):type==2?new(.33f,.37f,.43f):type==3?new(.56f,.19f,.13f):new(.12f,.45f,.55f);

@@ -8,7 +8,7 @@ sealed partial class ExpeditionCraftState {
 }
 sealed partial class ExpeditionGame {
  public const int ResearchBudget=48;
- public string ResearchFamily(ExpeditionRecipe r){
+ public string ResearchFamily(ExpeditionRecipe r){if(r.Kind=="fieldkit")return FieldRecipe.All[r.Result].Kind=="arrow"?"Ranger":FieldRecipe.All[r.Result].Kind=="throw"?"Trapper":"Pathfinder";
   if(r.Kind=="armor")return "Armorer";if(r.Kind=="weapon-mod")return WeaponPart.All[r.Result].Family;if(r.Kind=="legendary"||r.Kind=="night")return IsBow(Craft.Weapon)?"Ranger":IsMelee(Craft.Weapon)?"Brawler":"Ballistics";string tab=ResearchTab(r);
   if(tab=="Weapons and armor")return r.Kind=="weapon"?IsBow(r.Result)?"Ranger":IsMelee(r.Result)?"Brawler":"Ballistics":r.Kind=="armor"?"Brawler":"Ballistics";
   if(tab=="Defenses")return r.Kind=="build"&&BuildDefinition.All[r.Result].Function is "turret" or "electric" or "electrictrap"?"Sentinel":r.Kind=="build"&&BuildDefinition.All[r.Result].Function is "trap" or "lure" or "alarm"?"Trapper":"Fortifier";

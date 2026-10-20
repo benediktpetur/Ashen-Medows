@@ -20,7 +20,7 @@ public partial class MigrationScene {
  }
  void ShowWorldManagement(){
   var b=Panel("WORLD & SAVES");Text(b,"Your character is saved outside the game’s installation. Each seed keeps its own buildings and world changes.");
-  Button(b,"RETURN TO SOUTHEAST TRAILHEAD",()=>{if(CoopActive){game.Notice="Leave co-op before relocating.";ShowWorldManagement();return;}ExitDungeon(false);ClearEnemies();Teleport(ExpeditionWorld.SpawnX,ExpeditionWorld.SpawnZ);game.Persist();CloseMenu();});
+  Button(b,"RETURN TO BRIAR LANE / STARTING SUBURB",()=>{if(CoopActive){game.Notice="Leave co-op before relocating.";ShowWorldManagement();return;}ExitDungeon(false);ClearEnemies();Teleport(ExpeditionWorld.SpawnX,ExpeditionWorld.SpawnZ);game.Persist();CloseMenu();});
   Text(b,"World seed");var seed=new SpinBox{MinValue=1,MaxValue=999999,Value=game.Save.Seed};b.AddChild(seed);
   Button(b,"OPEN SELECTED WORLD",()=>{if(CoopActive){game.Notice="Leave co-op before switching worlds.";ShowWorldManagement();return;}ExitDungeon(false);game.Change(()=>{game.Save.Seed=(int)seed.Value;game.Save.X=ExpeditionWorld.SpawnX;game.Save.Z=ExpeditionWorld.SpawnZ;game.Normalize();});ClearEnemies();ClearChildren(worldRoot);props.Clear();uniqueObjects.Clear();RebuildTerrain();SyncStructures();Teleport(ExpeditionWorld.SpawnX,ExpeditionWorld.SpawnZ);CloseMenu();});
   b.AddChild(new HSeparator());Text(b,"Legacy import replaces this character and keeps the previous save as a .bak backup.");Button(b,"IMPORT LEGACY CHARACTER",ImportDialog);

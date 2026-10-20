@@ -9,7 +9,7 @@ public partial class MigrationScene {
  static string DogPackId(string id)=>Species(id)=="dog"?id[..id.LastIndexOf('/')]:"";
  IEnumerable<Infected> DogMates(Infected dog)=>(dogPackSource??infected).Where(e=>e!=dog&&Species(e.Id)=="dog"&&DogPackId(e.Id)==DogPackId(dog.Id)&&Distance(e.Body.Position,dog.Body.Position)<35);
  void AlertDogPack(Infected dog,Vector3 target){dog.Memory=9;dog.Target=target;foreach(var mate in DogMates(dog)){mate.Memory=9;mate.Target=target;}}
- bool DogSees(Infected dog){float distance=Distance(dog.Body.Position,player.Position);float range=dog.Memory>0?26:Math.Min(23,(float)game.VisualRange);if(distance>range)return false;var delta=player.Position-dog.Body.Position;if(distance>3&&(-dog.Body.Basis.Z).Dot(delta.Normalized())<-.15)return false;return AnimalSight(dog,range);}
+ bool DogSees(Infected dog){if(FieldSmoke(dog.Body.Position+Vector3.Up,player.Position+Vector3.Up))return false;float distance=Distance(dog.Body.Position,player.Position);float range=dog.Memory>0?26:Math.Min(23,(float)game.VisualRange);if(distance>range)return false;var delta=player.Position-dog.Body.Position;if(distance>3&&(-dog.Body.Basis.Z).Dot(delta.Normalized())<-.15)return false;return AnimalSight(dog,range);}
  Vector3 DogGoal(Infected dog){
   if(dog.Memory<=0)return dog.Home+new Vector3((float)Math.Sin(game.Clock*.11+DogPackId(dog.Id).GetHashCodeStable())*5,0,(float)Math.Cos(game.Clock*.11)*5);
   if(Distance(dog.Body.Position,dog.Target)<2.8f)return dog.Target;

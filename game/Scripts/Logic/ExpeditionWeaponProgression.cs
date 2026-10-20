@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 sealed partial class ExpeditionGame {
- public static bool IsGun(int id)=>id>=0&&id<=5||id==7||id is 28 or 29 or 30 or 31;
+ public static bool IsGun(int id)=>id>=0&&id<=5||id==7||id is 28 or 29 or 30 or 31 or 34;
  public static bool IsBow(int id)=>id==6||id==12||id==18||id==19||id==32;
  public static bool IsMelee(int id)=>id>=8&&!IsBow(id)&&!IsGun(id);
  public bool GunsUnlocked=>Career.Level>=2&&Craft.UnlockedTier>=2;

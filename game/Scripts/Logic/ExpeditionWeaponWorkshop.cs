@@ -11,11 +11,11 @@ sealed class WeaponPart {
   new("Cord-wrapped grip","Grip","Brawler",1,w=>ExpeditionGame.IsMelee(w)&&!ExpeditionGame.IsPoweredSaw(w),"15% less stamina per swing."){Stamina=.85},
   new("Weighted striking head","Head","Brawler",2,w=>w is 10 or 13 or 14 or 15 or 21 or 33,"20% damage; 20% slower swings and 20% more stamina."){Damage=1.2,Delay=1.2,Stamina=1.2},
   new("Honed steel edge","Head","Brawler",2,w=>w is 16 or 20 or 23 or 24 or 25 or 26,"15% damage. Fits steel blades and spearheads."){Damage=1.15},
-  new("Field suppressor","Muzzle","Ballistics",3,w=>ExpeditionGame.IsGun(w)&&w is not (7 or 28 or 30 or 5),"50% less gunshot noise; 10% more spread. Shots still attract nearby infected."){Noise=.5,Spread=1.1},
-  new("Ported muzzle brake","Muzzle","Ballistics",3,w=>ExpeditionGame.IsGun(w)&&w is not (7 or 28 or 30 or 5),"30% less recoil; 25% louder shots. Replaces a suppressor."){Recoil=.7,Noise=1.25},
-  new("Magnified field optic","Optic","Ballistics",3,w=>ExpeditionGame.IsGun(w)&&w is not (0 or 7 or 28 or 29 or 30),"Magnified aim and 20% less spread; 10% slower reloads."){Spread=.8,Reload=1.1},
+  new("Field suppressor","Muzzle","Ballistics",3,w=>w!=34&&ExpeditionGame.IsGun(w)&&w is not (7 or 28 or 30 or 5),"50% less gunshot noise; 10% more spread. Shots still attract nearby infected."){Noise=.5,Spread=1.1},
+  new("Ported muzzle brake","Muzzle","Ballistics",3,w=>w!=34&&ExpeditionGame.IsGun(w)&&w is not (7 or 28 or 30 or 5),"30% less recoil; 25% louder shots. Replaces a suppressor."){Recoil=.7,Noise=1.25},
+  new("Magnified field optic","Optic","Ballistics",3,w=>w!=34&&ExpeditionGame.IsGun(w)&&w is not (0 or 7 or 28 or 29 or 30),"Magnified aim and 20% less spread; 10% slower reloads."){Spread=.8,Reload=1.1},
   new("Extended magazine","Magazine","Ballistics",3,w=>w is 0 or 3 or 5 or 29 or 31,"50% magazine capacity; 20% slower reloads. Never creates ammunition."){Capacity=1.5,Reload=1.2},
-  new("Fitted shoulder stock","Stock","Ballistics",2,w=>ExpeditionGame.IsGun(w)&&w is not (0 or 28),"15% less spread; 8% slower reloads."){Spread=.85,Reload=1.08},
+  new("Fitted shoulder stock","Stock","Ballistics",2,w=>w!=34&&ExpeditionGame.IsGun(w)&&w is not (0 or 28),"15% less spread; 8% slower reloads."){Spread=.85,Reload=1.08},
   new("High-tension bowstring","String","Ranger",2,w=>ExpeditionGame.IsBow(w),"20% faster arrows; 15% longer draw cycle."){Velocity=1.2,Delay=1.15},
   new("Balanced bow limbs","Limbs","Ranger",3,w=>ExpeditionGame.IsBow(w),"15% shorter draw cycle; 8% less damage."){Delay=.85,Damage=.92},
   new("Hardened cutting chain","Chain","Brawler",4,w=>ExpeditionGame.IsPoweredSaw(w),"18% damage; 20% more stamina per cutting burst."){Damage=1.18,Stamina=1.2},
@@ -44,8 +44,8 @@ sealed partial class ExpeditionGame {
  public bool FitPart(int part,bool remove=false){string why=PartReason(part,remove);if(why!="Ready"){Notice=why;return false;}return Change(()=>{if(!Craft.FittedParts.TryGetValue(Craft.Weapon,out var list))Craft.FittedParts[Craft.Weapon]=list=new();if(remove){list.Remove(part);Craft.SpareParts[part]=Craft.SpareParts.GetValueOrDefault(part)+1;}else{foreach(int old in list.Where(id=>WeaponPart.All[id].Slot==WeaponPart.All[part].Slot).ToArray()){list.Remove(old);Craft.SpareParts[old]=Craft.SpareParts.GetValueOrDefault(old)+1;}Craft.SpareParts[part]--;list.Add(part);}TrimSoulAmmo();Handling.Weapon=-1;Notice=remove?"Part removed and returned to pack":"Fitted "+WeaponPart.All[part].Name;});}
  public string WeaponPartSummary(int weapon)=>string.Join("\n",PartsFor(weapon).Select(p=>p.Slot+": "+p.Name+" / "+p.Description));
  public static bool Shotgun(int weapon)=>weapon is 7 or 30;
- public static bool Automatic(int weapon)=>weapon is 3 or 29;
- public double FireDelay=>Craft.Weapon switch{28=>.5,29=>.10,30=>.85,31=>.45,0=>.32,3=>.14,7=>.9,_=>.7};
+ public static bool Automatic(int weapon)=>weapon is 3 or 29 or 34;
+ public double FireDelay=>Craft.Weapon switch{34=>.2,28=>.5,29=>.10,30=>.85,31=>.45,0=>.32,3=>.14,7=>.9,_=>.7};
  public double WeaponNoise=>PartFactor(Craft.Weapon,p=>p.Noise);
  public static IEnumerable<ExpeditionRecipe> WorkshopRecipes(){
   foreach(int id in Enumerable.Range(28,6)){int tier=GunTier(id);yield return new(GunNames[id],"weapon",tier,tier,id,id is 32 or 33?6:2,0,id==32?6:2,tier==2?7:3,tier>=3?8:0,tier>=4?5:0,0);}

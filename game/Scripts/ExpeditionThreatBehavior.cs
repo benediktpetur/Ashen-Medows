@@ -8,7 +8,7 @@ public partial class MigrationScene {
  double RiotResistance(Infected e){var delta=player.Position-e.Body.Position;delta.Y=0;return delta.LengthSquared()>.01&&(-e.Body.Basis.Z).Dot(delta.Normalized())>.35?Math.Min(.7,.25+game.UpgradePower(0)/100.0):1;}
  bool PrimeCinder(Infected e){if(InfectedKind(e)!="cinder"||e.BossState=="cinder-spent")return false;e.Hp=1;if(e.BossState!="cinder-death"){cinderOwners[e.Id]=game;e.BossState="cinder-death";e.BossTime=1.8;e.AttackState="";e.Body.Velocity=Vector3.Zero;game.Notice="CINDER IGNITING / get away from the body";}return true;}
  void InterruptThreat(Infected e){if(ExpeditionThreat.Find(InfectedKind(e))==null||e.BossState=="cinder-death")return;if(e.BossState.EndsWith("-windup")){e.BossState="threat-recover";e.BossTime=1.4;}}
- bool TickNewThreat(Infected e,double dt){
+ bool TickNewThreat(Infected e,double dt){if(FieldStunned(e))return true;
   string kind=InfectedKind(e);var spec=ExpeditionThreat.Find(kind);if(spec==null)return false;
   if(e.BossState=="cinder-death"){e.BossTime-=dt;SpecialMove(e,Vector3.Zero,dt);if(e.BossTime<=0){e.BossState="cinder-spent";e.BossHits.Clear();SpecialHit(e,3.2f,15,false);CreateMillPool(e.Body.Position,5,1);HearNoise(e.Body.Position,45);KillEnemy(e);}return true;}
   var targets=MillPlayers().Where(p=>p.Game.Life.Health>0).OrderBy(p=>Distance(p.Body.Position,e.Body.Position)).ToArray();if(targets.Length==0)return true;var target=targets[0];float distance=Distance(e.Body.Position,target.Body.Position);

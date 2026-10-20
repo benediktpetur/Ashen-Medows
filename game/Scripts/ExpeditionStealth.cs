@@ -8,7 +8,7 @@ public partial class MigrationScene {
  readonly ConditionalWeakTable<ExpeditionGame,SoundTrail> soundTrails=new();
  Label noiseLabel;
  void Noise(double range){if(CoopClient)return;HearNoise(player.Position,game.RaiseNoise(range));}
- void HearNoise(Vector3 position,double radius){
+ void HearNoise(Vector3 position,double radius){MarkFieldDecoysDisturbed(position,radius);
   if(CoopClient)return;radius*=game.WeatherHearing;
   foreach(var e in dogPackSource??infected){
    if(PassiveStoryEnemy(e)||Species(e.Id)!=""&&Species(e.Id)!="dog")continue;

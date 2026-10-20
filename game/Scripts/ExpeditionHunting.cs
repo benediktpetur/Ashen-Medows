@@ -20,7 +20,7 @@ public partial class MigrationScene {
  }
  void TickHunting(double dt){if(CoopClient||dungeon!=null)return;foreach(var c in game.World.Changes.Carcasses.Where(c=>!c.Harvested&&!string.IsNullOrEmpty(c.Worker)).ToArray()){
   var leader=CommunityLeader(c.Worker);if(leader==null||leader.Value.Game.Life.Health<=0||Distance(leader.Value.Body.Position,new((float)c.X,(float)c.Y,(float)c.Z))>3||game.World.Changes.Time-c.At>1800){c.Worker="";c.Progress=0;continue;}
-  c.Progress+=dt;if(c.Progress<3)continue;var actor=CoopHost?coopActors.Values.FirstOrDefault(a=>a.Identity==c.Worker):null;
+  c.Progress+=dt*(c.HarvestTool==1?1+Math.Max(0,leader.Value.Game.Craft.ToolLevels[3]-1)*.3:1);if(c.Progress<3)continue;var actor=CoopHost?coopActors.Values.FirstOrDefault(a=>a.Identity==c.Worker):null;
   void Harvest(){if(HuntingSight(c))game.HarvestAnimal(c.Id,player.Position.X,player.Position.Z);c.Worker="";c.Progress=0;}
   if(actor!=null)WithCoopActor(actor,Harvest);else Harvest();
   if(CoopHost&&coopActors.Count>0)Rpc(nameof(CoopWorldUpdate),Json.Write(WorldSnapshot()));

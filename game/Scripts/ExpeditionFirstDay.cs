@@ -18,7 +18,7 @@ public partial class MigrationScene {
    var board=new Node3D{Position=Ground(x+7,z-4)};root.AddChild(board);board.GlobalPosition=Ground(x+7,z-4);
    Tube(board,Vector3.Zero,new(0,1.7f,0),.055f,Wood);
    Box(board,new(0,1.5f,0),new(1.8f,.7f,.09f),Wood);
-   board.AddChild(new Label3D{Text="TRAILHEAD\nWATER  →\nF1 / FIELD NOTES",Position=new(0,1.5f,.065f),FontSize=30,PixelSize=.006f,Modulate=new(.85f,.8f,.62f)});
+   board.AddChild(new Label3D{Text="BRIAR LANE\nWATER  →\nF1 / FIELD NOTES",Position=new(0,1.5f,.065f),FontSize=30,PixelSize=.006f,Modulate=new(.85f,.8f,.62f)});
   }
   // Finite, identifiable resources on a short loop; no timers or respawning handouts.
   for(int i=0;i<9;i++){double a=i*2.4;AddResource($"first-day/{game.Save.Seed}/forage/{i}",x+Math.Cos(a)*(14+i*2),z-18+Math.Sin(a)*(12+i),i%3,i%3==0?20:16,1);}
@@ -31,7 +31,7 @@ public partial class MigrationScene {
   }
  }
  void FirstDayTrees(Node3D chunk,int cx,int cz,bool simulation){for(int i=0;i<3;i++){
-  double x=ExpeditionWorld.SpawnX-30-i*5,z=ExpeditionWorld.SpawnZ-26+i*7;
+  double x=ExpeditionWorld.SpawnX-28-i*5,z=ExpeditionWorld.SpawnZ+8+i*5;
   if(ExpeditionWorld.Cell(x)!=cx||ExpeditionWorld.Cell(z)!=cz)continue;
   string id=$"first-day/{game.Save.Seed}/pine/{i}";if(game.World.Changes.Cut(id))continue;
   var pine=new Node3D{Position=Ground(x,z)};chunk.AddChild(pine);
@@ -43,8 +43,9 @@ public partial class MigrationScene {
   if(NearProp(39,2.5f)!=null){if(!CoopRequest("interact"))game.Change(()=>{if(game.Life.RawWater<20){game.Life.RawWater++;game.Notice="Well water / untreated. Boil at a workbench (Y) or your campfire (F).";}else game.Notice="Carrying enough untreated water / purify your supply first";});return true;}return false;}
  void FirstDayCraft(int index){if(index<0||index>=ExpeditionRecipe.All.Length)return;var r=ExpeditionRecipe.All[index];if(!game.Knows(r)){if(!CoopRequest("research",index.ToString()))game.Research(index);}else if(!CoopRequest("craft",index.ToString()))game.CraftRecipe(r);game.TickFirstDay();ShowFirstDay();}
  void ShowFirstDay(bool atCarrier=false){
-  game.TickFirstDay();var b=Panel("FIELD NOTES / MAKE IT THROUGH TODAY");coopMenu="firstday";
-  Text(b,"Someone has written on the back of a trail map:\n“Don’t chase the road yet. Drink. Make something sharp. Find a dry patch and leave yourself enough for tomorrow. If you hear the mill, you’ve gone too far.”");
+  game.TickFirstDay();var b=Panel("FIELD NOTES / MAKE IT THROUGH TODAY");Button(b,"BRIAR LANE / NEIGHBORHOOD GUIDE",ShowSuburbGuide);coopMenu="firstday";
+  Text(b,"Someone has written on the back of a neighborhood notice:\n“Search the street before you chase the road. Drink. Make something sharp. Find a dry patch and leave yourself enough for tomorrow. If you hear the mill, you’ve gone too far.”");
+  LocationButton(b,"Sealed water carrier",ExpeditionWorld.SpawnX+13,ExpeditionWorld.SpawnZ-7,()=>ShowFirstDay());
   if(atCarrier)Button(b,"SEARCH SEALED EMERGENCY CARRIER",()=>{if(!CoopRequest("firstday","water"))game.FirstDayAction("water");ShowFirstDay(true);});
   int step=game.FirstDayStep;var scroll=new ScrollContainer{CustomMinimumSize=new(895,step==5?150:270)};b.AddChild(scroll);var list=new VBoxContainer{CustomMinimumSize=new(870,0)};scroll.AddChild(list);
   for(int i=0;i<7;i++){bool done=(game.Life.FirstDayMarks&(1<<i))!=0;Text(list,(done?"✓  ":i==game.FirstDayStep?"→  ":"○  ")+ExpeditionGame.FirstDayTitles[i].ToUpperInvariant());if(!done||i==game.FirstDayStep)Text(list,ExpeditionGame.FirstDayHints[i]);}

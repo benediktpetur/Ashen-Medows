@@ -56,7 +56,7 @@ public partial class MigrationScene {
    hatch.Time=state.Time;
   }
  }
- bool TickSpecialInfected(Infected e,double dt){if(IsMegaNest(e.Id))return true;if(TickNewThreat(e,dt))return true;
+ bool TickSpecialInfected(Infected e,double dt){if(FieldStunned(e)||FieldReturning(e,dt))return true;if(IsMegaNest(e.Id))return true;if(TickNewThreat(e,dt))return true;
   string kind=InfectedKind(e);if(kind!="weeper"&&kind!="worm")return false;
   if(kind=="worm"){TickWorm(e,dt);return true;}
   if(DormantWeeper(e)&&e.Hp<e.MaxHp)ReactEnemyHit(e,false);
@@ -87,7 +87,7 @@ public partial class MigrationScene {
   else{e.AttackState="";SpecialMove(e,PursuitDirection(e,target.Body.Position,dt).Normalized()*3.4f,dt);}
   PoseWeeper(e);return true;
  }
- bool SpecialLine(Vector3 from,CharacterBody3D target){var q=PhysicsRayQueryParameters3D.Create(from+Vector3.Up*.6f,target.Position+Vector3.Up*.6f);q.Exclude=PursuitExclusions();return GetWorld3D().DirectSpaceState.IntersectRay(q).Count==0;}
+ bool SpecialLine(Vector3 from,CharacterBody3D target){if(FieldSmoke(from+Vector3.Up,target.Position+Vector3.Up))return false;var q=PhysicsRayQueryParameters3D.Create(from+Vector3.Up*.6f,target.Position+Vector3.Up*.6f);q.Exclude=PursuitExclusions();return GetWorld3D().DirectSpaceState.IntersectRay(q).Count==0;}
  void SpecialHit(Infected e,float radius,double damage,bool wound){
   foreach(var p in MillPlayers())if(p.Game.Life.Health>0&&Distance(p.Body.Position,e.Body.Position)<radius&&Math.Abs(p.Body.Position.Y-e.Body.Position.Y)<2.5&&!e.BossHits.Contains(p.Body.GetInstanceId())&&SpecialLine(e.Body.Position,p.Body)){
    e.BossHits.Add(p.Body.GetInstanceId());MillDamage(p.Game,p.Body,damage,wound);

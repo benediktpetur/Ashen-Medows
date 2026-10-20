@@ -11,8 +11,8 @@ sealed partial class ExpeditionLife {
 sealed partial class ExpeditionGame {
  public static readonly string[] FirstDayTitles={"A drink you can trust","Something with reach","A tool worth keeping","Timber, earned","A place to work","A roof of your own","Put something aside"};
  public static readonly string[] FirstDayHints={
-  "Find the blue emergency water carrier beside the trailhead. F searches it; C drinks clean water. Untreated water can make you sick.",
-  "Gather fallen branches, loose stones and flax near the trailhead. K opens crafting: research and craft a crude spear. It keeps teeth at a distance.",
+  "Find the blue emergency water carrier beside Briar Lane. F searches it; C drinks clean water. Untreated water can make you sick.",
+  "Gather fallen branches, loose stones and flax around Briar Lane. K opens crafting: research and craft a crude spear. It keeps teeth at a distance.",
   "Craft the stone chopping axe in K: 2 timber, 3 stone, 2 fiber. Press T to hold it.",
   "Aim at a tree trunk within reach and click to swing. Each hit costs stamina. Let it recover between swings; the falling tree leaves a permanent stump.",
   "Craft a starter workbench in K: 6 timber and 4 stone. This unlocks boiling and more useful equipment.",
@@ -33,7 +33,7 @@ sealed partial class ExpeditionGame {
  public string FirstDayAction(string action){
   if(action=="hide"||action=="show"){Change(()=>Life.FirstDayHidden=action=="hide");return Notice=action=="hide"?"First-day guidance tucked away / F1 brings it back":"First-day guidance restored";}
   if(action!="water")return Notice="Unknown trailhead action";
-  if(Distance(Save.X,Save.Z,ExpeditionWorld.SpawnX+13,ExpeditionWorld.SpawnZ-7)>4)return Notice="Stand beside the blue trailhead water carrier";
+  if(Distance(Save.X,Save.Z,ExpeditionWorld.SpawnX+13,ExpeditionWorld.SpawnZ-7)>4)return Notice="Stand beside the blue Briar Lane water carrier";
   Life.FirstDayCarriers??=new();
   if(Life.FirstDayCarriers.Contains(Save.Seed))return Notice="Your emergency ration is collected / draw well water and boil it for your next refill";
   return Notice=Change(()=>{Life.FirstDayCarriers.Add(Save.Seed);Craft.Water+=3;Life.Food+=2;Life.Bandages+=2;})?"Sealed water x3 / trail food x2 / dressings x2. C drinks; V eats; H patches bleeding.":Notice;

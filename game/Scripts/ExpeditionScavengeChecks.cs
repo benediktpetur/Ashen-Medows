@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 public partial class MigrationScene {
  void ScavengeChecks(){
-  ClearEnemies();Teleport(game.World.RouteX(-600)+12,-600);game.World.Changes.TrapCooldown=0;game.World.Changes.ScavengeAlarm=null;
+  ClearEnemies();Teleport(game.World.RouteX(-600)+12,-600);ClearEnemies();game.World.Changes.TrapCooldown=0;game.World.Changes.ScavengeAlarm=null;
   string id=Enumerable.Range(0,1000).Select(i=>"trap-test/"+i).First(s=>TrapRoll(game.World,s)<22);var node=new Node3D{Position=player.Position};worldRoot.AddChild(node);var p=new WorldProp{Id=id,Kind=9,Node=node,Position=node.Position,Tier=2,Material=3,Amount=2};props.Add(p);int material=game.Craft.Materials[3];
   MigrationChecks.Assert(SearchSupply()&&game.Craft.Materials[3]==material+2,"Trap preserves normal loot");var alarm=game.World.Changes.ScavengeAlarm;MigrationChecks.Assert(alarm!=null&&game.World.Changes.SpentTraps.Contains(id),"Loot triggers seeded trap and spent flag");
   MigrationChecks.Assert(infected.Count==0,"Trap spawns no enemies instantly");TickScavengeTraps(5);MigrationChecks.Assert(infected.Count==0,"Trap escape warning");TickScavengeTraps(1);MigrationChecks.Assert(alarm.Waves==1&&infected.Any(e=>e.Id.StartsWith("ambush/")),"Trap delayed wave");MigrationChecks.Assert(infected.All(e=>Distance(player.Position,e.Body.Position)>=18),"Trap minimum spawn distance");

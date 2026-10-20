@@ -33,7 +33,7 @@ public partial class MigrationScene {
   if(index==1){Bevel(torso,new(0,.22f,.20f),new(.38f,.42f,.2f),Steel);for(int side=-1;side<=1;side+=2){var bell=Tube(torso,new(side*.24f,.38f,.15f),new(side*.24f,.59f,.15f),.12f,new(.52f,.44f,.24f),.055f);bell.RotationDegrees=new(0,0,side*20);Box(head,new(side*.075f,.11f,-.075f),new(.06f,.04f,.04f),new(.65f,.23f,.08f));}}
   if(index==2){torso.Scale=new(2,1.1f,1.8f);for(int i=0;i<5;i++)Ellipsoid(torso,new((i%2==0?-1:1)*.13f,.02f+i*.07f,-.22f),new(.09f,.08f,.08f),new(.42f,.57f,.17f));head.Scale=new(1.1f,1.2f,1.1f);}
  }
- void TickCampaignBoss(Infected boss,double dt){
+ void TickCampaignBoss(Infected boss,double dt){if(FieldStunned(boss))return;
   if(IsMega(boss.Id)){TickMega(boss,dt);return;}
   int index=ExpeditionCampaign.BossIndex(boss.Id);
   var players=MillPlayers().Where(p=>p.Game.Life.Health>0&&Distance(p.Body.Position,boss.Home)<65).ToArray();

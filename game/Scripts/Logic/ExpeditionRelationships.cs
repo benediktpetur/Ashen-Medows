@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 [DataContract] sealed class RescueDog {
  [DataMember] public bool Initialized,Rescued,Dead;
+ [DataMember] public int RescueVersion,KennelGuards;
  [DataMember] public string Name="",Owner="",Mode="follow";
  [DataMember] public double X,Y,Z,Health=100,Bond,Training,Together,CareAt;
  public bool NameReady=>Rescued&&!Dead&&Together>=900&&Bond>=15;

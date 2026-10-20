@@ -4,9 +4,22 @@ using System.Collections.Generic;
 static class ExpeditionBuildSnap {
  public static BuildPiece Connect(BuildPiece target,int kind,double x,double z,double nx,double ny,double nz,double yaw,IEnumerable<BuildPiece> pieces=null){
   var d=BuildDefinition.All[kind];target.Local(x,z,out double lx,out double lz);double px=0,pz=0,y=target.Y;double angle=target.Yaw;
-  bool panel=d.BaseKind is 2 or 3||d.Function is "door" or "window";
+  bool panel=ExpeditionOpenings.IsWall(d)||d.BaseKind is 2 or 3;
+  bool targetDeck=target.Def.BaseKind is 0 or 1 or 7;
+  if(targetDeck&&(d.BaseKind is 0 or 1)){
+   // Aiming at a deck top chooses an adjacent socket, never stacks a second tile.
+   double r=target.Yaw*Math.PI/180;double ax=ny>.5?lx:nx*Math.Cos(r)-nz*Math.Sin(r),az=ny>.5?lz:nx*Math.Sin(r)+nz*Math.Cos(r);
+   if(Math.Abs(ax)>Math.Abs(az))px=(ax<0?-1:1)*(target.Def.W+d.W)/2;else pz=(az<0?-1:1)*(target.Def.D+d.D)/2;
+   y=target.Y+target.Def.H-d.H;
+   return new BuildPiece{Kind=kind,X=target.X+px*Math.Cos(r)+pz*Math.Sin(r),Z=target.Z-px*Math.Sin(r)+pz*Math.Cos(r),Y=y,Yaw=target.Yaw};
+  }
+  if(targetDeck&&panel){
+   double r=target.Yaw*Math.PI/180;double ax=ny>.5?lx:nx*Math.Cos(r)-nz*Math.Sin(r),az=ny>.5?lz:nx*Math.Sin(r)+nz*Math.Cos(r);
+   if(Math.Abs(ax)>Math.Abs(az)){px=(ax<0?-1:1)*target.Def.W/2;angle+=90;}else pz=(az<0?-1:1)*target.Def.D/2;
+   return new BuildPiece{Kind=kind,X=target.X+px*Math.Cos(r)+pz*Math.Sin(r),Z=target.Z-px*Math.Sin(r)+pz*Math.Cos(r),Y=target.Y+target.Def.H,Yaw=angle};
+  }
   if(ny>.5){y+=target.Def.H;
-   if(panel&&target.Def.W>1&&target.Def.D>1){bool side=Math.Abs(lx)>Math.Abs(lz);if(side){px=Math.Sign(lx)*(target.Def.W/2+d.D/2);angle+=90;}else pz=Math.Sign(lz)*(target.Def.D/2+d.D/2);}
+   if(panel&&target.Def.W>1&&target.Def.D>1){bool side=Math.Abs(lx)>Math.Abs(lz);if(side){px=(lx<0?-1:1)*(target.Def.W/2);angle+=90;}else pz=(lz<0?-1:1)*(target.Def.D/2);}
    else if((d.BaseKind is 1 or 7)&&(ExpeditionOpenings.IsWall(target.Def))){pz=-(d.D/2-target.Def.D/2);}
    else if(d.Function!="structure"){px=Math.Round(lx/.25)*.25;pz=Math.Round(lz/.25)*.25;angle=yaw;}
   }else{double r=target.Yaw*Math.PI/180;double localNx=nx*Math.Cos(r)-nz*Math.Sin(r),localNz=nx*Math.Sin(r)+nz*Math.Cos(r);

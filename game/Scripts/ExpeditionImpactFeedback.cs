@@ -6,14 +6,14 @@ public partial class MigrationScene {
  int lastHeldWeapon=-1;bool axeEquipped,axePending;double hurtShake;double axeSwingStarted=-10,hitUntil;Label hitMarker;double feedbackHealth=-1;
  readonly List<(Node3D Node,Vector3 Velocity,double Until)> impactBits=new();
  readonly List<(Node3D Node,double Until)> remains=new();
- void BuildHeldTool(){if(lastHeldWeapon!=game.Craft.Weapon){lastHeldWeapon=game.Craft.Weapon;weaponRoot.Position=new(.23f,-.23f,-.65f);aiming=false;viewGunApplied=false;}weaponRoot.Rotation=Vector3.Zero;if(!axeEquipped){ArtGun();return;}ClearChildren(weaponRoot);ItemTool(weaponRoot,0);weaponRoot.Scale=Vector3.One;}
+ void BuildHeldTool(){if(lastHeldWeapon!=game.Craft.Weapon){lastHeldWeapon=game.Craft.Weapon;weaponRoot.Position=new(.23f,-.23f,-.65f);aiming=false;viewGunApplied=false;}weaponRoot.Rotation=Vector3.Zero;if(!axeEquipped){ArtGun();return;}ClearChildren(weaponRoot);FieldHarvestToolArt(weaponRoot,game.Craft.HarvestTool,game.Craft.ToolLevels[game.Craft.HarvestTool]);weaponRoot.Scale=Vector3.One;}
  void BeginAxeSwing(){if(axePending||game.Clock<nextChop)return;AxeSwing();axePending=true;}
  void AxeSwing(){if(coopExecuting)return;axeSwingStarted=Time.GetTicksMsec()/1000.0;}
  WorldProp AimedTree(){
   var q=PhysicsRayQueryParameters3D.Create(camera.GlobalPosition,camera.GlobalPosition-camera.GlobalBasis.Z*3.5f);q.Exclude=new Godot.Collections.Array<Rid>{player.GetRid()};var hit=GetWorld3D().DirectSpaceState.IntersectRay(q);if(hit.Count==0)return null;
   var collider=hit["collider"].AsGodotObject() as Node;return props.FirstOrDefault(p=>p.Kind==0&&collider!=null&&(p.Node==collider||p.Node.IsAncestorOf(collider)));
  }
- void WoodImpact(WorldProp p){ImpactParticles(p.Position+Vector3.Up*1.3f,new Color(.62f,.43f,.22f),10,.06f);game.Notice="AXE IMPACT / "+(p.Hits+1)+" strikes";}
+ void WoodImpact(WorldProp p){ImpactParticles(p.Position+Vector3.Up*1.3f,new Color(.62f,.43f,.22f),10,.06f);game.Notice="AXE IMPACT";}
  void FallingTree(WorldProp p){if(DisplayServer.GetName()=="headless"){p.Node.GetParent().RemoveChild(p.Node);p.Node.QueueFree();return;}p.Node.Reparent(this,true);foreach(var shape in p.Node.FindChildren("*","CollisionShape3D",true,false))if(shape is CollisionShape3D collision)collision.SetDeferred(CollisionShape3D.PropertyName.Disabled,true);var tween=CreateTween();tween.TweenProperty(p.Node,"rotation_degrees:z",85f,1.15).SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.In);tween.TweenInterval(2);tween.TweenCallback(Callable.From(()=>{if(GodotObject.IsInstanceValid(p.Node))p.Node.QueueFree();}));}
  void BloodImpact(Vector3 point,Vector3 direction,int count){ImpactParticles(point,new Color(.38f,.025f,.025f),count,.045f);}
  void ImpactParticles(Vector3 point,Color color,int count,float size){
