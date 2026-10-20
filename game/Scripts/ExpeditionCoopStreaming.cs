@@ -13,7 +13,7 @@ public partial class MigrationScene {
  bool NearActiveSurface(Vector3 position,float range)=>ActiveSurfaceCenters().Any(p=>Distance(p,position)<=range);
  bool LocalChunk(int x,int z){var p=HostPosition;return Math.Abs(x-ExpeditionWorld.Cell(p.X))<=3&&Math.Abs(z-ExpeditionWorld.Cell(p.Z))<=3;}
  bool ChunkLoaded(Vector3 p)=>chunks.ContainsKey((ExpeditionWorld.Cell(p.X),ExpeditionWorld.Cell(p.Z)));
- void RemoveChunk((int,int) key){var root=chunks[key];terrainRoot.RemoveChild(root);root.QueueFree();chunks.Remove(key);props.RemoveAll(p=>(p.Kind==0||p.Kind==7)&&ExpeditionWorld.Cell(p.Position.X)==key.Item1&&ExpeditionWorld.Cell(p.Position.Z)==key.Item2);}
+ void RemoveChunk((int,int) key){var root=chunks[key];RemoveChunkFurniture(root);terrainRoot.RemoveChild(root);root.QueueFree();chunks.Remove(key);props.RemoveAll(p=>(p.Kind==0||p.Kind==7)&&ExpeditionWorld.Cell(p.Position.X)==key.Item1&&ExpeditionWorld.Cell(p.Position.Z)==key.Item2);}
  void StreamCoopTerrain(bool immediate){var local=HostPosition;int cx=ExpeditionWorld.Cell(local.X),cz=ExpeditionWorld.Cell(local.Z);ArtHorizon(cx,cz);
   var wanted=new Dictionary<(int,int),bool>();var order=new List<(int,int)>();var centers=ActiveSurfaceCenters();
   // Interleave players by ring so a new remote area cannot starve local streaming.
@@ -22,7 +22,7 @@ public partial class MigrationScene {
   }}
   foreach(var key in chunks.Keys.ToArray())if(!wanted.TryGetValue(key,out bool full)||chunks[key].GetMeta("simulation_only",false).AsBool()==full)RemoveChunk(key);
   int budget=immediate?49:4;foreach(var key in order){if(budget<=0)break;if(chunks.ContainsKey(key))continue;chunks[key]=CreateChunk(key.Item1,key.Item2,!wanted[key]);budget--;}
-  foreach(var actor in coopActors.Values)actor.Body.Visible=Distance(actor.Body.Position,local)<220;foreach(var prop in props)if(prop.Kind!=0&&prop.Kind!=7)prop.Node.Visible=Distance(prop.Position,local)<240;
+  foreach(var actor in coopActors.Values)actor.Body.Visible=Distance(actor.Body.Position,local)<220;foreach(var prop in props)if(prop.Kind!=0&&prop.Kind!=7&&prop.Kind!=42)prop.Node.Visible=Distance(prop.Position,local)<240;
  }
  void PhysicsObstacle(Node3D root,Shape3D shape,Vector3 position){var body=new StaticBody3D();body.AddChild(new CollisionShape3D{Shape=shape,Position=position});root.AddChild(body);}
  void SimulationStreetCollisions(Node3D root,int cx,int cz){int z=cz*64+8;double x=game.World.RouteX(z);if(x<cx*64||x>=(cx+1)*64||game.World.Tier(x,z)<3||!game.World.Playable(x,z))return;foreach(int side in new[]{-1,1}){var shop=new Node3D{Position=Ground(x+side*14,z),RotationDegrees=new Vector3(0,side<0?-90:90,0)};root.AddChild(shop);PhysicsObstacle(shop,new BoxShape3D{Size=new Vector3(7,3.5f,5)},new Vector3(0,1.75f,0));}}

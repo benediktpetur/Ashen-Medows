@@ -26,7 +26,7 @@ public partial class MigrationScene {
   double hp=(IsMega(id)?MegaVariant(id)==0?8400:MegaVariant(id)==1?5000:6000:index==0?1100:index==1?1600:2400)*(1+.4*Math.Max(0,players-1));
   infected.Add(new(){Id=id,Body=body,Visual=visual,Tier=index+3,Hp=hp,MaxHp=hp,Home=body.Position,Target=body.Position,BossState="hunt",BossTime=3});
  }
- void CampaignBossArt(Node3D root,int index){
+ void BuildCampaignBossArt(Node3D root,int index){
   HumanCharacter(root,index+3,0,false,index==2?6:index==1?4:2);root.Scale=Vector3.One*(index==2?1.85f:1.65f);
   var torso=root.GetNode<Node3D>("Torso");var head=root.GetNode<Node3D>("Torso/Head");
   if(index==0){torso.Scale=new(1.5f,1,1.25f);foreach(string side in new[]{"Left","Right"}){var arm=root.GetNode<Node3D>(side+"Arm");arm.Scale=new(1.4f,1.2f,1.4f);Bevel(arm.GetNode<Node3D>("Elbow/Hand"),new(0,-.12f,0),new(.23f,.25f,.2f),Rust);}for(int side=-1;side<=1;side+=2)Tube(torso,new(side*.2f,.4f,0),new(side*.14f,-.15f,-.20f),.045f,Steel);}

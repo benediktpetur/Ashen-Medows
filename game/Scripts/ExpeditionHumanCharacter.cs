@@ -2,7 +2,7 @@ using Godot;
 using System;
 public partial class MigrationScene {
  // Metres, Y up, -Z forward. Elbow hinge flexion is positive X.
- void HumanCharacter(Node3D root,int tier,int night,bool survivor,int zombieModel=-1){
+ void BuildHumanCharacter(Node3D root,int tier,int night,bool survivor,int zombieModel=-1){
   int model=survivor?-1:zombieModel>=0?Math.Clamp(zombieModel,0,6):night==1?5:night==2?6:Math.Clamp(tier-1,0,4);
   string key="human-v3/"+(survivor?"survivor":$"infected-{model}");
   Color cloth=survivor?new(.48f,.40f,.27f):new(.36f,.32f,.25f),skin=survivor?new(.65f,.53f,.43f):new(.48f,.49f,.42f),pants=new(.24f,.26f,.25f);

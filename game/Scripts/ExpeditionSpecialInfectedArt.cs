@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 
 public partial class MigrationScene {
- void SpecialInfectedArt(Node3D root,string id,int tier,int night){
+ void BuildSpecialInfectedArt(Node3D root,string id,int tier,int night){
   string kind=ExpeditionCampaign.Kind(id,tier,night);if(ExpeditionThreat.Find(kind)!=null){NewThreatArt(root,kind,tier);return;}
   if(kind=="worm"){
    FigureMesh(root,"brood-worm-v1",b=>{for(int i=0;i<7;i++){float z=(i-3)*.09f;var color=i%2==0?new Color(.56f,.53f,.29f):new Color(.37f,.38f,.18f);b.Limb(color,new(0,.13f,z-.045f),new(0,.13f,z+.045f),.075f,.065f,.07f,.06f,12);}for(int s=-1;s<=1;s+=2)b.Limb(new Color(.25f,.12f,.08f),new(s*.025f,.14f,-.34f),new(s*.05f,.17f,-.42f),.015f,.015f,.002f,.002f,8);});return;

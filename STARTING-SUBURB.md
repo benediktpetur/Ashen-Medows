@@ -1,11 +1,23 @@
-# Briar Lane opening
+# Residential suburbs and the player home
 
-The southeast start is now a streamed, eight-home neighborhood. Streets and sidewalks, front porches, yards, raised garden beds, laundry, letterboxes, warm street lamps and salvagable driveway wrecks create a short early exploration loop. Houses have open entrances, access ramps, furniture and finite supplies. Starter trees are south of arrival, outside house footprints. The common beside the pump remains available for building.
+The entire Tier 1 meadow band now generates residential streets and individual plots, respecting the woodland boundary and existing story sites. Seed 431 currently has 456 generated plots plus the original eight Briar Lane homes. Nearby chunks alone are loaded; repeated structural meshes are batched and textured materials are reused.
 
-F1 opens first-day guidance and the neighborhood guide. Each house has its own environmental fragment and a Show on map button. Food, clean water, dressings and workshop salvage are close to the start. Two ordinary tier-one infected occupy the far end; the arrival itself remains quiet. The cross street meets the northwest progression road.
+Homes vary by seeded address, footprint, siding, roof finish, internal partition/furniture layout, workshop additions, garden details and environmental theme. They have raised foundations, support piers, entry ramps and real colliders. Existing player construction recorded before this expansion reserves its plot.
 
-The single companion dog now waits in a guarded Tier 2 maintenance kennel. Clear three infected and spend one food to open the run. Guard progress is shared world state, so co-op guests can perform the rescue too. Unrescued dogs from older saves move to the kennel once. Existing recruited dogs and dead dogs retain their state.
+## Home and settlement
 
-Terrain heights and existing player saves are retained. Use Options > world management > Return to Briar Lane to revisit the opening on an existing character. Neighborhood scenery uses the existing chunk streaming and distant simulation paths.
+New characters begin inside number 14 on Briar Lane (1126, 130), on the actual house floor. This is the permanent main settlement anchor. Survivor cots inside use the house's roof and walls as shelter. Campfire and storage placement still use normal crafting costs. Other building sites remain outposts; recruiting cannot move the settlement to them.
 
-Validation: --suburb-check checks caches, salvage, trees, open physics entrances, map buttons, delayed dog location, guarded rescue and one-time recruitment. --first-day-check checks the complete starter crafting/building loop.
+Existing settlements transfer their residents and stores to this home once. Each already-recruited resident receives a corresponding home cot; previous outpost structures remain. Characters already exploring elsewhere retain their saved position. The world-management return button brings them home. Starting-house furnishings are protected from salvage.
+
+## Pressure
+
+The house and immediate arrival area stay quiet. Tier 1 spawn pressure grows from roughly 4% near the sanctuary boundary to roughly 22% farther across the suburbs, with increased night activity and occasional pairs. This remains a Tier 1 region; woodland progression and higher tiers are unchanged.
+
+## Furniture
+
+Aim within 3.5m and press F, or swing an axe. A crafted axe or a mechanic tool is required. Three timed strikes cost stamina and make noise; upgraded mechanic tools reduce the number of strikes. Sofas yield fiber and scrap; tables, cupboards and chairs yield timber and scrap. Cupboards yield more metal. Destruction removes both visuals and collision, persists through saves/chunk streaming, and is shared with co-op guests. Only the person completing the dismantling receives materials. Repeated or remote requests cannot pay twice. Co-op protocol is now 44, requiring matching builds.
+
+## Checks
+
+--suburb-check covers generation, variations, physical entrances, pressure, spawn height, home cot support and recruitment boundary, furniture targeting/rewards/duplication/persistence, and the woodland dog rescue. Real two-process co-op checks include guest furniture strikes, shared disappearance, private scrap and duplicate rejection. --first-day-check retains the complete early progression check.

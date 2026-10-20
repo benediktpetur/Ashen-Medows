@@ -1,0 +1,222 @@
+[
+  {
+    "key": "survivor-player-survivor",
+    "category": "Characters",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Characters\\survivor-player-survivor\\textured\\model-1.glb",
+    "sourceSha256": "c50f4fb93b4533983c4f01ca54c43899e18776681027414ae38002ba61fe01f4",
+    "gameSha256": "ee582a6dbbd22d9d4c8442c9375ef5bb971fea1a1264204364d73becf7b5ea9a",
+    "sourceTriangles": 40000,
+    "gameTriangles": 26972,
+    "resource": "res://Assets/Hunyuan/Actors/survivor-player-survivor.glb"
+  },
+  {
+    "key": "bilecaster-bilecaster",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\bilecaster-bilecaster\\textured\\model-1.glb",
+    "sourceSha256": "7e414055446fd9e4a48439bfcfa3a9cca0834414eb0cbe0fe6ce02674c9179a8",
+    "gameSha256": "62c1907ba301eef8401aae6f09dacc323f3fba6f48b6ff128bb25f435422456f",
+    "sourceTriangles": 40000,
+    "gameTriangles": 39926,
+    "resource": "res://Assets/Hunyuan/Actors/bilecaster-bilecaster.glb"
+  },
+  {
+    "key": "blooddrinker-blooddrinker",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\blooddrinker-blooddrinker\\textured\\model-1.glb",
+    "sourceSha256": "aa4368af266811b5ede15abeaa825afbe0aa11cec5a2e3f5933f355402a54cfd",
+    "gameSha256": "c010f587a78184b3d657aa86d6c8e15916dbe246acac3e0fcdcfdb73590ed943",
+    "sourceTriangles": 40000,
+    "gameTriangles": 39432,
+    "resource": "res://Assets/Hunyuan/Actors/blooddrinker-blooddrinker.glb"
+  },
+  {
+    "key": "cinder-cinder-host",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\cinder-cinder-host\\textured\\model-1.glb",
+    "sourceSha256": "722752a3a878a83335383a9d74a86aa8a0f5957ba686a5ddfd9021498e4871ae",
+    "gameSha256": "095bad13652d6f980354991ab7a0d5652b665c339f8946ee599c3b2b7f1bf295",
+    "sourceTriangles": 40000,
+    "gameTriangles": 40000,
+    "resource": "res://Assets/Hunyuan/Actors/cinder-cinder-host.glb"
+  },
+  {
+    "key": "gravecrawler-gravecrawler",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\gravecrawler-gravecrawler\\textured\\model-1.glb",
+    "sourceSha256": "0c5a099d0c2a21a8658e77b63840ee5bfe5dc1bcf6b11535040c5f9bfad3a15a",
+    "gameSha256": "6fa3d39793ddb30ec7eb956b4c63151b6716d25ee68a025f63cee86da98d31b9",
+    "sourceTriangles": 40000,
+    "gameTriangles": 37222,
+    "resource": "res://Assets/Hunyuan/Actors/gravecrawler-gravecrawler.glb"
+  },
+  {
+    "key": "howler-bell-throat",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\howler-bell-throat\\textured\\model-1.glb",
+    "sourceSha256": "d37364ed54df4efdbf74d57ea2ffb3ec5326f516bdb44c9e5075cb6e3256d5b2",
+    "gameSha256": "85c0515a1a4b101f69ec6bb8fdb2246ee7b61f27b0d8108df9f29fbe3d9a5f42",
+    "sourceTriangles": 40000,
+    "gameTriangles": 32410,
+    "resource": "res://Assets/Hunyuan/Actors/howler-bell-throat.glb"
+  },
+  {
+    "key": "mossback-mossback",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\mossback-mossback\\textured\\model-1.glb",
+    "sourceSha256": "72c687d6d7b1c35f2a0e2ad299c35f5390d59fed79a9d7632655f3fc6d2530d1",
+    "gameSha256": "fdd76407e50cdea8660d6c96019ebd84e313933408e4956076d98b56d8cd078a",
+    "sourceTriangles": 40000,
+    "gameTriangles": 39770,
+    "resource": "res://Assets/Hunyuan/Actors/mossback-mossback.glb"
+  },
+  {
+    "key": "palehunter-pale-hunter",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\palehunter-pale-hunter\\textured\\model-1.glb",
+    "sourceSha256": "84df0e3a95512abb1c58b6b4eec2c2f7dca255ae51e8b638ac936a523d9b8826",
+    "gameSha256": "a1d0e2771a593144d3c7376eee6f1a18236598c879108c6659a3c6380bc9e730",
+    "sourceTriangles": 40000,
+    "gameTriangles": 39884,
+    "resource": "res://Assets/Hunyuan/Actors/palehunter-pale-hunter.glb"
+  },
+  {
+    "key": "riot-riot-husk",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\riot-riot-husk\\textured\\model-1.glb",
+    "sourceSha256": "d956ac23cb829669520d2e3af7dd4213353a42cea3e14115fa2bf8c223e15c2d",
+    "gameSha256": "06cc0a8d916304e630de89e7a6437c57c101715a6a613e50c4e3dd2a32dbf834",
+    "sourceTriangles": 40000,
+    "gameTriangles": 39554,
+    "resource": "res://Assets/Hunyuan/Actors/riot-riot-husk.glb"
+  },
+  {
+    "key": "roadbreaker-roadbreaker",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\roadbreaker-roadbreaker\\textured\\model-1.glb",
+    "sourceSha256": "8187b3ef9e96485f17b14488d457c350ac5e7ac6588510a4ca5d1ff1510d71be",
+    "gameSha256": "f71bf8240c30ed878b3d73d3ae542d5b4c962bbd5af3ba992cf41140c4164540",
+    "sourceTriangles": 40000,
+    "gameTriangles": 29480,
+    "resource": "res://Assets/Hunyuan/Actors/roadbreaker-roadbreaker.glb"
+  },
+  {
+    "key": "special-armored-armored",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\special-armored-armored\\textured\\model-1.glb",
+    "sourceSha256": "25ab27827b6a998cd01d443ff8cfa26214e2a72e403b3f899f060cefd5a16eab",
+    "gameSha256": "deddc87eaa41dff0fc6fd2b7a93283d1b2f58be1e4c01a6a5903997bb4d43750",
+    "sourceTriangles": 40000,
+    "gameTriangles": 27962,
+    "resource": "res://Assets/Hunyuan/Actors/special-armored-armored.glb"
+  },
+  {
+    "key": "special-bloater-bloater",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\special-bloater-bloater\\textured\\model-1.glb",
+    "sourceSha256": "e6914297a86966507c90020c48f10986752ed0a1fdd88dc71acf2f8da0ef9307",
+    "gameSha256": "e34e1dd2d26088809df8f5cd40834e238c24c3f9280a29770a34948fcf3be266",
+    "sourceTriangles": 40000,
+    "gameTriangles": 39964,
+    "resource": "res://Assets/Hunyuan/Actors/special-bloater-bloater.glb"
+  },
+  {
+    "key": "special-runner-runner",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\special-runner-runner\\textured\\model-1.glb",
+    "sourceSha256": "24135d0ab6eda2a4bf5cb246d9469f138c24ec4a7d6489d20b8e36113306eb99",
+    "gameSha256": "655e9b0c8138cc4c403505c358540301daef974679ce7b387a8a78f3bd090dac",
+    "sourceTriangles": 40000,
+    "gameTriangles": 40000,
+    "resource": "res://Assets/Hunyuan/Actors/special-runner-runner.glb"
+  },
+  {
+    "key": "special-stalker-stalker",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\special-stalker-stalker\\textured\\model-1.glb",
+    "sourceSha256": "f121a31d04d002925ad550a00c4d032be37641bca13b20bdbb51b5b1b72e0044",
+    "gameSha256": "f67a4e526acecbc33720f051fa0e175fb859471505f11fa0236619a7d3a06a95",
+    "sourceTriangles": 40000,
+    "gameTriangles": 39856,
+    "resource": "res://Assets/Hunyuan/Actors/special-stalker-stalker.glb"
+  },
+  {
+    "key": "special-weeper-weeper",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\special-weeper-weeper\\textured\\model-1.glb",
+    "sourceSha256": "2c842c0ea1244bc1e95e3da66e25c5e24cae065bf89b9d76f1b59c8d9fb83da5",
+    "gameSha256": "794ea5a2f5fd3c05dd9d6023dbdf1dc79a2fa6bfe825a1a205564536da432244",
+    "sourceTriangles": 40000,
+    "gameTriangles": 39912,
+    "resource": "res://Assets/Hunyuan/Actors/special-weeper-weeper.glb"
+  },
+  {
+    "key": "wirebound-wirebound",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\wirebound-wirebound\\textured\\model-1.glb",
+    "sourceSha256": "75187accb253af13adac1e268b51037ac8feea39307e5b7d5be95c5a8a24c3b9",
+    "gameSha256": "f5afbdd70f88b4e15b280e79132168fd657e5bdd40c1518f2862076705190253",
+    "sourceTriangles": 40000,
+    "gameTriangles": 31396,
+    "resource": "res://Assets/Hunyuan/Actors/wirebound-wirebound.glb"
+  },
+  {
+    "key": "zombie-0-meadow-drifter",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\zombie-0-meadow-drifter\\textured\\model-1.glb",
+    "sourceSha256": "d27c8ca3f6659bdc06f29f77ab9740f8ad068bff30579cfc59f2f51b9915a531",
+    "gameSha256": "cece8d9f45f41c202297f16ce80bbb249c24ff06560b14b92597d6a0f7e5c35d",
+    "sourceTriangles": 40000,
+    "gameTriangles": 27346,
+    "resource": "res://Assets/Hunyuan/Actors/zombie-0-meadow-drifter.glb"
+  },
+  {
+    "key": "zombie-1-woodland-logger",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\zombie-1-woodland-logger\\textured\\model-1.glb",
+    "sourceSha256": "b22244c5239b9d0dfddd57c5233b4f133c2c79039a636fae684bab220fc468b4",
+    "gameSha256": "32f1bd6b1283db27fb368eec0bf84f860df272a51f22a699f68086aab86d066b",
+    "sourceTriangles": 40000,
+    "gameTriangles": 39718,
+    "resource": "res://Assets/Hunyuan/Actors/zombie-1-woodland-logger.glb"
+  },
+  {
+    "key": "zombie-2-highway-worker",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\zombie-2-highway-worker\\textured\\model-1.glb",
+    "sourceSha256": "6d2bbe681f31e708dcd182df080ea3581b0f920372d5055035f4a3a5350d76ae",
+    "gameSha256": "598cff5d9ff8c34bc62772569e3618c900dbbf355589ae674d714908d838bfa2",
+    "sourceTriangles": 40000,
+    "gameTriangles": 32962,
+    "resource": "res://Assets/Hunyuan/Actors/zombie-2-highway-worker.glb"
+  },
+  {
+    "key": "zombie-3-city-office-worker",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\zombie-3-city-office-worker\\textured\\model-1.glb",
+    "sourceSha256": "13663d4a4c6823900dca2344063d9702e4bc0d3a3861eaf6a50302c08b2b2e3f",
+    "gameSha256": "9b4a7408614028ab2e60a98569f8b7a008b3d42c17a8ae560bb53687faf9ab1f",
+    "sourceTriangles": 40000,
+    "gameTriangles": 39999,
+    "resource": "res://Assets/Hunyuan/Actors/zombie-3-city-office-worker.glb"
+  },
+  {
+    "key": "zombie-5-night-stalker",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\zombie-5-night-stalker\\textured\\model-1.glb",
+    "sourceSha256": "0a1b81764f15c59c2d96b4c643a24ffc8664919a2dfe3af635314a4f57319879",
+    "gameSha256": "9aaeb4eb0b00e8a854642379f8decbf10fd6293337ed9646798a6a32f1603f0b",
+    "sourceTriangles": 40000,
+    "gameTriangles": 39870,
+    "resource": "res://Assets/Hunyuan/Actors/zombie-5-night-stalker.glb"
+  },
+  {
+    "key": "zombie-6-bloated-infected",
+    "category": "Enemies",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\zombie-6-bloated-infected\\textured\\model-1.glb",
+    "sourceSha256": "10530fdaf5ecb79148f661a08d2268eb5ea3f84ab0286b7f224e9d481a0ac38e",
+    "gameSha256": "e0c93aa4dbde010761826123d4cd19ef67a7154db1149be16eb9e055acb416ac",
+    "sourceTriangles": 40000,
+    "gameTriangles": 26096,
+    "resource": "res://Assets/Hunyuan/Actors/zombie-6-bloated-infected.glb"
+  }
+]

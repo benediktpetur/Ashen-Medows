@@ -9,14 +9,14 @@ sealed partial class ExpeditionLife {
  [DataMember] public List<int> FirstDayCarriers=new();
 }
 sealed partial class ExpeditionGame {
- public static readonly string[] FirstDayTitles={"A drink you can trust","Something with reach","A tool worth keeping","Timber, earned","A place to work","A roof of your own","Put something aside"};
+ public static readonly string[] FirstDayTitles={"A drink you can trust","Something with reach","A tool worth keeping","Timber, earned","A place to work","Make the house a home","Put something aside"};
  public static readonly string[] FirstDayHints={
   "Find the blue emergency water carrier beside Briar Lane. F searches it; C drinks clean water. Untreated water can make you sick.",
   "Gather fallen branches, loose stones and flax around Briar Lane. K opens crafting: research and craft a crude spear. It keeps teeth at a distance.",
   "Craft the stone chopping axe in K: 2 timber, 3 stone, 2 fiber. Press T to hold it.",
   "Aim at a tree trunk within reach and click to swing. Each hit costs stamina. Let it recover between swings; the falling tree leaves a permanent stump.",
   "Craft a starter workbench in K: 6 timber and 4 stone. This unlocks boiling and more useful equipment.",
-  "Choose your own clearing. B opens building. Place a survivor cot beneath a roof with two nearby walls, plus a campfire and storage chest within 12m. Q/E rotate; G toggles snapping; Page Up/Down adjusts height. A cot is shelter, not a respawn point; sleeping bags arrive at Tier 2.",
+  "Your house on Briar Lane is the main settlement. B opens building. Put a survivor cot inside and a campfire and storage chest within 12m. Its existing roof and walls count as shelter. Other camps are outposts. Q/E rotate; G toggles snapping; Page Up/Down adjusts height. A cot is shelter, not a respawn point; sleeping bags arrive at Tier 2.",
   "F uses your campfire to cook and boil well water. Put 2 food and 2 clean water into your camp chest. Save something for tomorrow. This camp is yours; the woodland can wait."
  };
  public int FirstDayStep { get { for(int i=0;i<7;i++)if((Life.FirstDayMarks&(1<<i))==0)return i;return 7; } }

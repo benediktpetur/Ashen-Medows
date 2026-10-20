@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 public partial class MigrationScene {
- void NewThreatArt(Node3D root,string kind,int tier){
+ void BuildNewThreatArt(Node3D root,string kind,int tier){
   int model=kind=="riot"?4:kind is "howler" or "palehunter"?5:kind is "cinder" or "bilecaster"?6:Math.Clamp(tier-1,0,4);HumanCharacter(root,tier,0,false,model);
   var torso=root.GetNode<Node3D>("Torso");var head=torso.GetNode<Node3D>("Head");Color bone=new(.69f,.64f,.44f),steel=new(.24f,.29f,.28f),rust=new(.49f,.27f,.12f);
   if(kind=="mossback"){
