@@ -1,0 +1,1115 @@
+{
+  "catalog-weapon/5": {
+    "name": "Experimental rifle",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-5-experimental-rifle-option-01\\textured.glb",
+    "sha256": "7341e356b4205e13333e1b3325ea0a5af16731e3f1fcb1ea1aab1f893be19e05",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-5.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon/7": {
+    "name": "Scrap shotgun",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-7-scrap-shotgun-option-01\\textured.glb",
+    "sha256": "064c11c6f7765c96bae1a5f186d63d49aab6cb6fa5d611f33022f4b5b671dfbd",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-7.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon/8": {
+    "name": "Sturdy stick",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-8-sturdy-stick-option-01\\textured.glb",
+    "sha256": "e7d5bc9a1b523617fbe86ba9c6e323bb119ca252b9d25a60936eb5e4eb249571",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-8.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon/10": {
+    "name": "Wooden club",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-10-wooden-club-option-01\\textured.glb",
+    "sha256": "9dd185f8c0478a29a6a02713949d5c316b2f7840f4cc6748eb74b99ca4bd32db",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-10.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon/11": {
+    "name": "Stone spear",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\weapons\\Spears\\stone-tipped-spear\\textured.glb",
+    "sha256": "4961617da609d645e9de666220b4243e2b3f8b7cc24edca1ced614b69e7d8629",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-11.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon/12": {
+    "name": "Simple bow",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\weapons\\Bows\\short-bow-with-arrow\\textured.glb",
+    "sha256": "e5401b85b3c538d8e55a926c00432cda2f0a6bbdb55534252c3c48c192f02a9d",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-12.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon/13": {
+    "name": "Baseball bat",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-13-baseball-bat-option-01\\textured.glb",
+    "sha256": "4830223475f54ed35900d30cbd08040333789ade3fcbcd7a34afeaf60b6d5c92",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-13.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon/16": {
+    "name": "Iron spear",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-16-iron-spear-option-01\\textured.glb",
+    "sha256": "a0669c7b39166acb1de16debed9dfbea68977fb18771f815554c5197d4924ff2",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-16.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon/22": {
+    "name": "Stone knife",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-22-stone-knife-option-01\\textured.glb",
+    "sha256": "54cf9c6bdc762d94bbfc7f8faaad5caf02eb6fd92f4d80cd144db879b02944af",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-22.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon/24": {
+    "name": "Scrap sword",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-24-scrap-sword-option-01\\textured.glb",
+    "sha256": "eab80415c58c9ff8f40234631ea9c5fcb5b8b7e67f0b887304722fde349edf83",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-24.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon/28": {
+    "name": "9mm salvage revolver",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-28-9mm-salvage-revolver-option-01\\textured.glb",
+    "sha256": "180690acdc3480a497c2fb5e44c861d362e3b6aa6382c71c701ad788c6ab914e",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-28.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon/29": {
+    "name": "9mm compact SMG",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-29-9mm-compact-smg-option-01\\textured.glb",
+    "sha256": "0ab523c2599f34d121278701adeaee5adebb119f436346bf4c450a23f4cd9fea",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-29.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon/30": {
+    "name": "Pump-action shotgun",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\weapons\\Shotguns\\wood-stock-pump-shotgun\\textured.glb",
+    "sha256": "91606dd867741338a591fb79e8de6f3bae3dbd0fa475e103dcade05f9474e784",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-30.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon/31": {
+    "name": "Battle rifle",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-31-battle-rifle-option-01\\textured.glb",
+    "sha256": "c2ad1b7779cd109978829ad25ecda77adf818a125759e8876d93b0a221d887a8",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-31.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-armor/1/12": {
+    "name": "Work gloves",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\equipment\\catalog-armor-1-12-work-gloves-option-01\\textured.glb",
+    "sha256": "9aca6dd62495c884518096857e25791c6b9f668a5884c33e9168454565c667ea",
+    "resource": "res://Assets/Hunyuan/Static/catalog-armor-1-12.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-armor/1/13": {
+    "name": "Trail boots",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\equipment\\catalog-armor-1-13-trail-boots-option-01\\textured.glb",
+    "sha256": "17f5d27c8b658f30cece68b49ae113a3a2946bfe578aa11d96d320a300a9d82f",
+    "resource": "res://Assets/Hunyuan/Static/catalog-armor-1-13.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-armor/3/12": {
+    "name": "Reinforced gloves",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\equipment\\catalog-armor-3-12-reinforced-gloves-option-01\\textured.glb",
+    "sha256": "c1556b89152a41c2d3992c5a467eb04e4f83bad0f35b47e380f76a5f43fa0bd7",
+    "resource": "res://Assets/Hunyuan/Static/catalog-armor-3-12.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-armor/4/13": {
+    "name": "City patrol boots",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\equipment\\catalog-armor-4-13-city-patrol-boots-option-01\\textured.glb",
+    "sha256": "9e4c2014ba34bba4b5f7d08defec904295bc985129a2eb6033a7d1883a018920",
+    "resource": "res://Assets/Hunyuan/Static/catalog-armor-4-13.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-armor/2/12": {
+    "name": "T2 armored gloves",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\equipment\\catalog-armor-2-12-t2-armored-gloves-option-01\\textured.glb",
+    "sha256": "8c9e8edc6bf4233af70ba9dec9e964b093bef9573d4a57e37344327bc6a525f7",
+    "resource": "res://Assets/Hunyuan/Static/catalog-armor-2-12.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-armor/2/13": {
+    "name": "T2 armored boots",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\equipment\\catalog-armor-2-13-t2-armored-boots-option-01\\textured.glb",
+    "sha256": "e4a91c373e8ca5be17f5955c65c976174b170e9e833bfc04191802d97a214d0f",
+    "resource": "res://Assets/Hunyuan/Static/catalog-armor-2-13.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-armor/3/13": {
+    "name": "T3 armored boots",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\equipment\\catalog-armor-3-13-t3-armored-boots-option-01\\textured.glb",
+    "sha256": "de5a2ada4cedbaf4afe4cc01dd7f3b395247ad8407ee2a96f938230ab2fdfdd3",
+    "resource": "res://Assets/Hunyuan/Static/catalog-armor-3-13.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-armor/4/12": {
+    "name": "T4 armored gloves",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\equipment\\catalog-armor-4-12-t4-armored-gloves-option-01\\textured.glb",
+    "sha256": "1cd08327f5ae5cbf6c0d9bb942a6ee7b1b16e6e01f801bdc09eef6d1439aa2c5",
+    "resource": "res://Assets/Hunyuan/Static/catalog-armor-4-12.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-armor/5/12": {
+    "name": "T5 armored gloves",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\equipment\\catalog-armor-5-12-t5-armored-gloves-option-01\\textured.glb",
+    "sha256": "2f092c3b4ff1d0682ee97b76bc6f4f674444245e339752a7ab222933d5779992",
+    "resource": "res://Assets/Hunyuan/Static/catalog-armor-5-12.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-armor/5/13": {
+    "name": "T5 armored boots",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\equipment\\catalog-armor-5-13-t5-armored-boots-option-01\\textured.glb",
+    "sha256": "cfd129658065bd1c327e4dbb5d6009cbb74a4c0c2575810cc882ac13e029c28a",
+    "resource": "res://Assets/Hunyuan/Static/catalog-armor-5-13.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-material/3": {
+    "name": "Forest resin",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-material-3-forest-resin-option-01\\textured.glb",
+    "sha256": "ae1a0282972bb68f327c86923586c64962a181471c3b1c181088091e7a1a2e78",
+    "resource": "res://Assets/Hunyuan/Static/catalog-material-3.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-water": {
+    "name": "Drinking water",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-water-drinking-water-option-01\\textured.glb",
+    "sha256": "6d7edb3ab8fb6f9cd57397169d29a77368b9dddd3578f0689ecffc538df7f323",
+    "resource": "res://Assets/Hunyuan/Static/catalog-water.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-bag": {
+    "name": "Sleeping bag kit",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-bag-sleeping-bag-kit-option-01\\textured.glb",
+    "sha256": "cf0979df753cb459b514f55ff5cf136ee4ef777ef5a5a84e6659f80d99972239",
+    "resource": "res://Assets/Hunyuan/Static/catalog-bag.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-ammo/1": {
+    "name": "7.62mm rifle rounds",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-ammo-1-7-62mm-rifle-rounds-option-01\\textured.glb",
+    "sha256": "ea13ceead6740e2a2d20e1b589437f0225592c35cc6578d2bd29390fe52e790a",
+    "resource": "res://Assets/Hunyuan/Static/catalog-ammo-1.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-ammo/3": {
+    "name": "12-gauge shells",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-ammo-3-12-gauge-shells-option-01\\textured.glb",
+    "sha256": "7d0d2d8cd5c97e8cae8bac5fac5c603c600a6ac8807b0579abe798a001243e56",
+    "resource": "res://Assets/Hunyuan/Static/catalog-ammo-3.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-ammo/4": {
+    "name": "Energy cells",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-ammo-4-energy-cells-option-01\\textured.glb",
+    "sha256": "813308b002701ef507d84f6552c2ff08fdc3ac7bcb8c056dd4dd81a6d6e281f4",
+    "resource": "res://Assets/Hunyuan/Static/catalog-ammo-4.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-tuning": {
+    "name": "Nocturnal tuning module",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-tuning-nocturnal-tuning-module-option-01\\textured.glb",
+    "sha256": "1d10a7aacee3e924833cfaf82eacd8200a0dbd9a48bc70e5d14cf5b61beb64db",
+    "resource": "res://Assets/Hunyuan/Static/catalog-tuning.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-bench/1": {
+    "name": "Starter workbench",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Buildings\\Stations\\Workbenches\\crafting-workbench\\textured.glb",
+    "sha256": "d9aa97bd68f13a918e365caf48abff1bfe697094270b1c98da64cdaa90d63af9",
+    "resource": "res://Assets/Hunyuan/Static/catalog-bench-1.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/0": {
+    "name": "Foundation",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-0-foundation-option-01\\textured.glb",
+    "sha256": "d2c48ad86415ff9cc7ac93ae5a930335a62cf8f9126323fe6e7acab9b8d29cd7",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-0.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/1": {
+    "name": "Floor",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-1-floor-option-02\\textured.glb",
+    "sha256": "73a4ca43963f2cf757efdbd5f7b2f12eb6f621837402e3a36d57891139770b2a",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-1.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/3": {
+    "name": "Half wall",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-3-half-wall-option-01\\textured.glb",
+    "sha256": "0f45130aa78fdd1e80c9b4fb8ec02bda4010eae44068eb9d28841639a4e59540",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-3.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/5": {
+    "name": "Beam",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-5-beam-option-01\\textured.glb",
+    "sha256": "e9f082ffc45ad7d3b6da942ebe40106a5d27510fa4cfa687dd35d191e66a11ea",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-5.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/6": {
+    "name": "Stairs",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Buildings\\Modular\\Wood\\timber-stairs\\textured.glb",
+    "sha256": "57039032edfe31acf9dcda8e92a0a6b672e90ee4794e956c83b98b53a4885912",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-6.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/7": {
+    "name": "Roof",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Buildings\\Modular\\Wood\\timber-sloped-roof\\textured.glb",
+    "sha256": "581fd0077bd3cf02a40544d0f40b4cd2f04d014279c25a596d287d49c14765a3",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-7.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/8": {
+    "name": "Stone-braced foundation",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-8-stone-braced-foundation-option-01\\textured.glb",
+    "sha256": "78bdc29058cdcacdcd077164b803b74d805cc34af50f993180874e4fd73c5d97",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-8.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/9": {
+    "name": "Stone-braced floor",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-9-stone-braced-floor-option-01\\textured.glb",
+    "sha256": "de41b9e70a01ed0224b7304373157246657c23728311837ea61f3936d2c0b15c",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-9.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/11": {
+    "name": "Stone-braced half wall",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-11-stone-braced-half-wall-option-01\\textured.glb",
+    "sha256": "a10f8c877b56b57494f60f7bba94c9e80fcbebe474d8019c09f43c67f12d206e",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-11.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/12": {
+    "name": "Stone-braced pillar",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-12-stone-braced-pillar-option-01\\textured.glb",
+    "sha256": "3519d10dfa0e22fade3f00f7d743e381c799efeaad901d2f08e6371976370742",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-12.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/13": {
+    "name": "Stone-braced beam",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-13-stone-braced-beam-option-01\\textured.glb",
+    "sha256": "7d382833f6f7ff1d81a70d85aef75bdd41837a7a22f4ff3ac1813373f754c1b7",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-13.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/15": {
+    "name": "Stone-braced roof",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-15-stone-braced-roof-option-01\\textured.glb",
+    "sha256": "e02e04fc79cc6edd9a8eba1f0708d177480cb7a7271ff54559562eb2bb777ff3",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-15.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/16": {
+    "name": "Scrap steel foundation",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-16-scrap-steel-foundation-option-01\\textured.glb",
+    "sha256": "9897ce4bbfd8323f67616b68bd2d61518e6fbfb8240e0fedd4d807ba3fdc63b9",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-16.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/17": {
+    "name": "Scrap steel floor",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-17-scrap-steel-floor-option-01\\textured.glb",
+    "sha256": "bfafba38253de46d1cba1ea847c29484a66944a810b26363d8105165f580acef",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-17.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/18": {
+    "name": "Scrap steel wall",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-18-scrap-steel-wall-option-01\\textured.glb",
+    "sha256": "8bcf1f9239ea073d7c2f1ff522e11986fbc0cc9f035a6383d43d227b70b4c29d",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-18.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/19": {
+    "name": "Scrap steel half wall",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-19-scrap-steel-half-wall-option-01\\textured.glb",
+    "sha256": "c520737c6e863d00914c2bf373e825cb90806afd4b316919f9a80fd0b036d3a6",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-19.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/21": {
+    "name": "Scrap steel beam",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-21-scrap-steel-beam-option-01\\textured.glb",
+    "sha256": "0cc65d30cad47620564823e30d2050f22425a20cf79634681648a0e4a801309f",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-21.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/22": {
+    "name": "Scrap steel stairs",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-22-scrap-steel-stairs-option-01\\textured.glb",
+    "sha256": "4d3fed4081f169c9376824c7dc1d27e6dbe2840424414eabc33f46bd4381d423",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-22.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/23": {
+    "name": "Scrap steel roof",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-23-scrap-steel-roof-option-01\\textured.glb",
+    "sha256": "d56da1289975bef026e2bdefcd124527f962f65785f54a5759af0a67ae5b0573",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-23.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/24": {
+    "name": "Reinforced concrete foundation",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-24-reinforced-concrete-foundation-option-01\\textured.glb",
+    "sha256": "608b85d83468a7f8abe447fad7b0f3d629070e7763a3e20dbe79c8545e50f3c3",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-24.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/25": {
+    "name": "Reinforced concrete floor",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-25-reinforced-concrete-floor-option-01\\textured.glb",
+    "sha256": "5b523198b890e3408766ccb3c435991797b126462fbccd8fcde48b86bac5867d",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-25.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/26": {
+    "name": "Reinforced concrete wall",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-26-reinforced-concrete-wall-option-01\\textured.glb",
+    "sha256": "35a5ade1eae2d5e0e27ea7c6970da7638901243d231f6a7bba0d1216c3ae1178",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-26.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/27": {
+    "name": "Reinforced concrete half wall",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-27-reinforced-concrete-half-wall-option-01\\textured.glb",
+    "sha256": "40a7a1e38fe57587c3b7ecadd0db8501ce3799c7d5947c04c5abe015cf049a3f",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-27.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/28": {
+    "name": "Reinforced concrete pillar",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-28-reinforced-concrete-pillar-option-01\\textured.glb",
+    "sha256": "43d5f8fb6bccf656bda9c7459020a8ca5324893d19f663e29376a854f126dd24",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-28.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/29": {
+    "name": "Reinforced concrete beam",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-29-reinforced-concrete-beam-option-01\\textured.glb",
+    "sha256": "25a43b68978011f945874ec2ada7986e59459285ae68fffae2510a30fd5769aa",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-29.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/30": {
+    "name": "Reinforced concrete stairs",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-30-reinforced-concrete-stairs-option-01\\textured.glb",
+    "sha256": "b5a64ac6b89721d4b6a0832d57f91cd3afff336073c303e3491cf3724117f716",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-30.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/31": {
+    "name": "Reinforced concrete roof",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-31-reinforced-concrete-roof-option-01\\textured.glb",
+    "sha256": "42a47f0513ab88cb348968293c72adef4e5d35912122d36b0e375536efd2d20e",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-31.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/32": {
+    "name": "Military foundation",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-32-military-foundation-option-01\\textured.glb",
+    "sha256": "f1ab6f83116e2ffcf0fea96bdf75e5acbb55f56f511e154b965bb532620e5eaf",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-32.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/33": {
+    "name": "Military floor",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-33-military-floor-option-01\\textured.glb",
+    "sha256": "a400b2963d9c5ba5b9a8bde9e998f29299d91f057f85254452235db5ca2d8685",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-33.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/34": {
+    "name": "Military wall",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-34-military-wall-option-01\\textured.glb",
+    "sha256": "ceb8c8cbb75b0d8d1bb1d08ed3e845f8289fc10f5c6c66ea9d6074abb064dd3f",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-34.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/35": {
+    "name": "Military half wall",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-35-military-half-wall-option-01\\textured.glb",
+    "sha256": "9415d30e6e4b13126ff8948f6210bf3ac88fcff1f41f1547499b6f9d66e9265b",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-35.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/36": {
+    "name": "Military pillar",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-36-military-pillar-option-01\\textured.glb",
+    "sha256": "1209710d052aa534fc734d0758edcaa64e2aa00981b20452a93c41ea5b559ed6",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-36.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/37": {
+    "name": "Military beam",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-37-military-beam-option-01\\textured.glb",
+    "sha256": "14f067ed0fa7274d2f77edb7c5a1f24be20cc840ea4534acffb6ea85548b1158",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-37.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/38": {
+    "name": "Military stairs",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-38-military-stairs-option-01\\textured.glb",
+    "sha256": "2e8359e569d61eeb73debd3c0d16bcd5639efaac22b1337a7dd3672dab5692ae",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-38.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/39": {
+    "name": "Military roof",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-39-military-roof-option-01\\textured.glb",
+    "sha256": "7e9672bc7c3bbd7c21bd74a484e300ba7616be7910c421f1268cb2f2b68cea0f",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-39.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/40": {
+    "name": "Timber door",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-40-timber-door-option-01\\textured.glb",
+    "sha256": "6e4a2930b967986dfe2fa8cee7d839e0498972c5d089af043ba0b3e802f6c789",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-40.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/43": {
+    "name": "Timber gate",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Buildings\\Modular\\Wood\\timber-palisade-gate\\textured.glb",
+    "sha256": "a9eec912d8dec66e939b5cb43268318e2db9bd968bfee97df22898deffb22956",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-43.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/44": {
+    "name": "Large storage locker",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-44-large-storage-locker-option-01\\textured.glb",
+    "sha256": "c594e22a35ab7c3b26213c5bdba42830764b36ef0375ec03eac9a30382cf1760",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-44.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/45": {
+    "name": "Vehicle repair station",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-45-vehicle-repair-station-option-01\\textured.glb",
+    "sha256": "80a96a48d9c1a459f5d848dfd4ffeb65e46ed342da854f8dc0383b03c33837d5",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-45.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/46": {
+    "name": "Garage gate",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-46-garage-gate-option-01\\textured.glb",
+    "sha256": "7c69e985e2dfc0907fd8ac62edcd8ab87d09032a7b61959d714a607e99d56511",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-46.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/47": {
+    "name": "Mobile camp trailer",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-47-mobile-camp-trailer-option-01\\textured.glb",
+    "sha256": "f948f799f975481f3d76d2f601372b00e24adc612a81bce13e385772182630c9",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-47.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/49": {
+    "name": "Powered door",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-49-powered-door-option-01\\textured.glb",
+    "sha256": "94e00be9e9e2b38c208f8812dea55ff04b97521e632e19ef3aa4609b608360e9",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-49.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/50": {
+    "name": "Electric lamp",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-50-electric-lamp-option-01\\textured.glb",
+    "sha256": "78da34bd401359dbb609250912c6958405394f899ec6d948ea6b72e940f36031",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-50.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/51": {
+    "name": "Fortified powered gate",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-51-fortified-powered-gate-option-01\\textured.glb",
+    "sha256": "f57f0d03629754c89eedee87489d0a0bbcf67eefad21982be3aa6127ffabea64",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-51.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/52": {
+    "name": "Heavy structural support",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-52-heavy-structural-support-option-01\\textured.glb",
+    "sha256": "5bdc85b88caec8e060349a10dd7a3eac4441565bf47d5af8cb3073d79646920e",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-52.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/53": {
+    "name": "Expedition rover",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-53-expedition-rover-option-01\\textured.glb",
+    "sha256": "82bcfc23e67fc71d73af0eb54d57822061722c077830ed8211e0311622cd0874",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-53.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/54": {
+    "name": "Wood barricade",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-54-wood-barricade-option-01\\textured.glb",
+    "sha256": "399e8b5b15b819417c0527225a55b47b60f4b28494c0af68943a7b553cf3afaf",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-54.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/55": {
+    "name": "Wood spike trap",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-55-wood-spike-trap-option-01\\textured.glb",
+    "sha256": "062c919f6bdc06c3686c2e2f862db50b7827f0c099ee971e74b28877f5f9ecfa",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-55.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/57": {
+    "name": "Watch platform",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-57-watch-platform-option-01\\textured.glb",
+    "sha256": "3056af78c2063db5e245fc231860cc1587138917e0077768987758f0bffe1aff",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-57.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/59": {
+    "name": "Reinforced gate",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-59-reinforced-gate-option-01\\textured.glb",
+    "sha256": "5398ad60dfcfcb6bb5c04a9cbfc9dc8b785f2ca7c28ee4fa4769481acd9fdb22",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-59.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/60": {
+    "name": "Scrap barrier",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-60-scrap-barrier-option-01\\textured.glb",
+    "sha256": "1ce061070c4e7968fa03ceb4cbc29231e11a5774a8a48404347171a3aa6e2904",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-60.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/61": {
+    "name": "Noise lure",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-61-noise-lure-option-01\\textured.glb",
+    "sha256": "ea0a767c128b653e5df3403793394dde81da5fb3984174850a180db6b9cfb0fb",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-61.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/62": {
+    "name": "Mounted machine gun",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-62-mounted-machine-gun-option-01\\textured.glb",
+    "sha256": "207cae8c1f7a4a16d706e22edfaf7ee2970ee24e1fb4a3541e275951e91a26aa",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-62.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/63": {
+    "name": "Electric fence",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-63-electric-fence-option-01\\textured.glb",
+    "sha256": "663142887a9ec838304aa4ab8fbc27c256d1f3728117db5b9ebb4c8a2edd791b",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-63.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/64": {
+    "name": "Perimeter alarm",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-64-perimeter-alarm-option-01\\textured.glb",
+    "sha256": "7d35d523da53f096adc7cb278e552bb529acc95619d51a79f25ef496fdb7b011",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-64.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/65": {
+    "name": "Searchlight",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-65-searchlight-option-01\\textured.glb",
+    "sha256": "b4135ee56a155603fee6821c76febbe0d472d9c2ad813165e99a3f7c3d841f9e",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-65.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/67": {
+    "name": "Powered shock trap",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-67-powered-shock-trap-option-01\\textured.glb",
+    "sha256": "fbc3f3d3c69cd8af51e4f8281afba98c79cbc7b31be0b106e94b394c2485af7d",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-67.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/68": {
+    "name": "Campfire",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-68-campfire-option-01\\textured.glb",
+    "sha256": "8aa73fe7b959b2053b332579201e3e0cea8fbeb1b0026d7c1cdf8aa2f6474a12",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-68.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/69": {
+    "name": "Boiling kettle",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-69-boiling-kettle-option-01\\textured.glb",
+    "sha256": "ab9a66ece2a7351fa72b7e80b90e32366d625fffad65355ee030b8ce8f2da524",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-69.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/70": {
+    "name": "Rain collector",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-70-rain-collector-option-01\\textured.glb",
+    "sha256": "fe59abc838fb285d43f7ea70da8c8b1d63078338d1e9d9b11d941f6635268ac0",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-70.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/71": {
+    "name": "Drying rack",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-71-drying-rack-option-01\\textured.glb",
+    "sha256": "7779c0e518ed6c46a5c295d1a0fa44ac3e72682259061009e9b8518b5d8060e5",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-71.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/72": {
+    "name": "Crop bed",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-72-crop-bed-option-01\\textured.glb",
+    "sha256": "52fdc52bfa2ad9aed7b575a6befa0b005e75b3d73cab8f3470a7fb1e4fd59b42",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-72.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/73": {
+    "name": "Water well",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-73-water-well-option-01\\textured.glb",
+    "sha256": "c76cdf9a878d0689f8b74658be392b90c6577b790c0887a251d9d5fa2bde530c",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-73.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/74": {
+    "name": "Refrigerator",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-74-refrigerator-option-01\\textured.glb",
+    "sha256": "5780a6178afde77fb73181a6b76af40d11f5d949ee43fdbd9d2bfa9e3de76ebc",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-74.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/77": {
+    "name": "Water filter",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-77-water-filter-option-01\\textured.glb",
+    "sha256": "155daa74fee0be63952af2f1798a497d6c01b71891c1310b9f6b60a905385540",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-77.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/78": {
+    "name": "Greenhouse",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-78-greenhouse-option-01\\textured.glb",
+    "sha256": "f0075efc6888a7ff0f0b6a1ab90d6dcc521a8242892308ecd146d23e1def01ce",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-78.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/81": {
+    "name": "Bulk water tank",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-81-bulk-water-tank-option-01\\textured.glb",
+    "sha256": "9fbb391344adb2f4f3c8757169e89de275b39522f006f72afd913ded499949d7",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-81.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/83": {
+    "name": "Survivor cot",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-83-survivor-cot-option-01\\textured.glb",
+    "sha256": "4065cbc4bbcdff8b6dfab4c9a79a81ae71ddd8c553ca0352205f2bd6e89519c6",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-83.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/84": {
+    "name": "Salvaged table",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-84-salvaged-table-option-01\\textured.glb",
+    "sha256": "c7a85fd26c9877aeed46b56c8a4265933dab6f161deb85f550852960e7e956c3",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-84.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/85": {
+    "name": "Camp stool",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-85-camp-stool-option-01\\textured.glb",
+    "sha256": "329740a9ee8d0236627e39ba20cff8b3ab144552971a086114cb1ea7f4d5da44",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-85.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/86": {
+    "name": "Patchwork rug",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-86-patchwork-rug-option-01\\textured.glb",
+    "sha256": "d25f489a8c712877c87e498a085a0d839c3831373e5ed80c8e8765cd08682373",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-86.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/88": {
+    "name": "Resin lantern",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-88-resin-lantern-option-01\\textured.glb",
+    "sha256": "4e93c4cc1d530bdfb441671383a474739bade98f2aa00707c5d35d3417bc68d4",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-88.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/89": {
+    "name": "Scrap workshop table",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-89-scrap-workshop-table-option-01\\textured.glb",
+    "sha256": "7f77138b18c87c6d7e64d9045578c9833cd3a01cce9a1449bdea61d0762d3ade",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-89.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/90": {
+    "name": "Military footlocker",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-90-military-footlocker-option-01\\textured.glb",
+    "sha256": "1aa5b64be1b9a30f9a22ccb85efc6ced7f50148d3cac83f9b2c4b55eab7537c8",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-90.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/92": {
+    "name": "Rough timber window wall",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-92-rough-timber-window-wall-option-01\\textured.glb",
+    "sha256": "dcd897e016e2abd4c9746fcb3df98b43ecddb6d9ac1da8944d7df50114c8b057",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-92.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/93": {
+    "name": "Timber palisade gate",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Buildings\\Modular\\Wood\\timber-palisade-gate\\textured.glb",
+    "sha256": "a9eec912d8dec66e939b5cb43268318e2db9bd968bfee97df22898deffb22956",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-93.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/95": {
+    "name": "Stone-post timber gate",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-95-stone-post-timber-gate-option-01\\textured.glb",
+    "sha256": "2398a90be72e06297117bfef02f7ca354580bfcbdb5f3b7efc003422bbe1e144",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-95.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/97": {
+    "name": "Scrap steel window wall",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-97-scrap-steel-window-wall-option-01\\textured.glb",
+    "sha256": "f9478f744cba9ec04df811e57f1705865d54fd07b789f4536fc33f5411d2f11e",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-97.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/98": {
+    "name": "Scrap steel perimeter gate",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-98-scrap-steel-perimeter-gate-option-01\\textured.glb",
+    "sha256": "4ad88deee0052a5f45824be1efa50d5e16b6a691985c522535dc96b21148c884",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-98.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/101": {
+    "name": "Concrete bastion gate",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-101-concrete-bastion-gate-option-01\\textured.glb",
+    "sha256": "ce44de29e3210f7798abc1f74a9d3f6fd3f9c85f8671c6df99c2cdbe966ce68e",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-101.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-build/104": {
+    "name": "Military checkpoint gate",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\buildings\\catalog-build-104-military-checkpoint-gate-option-01\\textured.glb",
+    "sha256": "163cd8e685d41005a486e427d41c340c8c86edfbf72f4514de6c1b5a0ccc9154",
+    "resource": "res://Assets/Hunyuan/Static/catalog-build-104.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-medicine/4/1": {
+    "name": "Field medical kit",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-medicine-4-1-field-medical-kit-option-02\\textured.glb",
+    "sha256": "68c9627f92d383c969005b96c940e01bf32e778f6fe84262fb4c676f3f9cea5b",
+    "resource": "res://Assets/Hunyuan/Static/catalog-medicine-4-1.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-medicine/5/2": {
+    "name": "Advanced medical kit",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-medicine-5-2-advanced-medical-kit-option-01\\textured.glb",
+    "sha256": "d0d5ebce4299f7fee544c9c21e211c939d3ba07efe0a48d4d3a14e1e28e4e772",
+    "resource": "res://Assets/Hunyuan/Static/catalog-medicine-5-2.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-survival-tech/2/0": {
+    "name": "Charcoal water filter",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-survival-tech-2-0-charcoal-water-filter-option-01\\textured.glb",
+    "sha256": "ef9949df845c8a766eafe3aca1d8634065cb335a5f47a684ba079993e7b19507",
+    "resource": "res://Assets/Hunyuan/Static/catalog-survival-tech-2-0.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-survival-tech/4/1": {
+    "name": "Membrane purifier kit",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-survival-tech-4-1-membrane-purifier-kit-option-01\\textured.glb",
+    "sha256": "464c574dc5ecadc755547f6e6fb19b3cabfbea3eb4c18f8907619aa807396234",
+    "resource": "res://Assets/Hunyuan/Static/catalog-survival-tech-4-1.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-survival-tech/3/4": {
+    "name": "Trail recovery tea",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-survival-tech-3-4-trail-recovery-tea-option-01\\textured.glb",
+    "sha256": "c29d7d53ad39d70fc31c1e029b675db57d2f5fe162662d4d1776a2823801d8ea",
+    "resource": "res://Assets/Hunyuan/Static/catalog-survival-tech-3-4.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-survival-tech/3/5": {
+    "name": "Sealed water containers",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-survival-tech-3-5-sealed-water-containers-option-01\\textured.glb",
+    "sha256": "880874504d55c3ea2aaa91a03d01c3c5b6bda5c1cdd1c1755852fbf63600739e",
+    "resource": "res://Assets/Hunyuan/Static/catalog-survival-tech-3-5.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon-mod/1/0": {
+    "name": "Cord-wrapped grip",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-weapon-mod-1-0-cord-wrapped-grip-option-01\\textured.glb",
+    "sha256": "4db7fd6efc91ac372b32f8c57c78abd97b46c111f0d2dbc4b7c6980c56b2fdc4",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-mod-1-0.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon-mod/2/2": {
+    "name": "Honed steel edge",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-weapon-mod-2-2-honed-steel-edge-option-01\\textured.glb",
+    "sha256": "5f26837db11f6e450238528d80ca0808be4e4763e9a47b2be28dd79ce099f963",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-mod-2-2.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon-mod/3/3": {
+    "name": "Field suppressor",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-weapon-mod-3-3-field-suppressor-option-01\\textured.glb",
+    "sha256": "ec10590f34683cb0f9eb61dcf5da5eecb4c40f96165010b936238ad37713e36a",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-mod-3-3.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon-mod/3/4": {
+    "name": "Ported muzzle brake",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-weapon-mod-3-4-ported-muzzle-brake-option-01\\textured.glb",
+    "sha256": "af235abc83afa975bc7e098bf845b8feb0d9de49b4d0890457ff15935bf2cc07",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-mod-3-4.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon-mod/3/5": {
+    "name": "Magnified field optic",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-weapon-mod-3-5-magnified-field-optic-option-01\\textured.glb",
+    "sha256": "944ca981b7cb4ae2cd4780c597fe38235984d5740dd9b33385edcf98f498f1d6",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-mod-3-5.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon-mod/3/6": {
+    "name": "Extended magazine",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-weapon-mod-3-6-extended-magazine-option-01\\textured.glb",
+    "sha256": "da3b4980ee61d148ddbb34b296791a4d9189e0db82534cc53a7e9dadb46b8914",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-mod-3-6.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon-mod/3/9": {
+    "name": "Balanced bow limbs",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-weapon-mod-3-9-balanced-bow-limbs-option-01\\textured.glb",
+    "sha256": "b48daf2b5a9bd9466f488b28784f1cf2f1be82e6241c1389ce195b49744dfbba",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-mod-3-9.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-weapon-mod/4/10": {
+    "name": "Hardened cutting chain",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-weapon-mod-4-10-hardened-cutting-chain-option-01\\textured.glb",
+    "sha256": "c668d570e75628a755d3666261317f38dc7e117e0aa2fbf3444544d0e8cf8748",
+    "resource": "res://Assets/Hunyuan/Static/catalog-weapon-mod-4-10.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-shovel": {
+    "name": "Earthwork shovel / P O",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-shovel-earthwork-shovel-p-o-option-01\\textured.glb",
+    "sha256": "8e168f7a0f1eea2477e2578b105c12c53b907bc1ecfea07c60345c74c8e86fe6",
+    "resource": "res://Assets/Hunyuan/Static/catalog-shovel.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-hammer": {
+    "name": "Builder hammer / B",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-hammer-builder-hammer-b-option-01\\textured.glb",
+    "sha256": "303464890c1583cca019f92a0329af0d5a2a015aa9b8c8aeb9e3ea584b20ece6",
+    "resource": "res://Assets/Hunyuan/Static/catalog-hammer.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-hunting-material/0": {
+    "name": "Raw game meat",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-hunting-material-0-raw-game-meat-option-02\\textured.glb",
+    "sha256": "53179be3f3a6ecdf8b12c2623858727344cfb0fb9fd7cd405dd5962d2a70e3f1",
+    "resource": "res://Assets/Hunyuan/Static/catalog-hunting-material-0.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-hunting-material/2": {
+    "name": "Fur",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-hunting-material-2-fur-option-01\\textured.glb",
+    "sha256": "c73ba2134a95d2660d32b37dfb73c3ba2fbba8dd34c63782f8498dcbd7ad0ab0",
+    "resource": "res://Assets/Hunyuan/Static/catalog-hunting-material-2.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-hunting-gear/boots": {
+    "name": "Leather hunting boots",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\equipment\\catalog-hunting-gear-boots-leather-hunting-boots-option-01\\textured.glb",
+    "sha256": "057c26cc8d00fa4adae11d687b5eab661e68b1672db4961087205d83a07d70bf",
+    "resource": "res://Assets/Hunyuan/Static/catalog-hunting-gear-boots.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-hunting-tool/1": {
+    "name": "Flint skinning knife",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-hunting-tool-1-flint-skinning-knife-option-01\\textured.glb",
+    "sha256": "1cdd9cc28b93028f7bc1f93f92bf7e4d90857594b4aeddbeb5dc9e7aef83a4fe",
+    "resource": "res://Assets/Hunyuan/Static/catalog-hunting-tool-1.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-hunting-tool/2": {
+    "name": "Stone butcher cleaver",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-hunting-tool-2-stone-butcher-cleaver-option-01\\textured.glb",
+    "sha256": "b13c579ce778e985f9062930f1325e17312c09fc29a44da4f1935dd00311db71",
+    "resource": "res://Assets/Hunyuan/Static/catalog-hunting-tool-2.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-arrow/0": {
+    "name": "Wood arrow",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-arrow-0-wood-arrow-option-01\\textured.glb",
+    "sha256": "0e3b25fda698b3654c94661c1e89f34d781f7b237461b3076aa50360df7afd37",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-arrow-0.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-arrow/2": {
+    "name": "Bone arrow",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-arrow-2-bone-arrow-option-01\\textured.glb",
+    "sha256": "ff1f73464580812fe64d38e6db7577c99a2cec5d19a71ef0145081bd545590d4",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-arrow-2.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-arrow/3": {
+    "name": "Iron arrow",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-arrow-3-iron-arrow-option-01\\textured.glb",
+    "sha256": "11d7ab6629a2bdfa8adfd086c90f6bb3035adda1585b7cd93ab7cd8420b085e8",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-arrow-3.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-arrow/4": {
+    "name": "Steel broadhead",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-arrow-4-steel-broadhead-option-01\\textured.glb",
+    "sha256": "15a78e6543560e14f76067fa8870cda9e506be7cac0729d60d5ea64191c547e4",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-arrow-4.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-arrow/5": {
+    "name": "Flaming arrow",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-arrow-5-flaming-arrow-option-01\\textured.glb",
+    "sha256": "0c26967286db334bd52149bb6e5476effb91583897b6fa9e4633de11dc2d58a4",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-arrow-5.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-throw/2": {
+    "name": "Makeshift nail jar",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-throw-2-makeshift-nail-jar-option-01\\textured.glb",
+    "sha256": "0260fcaa4761c5e28aceb7275dfd8248e152a6bc4c510c444996e96d306cf615",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-throw-2.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-throw/3": {
+    "name": "Military grenade",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-throw-3-military-grenade-option-01\\textured.glb",
+    "sha256": "4805e70348d3559646ad28985f926317a7fcf1e988410f637ebf6744db54225e",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-throw-3.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-throw/4": {
+    "name": "White smoke",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-throw-4-white-smoke-option-01\\textured.glb",
+    "sha256": "4d1c6e13596d27a99433d3ff6471c966fd395d521b49a4f38c0ad5e272bfcc01",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-throw-4.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-throw/5": {
+    "name": "Red smoke",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-throw-5-red-smoke-option-01\\textured.glb",
+    "sha256": "a44f9911d752b762fe33745214f7a17ab8a8b5c58013e0520dff4508ab4369c7",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-throw-5.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-throw/6": {
+    "name": "Green smoke",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-throw-6-green-smoke-option-01\\textured.glb",
+    "sha256": "dc934a4fc36a475a1d92e07060be46661f2f2f6b55334d73dc6315d9103dbf65",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-throw-6.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-throw/7": {
+    "name": "Blue smoke",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-throw-7-blue-smoke-option-01\\textured.glb",
+    "sha256": "70c77b410ec75d0265d4cccf22fcf43464fff75f4820118b56d96a2d5cab2269",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-throw-7.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-throw/8": {
+    "name": "Flash grenade",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-throw-8-flash-grenade-option-01\\textured.glb",
+    "sha256": "2ea4c8a5ee78fa54a9d8b84ad0a71b3e51df3f9bfc5943b0a9a049f145467730",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-throw-8.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-throw/9": {
+    "name": "Clockwork noise decoy",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-throw-9-clockwork-noise-decoy-option-01\\textured.glb",
+    "sha256": "83d792ff7981abcab42033e7dea1f44fe75e7bc22c016a7e277538c5d39a3171",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-throw-9.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-tool/0/1": {
+    "name": "Stone chopping axe",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-tool-0-1-stone-chopping-axe-option-01\\textured.glb",
+    "sha256": "d8ab1ee03ebe965f92e568e38ec0bc11c472934eff531f072db8d1411b85608b",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-tool-0-1.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-tool/1/1": {
+    "name": "Stone pickaxe",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-tool-1-1-stone-pickaxe-option-01\\textured.glb",
+    "sha256": "c94307203e90d5b1223bccf747aa8595e609e9cc49b970803b6661f1be9e9a8a",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-tool-1-1.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-tool/1/2": {
+    "name": "Iron pickaxe",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-tool-1-2-iron-pickaxe-option-01\\textured.glb",
+    "sha256": "fdb4fc5b73b2cfda05e4216ba97355c10803f608e012cd54a9218f6d9e948b28",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-tool-1-2.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-tool/2/1": {
+    "name": "Salvage screwdriver",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-tool-2-1-salvage-screwdriver-option-01\\textured.glb",
+    "sha256": "af6e2ea47af653c865bc91810b9815710f2a0709c689e5a319a182a717152403",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-tool-2-1.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-tool/2/2": {
+    "name": "Salvage wrench",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-tool-2-2-salvage-wrench-option-01\\textured.glb",
+    "sha256": "cee8f22cb37835f5c14ff9e76fd34afb8df0f61d574fa3dd6de98113b5d92210",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-tool-2-2.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-tool/2/3": {
+    "name": "Salvage blowtorch",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-field-tool-2-3-salvage-blowtorch-option-01\\textured.glb",
+    "sha256": "1ec5cd1dcee97ff194e3cf1004faa19fab4b6783fad2e87813325677f5a598ef",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-tool-2-3.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-tool/3/1": {
+    "name": "Flint skinning knife",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-hunting-tool-1-flint-skinning-knife-option-01\\textured.glb",
+    "sha256": "1cdd9cc28b93028f7bc1f93f92bf7e4d90857594b4aeddbeb5dc9e7aef83a4fe",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-tool-3-1.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-field-tool/3/2": {
+    "name": "Bone skinning knife",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Items\\Tools\\Knives\\skinning-knife-bone-blade\\textured.glb",
+    "sha256": "da196a1e69ff59ca234500d232b3a1d7a69a856a628cd2571559660d0e374b9a",
+    "resource": "res://Assets/Hunyuan/Static/catalog-field-tool-3-2.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-raw-scrap": {
+    "name": "Raw scrap metal",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-raw-scrap-raw-scrap-metal-option-01\\textured.glb",
+    "sha256": "b8c0d81aa3f187aed7265a54e6f2d4c3fe52d42d144570d14b388d0436361412",
+    "resource": "res://Assets/Hunyuan/Static/catalog-raw-scrap.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "catalog-salvage-glass": {
+    "name": "Salvaged glass containers",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-salvage-glass-salvaged-glass-containers-option-01\\textured.glb",
+    "sha256": "18c55087236122e1df309b124b0afacedb75b1a481411fe5fe8436d104b945d8",
+    "resource": "res://Assets/Hunyuan/Static/catalog-salvage-glass.glb",
+    "usage": "inventory/crafting preview"
+  },
+  "wreck-car": {
+    "name": "wreck-car",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Props\\Vehicles\\Abandoned Cars\\abandoned-car-01\\textured.glb",
+    "sha256": "fd48c71a50e98a7a02ea83c94ba7735ac0bc6d8eb8e04a4e11a3fcfdcd809bb5",
+    "resource": "res://Assets/Hunyuan/Static/wreck-car.glb",
+    "usage": "world wreck visual; existing collision retained"
+  },
+  "burned-car": {
+    "name": "burned-car",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\burned-car-burned-car-option-01\\textured.glb",
+    "sha256": "453f9eda633b69dde0d18e3dad2b2aa21719cf332d4d6c30811caa65733e6f04",
+    "resource": "res://Assets/Hunyuan/Static/burned-car.glb",
+    "usage": "world wreck visual; existing collision retained"
+  }
+}

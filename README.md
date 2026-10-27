@@ -1,5 +1,7 @@
 # Ashen Meadow Godot Expedition
 
+The 27 October static-art pass adds 159 reviewed generated models to matching item/crafting previews and selected world props. Existing animation, collision and functional architecture remain. See [BATCH-MODELS.md](BATCH-MODELS.md) for coverage, exclusions and validation.
+
 Current update: **The Waterline** adds the branching Noah/Lily story, neighboring survivor communities, limited research specializations, soft health, conditions and water purification. See [LIVING-WORLD.md](LIVING-WORLD.md).
 
 This folder is the standalone Godot game and GitHub playtest repository. The old Expedition and Survival base-defence prototypes remain outside it.

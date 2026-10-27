@@ -1,0 +1,390 @@
+[
+  {
+    "key": "catalog-weapon/0",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-weapon/1",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-weapon/2",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-weapon/3",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-weapon/4",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-weapon/6",
+    "reason": "Bow reconstructed as a rifle"
+  },
+  {
+    "key": "catalog-weapon/9",
+    "reason": "Hand stone reconstructed as a gun stock"
+  },
+  {
+    "key": "catalog-weapon/14",
+    "reason": "Claw hammer lacks the correct hammer silhouette"
+  },
+  {
+    "key": "catalog-weapon/15",
+    "reason": "Iron rod reconstructed as a wooden staff"
+  },
+  {
+    "key": "catalog-weapon/17",
+    "reason": "Chainsaw reconstructed as a firearm"
+  },
+  {
+    "key": "catalog-weapon/18",
+    "reason": "Recurve bow reconstructed as a firearm"
+  },
+  {
+    "key": "catalog-weapon/19",
+    "reason": "Crossbow reconstructed as a firearm"
+  },
+  {
+    "key": "catalog-weapon/20",
+    "reason": "Machete reconstructed as a wooden staff"
+  },
+  {
+    "key": "catalog-weapon/21",
+    "reason": "Sledgehammer lacks its hammer head"
+  },
+  {
+    "key": "catalog-weapon/23",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-weapon/25",
+    "reason": "Forged sword has an excessively long staff-like handle"
+  },
+  {
+    "key": "catalog-weapon/26",
+    "reason": "Longsword has an excessively long staff-like handle"
+  },
+  {
+    "key": "catalog-weapon/27",
+    "reason": "Chain sword lacks the defining chain blade"
+  },
+  {
+    "key": "catalog-weapon/32",
+    "reason": "Compound bow reconstructed as a blade"
+  },
+  {
+    "key": "catalog-weapon/33",
+    "reason": "Polehammer reconstructed as a gun stock"
+  },
+  {
+    "key": "catalog-weapon/34",
+    "reason": "Flamethrower lacks its fuel system and resembles a compact firearm"
+  },
+  {
+    "key": "catalog-armor/1/1",
+    "reason": "Torso includes unwanted detached boots"
+  },
+  {
+    "key": "catalog-armor/2/2",
+    "reason": "Torso includes unwanted detached boots"
+  },
+  {
+    "key": "catalog-armor/3/3",
+    "reason": "Torso includes unwanted detached boots"
+  },
+  {
+    "key": "catalog-armor/4/4",
+    "reason": "Torso includes unwanted detached boots"
+  },
+  {
+    "key": "catalog-armor/5/5",
+    "reason": "Torso includes unwanted detached boots"
+  },
+  {
+    "key": "catalog-armor/1/11",
+    "reason": "Hood includes unwanted detached boots"
+  },
+  {
+    "key": "catalog-armor/2/11",
+    "reason": "Helmet includes unwanted detached boots"
+  },
+  {
+    "key": "catalog-armor/5/11",
+    "reason": "Helmet includes unwanted detached boots"
+  },
+  {
+    "key": "catalog-armor/3/11",
+    "reason": "Helmet includes unwanted detached boots and debris"
+  },
+  {
+    "key": "catalog-armor/4/11",
+    "reason": "Helmet includes unwanted detached boots"
+  },
+  {
+    "key": "catalog-material/0",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-material/1",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-material/2",
+    "reason": "Fiber reconstructed as a solid stump-like cylinder"
+  },
+  {
+    "key": "catalog-material/4",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-material/5",
+    "reason": "Electronics reconstructed as a wooden crate"
+  },
+  {
+    "key": "catalog-material/6",
+    "reason": "Bioalloy reconstructed as a wooden stump"
+  },
+  {
+    "key": "catalog-bandage",
+    "reason": "Rendered bandage resembles a wooden cylinder rather than cloth"
+  },
+  {
+    "key": "catalog-food",
+    "reason": "Generic wood crate without a readable provisions design"
+  },
+  {
+    "key": "catalog-ammo",
+    "reason": "Rendered result is a pistol rather than ammunition"
+  },
+  {
+    "key": "catalog-ammo/2",
+    "reason": "Rendered result is a rifle rather than ammunition"
+  },
+  {
+    "key": "catalog-legendary",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-legendary-upgrade",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-millcore",
+    "reason": "Generic barrel does not read as an industrial core"
+  },
+  {
+    "key": "catalog-mill-temper",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-catalyst",
+    "reason": "Generic wooden crate does not represent the catalyst"
+  },
+  {
+    "key": "catalog-bench/2",
+    "reason": "Kitchen counter rather than upgraded workbench"
+  },
+  {
+    "key": "catalog-bench/3",
+    "reason": "Kitchen counter rather than upgraded workbench"
+  },
+  {
+    "key": "catalog-bench/4",
+    "reason": "Kitchen counter rather than upgraded workbench"
+  },
+  {
+    "key": "catalog-bench/5",
+    "reason": "Closed cabinet rather than upgraded workbench"
+  },
+  {
+    "key": "catalog-build/2",
+    "reason": "Wall reconstructed as a solid deep box"
+  },
+  {
+    "key": "catalog-build/4",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-build/10",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-build/14",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-build/20",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-build/41",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-build/42",
+    "reason": "Window aperture is filled"
+  },
+  {
+    "key": "catalog-build/48",
+    "reason": "Generator reconstructed as a timber cabinet"
+  },
+  {
+    "key": "catalog-build/56",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-build/58",
+    "reason": "Rope snare reconstructed as a large cage"
+  },
+  {
+    "key": "catalog-build/66",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-build/75",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-build/76",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-build/79",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-build/80",
+    "reason": "Generator reconstructed as a timber cabinet"
+  },
+  {
+    "key": "catalog-build/82",
+    "reason": "Hydroponic rack has substantial floating reconstruction debris"
+  },
+  {
+    "key": "catalog-build/87",
+    "reason": "Display shelf reconstructed as a closed cabinet"
+  },
+  {
+    "key": "catalog-build/91",
+    "reason": "Door opening is filled"
+  },
+  {
+    "key": "catalog-build/94",
+    "reason": "Door opening is filled"
+  },
+  {
+    "key": "catalog-build/96",
+    "reason": "Door opening is filled"
+  },
+  {
+    "key": "catalog-build/99",
+    "reason": "Door opening is filled"
+  },
+  {
+    "key": "catalog-build/100",
+    "reason": "Window opening is filled"
+  },
+  {
+    "key": "catalog-build/102",
+    "reason": "Door opening is filled"
+  },
+  {
+    "key": "catalog-build/103",
+    "reason": "Window opening is filled"
+  },
+  {
+    "key": "catalog-fuel/3/40",
+    "reason": "Chainsaw rather than its fuel supply"
+  },
+  {
+    "key": "catalog-arrow/1/12",
+    "reason": "Arrow bundle is a malformed debris-covered bundle"
+  },
+  {
+    "key": "catalog-attachment/2/10",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-attachment/3/15",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-attachment/4/20",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-survival-tech/3/2",
+    "reason": "Comfort kit reconstructed as an unrelated panel and stakes"
+  },
+  {
+    "key": "catalog-survival-tech/3/3",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-weapon-mod/2/1",
+    "reason": "Weighted striking head reconstructed as a wooden barrel"
+  },
+  {
+    "key": "catalog-weapon-mod/2/7",
+    "reason": "Shoulder stock reconstructed as torso armour"
+  },
+  {
+    "key": "catalog-weapon-mod/2/8",
+    "reason": "Bowstring reconstructed as a complete bow"
+  },
+  {
+    "key": "catalog-weapon-mod/5/11",
+    "reason": "Cooling jacket reconstructed as a human jacket"
+  },
+  {
+    "key": "catalog-axe",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-hunting-material/1",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-hunting-material/3",
+    "reason": "Bone reconstructed as a wooden cylinder"
+  },
+  {
+    "key": "catalog-hunting-material/4",
+    "reason": "Sinew reconstructed as a wooden barrel"
+  },
+  {
+    "key": "catalog-hunting-material/5",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-hunting-gear/hood",
+    "reason": "Hood includes detached boots"
+  },
+  {
+    "key": "catalog-hunting-gear/vest",
+    "reason": "Vest includes detached boots and malformed opening"
+  },
+  {
+    "key": "catalog-field-arrow/1",
+    "reason": "Bent and malformed arrow shaft"
+  },
+  {
+    "key": "catalog-field-throw/0",
+    "reason": "Molotov lacks readable wick and resembles a closed supply bottle"
+  },
+  {
+    "key": "catalog-field-throw/1",
+    "reason": "Molotov reconstructed as a solid wooden cylinder"
+  },
+  {
+    "key": "catalog-field-tool/0/2",
+    "reason": "No new matching textured conversion"
+  },
+  {
+    "key": "catalog-field-tool/3/3",
+    "reason": "No new matching textured conversion"
+  }
+]
