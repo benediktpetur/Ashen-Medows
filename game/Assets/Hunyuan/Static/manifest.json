@@ -1111,5 +1111,54 @@
     "sha256": "453f9eda633b69dde0d18e3dad2b2aa21719cf332d4d6c30811caa65733e6f04",
     "resource": "res://Assets/Hunyuan/Static/burned-car.glb",
     "usage": "world wreck visual; existing collision retained"
+  },
+  "world-oak-b": {
+    "name": "oak-tree-07",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Nature\\Trees\\Oaks\\oak-tree-07\\textured.glb",
+    "sha256": "a752e9807ac53ff8b3f726371a97102b3c989f2cb0c9043889fb82b459ec406f",
+    "resource": "res://Assets/Hunyuan/Static/world-oak-b.glb",
+    "usage": "world environment; authored gameplay collision retained"
+  },
+  "world-pine": {
+    "name": "conifer-tree-02",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Nature\\Trees\\Conifers\\conifer-tree-02\\textured.glb",
+    "sha256": "bdc4de8eee073d1c33288e9a575abba0b868438aaca2de186319a23926bae4ea",
+    "resource": "res://Assets/Hunyuan/Static/world-pine.glb",
+    "usage": "world environment; authored gameplay collision retained"
+  },
+  "world-rock": {
+    "name": "cracked-harvest-boulder",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Nature\\Rocks\\cracked-harvest-boulder\\textured.glb",
+    "sha256": "440e9ff09fd47894f34b577b1b46e14bee33f35f5dc536a3a9bf4a2b797dc80c",
+    "resource": "res://Assets/Hunyuan/Static/world-rock.glb",
+    "usage": "world environment; authored gameplay collision retained"
+  },
+  "world-furniture-0": {
+    "name": "furniture-0-sofa-option-01",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\furniture\\furniture-0-sofa-option-01\\textured.glb",
+    "sha256": "4eeb6f696072f4b0a965a362d7ce1bd0a2dd60224b7d39804ac13d1c9cc325cc",
+    "resource": "res://Assets/Hunyuan/Static/world-furniture-0.glb",
+    "usage": "world environment; authored gameplay collision retained"
+  },
+  "world-furniture-1": {
+    "name": "furniture-1-table-option-01",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\furniture\\furniture-1-table-option-01\\textured.glb",
+    "sha256": "d7ca1f2be692c25a62dab41aee9feccffd35d6e4c5694cd32c8f5d6242adca29",
+    "resource": "res://Assets/Hunyuan/Static/world-furniture-1.glb",
+    "usage": "world environment; authored gameplay collision retained"
+  },
+  "world-furniture-2": {
+    "name": "furniture-2-cupboard-option-01",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\furniture\\furniture-2-cupboard-option-01\\textured.glb",
+    "sha256": "7708efb260673283ae9040def92fa3ca4ce6dd3206579a2c68819cedeebf0c3c",
+    "resource": "res://Assets/Hunyuan/Static/world-furniture-2.glb",
+    "usage": "world environment; authored gameplay collision retained"
+  },
+  "world-furniture-3": {
+    "name": "furniture-3-chair-option-01",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\furniture\\furniture-3-chair-option-01\\textured.glb",
+    "sha256": "f4f5958fdeefa8c86e7b498b8fcc878b98d880f00e0bf77ec19a75f3ec183444",
+    "resource": "res://Assets/Hunyuan/Static/world-furniture-3.glb",
+    "usage": "world environment; authored gameplay collision retained"
   }
 }

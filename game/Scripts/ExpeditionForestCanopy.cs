@@ -10,7 +10,7 @@ public partial class MigrationScene {
  }
  bool ForestBuildClearance(double x,double z){foreach(var p in game.Building.Pieces)if(p.Contains(x,p.CenterY,z,1.2))return true;return false;}
  // Eight shared mesh variants keep the denser woodland from creating unique geometry for every tree.
- void ForestTree(Node3D root,float height,int seed){int variant=(int)((uint)seed%8);var visual=new Node3D{Scale=Vector3.One*(height/14)};root.AddChild(visual);
+ void ForestTree(Node3D root,float height,int seed){if(TryWorldTree(root,height,seed,(uint)seed%7==0))return;int variant=(int)((uint)seed%8);var visual=new Node3D{Scale=Vector3.One*(height/14)};root.AddChild(visual);
   FigureMesh(visual,"forest-canopy/v1/trunk/"+variant,b=>{b.Limb(Wood,Vector3.Zero,new(.12f,11,0),.29f,.29f,.075f,.075f,10);for(int i=0;i<5;i++){float a=i*2.4f+variant*.6f;var start=new Vector3(.05f,6+i*.6f,0);b.Limb(Wood,start,new(Mathf.Sin(a)*2.9f,9+i*.7f,Mathf.Cos(a)*2.9f),.12f,.12f,.025f,.025f,8);}});
   visual.GetChild<MeshInstance3D>(0).VisibilityRangeEnd=175;
   if(!forestCrowns.TryGetValue(variant,out var crown)){var random=new Random(variant*317+19);crown=new MultiMesh{TransformFormat=MultiMesh.TransformFormatEnum.Transform3D,UseColors=true,Mesh=new SphereMesh{Radius=1,Height=2,RadialSegments=10,Rings=5},InstanceCount=13};

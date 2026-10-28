@@ -39,6 +39,12 @@ for row in audit['catalogue']:
 for key,relative in [('wreck-car','Props/Vehicles/Abandoned Cars/abandoned-car-01.jpg'),('burned-car','props/burned-car-burned-car-option-01.jpg')]:
     job=next((j for j in audit['queue'] if j['relative']==relative and j['status']=='complete'),None)
     if job:add(key,key,job['model'],'world wreck visual; existing collision retained')
+world_selections=REPO/'scripts/world-model-selections.json'
+if world_selections.exists():
+    for key,relative in json.loads(world_selections.read_text(encoding='utf-8')).items():
+        job=next((j for j in audit['queue'] if j['relative']==relative and j['status']=='complete'),None)
+        if not job:raise RuntimeError('Selected world model is missing: '+relative)
+        add(key,Path(relative).stem,job['model'],'world environment; authored gameplay collision retained')
 (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
 (OUT/'deferred.json').write_text(json.dumps(deferred,indent=2),encoding='utf-8')
 print(f'Prepared {len(manifest)} self-contained static models; {len(deferred)} static catalogue entries deferred (missing or rejected).')

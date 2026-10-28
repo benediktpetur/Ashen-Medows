@@ -1,5 +1,7 @@
 # Image-conditioned model integration — 27 October 2026
 
+Update: the 28 October world-art pass adds seven environment models to the original 159-model static registry (166 active entries total). See `WORLD-ART-PASS.md` for current coverage; the counts below describe the original static pass.
+
 The completed local conversion batch contains 899 textured results from 918 input images; 19 failed. These counts include alternate concepts, not unique required game assets. Original images and model outputs are preserved.
 
 The initial 225 static candidates were rendered in Godot and reviewed on 19 labelled contact sheets. **66 were rejected**, leaving **159 registered static models**. Examples include guns incorrectly generated for ammunition, armour with extra boots, filled door apertures and unrelated weapon silhouettes. `scripts/batch-model-rejections.json` records every exclusion. The procedural fallback remains active for those slots. Contact sheets intentionally include rejected candidates so the decisions can be reviewed. The importer applies these exclusions on subsequent runs.

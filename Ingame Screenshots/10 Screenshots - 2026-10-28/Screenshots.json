@@ -1,0 +1,52 @@
+[
+  {
+    "file": "01-world-polish-01-southeast-camp.png",
+    "caption": "Suburban starting area",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\AshenMeadow-Godot\\.tools\\appdata\\AshenMeadowExpedition\\tests\\art\\world-polish-01-southeast-camp.png"
+  },
+  {
+    "file": "02-02-woodland.png",
+    "caption": "Woodland infected",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\AshenMeadow-Godot\\.tools\\appdata\\AshenMeadowExpedition\\tests\\art\\02-woodland.png"
+  },
+  {
+    "file": "03-03-outskirts.png",
+    "caption": "Highway industrial zone",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\AshenMeadow-Godot\\.tools\\appdata\\AshenMeadowExpedition\\tests\\art\\03-outskirts.png"
+  },
+  {
+    "file": "04-04-south-city.png",
+    "caption": "Dense city",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\AshenMeadow-Godot\\.tools\\appdata\\AshenMeadowExpedition\\tests\\art\\04-south-city.png"
+  },
+  {
+    "file": "05-07-medical-ward.png",
+    "caption": "Medical ward",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\AshenMeadow-Godot\\.tools\\appdata\\AshenMeadowExpedition\\tests\\art\\07-medical-ward.png"
+  },
+  {
+    "file": "06-08-night-hunter.png",
+    "caption": "Night encounter",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\AshenMeadow-Godot\\.tools\\appdata\\AshenMeadowExpedition\\tests\\art\\08-night-hunter.png"
+  },
+  {
+    "file": "07-content-01-farm-stand.png",
+    "caption": "Farm stand",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\AshenMeadow-Godot\\.tools\\appdata\\AshenMeadowExpedition\\tests\\art\\content-01-farm-stand.png"
+  },
+  {
+    "file": "08-content-03-woodland-clinic.png",
+    "caption": "Woodland clinic",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\AshenMeadow-Godot\\.tools\\appdata\\AshenMeadowExpedition\\tests\\art\\content-03-woodland-clinic.png"
+  },
+  {
+    "file": "09-content-05-recovery-garage.png",
+    "caption": "Recovery garage",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\AshenMeadow-Godot\\.tools\\appdata\\AshenMeadowExpedition\\tests\\art\\content-05-recovery-garage.png"
+  },
+  {
+    "file": "10-content-06-quarantine-works.png",
+    "caption": "Quarantine works",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\AshenMeadow-Godot\\.tools\\appdata\\AshenMeadowExpedition\\tests\\art\\content-06-quarantine-works.png"
+  }
+]

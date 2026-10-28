@@ -6,10 +6,10 @@ The content expansion adds 28 authored locations to the existing southeast-to-no
 
 | Region | New locations |
 | --- | --- |
-| Starting meadow — T1 | Bracken Farm Stand; The Wayfarer's Stove; South Meadow Post Office; Hollow Creek Allotments; Miller's Picnic Shelter; The Orchard Tool Shed |
-| Woodland — T2 | Coldwater Ranger Lodge; The Broken Pump House; Pinewatch Radio Tower; Moonrise Hunting Lodge; Saint Wren's Woodland Clinic; The Last Fisher's Jetty; Alder Charcoal Yard; Foxglove Glasshouse |
-| Highway and outskirts — T3 | East Spur Recovery Garage; Redline Ambulance Depot; Rafi's Rail Locker; Cinder Signal Box; Turnpike Roadhouse; The Last Petrol Stop |
-| South city — T4 | Saint Orla's Dispensary; Civic Evacuation Control; June's Community Kitchen; Eli's Rooftop Receiver; Harbour Quarantine Works; The Rooftop Canteen; South Bank Records Office; Ashfall Freight Terminal |
+| Suburbs — T1 | Bracken Farm Stand; The Wayfarer's Stove; South Meadow Post Office; Hollow Creek Allotments; Miller's Picnic Shelter; The Orchard Tool Shed |
+| Woodland outside the city — T2 | Coldwater Ranger Lodge; The Broken Pump House; Pinewatch Radio Tower; Moonrise Hunting Lodge; Saint Wren's Woodland Clinic; The Last Fisher's Jetty; Alder Charcoal Yard; Foxglove Glasshouse |
+| Highway corridor and industrial zone — T3 | East Spur Recovery Garage; Redline Ambulance Depot; Rafi's Rail Locker; Cinder Signal Box; Turnpike Roadhouse; The Last Petrol Stop |
+| Dense city — T4 | Saint Orla's Dispensary; Civic Evacuation Control; June's Community Kitchen; Eli's Rooftop Receiver; Harbour Quarantine Works; The Rooftop Canteen; South Bank Records Office; Ashfall Freight Terminal |
 
 Twelve layout themes provide farm beds, ranger-lodge furnishings, medical rooms, recovery garages, pump tanks, radio towers, railway infrastructure, shop stock, archive shelves, kitchens, industrial plant and checkpoint equipment. Raised foundations and approach ramps follow the terrain. Each site has its own written record and interaction point; loot and choices are persistent world state.
 

@@ -2,6 +2,10 @@
 
 The 27 October static-art pass adds 159 reviewed generated models to matching item/crafting previews and selected world props. Existing animation, collision and functional architecture remain. See [BATCH-MODELS.md](BATCH-MODELS.md) for coverage, exclusions and validation.
 
+Surface progression is **suburbs → woodland outside the city → highway/industrial zone → dense city**. See [REGIONS.md](REGIONS.md) for the regional map pass.
+
+The 28 October [world-art rollout](WORLD-ART-PASS.md) replaces streamed trees, harvest rocks and household furniture with selected generated models, retaining their existing gameplay systems.
+
 Current update: **The Waterline** adds the branching Noah/Lily story, neighboring survivor communities, limited research specializations, soft health, conditions and water purification. See [LIVING-WORLD.md](LIVING-WORLD.md).
 
 This folder is the standalone Godot game and GitHub playtest repository. The old Expedition and Survival base-defence prototypes remain outside it.

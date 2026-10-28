@@ -20,7 +20,7 @@ Solo menus pause gameplay, needs and wound timers. Online menus keep the world a
 
 The original recipe table, crafting resource tier gates, skill XP curves and death penalty, wound timers/bandage recovery, armor stat/loot rolls, structural weight/support evaluator, south-block terrain equations, river boundary and dungeon layouts are copied as engine-independent C# logic. Game adapters use real Godot collision/raycasting and UI instead of Windows Forms/OpenGL calls.
 
-T1 safe meadow → T2 woodland → T3 outskirts town → T4 south city; T5 city sewers/tower and a lower hospital ward. There are seven entrances, three room chests each, 3/5/7/9 guards by tier, and guarded deep bioalloy caches. Loot IDs preserve duplicate protection across saves and the legacy importer. Clear a T4 floor and interact at its northern lower-ward entrance to descend. North river remains closed.
+T1 suburbs → T2 woodland outside the city → T3 highway corridor and industrial zone → T4 dense city; T5 city sewers/tower and a lower hospital ward. There are seven entrances, three room chests each, 3/5/7/9 guards by tier, and guarded deep bioalloy caches. Loot IDs preserve duplicate protection across saves and the legacy importer. Clear a T4 floor and interact at its northern lower-ward entrance to descend. North river remains closed.
 
 Crafting includes all old benches, tiered guns/armor, rounds, sleeping bag kits, bandages, provisions and night weapon tuning. Building pieces consume materials and advanced blueprints require research; unsupported towers and unsafe support removal are rejected. Stair collision uses a ramp with stepped visuals. Art and enemy animation are procedural placeholders; polished models/materials remain separate work.
 

@@ -71,8 +71,9 @@ public partial class MigrationScene {
  }catch(Exception e){GD.PushError(e.ToString());GetTree().Quit(1);}}
  async void CaptureBatchModels(){try{
   GetWindow().ContentScaleSize=new Vector2I(1280,900);GetWindow().Size=new Vector2I(1280,900);
-  LoadBatchPaths();var keys=batchPaths.Keys.OrderBy(k=>k).ToArray();
-  string folder=ProjectSettings.GlobalizePath("res://../Ingame Screenshots/Batch Models");System.IO.Directory.CreateDirectory(folder);
+  bool worldOnly=OS.GetCmdlineUserArgs().Contains("--world-asset-preview");
+  LoadBatchPaths();var keys=batchPaths.Keys.Where(k=>!worldOnly||k.StartsWith("world-")).OrderBy(k=>k).ToArray();
+  string folder=ProjectSettings.GlobalizePath("res://../Ingame Screenshots/"+(worldOnly?"World Asset Candidates":"Batch Models"));System.IO.Directory.CreateDirectory(folder);
   for(int page=0;page<keys.Length;page+=12){
    var grid=new GridContainer{Columns=4};AddChild(grid);
    for(int i=page;i<Math.Min(page+12,keys.Length);i++){
