@@ -17,7 +17,7 @@ partial class ExpeditionWorld {
  }
  public bool ResidentialInterior(double x,double z){var p=Residential((int)Math.Floor(x/64),(int)Math.Floor(z/64));return p!=null&&Math.Abs(x-p.X)<6.2*p.ScaleZ&&Math.Abs(z-p.Z)<6.5*p.ScaleX;}
  public static double GridStreetDistance(double v){double t=(v%128+128)%128;return Math.Min(t,128-t);}
- public bool ResidentialPaved(double x,double z)=>Tier(x,z)==1&&Playable(x,z)&&(GridStreetDistance(x)<8||GridStreetDistance(z)<8)&&!ResidentialInterior(x,z);
+ public bool ResidentialPaved(double x,double z)=>Tier(x,z)==1&&Playable(x,z)&&!BriarReserve(x,z)&&(GridStreetDistance(x)<8||GridStreetDistance(z)<8)&&!ResidentialInterior(x,z);
 }
 sealed partial class ExpeditionWorldChanges {
  [DataMember]public List<string> StrippedFurniture=new();

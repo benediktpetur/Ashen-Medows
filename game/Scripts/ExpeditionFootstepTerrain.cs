@@ -48,7 +48,7 @@ public partial class MigrationScene {
  (string Name,double Multiplier) FootstepSurface(Vector3 position){
   if(dungeon!=null||Math.Abs(position.Y-game.World.Height(position.X,position.Z))>1.2)return("FLOOR",1.1);
   if(game.World.Changes.OnPath(position.X,position.Z))return("PATH",.85);
-  if(Math.Abs(position.X-game.World.RouteX(position.Z))<5)return game.World.Tier(position.X,position.Z)>=3?("ROAD",1.2):("DIRT",.9);
+  if(game.World.MainRoad(position.X,position.Z)||game.World.BriarRoad(position.X,position.Z)||game.World.UrbanStreet(position.X,position.Z)||game.World.ResidentialPaved(position.X,position.Z))return("ROAD",1.2);if(game.World.ResidentialApproach(position.X,position.Z)||game.World.BriarApproach(position.X,position.Z))return("GRAVEL",1.0);
   int cx=ExpeditionWorld.Cell(position.X),cz=ExpeditionWorld.Cell(position.Z);
   for(int x=cx-1;x<=cx+1;x++)for(int z=cz-1;z<=cz+1;z++){
    if(!chunks.TryGetValue((x,z),out var chunk)||!chunk.HasMeta("noise_brush"))continue;

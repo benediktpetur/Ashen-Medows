@@ -1,6 +1,6 @@
 # Image-conditioned model integration — 27 October 2026
 
-Update: the 28 October world-art pass adds seven environment models to the original 159-model static registry (166 active entries total). See `WORLD-ART-PASS.md` for current coverage; the counts below describe the original static pass.
+Update: the 28 October world-art passes add nine environment models to the original 159-model static registry (168 entries total). Two cleaner oak alternatives now supply broadleaf placement; the earlier Oak 07 copy remains available. See `WORLD-ART-PASS.md` for current coverage; the counts below describe the original static pass.
 
 The completed local conversion batch contains 899 textured results from 918 input images; 19 failed. These counts include alternate concepts, not unique required game assets. Original images and model outputs are preserved.
 

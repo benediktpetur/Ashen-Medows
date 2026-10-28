@@ -19,6 +19,12 @@ public partial class MigrationScene {
   foreach(var child in node.GetChildren())BatchBounds(child,transform,ref bounds,ref found);
   return found;
  }
+ static bool LocalMeshBounds(Node3D root,ref Aabb bounds,ref bool found){
+  // Targets consumed by child model placement must be in the parent's LOCAL
+  // space. Including root.Transform here applies its position a second time.
+  foreach(var child in root.GetChildren())BatchBounds(child,Transform3D.Identity,ref bounds,ref found);
+  return found;
+ }
  bool AttachBatchModel(Node3D root,string key,Aabb target){
   LoadBatchPaths();if(!batchPaths.TryGetValue(key,out var path))return false;
   if(!batchScenes.TryGetValue(key,out var packed)){packed=GD.Load<PackedScene>(path);if(packed==null)return false;batchScenes[key]=packed;}
@@ -50,13 +56,13 @@ public partial class MigrationScene {
  }
  void BatchResource(Node3D root,int material){
   ItemMaterial(root,material);Aabb target=default;bool found=false;
-  BatchBounds(root,Transform3D.Identity,ref target,ref found);
+  LocalMeshBounds(root,ref target,ref found);
   var old=root.GetChildren().OfType<GeometryInstance3D>().ToArray();
   if(found&&AttachBatchModel(root,"catalog-material/"+material,target))foreach(var mesh in old)mesh.Visible=false;
  }
  void ArtWreck(Node3D root,bool burned){
   var procedural=new Node3D{Name="ProceduralWreck"};root.AddChild(procedural);ProceduralWreck(procedural,burned);
-  if(AttachBatchModel(root,burned?"burned-car":"wreck-car",new Aabb(new Vector3(-1,0,-2.1f),new Vector3(2,1.6f,4.2f))))procedural.Visible=false;
+  if(TryWorldProp(root,burned?"burned-car":"wreck-car",new Aabb(new Vector3(-1.05f,0,-2.1f),new Vector3(2.1f,1.5f,4.2f))))procedural.Visible=false;
  }
  void ArtWorkbench(Node3D root){
   var procedural=new Node3D{Name="ProceduralWorkbench"};root.AddChild(procedural);ProceduralWorkbench(procedural);
@@ -72,7 +78,7 @@ public partial class MigrationScene {
  async void CaptureBatchModels(){try{
   GetWindow().ContentScaleSize=new Vector2I(1280,900);GetWindow().Size=new Vector2I(1280,900);
   bool worldOnly=OS.GetCmdlineUserArgs().Contains("--world-asset-preview");
-  LoadBatchPaths();var keys=batchPaths.Keys.Where(k=>!worldOnly||k.StartsWith("world-")).OrderBy(k=>k).ToArray();
+  LoadBatchPaths();bool trees=OS.GetCmdlineUserArgs().Contains("--tree-candidates");if(trees)PrepareTreeReview();var keys=batchPaths.Keys.Where(k=>trees?k.StartsWith("tree-review/"):(!worldOnly||k.StartsWith("world-"))).OrderBy(k=>k).ToArray();
   string folder=ProjectSettings.GlobalizePath("res://../Ingame Screenshots/"+(worldOnly?"World Asset Candidates":"Batch Models"));System.IO.Directory.CreateDirectory(folder);
   for(int page=0;page<keys.Length;page+=12){
    var grid=new GridContainer{Columns=4};AddChild(grid);

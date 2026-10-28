@@ -1119,6 +1119,20 @@
     "resource": "res://Assets/Hunyuan/Static/world-oak-b.glb",
     "usage": "world environment; authored gameplay collision retained"
   },
+  "world-oak-c": {
+    "name": "oak-tree-11",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Nature\\Trees\\Oaks\\oak-tree-11\\textured.glb",
+    "sha256": "01f85f7d743a2c6ed17449984cc159adfe58e435d30f3382cea1eb85da51765b",
+    "resource": "res://Assets/Hunyuan/Static/world-oak-c.glb",
+    "usage": "world environment; authored gameplay collision retained"
+  },
+  "world-oak-d": {
+    "name": "oak-tree-05",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Nature\\Trees\\Oaks\\oak-tree-05\\textured.glb",
+    "sha256": "b3d2f32880e233105f8c52b4ee144156ddb112a9504d52f17d7e5a05eed55070",
+    "resource": "res://Assets/Hunyuan/Static/world-oak-d.glb",
+    "usage": "world environment; authored gameplay collision retained"
+  },
   "world-pine": {
     "name": "conifer-tree-02",
     "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Nature\\Trees\\Conifers\\conifer-tree-02\\textured.glb",

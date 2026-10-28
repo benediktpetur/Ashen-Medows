@@ -19,7 +19,7 @@ public partial class MigrationScene {
   return model;
  }
  bool TryWorldTree(Node3D root,float height,int seed,bool pine=false){
-  string key=pine?"world-pine":"world-oak-b";
+  string key=pine?"world-pine":((uint)seed%3==0?"world-oak-d":"world-oak-c");
   var model=NewWorldModel(key,out var bounds);if(model==null)return false;
   var holder=new Node3D{Name="GeneratedTree",Rotation=new(0,((uint)seed%360)*Mathf.Pi/180,0)};root.AddChild(holder);holder.AddChild(model);
   float scale=height/bounds.Size.Y;model.Scale*=scale;
@@ -34,14 +34,14 @@ public partial class MigrationScene {
   return true;
  }
  void ApplyWorldFurniture(Node3D root,int kind){
-  Aabb target=default;bool found=false;BatchBounds(root,Transform3D.Identity,ref target,ref found);if(!found)return;
+  Aabb target=default;bool found=false;LocalMeshBounds(root,ref target,ref found);if(!found)return;
   var old=root.GetChildren().OfType<GeometryInstance3D>().ToArray();
   if(TryWorldProp(root,"world-furniture-"+kind,target))foreach(var mesh in old)mesh.Visible=false;
  }
  void WorldModelChecks(){
   foreach(bool pine in new[]{false,true}){
    var a=new Node3D();var b=new Node3D();AddChild(a);AddChild(b);
-   MigrationChecks.Assert(TryWorldTree(a,14,71,pine)&&TryWorldTree(b,14,72,pine),"Generated tree available");
+   MigrationChecks.Assert(TryWorldTree(a,14,71,pine)&&TryWorldTree(b,14,74,pine),"Generated tree available");
    Aabb bounds=default;bool found=false;BatchBounds(a,Transform3D.Identity,ref bounds,ref found);
    MigrationChecks.Assert(found&&Math.Abs(bounds.Size.Y-14)<.01f&&Math.Abs(bounds.Position.Y)<.01f,"Tree height and ground contact");
    var ma=a.FindChildren("*","MeshInstance3D",true,false).OfType<MeshInstance3D>().First();var mb=b.FindChildren("*","MeshInstance3D",true,false).OfType<MeshInstance3D>().First();
