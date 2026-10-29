@@ -8,6 +8,8 @@ The 28 October [world-art rollout](WORLD-ART-PASS.md) replaces streamed trees, h
 
 The [ground and layout pass](GROUND-LAYOUT-PASS.md) adds illustrated grass, forest litter, gravel and paving, connected house approaches, industrial/city streets, clearer map roads and continuous house foundations on slopes.
 
+The 29 October [scenery polish](SCENERY-POLISH.md) adds denser clustered foliage, building/interior details, industrial yard props and sign/placement corrections. [MODEL-BACKLOG.md](MODEL-BACKLOG.md) lists missing imported-model slots, rejected conversions and existing drafts that need review.
+
 Current update: **The Waterline** adds the branching Noah/Lily story, neighboring survivor communities, limited research specializations, soft health, conditions and water purification. See [LIVING-WORLD.md](LIVING-WORLD.md).
 
 This folder is the standalone Godot game and GitHub playtest repository. The old Expedition and Survival base-defence prototypes remain outside it.

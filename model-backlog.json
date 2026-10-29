@@ -1,0 +1,2186 @@
+{
+  "date": "2026-10-29",
+  "summary": {
+    "registered": 168,
+    "runtime_item_definitions": 254,
+    "unfilled_runtime_lookups": 96,
+    "exact_catalogue_conversion_gaps": 14,
+    "already_covered": 6,
+    "rejected": 66,
+    "failed_input_variants": 19
+  },
+  "no_exact_conversion": [
+    {
+      "key": "catalog-material/1",
+      "name": "Stone",
+      "category": "Items"
+    },
+    {
+      "key": "catalog-survival-tech/3/3",
+      "name": "Antibiotic field procedure",
+      "category": "Items"
+    },
+    {
+      "key": "catalog-axe",
+      "name": "Field axe / T",
+      "category": "Items"
+    },
+    {
+      "key": "catalog-hunting-material/1",
+      "name": "Untanned hide",
+      "category": "Items"
+    },
+    {
+      "key": "catalog-hunting-material/5",
+      "name": "Leather",
+      "category": "Items"
+    },
+    {
+      "key": "catalog-field-tool/0/2",
+      "name": "Iron chopping axe",
+      "category": "Items"
+    },
+    {
+      "key": "catalog-field-tool/3/3",
+      "name": "Iron skinning knife",
+      "category": "Items"
+    },
+    {
+      "key": "salvage-0",
+      "name": "Abandoned provision chest",
+      "category": "Props"
+    }
+  ],
+  "covered_aliases": [
+    {
+      "key": "catalog-field-tool/3/2",
+      "name": "Bone skinning knife",
+      "replacement": "catalog-field-tool/3/2"
+    },
+    {
+      "key": "wreck-car",
+      "name": "Abandoned car",
+      "replacement": "wreck-car"
+    },
+    {
+      "key": "broadleaf-tree",
+      "name": "Broadleaf tree",
+      "replacement": "world-oak-c"
+    },
+    {
+      "key": "pine-tree",
+      "name": "Pine tree",
+      "replacement": "world-pine"
+    },
+    {
+      "key": "forest-tree",
+      "name": "Forest canopy tree",
+      "replacement": "world-oak-c"
+    },
+    {
+      "key": "rock",
+      "name": "Harvest rock",
+      "replacement": "world-rock"
+    }
+  ],
+  "runtime_model_gaps": [
+    {
+      "key": "catalog-ammo",
+      "name": "9mm pistol rounds",
+      "aliases": [
+        "9mm pistol rounds"
+      ],
+      "kind": "ammo",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Rendered result is a pistol rather than ammunition",
+      "concepts": []
+    },
+    {
+      "key": "catalog-ammo/2",
+      "name": "5.56mm carbine rounds",
+      "aliases": [
+        "5.56mm carbine rounds"
+      ],
+      "kind": "ammo",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Rendered result is a rifle rather than ammunition",
+      "concepts": []
+    },
+    {
+      "key": "catalog-armor/1/1",
+      "name": "Field chest plate",
+      "aliases": [
+        "Field chest plate"
+      ],
+      "kind": "armor",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Torso includes unwanted detached boots",
+      "concepts": []
+    },
+    {
+      "key": "catalog-armor/1/11",
+      "name": "Trail hood",
+      "aliases": [
+        "Rabbit-fur hood",
+        "Trail hood"
+      ],
+      "kind": "armor",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Hood includes unwanted detached boots",
+      "concepts": []
+    },
+    {
+      "key": "catalog-armor/2/11",
+      "name": "Woodland helmet",
+      "aliases": [
+        "Woodland helmet"
+      ],
+      "kind": "armor",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Helmet includes unwanted detached boots",
+      "concepts": []
+    },
+    {
+      "key": "catalog-armor/2/2",
+      "name": "Woodland chest plate",
+      "aliases": [
+        "Woodland chest plate"
+      ],
+      "kind": "armor",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Torso includes unwanted detached boots",
+      "concepts": []
+    },
+    {
+      "key": "catalog-armor/3/11",
+      "name": "T3 helmet",
+      "aliases": [
+        "T3 helmet"
+      ],
+      "kind": "armor",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Helmet includes unwanted detached boots and debris",
+      "concepts": []
+    },
+    {
+      "key": "catalog-armor/3/3",
+      "name": "Industrial chest plate",
+      "aliases": [
+        "Industrial chest plate"
+      ],
+      "kind": "armor",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Torso includes unwanted detached boots",
+      "concepts": []
+    },
+    {
+      "key": "catalog-armor/4/11",
+      "name": "T4 helmet",
+      "aliases": [
+        "T4 helmet"
+      ],
+      "kind": "armor",
+      "tier": 4,
+      "action": "Replace rejected conversion",
+      "reason": "Helmet includes unwanted detached boots",
+      "concepts": []
+    },
+    {
+      "key": "catalog-armor/4/4",
+      "name": "Advanced chest plate",
+      "aliases": [
+        "Advanced chest plate"
+      ],
+      "kind": "armor",
+      "tier": 4,
+      "action": "Replace rejected conversion",
+      "reason": "Torso includes unwanted detached boots",
+      "concepts": []
+    },
+    {
+      "key": "catalog-armor/5/11",
+      "name": "Experimental helmet",
+      "aliases": [
+        "Experimental helmet"
+      ],
+      "kind": "armor",
+      "tier": 5,
+      "action": "Replace rejected conversion",
+      "reason": "Helmet includes unwanted detached boots",
+      "concepts": []
+    },
+    {
+      "key": "catalog-armor/5/5",
+      "name": "Experimental chest plate",
+      "aliases": [
+        "Experimental chest plate"
+      ],
+      "kind": "armor",
+      "tier": 5,
+      "action": "Replace rejected conversion",
+      "reason": "Torso includes unwanted detached boots",
+      "concepts": []
+    },
+    {
+      "key": "catalog-arrow/1/12",
+      "name": "12 flint arrows",
+      "aliases": [
+        "12 flint arrows"
+      ],
+      "kind": "arrow",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Arrow bundle is a malformed debris-covered bundle",
+      "concepts": []
+    },
+    {
+      "key": "catalog-attachment/2/10",
+      "name": "Barrel lapping / +10% quality",
+      "aliases": [
+        "Barrel lapping / +10% quality"
+      ],
+      "kind": "attachment",
+      "tier": 2,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": []
+    },
+    {
+      "key": "catalog-attachment/3/15",
+      "name": "Action bedding / +15% quality",
+      "aliases": [
+        "Action bedding / +15% quality"
+      ],
+      "kind": "attachment",
+      "tier": 3,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": []
+    },
+    {
+      "key": "catalog-attachment/4/20",
+      "name": "Precision calibration / +20% quality",
+      "aliases": [
+        "Precision calibration / +20% quality"
+      ],
+      "kind": "attachment",
+      "tier": 4,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": []
+    },
+    {
+      "key": "catalog-axe",
+      "name": "Field axe / T",
+      "aliases": [
+        "Field axe / T"
+      ],
+      "kind": "tool",
+      "tier": 1,
+      "action": "Create or reuse model",
+      "reason": "No matching textured draft found in the audited catalogue",
+      "concepts": [
+        "Items/Tools/Axes/wood-handled-hatchet-01.jpg",
+        "Items/Tools/Axes/wood-handled-hatchet-02.jpg"
+      ]
+    },
+    {
+      "key": "catalog-bandage",
+      "name": "Bandage roll",
+      "aliases": [
+        "Bandage roll"
+      ],
+      "kind": "bandage",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Rendered bandage resembles a wooden cylinder rather than cloth",
+      "concepts": []
+    },
+    {
+      "key": "catalog-bench/2",
+      "name": "Workshop upgrade",
+      "aliases": [
+        "Workshop upgrade"
+      ],
+      "kind": "bench",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Kitchen counter rather than upgraded workbench",
+      "concepts": []
+    },
+    {
+      "key": "catalog-bench/3",
+      "name": "Industrial upgrade",
+      "aliases": [
+        "Industrial upgrade"
+      ],
+      "kind": "bench",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Kitchen counter rather than upgraded workbench",
+      "concepts": []
+    },
+    {
+      "key": "catalog-bench/4",
+      "name": "Advanced upgrade",
+      "aliases": [
+        "Advanced upgrade"
+      ],
+      "kind": "bench",
+      "tier": 4,
+      "action": "Replace rejected conversion",
+      "reason": "Kitchen counter rather than upgraded workbench",
+      "concepts": []
+    },
+    {
+      "key": "catalog-bench/5",
+      "name": "Experimental upgrade",
+      "aliases": [
+        "Experimental upgrade"
+      ],
+      "kind": "bench",
+      "tier": 5,
+      "action": "Replace rejected conversion",
+      "reason": "Closed cabinet rather than upgraded workbench",
+      "concepts": []
+    },
+    {
+      "key": "catalog-build/10",
+      "name": "Stone-braced wall",
+      "aliases": [
+        "Stone-braced wall"
+      ],
+      "kind": "build",
+      "tier": 2,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "Buildings/Modular/Stone/rugged-stone-wall.jpg",
+        "Buildings/Modular/Stone/stone-block-wall.jpg"
+      ]
+    },
+    {
+      "key": "catalog-build/100",
+      "name": "Reinforced concrete window wall",
+      "aliases": [
+        "Reinforced concrete window wall"
+      ],
+      "kind": "build",
+      "tier": 4,
+      "action": "Replace rejected conversion",
+      "reason": "Window opening is filled",
+      "concepts": []
+    },
+    {
+      "key": "catalog-build/102",
+      "name": "Military door wall",
+      "aliases": [
+        "Military door wall"
+      ],
+      "kind": "build",
+      "tier": 5,
+      "action": "Replace rejected conversion",
+      "reason": "Door opening is filled",
+      "concepts": []
+    },
+    {
+      "key": "catalog-build/103",
+      "name": "Military window wall",
+      "aliases": [
+        "Military window wall"
+      ],
+      "kind": "build",
+      "tier": 5,
+      "action": "Replace rejected conversion",
+      "reason": "Window opening is filled",
+      "concepts": []
+    },
+    {
+      "key": "catalog-build/14",
+      "name": "Stone-braced stairs",
+      "aliases": [
+        "Stone-braced stairs"
+      ],
+      "kind": "build",
+      "tier": 2,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "Buildings/Modular/Stone/stone-stairs.jpg"
+      ]
+    },
+    {
+      "key": "catalog-build/2",
+      "name": "Wall",
+      "aliases": [
+        "Wall"
+      ],
+      "kind": "build",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Wall reconstructed as a solid deep box",
+      "concepts": [
+        "Buildings/Modular/Wood/timber-plank-wall.jpg"
+      ]
+    },
+    {
+      "key": "catalog-build/20",
+      "name": "Scrap steel pillar",
+      "aliases": [
+        "Scrap steel pillar"
+      ],
+      "kind": "build",
+      "tier": 3,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "Buildings/Modular/Metal/steel-support-post.jpg"
+      ]
+    },
+    {
+      "key": "catalog-build/4",
+      "name": "Pillar",
+      "aliases": [
+        "Pillar"
+      ],
+      "kind": "build",
+      "tier": 1,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "Buildings/Modular/Wood/timber-support-post.jpg"
+      ]
+    },
+    {
+      "key": "catalog-build/41",
+      "name": "Storage chest",
+      "aliases": [
+        "Storage chest"
+      ],
+      "kind": "build",
+      "tier": 1,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "Props/Loot Containers/loot-chest-closed-01.jpg",
+        "Props/Loot Containers/loot-chest-closed-02.jpg",
+        "Props/Loot Containers/loot-chest-closed-03.jpg",
+        "Props/Loot Containers/loot-chest-closed-06.jpg",
+        "Props/Loot Containers/loot-chest-closed-10.jpg",
+        "Props/Loot Containers/loot-chest-closed-13.jpg",
+        "Props/Loot Containers/loot-chest-closed-14.jpg",
+        "Props/Loot Containers/loot-chest-open-crate-05.jpg",
+        "Props/Loot Containers/loot-chest-open-crate-07.jpg",
+        "Props/Loot Containers/loot-chest-open-crate-08.jpg",
+        "Props/Loot Containers/loot-chest-open-crate-09.jpg",
+        "Props/Loot Containers/loot-chest-open-crate-16.jpg",
+        "Props/Loot Containers/loot-chest-open-lid-04.jpg",
+        "Props/Loot Containers/loot-chest-open-lid-11.jpg",
+        "Props/Loot Containers/loot-chest-open-lid-12.jpg",
+        "Props/Loot Containers/loot-chest-open-lid-15.jpg"
+      ]
+    },
+    {
+      "key": "catalog-build/42",
+      "name": "Stone-braced window wall",
+      "aliases": [
+        "Stone-braced window wall"
+      ],
+      "kind": "build",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Window aperture is filled",
+      "concepts": []
+    },
+    {
+      "key": "catalog-build/48",
+      "name": "Generator",
+      "aliases": [
+        "Generator"
+      ],
+      "kind": "build",
+      "tier": 4,
+      "action": "Replace rejected conversion",
+      "reason": "Generator reconstructed as a timber cabinet",
+      "concepts": []
+    },
+    {
+      "key": "catalog-build/56",
+      "name": "Fence section",
+      "aliases": [
+        "Fence section"
+      ],
+      "kind": "build",
+      "tier": 1,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "Buildings/Fences/Metal/iron-picket-fence-01.jpg",
+        "Buildings/Fences/Metal/iron-picket-fence-02.jpg"
+      ]
+    },
+    {
+      "key": "catalog-build/58",
+      "name": "Snare trap",
+      "aliases": [
+        "Snare trap"
+      ],
+      "kind": "build",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Rope snare reconstructed as a large cage",
+      "concepts": []
+    },
+    {
+      "key": "catalog-build/66",
+      "name": "Heavy defensive turret",
+      "aliases": [
+        "Heavy defensive turret"
+      ],
+      "kind": "build",
+      "tier": 5,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "Buildings/Defenses/automatic-gun-turret.jpg"
+      ]
+    },
+    {
+      "key": "catalog-build/75",
+      "name": "Field kitchen",
+      "aliases": [
+        "Field kitchen"
+      ],
+      "kind": "build",
+      "tier": 3,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "Buildings/Stations/Cooking/open-flame-cooking-stove-03.jpg",
+        "Buildings/Stations/Cooking/wood-fired-cooking-stove-01.jpg",
+        "Buildings/Stations/Cooking/wood-fired-cooking-stove-02.jpg"
+      ]
+    },
+    {
+      "key": "catalog-build/76",
+      "name": "Medical station",
+      "aliases": [
+        "Medical station"
+      ],
+      "kind": "build",
+      "tier": 4,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "Buildings/Stations/Medical/medicine-crafting-bench-01.jpg",
+        "Buildings/Stations/Medical/medicine-crafting-bench-02.jpg"
+      ]
+    },
+    {
+      "key": "catalog-build/79",
+      "name": "Advanced medical station",
+      "aliases": [
+        "Advanced medical station"
+      ],
+      "kind": "build",
+      "tier": 5,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "Buildings/Stations/Medical/medicine-crafting-bench-01.jpg",
+        "Buildings/Stations/Medical/medicine-crafting-bench-02.jpg"
+      ]
+    },
+    {
+      "key": "catalog-build/80",
+      "name": "Efficient generator",
+      "aliases": [
+        "Efficient generator"
+      ],
+      "kind": "build",
+      "tier": 5,
+      "action": "Replace rejected conversion",
+      "reason": "Generator reconstructed as a timber cabinet",
+      "concepts": []
+    },
+    {
+      "key": "catalog-build/82",
+      "name": "Hydroponic farm",
+      "aliases": [
+        "Hydroponic farm"
+      ],
+      "kind": "build",
+      "tier": 5,
+      "action": "Replace rejected conversion",
+      "reason": "Hydroponic rack has substantial floating reconstruction debris",
+      "concepts": []
+    },
+    {
+      "key": "catalog-build/87",
+      "name": "Keepsake shelf",
+      "aliases": [
+        "Keepsake shelf"
+      ],
+      "kind": "build",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Display shelf reconstructed as a closed cabinet",
+      "concepts": []
+    },
+    {
+      "key": "catalog-build/91",
+      "name": "Rough timber door wall",
+      "aliases": [
+        "Rough timber door wall"
+      ],
+      "kind": "build",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Door opening is filled",
+      "concepts": []
+    },
+    {
+      "key": "catalog-build/94",
+      "name": "Stone-braced door wall",
+      "aliases": [
+        "Stone-braced door wall"
+      ],
+      "kind": "build",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Door opening is filled",
+      "concepts": []
+    },
+    {
+      "key": "catalog-build/96",
+      "name": "Scrap steel door wall",
+      "aliases": [
+        "Scrap steel door wall"
+      ],
+      "kind": "build",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Door opening is filled",
+      "concepts": []
+    },
+    {
+      "key": "catalog-build/99",
+      "name": "Reinforced concrete door wall",
+      "aliases": [
+        "Reinforced concrete door wall"
+      ],
+      "kind": "build",
+      "tier": 4,
+      "action": "Replace rejected conversion",
+      "reason": "Door opening is filled",
+      "concepts": []
+    },
+    {
+      "key": "catalog-catalyst",
+      "name": "Night catalyst",
+      "aliases": [
+        "Night catalyst"
+      ],
+      "kind": "catalyst",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Generic wooden crate does not represent the catalyst",
+      "concepts": []
+    },
+    {
+      "key": "catalog-field-arrow/1",
+      "name": "Flint arrow",
+      "aliases": [
+        "Flint arrow"
+      ],
+      "kind": "fieldkit",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Bent and malformed arrow shaft",
+      "concepts": []
+    },
+    {
+      "key": "catalog-field-throw/0",
+      "name": "Crude Molotov",
+      "aliases": [
+        "Crude Molotov"
+      ],
+      "kind": "fieldkit",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Molotov lacks readable wick and resembles a closed supply bottle",
+      "concepts": []
+    },
+    {
+      "key": "catalog-field-throw/1",
+      "name": "Thickened Molotov",
+      "aliases": [
+        "Thickened Molotov"
+      ],
+      "kind": "fieldkit",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Molotov reconstructed as a solid wooden cylinder",
+      "concepts": []
+    },
+    {
+      "key": "catalog-field-tool/0/2",
+      "name": "Iron chopping axe",
+      "aliases": [
+        "Iron chopping axe"
+      ],
+      "kind": "fieldkit",
+      "tier": 2,
+      "action": "Create or reuse model",
+      "reason": "No matching textured draft found in the audited catalogue",
+      "concepts": [
+        "Items/Tools/Axes/wood-handled-hatchet-01.jpg",
+        "Items/Tools/Axes/wood-handled-hatchet-02.jpg"
+      ]
+    },
+    {
+      "key": "catalog-field-tool/3/3",
+      "name": "Iron skinning knife",
+      "aliases": [
+        "Iron skinning knife"
+      ],
+      "kind": "fieldkit",
+      "tier": 2,
+      "action": "Create or reuse model",
+      "reason": "No matching textured draft found in the audited catalogue",
+      "concepts": [
+        "Items/Tools/Knives/skinning-knife-steel-blade.jpg"
+      ]
+    },
+    {
+      "key": "catalog-food",
+      "name": "Trail provisions",
+      "aliases": [
+        "Trail provisions"
+      ],
+      "kind": "food",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Generic wood crate without a readable provisions design",
+      "concepts": []
+    },
+    {
+      "key": "catalog-fuel/3/40",
+      "name": "Chainsaw fuel / 40 cuts",
+      "aliases": [
+        "Chainsaw fuel / 40 cuts"
+      ],
+      "kind": "fuel",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Chainsaw rather than its fuel supply",
+      "concepts": []
+    },
+    {
+      "key": "catalog-hunting-gear/vest",
+      "name": "Fur-lined woodland vest",
+      "aliases": [
+        "Fur-lined woodland vest"
+      ],
+      "kind": "armor",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Vest includes detached boots and malformed opening",
+      "concepts": []
+    },
+    {
+      "key": "catalog-hunting-material/1",
+      "name": "Untanned hide",
+      "aliases": [
+        "Untanned hide"
+      ],
+      "kind": "hunting-material",
+      "tier": 1,
+      "action": "Create or reuse model",
+      "reason": "No matching textured draft found in the audited catalogue",
+      "concepts": []
+    },
+    {
+      "key": "catalog-hunting-material/3",
+      "name": "Bone",
+      "aliases": [
+        "Bone"
+      ],
+      "kind": "hunting-material",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Bone reconstructed as a wooden cylinder",
+      "concepts": []
+    },
+    {
+      "key": "catalog-hunting-material/4",
+      "name": "Sinew",
+      "aliases": [
+        "Sinew"
+      ],
+      "kind": "hunting-material",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Sinew reconstructed as a wooden barrel",
+      "concepts": []
+    },
+    {
+      "key": "catalog-hunting-material/5",
+      "name": "Leather",
+      "aliases": [
+        "Leather"
+      ],
+      "kind": "hunting-material",
+      "tier": 1,
+      "action": "Create or reuse model",
+      "reason": "No matching textured draft found in the audited catalogue",
+      "concepts": [
+        "Enemies/Common Infected/meadow-drifter-leather-vest-02.jpg"
+      ]
+    },
+    {
+      "key": "catalog-legendary",
+      "name": "Legendary heart",
+      "aliases": [
+        "Legendary heart"
+      ],
+      "kind": "legendary",
+      "tier": 5,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": []
+    },
+    {
+      "key": "catalog-legendary-upgrade",
+      "name": "Legendary ascension",
+      "aliases": [
+        "Legendary ascension"
+      ],
+      "kind": "legendary",
+      "tier": 5,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": []
+    },
+    {
+      "key": "catalog-material/0",
+      "name": "Timber",
+      "aliases": [
+        "Timber"
+      ],
+      "kind": "material",
+      "tier": 1,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "Buildings/Modular/Wood/timber-palisade-gate.jpg",
+        "Buildings/Modular/Wood/timber-plank-wall.jpg",
+        "Buildings/Modular/Wood/timber-sloped-roof.jpg",
+        "Buildings/Modular/Wood/timber-stairs.jpg",
+        "Buildings/Modular/Wood/timber-support-post.jpg"
+      ]
+    },
+    {
+      "key": "catalog-material/1",
+      "name": "Stone",
+      "aliases": [
+        "Stone"
+      ],
+      "kind": "material",
+      "tier": 1,
+      "action": "Review reuse candidate",
+      "reason": "The integrated world-rock model is available for a stone inventory/pickup adaptation",
+      "concepts": [
+        "Buildings/Modular/Stone/rugged-stone-wall.jpg",
+        "Buildings/Modular/Stone/stone-block-wall.jpg",
+        "Buildings/Modular/Stone/stone-perimeter-wall.jpg",
+        "Buildings/Modular/Stone/stone-stairs.jpg",
+        "weapons/Spears/stone-tipped-spear.jpg"
+      ]
+    },
+    {
+      "key": "catalog-material/2",
+      "name": "Fiber",
+      "aliases": [
+        "Fiber"
+      ],
+      "kind": "material",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Fiber reconstructed as a solid stump-like cylinder",
+      "concepts": []
+    },
+    {
+      "key": "catalog-material/4",
+      "name": "Alloy scrap",
+      "aliases": [
+        "Alloy scrap"
+      ],
+      "kind": "material",
+      "tier": 3,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": []
+    },
+    {
+      "key": "catalog-material/5",
+      "name": "Electronics",
+      "aliases": [
+        "Electronics"
+      ],
+      "kind": "material",
+      "tier": 4,
+      "action": "Replace rejected conversion",
+      "reason": "Electronics reconstructed as a wooden crate",
+      "concepts": []
+    },
+    {
+      "key": "catalog-material/6",
+      "name": "Bioalloy",
+      "aliases": [
+        "Bioalloy"
+      ],
+      "kind": "material",
+      "tier": 5,
+      "action": "Replace rejected conversion",
+      "reason": "Bioalloy reconstructed as a wooden stump",
+      "concepts": []
+    },
+    {
+      "key": "catalog-mill-temper",
+      "name": "Foreman weapon tempering",
+      "aliases": [
+        "Foreman weapon tempering"
+      ],
+      "kind": "mill",
+      "tier": 2,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": []
+    },
+    {
+      "key": "catalog-millcore",
+      "name": "Foreman core",
+      "aliases": [
+        "Foreman core"
+      ],
+      "kind": "millcore",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Generic barrel does not read as an industrial core",
+      "concepts": []
+    },
+    {
+      "key": "catalog-survival-tech/3/2",
+      "name": "Camp comfort kit",
+      "aliases": [
+        "Camp comfort kit"
+      ],
+      "kind": "survival-tech",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Comfort kit reconstructed as an unrelated panel and stakes",
+      "concepts": []
+    },
+    {
+      "key": "catalog-survival-tech/3/3",
+      "name": "Antibiotic field procedure",
+      "aliases": [
+        "Antibiotic field procedure"
+      ],
+      "kind": "survival-tech",
+      "tier": 3,
+      "action": "Create or reuse model",
+      "reason": "No matching textured draft found in the audited catalogue",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon-mod/2/1",
+      "name": "Weighted striking head",
+      "aliases": [
+        "Weighted striking head"
+      ],
+      "kind": "weapon-mod",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Weighted striking head reconstructed as a wooden barrel",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon-mod/2/7",
+      "name": "Fitted shoulder stock",
+      "aliases": [
+        "Fitted shoulder stock"
+      ],
+      "kind": "weapon-mod",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Shoulder stock reconstructed as torso armour",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon-mod/2/8",
+      "name": "High-tension bowstring",
+      "aliases": [
+        "High-tension bowstring"
+      ],
+      "kind": "weapon-mod",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Bowstring reconstructed as a complete bow",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon-mod/5/11",
+      "name": "Stormfire cooling jacket",
+      "aliases": [
+        "Stormfire cooling jacket"
+      ],
+      "kind": "weapon-mod",
+      "tier": 5,
+      "action": "Replace rejected conversion",
+      "reason": "Cooling jacket reconstructed as a human jacket",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/0",
+      "name": "Trail pistol",
+      "aliases": [
+        "Trail pistol"
+      ],
+      "kind": "weapon",
+      "tier": 2,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "weapons/Pistols/salvage-semi-automatic-pistol.jpg"
+      ]
+    },
+    {
+      "key": "catalog-weapon/1",
+      "name": "Trail rifle",
+      "aliases": [
+        "Trail rifle"
+      ],
+      "kind": "weapon",
+      "tier": 2,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "weapons/Rifles/optic-assault-rifle-03.jpg",
+        "weapons/Rifles/scoped-assault-rifle-02.jpg",
+        "weapons/Rifles/wood-stock-assault-rifle-01.jpg"
+      ]
+    },
+    {
+      "key": "catalog-weapon/14",
+      "name": "Claw hammer",
+      "aliases": [
+        "Claw hammer"
+      ],
+      "kind": "weapon",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Claw hammer lacks the correct hammer silhouette",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/15",
+      "name": "Iron rod",
+      "aliases": [
+        "Iron rod"
+      ],
+      "kind": "weapon",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Iron rod reconstructed as a wooden staff",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/17",
+      "name": "Chainsaw",
+      "aliases": [
+        "Chainsaw"
+      ],
+      "kind": "weapon",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Chainsaw reconstructed as a firearm",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/18",
+      "name": "Recurve bow",
+      "aliases": [
+        "Recurve bow"
+      ],
+      "kind": "weapon",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Recurve bow reconstructed as a firearm",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/19",
+      "name": "Crossbow",
+      "aliases": [
+        "Crossbow"
+      ],
+      "kind": "weapon",
+      "tier": 4,
+      "action": "Replace rejected conversion",
+      "reason": "Crossbow reconstructed as a firearm",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/2",
+      "name": "Woodland rifle",
+      "aliases": [
+        "Woodland rifle"
+      ],
+      "kind": "weapon",
+      "tier": 2,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "weapons/Rifles/optic-assault-rifle-03.jpg",
+        "weapons/Rifles/scoped-assault-rifle-02.jpg",
+        "weapons/Rifles/wood-stock-assault-rifle-01.jpg"
+      ]
+    },
+    {
+      "key": "catalog-weapon/20",
+      "name": "Machete",
+      "aliases": [
+        "Machete"
+      ],
+      "kind": "weapon",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Machete reconstructed as a wooden staff",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/21",
+      "name": "Sledgehammer",
+      "aliases": [
+        "Sledgehammer"
+      ],
+      "kind": "weapon",
+      "tier": 4,
+      "action": "Replace rejected conversion",
+      "reason": "Sledgehammer lacks its hammer head",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/23",
+      "name": "Hunting knife",
+      "aliases": [
+        "Hunting knife"
+      ],
+      "kind": "weapon",
+      "tier": 2,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "Items/Tools/Knives/skinning-knife-steel-blade.jpg"
+      ]
+    },
+    {
+      "key": "catalog-weapon/25",
+      "name": "Forged sword",
+      "aliases": [
+        "Forged sword"
+      ],
+      "kind": "weapon",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Forged sword has an excessively long staff-like handle",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/26",
+      "name": "Alloy longsword",
+      "aliases": [
+        "Alloy longsword"
+      ],
+      "kind": "weapon",
+      "tier": 4,
+      "action": "Replace rejected conversion",
+      "reason": "Longsword has an excessively long staff-like handle",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/27",
+      "name": "Stormfire chain sword",
+      "aliases": [
+        "Stormfire chain sword"
+      ],
+      "kind": "weapon",
+      "tier": 5,
+      "action": "Replace rejected conversion",
+      "reason": "Chain sword lacks the defining chain blade",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/3",
+      "name": "Industrial carbine",
+      "aliases": [
+        "Industrial carbine"
+      ],
+      "kind": "weapon",
+      "tier": 3,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "weapons/Rifles/optic-assault-rifle-03.jpg",
+        "weapons/Rifles/scoped-assault-rifle-02.jpg",
+        "weapons/Rifles/wood-stock-assault-rifle-01.jpg"
+      ]
+    },
+    {
+      "key": "catalog-weapon/32",
+      "name": "Compound bow",
+      "aliases": [
+        "Compound bow"
+      ],
+      "kind": "weapon",
+      "tier": 4,
+      "action": "Replace rejected conversion",
+      "reason": "Compound bow reconstructed as a blade",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/33",
+      "name": "Polehammer",
+      "aliases": [
+        "Polehammer"
+      ],
+      "kind": "weapon",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Polehammer reconstructed as a gun stock",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/34",
+      "name": "Salvaged flamethrower",
+      "aliases": [
+        "Salvaged flamethrower"
+      ],
+      "kind": "weapon",
+      "tier": 3,
+      "action": "Replace rejected conversion",
+      "reason": "Flamethrower lacks its fuel system and resembles a compact firearm",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/4",
+      "name": "Precision rifle",
+      "aliases": [
+        "Precision rifle"
+      ],
+      "kind": "weapon",
+      "tier": 4,
+      "action": "Review existing older conversion",
+      "reason": "Older textured draft exists; do not regenerate before reviewing it",
+      "concepts": [
+        "weapons/Rifles/optic-assault-rifle-03.jpg",
+        "weapons/Rifles/scoped-assault-rifle-02.jpg"
+      ]
+    },
+    {
+      "key": "catalog-weapon/6",
+      "name": "Woodland bow",
+      "aliases": [
+        "Woodland bow"
+      ],
+      "kind": "weapon",
+      "tier": 2,
+      "action": "Replace rejected conversion",
+      "reason": "Bow reconstructed as a rifle",
+      "concepts": []
+    },
+    {
+      "key": "catalog-weapon/9",
+      "name": "Hand stone",
+      "aliases": [
+        "Hand stone"
+      ],
+      "kind": "weapon",
+      "tier": 1,
+      "action": "Replace rejected conversion",
+      "reason": "Hand stone reconstructed as a gun stock",
+      "concepts": []
+    }
+  ],
+  "existing_drafts_for_review": [
+    {
+      "key": "zombie-4",
+      "name": "City security",
+      "category": "Enemies",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\zombie-4-city-security\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\zombie-4-city-security\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "special-worm",
+      "name": "worm",
+      "category": "Enemies",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\special-worm-worm\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Enemies\\special-worm-worm\\textured\\model-1.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\enemies\\special-worm-worm-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\enemies\\special-worm-worm-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "foreman",
+      "name": "The Foreman",
+      "category": "Bosses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\foreman-the-foreman\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\foreman-the-foreman\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "campaign-0",
+      "name": "The Wrecker",
+      "category": "Bosses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\campaign-0-the-wrecker\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\campaign-0-the-wrecker\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "mega-0",
+      "name": "The Sump Colossus",
+      "category": "Bosses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\mega-0-the-sump-colossus\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\mega-0-the-sump-colossus\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "campaign-1",
+      "name": "The Bellkeeper",
+      "category": "Bosses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\campaign-1-the-bellkeeper\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\campaign-1-the-bellkeeper\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "mega-1",
+      "name": "The Brood Matriarch",
+      "category": "Bosses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\mega-1-the-brood-matriarch\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\mega-1-the-brood-matriarch\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "campaign-2",
+      "name": "The Broodheart",
+      "category": "Bosses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\campaign-2-the-broodheart\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\campaign-2-the-broodheart\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "mega-2",
+      "name": "The Iron Mourner",
+      "category": "Bosses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\mega-2-the-iron-mourner\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\mega-2-the-iron-mourner\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "brood-nest",
+      "name": "Brood nest",
+      "category": "Bosses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\brood-nest-brood-nest\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Bosses\\brood-nest-brood-nest\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "companion",
+      "name": "Rescue dog",
+      "category": "Wildlife",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Wildlife\\companion-rescue-dog\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Wildlife\\companion-rescue-dog\\textured\\model-1.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\wildlife\\companion-rescue-dog-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\wildlife\\companion-rescue-dog-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "dog",
+      "name": "dog",
+      "category": "Wildlife",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Wildlife\\dog-dog\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Wildlife\\dog-dog\\textured\\model-1.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\wildlife\\dog-dog-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\wildlife\\dog-dog-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "wolf",
+      "name": "wolf",
+      "category": "Wildlife",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Wildlife\\wolf-wolf\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Wildlife\\wolf-wolf\\textured\\model-1.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\wildlife\\wolf-wolf-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\wildlife\\wolf-wolf-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "rabbit",
+      "name": "rabbit",
+      "category": "Wildlife",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Wildlife\\rabbit-rabbit\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Wildlife\\rabbit-rabbit\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "deer",
+      "name": "deer",
+      "category": "Wildlife",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Wildlife\\deer-deer\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Wildlife\\deer-deer\\textured\\model-1.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\wildlife\\deer-deer-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\wildlife\\deer-deer-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "boar",
+      "name": "boar",
+      "category": "Wildlife",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Wildlife\\boar-boar\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Wildlife\\boar-boar\\textured\\model-1.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\wildlife\\boar-boar-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\wildlife\\boar-boar-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "catalog-weapon/0",
+      "name": "Trail pistol",
+      "category": "Weapons",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Weapons\\catalog-weapon-0-trail-pistol\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Weapons\\catalog-weapon-0-trail-pistol\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-weapon/1",
+      "name": "Trail rifle",
+      "category": "Weapons",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Weapons\\catalog-weapon-1-trail-rifle\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Weapons\\catalog-weapon-1-trail-rifle\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-weapon/2",
+      "name": "Woodland rifle",
+      "category": "Weapons",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Weapons\\catalog-weapon-2-woodland-rifle\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Weapons\\catalog-weapon-2-woodland-rifle\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-weapon/3",
+      "name": "Industrial carbine",
+      "category": "Weapons",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Weapons\\catalog-weapon-3-industrial-carbine\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Weapons\\catalog-weapon-3-industrial-carbine\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-weapon/4",
+      "name": "Precision rifle",
+      "category": "Weapons",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Weapons\\catalog-weapon-4-precision-rifle\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Weapons\\catalog-weapon-4-precision-rifle\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-weapon/23",
+      "name": "Hunting knife",
+      "category": "Weapons",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Weapons\\catalog-weapon-23-hunting-knife\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Weapons\\catalog-weapon-23-hunting-knife\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-material/0",
+      "name": "Timber",
+      "category": "Items",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-material-0-timber\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-material-0-timber\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-material/4",
+      "name": "Alloy scrap",
+      "category": "Items",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-material-4-alloy-scrap\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-material-4-alloy-scrap\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-legendary",
+      "name": "Legendary heart",
+      "category": "Items",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-legendary-legendary-heart\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-legendary-legendary-heart\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-legendary-upgrade",
+      "name": "Legendary ascension",
+      "category": "Items",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-legendary-upgrade-legendary-ascension\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-legendary-upgrade-legendary-ascension\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-mill-temper",
+      "name": "Foreman weapon tempering",
+      "category": "Items",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-mill-temper-foreman-weapon-tempering\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-mill-temper-foreman-weapon-tempering\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-build/4",
+      "name": "Pillar",
+      "category": "Buildings",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-4-pillar\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-4-pillar\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-build/10",
+      "name": "Stone-braced wall",
+      "category": "Buildings",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-10-stone-braced-wall\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-10-stone-braced-wall\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-build/14",
+      "name": "Stone-braced stairs",
+      "category": "Buildings",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-14-stone-braced-stairs\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-14-stone-braced-stairs\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-build/20",
+      "name": "Scrap steel pillar",
+      "category": "Buildings",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-20-scrap-steel-pillar\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-20-scrap-steel-pillar\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-build/41",
+      "name": "Storage chest",
+      "category": "Buildings",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-41-storage-chest\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-41-storage-chest\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-build/56",
+      "name": "Fence section",
+      "category": "Buildings",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-56-fence-section\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-56-fence-section\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-build/66",
+      "name": "Heavy defensive turret",
+      "category": "Buildings",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-66-heavy-defensive-turret\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-66-heavy-defensive-turret\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-build/75",
+      "name": "Field kitchen",
+      "category": "Buildings",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-75-field-kitchen\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-75-field-kitchen\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-build/76",
+      "name": "Medical station",
+      "category": "Buildings",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-76-medical-station\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-76-medical-station\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-build/79",
+      "name": "Advanced medical station",
+      "category": "Buildings",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-79-advanced-medical-station\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Buildings\\catalog-build-79-advanced-medical-station\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-attachment/2/10",
+      "name": "Barrel lapping / +10% quality",
+      "category": "Items",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-attachment-2-10-barrel-lapping-10-quality\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-attachment-2-10-barrel-lapping-10-quality\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-attachment/3/15",
+      "name": "Action bedding / +15% quality",
+      "category": "Items",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-attachment-3-15-action-bedding-15-quality\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-attachment-3-15-action-bedding-15-quality\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "catalog-attachment/4/20",
+      "name": "Precision calibration / +20% quality",
+      "category": "Items",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-attachment-4-20-precision-calibration-20-quality\\textured\\model-0.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - Asset Copy\\Hunyuan Workshop\\Models from text\\Items\\catalog-attachment-4-20-precision-calibration-20-quality\\textured\\model-1.glb"
+      ]
+    },
+    {
+      "key": "house-0",
+      "name": "Residential house variant 1",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-0-residential-house-variant-1-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-0-residential-house-variant-1-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-1",
+      "name": "Residential house variant 2",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-1-residential-house-variant-2-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-1-residential-house-variant-2-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-2",
+      "name": "Residential house variant 3",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-2-residential-house-variant-3-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-2-residential-house-variant-3-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-3",
+      "name": "Residential house variant 4",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-3-residential-house-variant-4-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-3-residential-house-variant-4-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-4",
+      "name": "Residential house variant 5",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-4-residential-house-variant-5-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-4-residential-house-variant-5-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-5",
+      "name": "Residential house variant 6",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-5-residential-house-variant-6-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-5-residential-house-variant-6-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-6",
+      "name": "Residential house variant 7",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-6-residential-house-variant-7-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-6-residential-house-variant-7-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-7",
+      "name": "Residential house variant 8",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-7-residential-house-variant-8-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-7-residential-house-variant-8-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-8",
+      "name": "Residential house variant 9",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-8-residential-house-variant-9-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-8-residential-house-variant-9-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-9",
+      "name": "Residential house variant 10",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-9-residential-house-variant-10-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-9-residential-house-variant-10-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-10",
+      "name": "Residential house variant 11",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-10-residential-house-variant-11-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-10-residential-house-variant-11-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-11",
+      "name": "Residential house variant 12",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-11-residential-house-variant-12-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-11-residential-house-variant-12-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-12",
+      "name": "Residential house variant 13",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-12-residential-house-variant-13-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-12-residential-house-variant-13-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-13",
+      "name": "Residential house variant 14",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-13-residential-house-variant-14-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-13-residential-house-variant-14-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-14",
+      "name": "Residential house variant 15",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-14-residential-house-variant-15-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-14-residential-house-variant-15-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-15",
+      "name": "Residential house variant 16",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-15-residential-house-variant-16-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-15-residential-house-variant-16-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-16",
+      "name": "Residential house variant 17",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-16-residential-house-variant-17-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-16-residential-house-variant-17-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-17",
+      "name": "Residential house variant 18",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-17-residential-house-variant-18-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-17-residential-house-variant-18-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-18",
+      "name": "Residential house variant 19",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-18-residential-house-variant-19-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-18-residential-house-variant-19-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-19",
+      "name": "Residential house variant 20",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-19-residential-house-variant-20-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-19-residential-house-variant-20-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-20",
+      "name": "Residential house variant 21",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-20-residential-house-variant-21-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-20-residential-house-variant-21-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-21",
+      "name": "Residential house variant 22",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-21-residential-house-variant-22-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-21-residential-house-variant-22-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-22",
+      "name": "Residential house variant 23",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-22-residential-house-variant-23-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-22-residential-house-variant-23-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "house-23",
+      "name": "Residential house variant 24",
+      "category": "Houses",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-23-residential-house-variant-24-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\houses\\house-23-residential-house-variant-24-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "salvage-1",
+      "name": "Evacuee's travel pack",
+      "category": "Props",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\salvage-1-evacuee-s-travel-pack-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\salvage-1-evacuee-s-travel-pack-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "salvage-2",
+      "name": "Triage medical locker",
+      "category": "Props",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\salvage-2-triage-medical-locker-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\salvage-2-triage-medical-locker-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "salvage-3",
+      "name": "Memorial emergency tin",
+      "category": "Props",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\salvage-3-memorial-emergency-tin-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\salvage-3-memorial-emergency-tin-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "salvage-4",
+      "name": "Workshop tool chest",
+      "category": "Props",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\salvage-4-workshop-tool-chest-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\salvage-4-workshop-tool-chest-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "salvage-5",
+      "name": "Checkpoint ammunition case",
+      "category": "Props",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\salvage-5-checkpoint-ammunition-case-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\salvage-5-checkpoint-ammunition-case-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "sleeping-bag",
+      "name": "Placed sleeping bag",
+      "category": "Props",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\sleeping-bag-placed-sleeping-bag-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\sleeping-bag-placed-sleeping-bag-option-02\\textured.glb"
+      ]
+    },
+    {
+      "key": "teddy",
+      "name": "Teddy bear",
+      "category": "Props",
+      "sources": [
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\teddy-teddy-bear-option-01\\textured.glb",
+        "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\props\\teddy-teddy-bear-option-02\\textured.glb"
+      ]
+    }
+  ],
+  "rejected": {
+    "catalog-ammo": "Rendered result is a pistol rather than ammunition",
+    "catalog-ammo/2": "Rendered result is a rifle rather than ammunition",
+    "catalog-armor/1/1": "Torso includes unwanted detached boots",
+    "catalog-armor/2/2": "Torso includes unwanted detached boots",
+    "catalog-armor/3/3": "Torso includes unwanted detached boots",
+    "catalog-armor/4/4": "Torso includes unwanted detached boots",
+    "catalog-armor/5/5": "Torso includes unwanted detached boots",
+    "catalog-armor/1/11": "Hood includes unwanted detached boots",
+    "catalog-armor/2/11": "Helmet includes unwanted detached boots",
+    "catalog-armor/3/11": "Helmet includes unwanted detached boots and debris",
+    "catalog-armor/4/11": "Helmet includes unwanted detached boots",
+    "catalog-armor/5/11": "Helmet includes unwanted detached boots",
+    "catalog-hunting-gear/hood": "Hood includes detached boots",
+    "catalog-hunting-gear/vest": "Vest includes detached boots and malformed opening",
+    "catalog-arrow/1/12": "Arrow bundle is a malformed debris-covered bundle",
+    "catalog-bandage": "Rendered bandage resembles a wooden cylinder rather than cloth",
+    "catalog-bench/2": "Kitchen counter rather than upgraded workbench",
+    "catalog-bench/3": "Kitchen counter rather than upgraded workbench",
+    "catalog-bench/4": "Kitchen counter rather than upgraded workbench",
+    "catalog-bench/5": "Closed cabinet rather than upgraded workbench",
+    "catalog-build/2": "Wall reconstructed as a solid deep box",
+    "catalog-build/42": "Window aperture is filled",
+    "catalog-build/48": "Generator reconstructed as a timber cabinet",
+    "catalog-build/58": "Rope snare reconstructed as a large cage",
+    "catalog-build/80": "Generator reconstructed as a timber cabinet",
+    "catalog-build/82": "Hydroponic rack has substantial floating reconstruction debris",
+    "catalog-build/87": "Display shelf reconstructed as a closed cabinet",
+    "catalog-build/91": "Door opening is filled",
+    "catalog-build/94": "Door opening is filled",
+    "catalog-build/96": "Door opening is filled",
+    "catalog-build/99": "Door opening is filled",
+    "catalog-build/100": "Window opening is filled",
+    "catalog-build/102": "Door opening is filled",
+    "catalog-build/103": "Window opening is filled",
+    "catalog-catalyst": "Generic wooden crate does not represent the catalyst",
+    "catalog-field-arrow/1": "Bent and malformed arrow shaft",
+    "catalog-field-throw/0": "Molotov lacks readable wick and resembles a closed supply bottle",
+    "catalog-field-throw/1": "Molotov reconstructed as a solid wooden cylinder",
+    "catalog-food": "Generic wood crate without a readable provisions design",
+    "catalog-fuel/3/40": "Chainsaw rather than its fuel supply",
+    "catalog-hunting-material/3": "Bone reconstructed as a wooden cylinder",
+    "catalog-hunting-material/4": "Sinew reconstructed as a wooden barrel",
+    "catalog-material/2": "Fiber reconstructed as a solid stump-like cylinder",
+    "catalog-material/5": "Electronics reconstructed as a wooden crate",
+    "catalog-material/6": "Bioalloy reconstructed as a wooden stump",
+    "catalog-millcore": "Generic barrel does not read as an industrial core",
+    "catalog-survival-tech/3/2": "Comfort kit reconstructed as an unrelated panel and stakes",
+    "catalog-weapon-mod/2/1": "Weighted striking head reconstructed as a wooden barrel",
+    "catalog-weapon-mod/2/7": "Shoulder stock reconstructed as torso armour",
+    "catalog-weapon-mod/2/8": "Bowstring reconstructed as a complete bow",
+    "catalog-weapon-mod/5/11": "Cooling jacket reconstructed as a human jacket",
+    "catalog-weapon/6": "Bow reconstructed as a rifle",
+    "catalog-weapon/9": "Hand stone reconstructed as a gun stock",
+    "catalog-weapon/14": "Claw hammer lacks the correct hammer silhouette",
+    "catalog-weapon/15": "Iron rod reconstructed as a wooden staff",
+    "catalog-weapon/17": "Chainsaw reconstructed as a firearm",
+    "catalog-weapon/18": "Recurve bow reconstructed as a firearm",
+    "catalog-weapon/19": "Crossbow reconstructed as a firearm",
+    "catalog-weapon/20": "Machete reconstructed as a wooden staff",
+    "catalog-weapon/21": "Sledgehammer lacks its hammer head",
+    "catalog-weapon/25": "Forged sword has an excessively long staff-like handle",
+    "catalog-weapon/26": "Longsword has an excessively long staff-like handle",
+    "catalog-weapon/27": "Chain sword lacks the defining chain blade",
+    "catalog-weapon/32": "Compound bow reconstructed as a blade",
+    "catalog-weapon/33": "Polehammer reconstructed as a gun stock",
+    "catalog-weapon/34": "Flamethrower lacks its fuel system and resembles a compact firearm"
+  },
+  "failed_inputs": [
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-bandage-bandage-roll-option-01.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-field-throw-6-green-smoke-option-02.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-field-throw-7-blue-smoke-option-02.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-food-trail-provisions-option-02.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-hunting-material-0-raw-game-meat-option-01.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-hunting-material-1-untanned-hide-option-01.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-hunting-material-1-untanned-hide-option-02.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-hunting-material-2-fur-option-02.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-hunting-material-4-sinew-option-02.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-legendary-legendary-heart-option-01.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-legendary-legendary-heart-option-02.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-material-3-forest-resin-option-02.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-material-4-alloy-scrap-option-01.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-material-4-alloy-scrap-option-02.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-material-6-bioalloy-option-02.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "items/catalog-medicine-4-1-field-medical-kit-option-01.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "buildings/catalog-build-0-foundation-option-02.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "buildings/catalog-build-1-floor-option-01.jpg"
+    },
+    {
+      "collection": "Natural Colour Concepts",
+      "relative": "buildings/catalog-build-63-electric-fence-option-02.jpg"
+    }
+  ],
+  "priorities": [
+    {
+      "priority": "P1",
+      "group": "Grass / tall dry grass / fern / low shrub LOD set",
+      "note": "Procedural ground cover is now present; dedicated optimized meshes would improve silhouettes and draw-distance transitions."
+    },
+    {
+      "priority": "P1",
+      "group": "Enterable house modular kit",
+      "note": "Open door/window wall sections, interior faces, roof, foundation, porch and corners. Fused house conversions cannot replace usable rooms."
+    },
+    {
+      "priority": "P1",
+      "group": "Garden fence and gate kit",
+      "note": "Straight, corner, sloped, damaged sections and working gate apertures. Review existing build drafts before creating more."
+    },
+    {
+      "priority": "P1",
+      "group": "Roadside and pavement kit",
+      "note": "Curbs, dropped curbs, drains, manholes, road signs and guardrail endings. Current roads are terrain materials, not missing terrain models."
+    },
+    {
+      "priority": "P1",
+      "group": "Industrial yard set",
+      "note": "Pallets, cable reels, crates, bins, drums and scrap piles. Existing catalogue drafts need selection/scale review before any new batch."
+    },
+    {
+      "priority": "P2",
+      "group": "Fallen logs / stumps / branches / leaf-litter set",
+      "note": "Review completed Nature input conversions; optimize and add LODs instead of generating duplicate oak trees."
+    },
+    {
+      "priority": "P2",
+      "group": "City frontage kit",
+      "note": "Shopfronts, doors, broken/boarded windows, awnings, vents, pipes and rooftop units. Current facade trim is procedural."
+    },
+    {
+      "priority": "P2",
+      "group": "Suburban garden and household dressing",
+      "note": "Planters, mailbox, bins, bicycle, clothesline and porch light. Use approved current furniture; a full duplicate furniture batch is unnecessary."
+    },
+    {
+      "priority": "P2",
+      "group": "Street furniture and debris",
+      "note": "Benches, bus stop, utility cabinets, litter, broken masonry and damaged traffic barriers. Review existing props first."
+    },
+    {
+      "priority": "P2",
+      "group": "Wildlife and dog animation-ready assets",
+      "note": "Textured drafts exist; anatomy checks, rigging, LODs and animation are the remaining work. Static GLBs are not animation-ready replacements."
+    },
+    {
+      "priority": "P3",
+      "group": "Variant survivor / story NPC assets",
+      "note": "Use current survivor/actor rigs as the baseline; different clothing and identity variants need rig-compatible preparation."
+    },
+    {
+      "priority": "P3",
+      "group": "Dungeon and landmark modular sets",
+      "note": "Doors with real openings, stairs, pipe junctions, sewer/medical/industrial dressing. Preserve existing colliders and authored story rooms."
+    }
+  ]
+}

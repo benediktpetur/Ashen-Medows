@@ -21,7 +21,7 @@ public partial class MigrationScene {
   Box(n,new(0,h/2,0),new(size,h,size),wall,true).MaterialOverride=ExteriorFinish(3,wall);
   Box(n,new(0,.35f,0),new(size+.15f,.7f,size+.15f),new(.28f,.29f,.28f));
   Box(n,new(0,h+.12f,0),new(size+.5f,.24f,size+.5f),metal);
-  WarehouseCladding(n,size,h);float front=-size/2-.07f;
+  WarehouseCladding(n,size,h);WarehouseSceneryDetails(n,size);float front=-size/2-.07f;
   for(int side=-1;side<=1;side+=2){
    Box(n,new(side*(size/2-.12f),h/2,front),new(.24f,h,.18f),metal);
    Box(n,new(side*size*.22f,1.7f,front-.05f),new(size*.34f,3.4f,.12f),new(.20f,.23f,.24f));
@@ -30,7 +30,7 @@ public partial class MigrationScene {
   }
   for(float height=4.2f;height<h-.6f;height+=2.4f)Box(n,new(0,height,front-.02f),new(size*.74f,.65f,.08f),new(.17f,.24f,.26f));
   Box(n,new(0,Math.Min(h-.5f,4),front-.16f),new(size*.84f,.55f,.12f),metal);
-  n.AddChild(new Label3D{Text=new[]{"FREIGHT DEPOT","MACHINE WORKS","METAL FABRICATION","WAREHOUSE / LOADING"}[(int)(game.World.Hash(x,z)%4)],Position=new(0,Math.Min(h-.5f,4),front-.24f),FontSize=30,PixelSize=.009f,Modulate=new(.81f,.78f,.63f)});
+  n.AddChild(new Label3D{Text=new[]{"FREIGHT DEPOT","MACHINE WORKS","METAL FABRICATION","WAREHOUSE / LOADING"}[(int)(game.World.Hash(x,z)%4)],Position=new(0,Math.Min(h-.5f,4),front-.24f),RotationDegrees=new(0,180,0),FontSize=30,PixelSize=.009f,Modulate=new(.81f,.78f,.63f)});
   for(int i=0;i<3;i++){
    float px=(i-1)*size*.25f;
    Box(n,new(px,h+.6f,size*.15f),new(1.2f,.9f,1.8f),metal);
@@ -45,7 +45,7 @@ public partial class MigrationScene {
   for(int i=0;i<8;i++)Box(shop,new(-.7f,.2f+i*.35f,-2.61f),new(3.5f,.035f,.03f),Steel);
   Box(shop,new(2.3f,1.1f,-2.55f),new(1,2.2f,.1f),Rust);
   Box(shop,new(0,3.12f,-2.6f),new(6,.45f,.1f),new(.20f,.24f,.25f));
-  shop.AddChild(new Label3D{Text=side<0?"TYRE & TRUCK SERVICE":"HAULAGE / DISPATCH",Position=new(0,3.12f,-2.68f),FontSize=28,PixelSize=.010f,Modulate=new(.82f,.76f,.55f)});
+  shop.AddChild(new Label3D{Text=side<0?"TYRE & TRUCK SERVICE":"HAULAGE / DISPATCH",Position=new(0,3.12f,-2.68f),RotationDegrees=new(0,180,0),FontSize=28,PixelSize=.010f,Modulate=new(.82f,.76f,.55f)});
   Box(shop,new(-2.8f,3.9f,1.3f),new(.8f,.5f,.9f),Steel);
  }
  Color RegionGround(double x,double z){
@@ -63,7 +63,7 @@ public partial class MigrationScene {
  }
  async void RunRegionChecks(){try{
   game.NoDiskSave=true;paused=true;SetProcess(false);SetPhysicsProcess(false);CloseMenu();ClearEnemies();
-  WorldModelChecks();SurfaceLayoutChecks();PropPlacementChecks();
+  WorldModelChecks();SurfaceLayoutChecks();PropPlacementChecks();SceneryPolishChecks();
   foreach(int tier in new[]{3,4}){
    var root=new Node3D();AddChild(root);int z=tier==3?-1456:-2096,x=(int)(Math.Floor(game.World.RouteX(z)/32)*32+48);
    float size=(float)game.World.BuildingHalf(x,z)*2,h=(float)game.World.BuildingHeight(x,z);
@@ -85,7 +85,7 @@ public partial class MigrationScene {
    for(int i=0;i<points.Length;i++){var p=points[i];Teleport(p.X,p.Y);ClearEnemies();var eye=Ground(p.X+35,p.Y-43)+Vector3.Up*38;camera.GlobalPosition=eye;camera.LookAt(Ground(p.X,p.Y)+Vector3.Up*3);await ArtShot($"region-{i+1:00}");}
    Teleport(ExpeditionWorld.HomeX,ExpeditionWorld.HomeZ);ClearEnemies();var interior=terrainRoot.FindChild("BriarLaneHouse0",true,false) as Node3D;if(interior==null)throw new Exception("Interior preview house not streamed");camera.GlobalPosition=interior.ToGlobal(new Vector3(1.5f,1.8f,4.6f));camera.LookAt(interior.ToGlobal(new Vector3(-1,.8f,-2)));await ArtShot("world-interior");
    camera.Fov=65;camera.GlobalPosition=interior.ToGlobal(new Vector3(15,5,18));camera.LookAt(interior.ToGlobal(new Vector3(0,1.7f,0)));await ArtShot("exterior-suburban-house");
-   Teleport(game.World.RouteX(-1450),-1450);ClearEnemies();var factory=terrainRoot.FindChildren("IndustrialWarehouse*","Node3D",true,false).OfType<Node3D>().OrderBy(n=>n.GlobalPosition.DistanceSquaredTo(player.GlobalPosition)).FirstOrDefault();if(factory==null)throw new Exception("Industrial preview warehouse missing");camera.GlobalPosition=factory.ToGlobal(new Vector3(15,5,-20));camera.LookAt(factory.ToGlobal(new Vector3(0,2.5f,0)));await ArtShot("exterior-warehouse");ShowMap();await ArtShot("ground-layout-map");CloseMenu();Teleport(ExpeditionWorld.HomeX,ExpeditionWorld.HomeZ);ClearEnemies();var inspect=terrainRoot.FindChild("BriarLaneHouse0",true,false) as Node3D;camera.GlobalPosition=inspect.ToGlobal(new Vector3(12,2.4f,8));camera.LookAt(inspect.ToGlobal(new Vector3(7.5f,.8f,-1)));await ArtShot("placement-car-fence");camera.GlobalPosition=inspect.ToGlobal(new Vector3(-1,1.9f,3));camera.LookAt(inspect.ToGlobal(new Vector3(3,1,-3)));await ArtShot("placement-furniture-room");
+   Teleport(game.World.RouteX(-1450),-1450);ClearEnemies();var factory=terrainRoot.FindChildren("IndustrialWarehouse*","Node3D",true,false).OfType<Node3D>().OrderBy(n=>n.GlobalPosition.DistanceSquaredTo(player.GlobalPosition)).FirstOrDefault();if(factory==null)throw new Exception("Industrial preview warehouse missing");camera.GlobalPosition=factory.ToGlobal(new Vector3(15,5,-20));camera.LookAt(factory.ToGlobal(new Vector3(0,2.5f,0)));await ArtShot("exterior-warehouse");ShowMap();await ArtShot("ground-layout-map");CloseMenu();Teleport(ExpeditionWorld.HomeX,ExpeditionWorld.HomeZ);ClearEnemies();var inspect=terrainRoot.FindChild("BriarLaneHouse0",true,false) as Node3D;camera.GlobalPosition=inspect.ToGlobal(new Vector3(12,2.4f,8));camera.LookAt(inspect.ToGlobal(new Vector3(7.5f,.8f,-1)));await ArtShot("placement-car-fence");camera.GlobalPosition=inspect.ToGlobal(new Vector3(-1,1.9f,3));camera.LookAt(inspect.ToGlobal(new Vector3(3,1,-3)));await ArtShot("placement-furniture-room");await SceneryStreetReview();
   }
   GetTree().Quit();
  }catch(Exception e){GD.PushError(e.ToString());GetTree().Quit(1);}}

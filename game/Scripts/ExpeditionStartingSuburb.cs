@@ -32,7 +32,7 @@ public partial class MigrationScene {
   Part(new(0,3.35f,0),new(12.6f,.18f,11.6f),new(.25f,.25f,.22f));
   var end=n.Transform*new Vector3(0,0,13);float rampEnd=(float)game.World.Height(end.X,end.Z)-n.Position.Y+.03f;Vector3 ra=new(-1.1f,.16f,5.7f),rb=new(1.1f,.16f,5.7f),rc=new(1.1f,rampEnd,13),rd=new(-1.1f,rampEnd,13);PhysicsObstacle(n,new ConvexPolygonShape3D{Points=new[]{ra,rb,rc,rd,ra-Vector3.Up*.12f,rb-Vector3.Up*.12f,rc-Vector3.Up*.12f,rd-Vector3.Up*.12f}},Vector3.Zero);
   if(!simulation){var gable=new SurfaceTool();gable.Begin(Mesh.PrimitiveType.Triangles);foreach(float z in new[]{-5.5f,5.5f}){var left=new Vector3(-6,3.4f,z);var top=new Vector3(0,5.4f,z);var right=new Vector3(6,3.4f,z);foreach(var v in z>0?new[]{right,top,left}:new[]{left,top,right})gable.AddVertex(v);}gable.GenerateNormals();n.AddChild(new MeshInstance3D{Mesh=gable.Commit(),MaterialOverride=ExteriorFinish(0,siding,i%8)});}
-  HouseFurniture(n,i,simulation);if(simulation)return;HouseApproach(n);
+  HouseFurniture(n,i,simulation);if(simulation)return;HouseApproach(n);HouseSceneryDetails(n,i);
   var ramp=new SurfaceTool();ramp.Begin(Mesh.PrimitiveType.Triangles);foreach(var v in new[]{ra,rb,rc,ra,rc,rd})ramp.AddVertex(v);ramp.GenerateNormals();n.AddChild(new MeshInstance3D{Mesh=ramp.Commit(),MaterialOverride=Textured(Wood,0,.6f)});
   foreach(int side in new[]{-1,1}){var roof=Box(n,new(side*3.2f,4.4f,0),new(7,.16f,12.2f),new(.20f,.24f,.22f));roof.RotationDegrees=new(0,0,side*-18);roof.MaterialOverride=ExteriorFinish(1,HouseRoofPaint(i),i%4);Box(n,new(side*6.05f,1.7f,5.62f),new(.17f,3.5f,.14f),new(.65f,.62f,.52f));
    var win=new Vector3(side*3.6f,1.95f,5.62f);Box(n,win,new(1.7f,1.5f,.05f),new(.10f,.17f,.18f));foreach(float xx in new[]{-.9f,.9f})Box(n,win+new Vector3(xx,0,.04f),new(.10f,1.7f,.07f),new(.68f,.64f,.54f));foreach(float yy in new[]{-.8f,0,.8f})Box(n,win+new Vector3(0,yy,.04f),new(1.9f,.09f,.07f),new(.68f,.64f,.54f));if((i+side)%3==0){var plank=Box(n,win+new Vector3(0,0,.12f),new(2.1f,.22f,.1f),Wood);plank.RotationDegrees=new(0,0,14);}
@@ -43,7 +43,7 @@ public partial class MigrationScene {
   Box(n,new(0,2.85f,6.5f),new(7.4f,.16f,2.4f),siding);n.AddChild(new Label3D{Text=n.HasMeta("house_address")?n.GetMeta("house_address").AsString():(i==1?"14 / HOME":(12+i*2).ToString()),Position=new(1.6f,2.2f,5.63f),PixelSize=.004f,FontSize=30});
   StoryPaper(n,new(.6f,.83f,-1.2f));
   // Low side garden fences leave the porch and driveway visibly open.
-  foreach(int side in new[]{-1,1}){for(int j=0;j<9;j++)Box(n,new(side*9,.6f,-5+j*1.7f),new(.10f,1.2f,.13f),Wood);foreach(float y in new[]{.4f,.9f})Box(n,new(side*9,y,1.8f),new(.10f,.1f,14),Wood);}
+  foreach(int side in new[]{-1,1}){for(int j=0;j<9;j++)GroundedFencePost(n,new(side*9,0,-5+j*1.7f));foreach(float y in new[]{.4f,.9f})Box(n,new(side*9,y,1.8f),new(.10f,.1f,14),Wood);}
 
   // Household traces are readable from the street, with no mandatory encounter trigger.
   if(i==0||i==6)for(int row=0;row<3;row++){Box(n,new(-7,.16f,-3+row*2),new(2,.32f,1.4f),Wood);Box(n,new(-7,.34f,-3+row*2),new(1.8f,.08f,1.2f),new(.16f,.13f,.08f));for(int plant=0;plant<4;plant++){var at=new Vector3(-7.6f+plant*.4f,.4f,-3+row*2);Tube(n,at,at+Vector3.Up*.4f,.016f,Leaf);Ellipsoid(n,at+Vector3.Up*.3f,new(.14f,.1f,.12f),Leaf);}}
