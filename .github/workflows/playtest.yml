@@ -22,8 +22,8 @@ jobs:
       GH_REPO: ${{ github.repository }}
       PLAYTEST_VERSION: 0.1.${{ github.run_number }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '8.0.x'
       - name: Check repository visibility
@@ -39,7 +39,7 @@ jobs:
         run: ./scripts/build-game.ps1 -Export
       - name: Preserve co-op failure logs
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: coop-failure-logs
           path: build/coop-checks/*.log
