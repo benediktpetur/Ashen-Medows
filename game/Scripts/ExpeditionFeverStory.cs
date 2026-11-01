@@ -5,7 +5,7 @@ using System.Linq;
 public partial class MigrationScene {
  const double FeverZ=-470,FeverMeetZ=-425;
  const string FeverJournal="fever/remembered";
- double FeverX=>game.World.RouteX(FeverZ)+38;
+ double FeverX=>game.World.SafeStoryX(game.World.RouteX(FeverZ)+38,FeverZ,26);
  string FeverMotherId=>$"story/fever/mother/{game.Save.Seed}";
  ExpeditionFeverStory Fever=>game.World.Changes.FeverStory;
  Node3D feverHouse,feverDoor,feverBoy,feverSister,feverMotherVisual,feverAftermath;

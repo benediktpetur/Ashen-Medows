@@ -24,26 +24,13 @@ internal partial class ExpeditionMapCanvas {
   foreach(var stop in World.RoadsideStops()){var at=Map(stop.X,stop.Z);DrawRect(new Rect2(at-new Vector2(3,3),new Vector2(6,6)),new Color(.08f,.13f,.13f));DrawRect(new Rect2(at-new Vector2(2,2),new Vector2(4,4)),new Color(.94f,.85f,.53f));}
  }
  void DrawMapStructure(){
-  if(Heat)return;
-  var gold=new Color(.96f,.78f,.37f);
-  foreach(var item in new[]{(Tier:4,Z:-2130d,Title:"4  DENSE CITY",Detail:"Tall blocks / communities / city depths"),(Tier:3,Z:-1460d,Title:"3  HIGHWAY & INDUSTRY",Detail:"Freight / workshops / roadside stops"),(Tier:2,Z:-780d,Title:"2  WOODLAND",Detail:"Trails / shelters / field locations"),(Tier:1,Z:-220d,Title:"1  SUBURBS",Detail:"Briar Lane / homes / shared supplies")}){
-   var p=new Vector2(22,Map(-1470,item.Z).Y);DrawRect(new Rect2(p-new Vector2(8,17),new Vector2(244,39)),new Color(.055f,.09f,.085f,.90f));
-   DrawRect(new Rect2(p-new Vector2(8,17),new Vector2(3,39)),gold);
-   DrawString(ThemeDB.FallbackFont,p,item.Title,HorizontalAlignment.Left,-1,12,new Color(.94f,.91f,.79f));
-   DrawString(ThemeDB.FallbackFont,p+new Vector2(0,15),item.Detail,HorizontalAlignment.Left,-1,10,new Color(.70f,.76f,.70f));
+  foreach(var region in new[]{(U:.20f,V:.12f,Name:"RIVER CITY"),(U:.51f,V:.23f,Name:"INDUSTRY / RAIL YARDS"),(U:.29f,V:.53f,Name:"SUBURBS"),(U:.76f,V:.18f,Name:"EASTERN WOODLAND"),(U:.60f,V:.68f,Name:"RURAL FARMLAND"),(U:.86f,V:.53f,Name:"LAKE DISTRICT"),(U:.20f,V:.87f,Name:"SOUTHERN FOREST")}){
+   var p=Map(ExpeditionWorld.MinX+region.U*9000,ExpeditionWorld.MinZ+region.V*9000);DrawRect(new Rect2(p-new Vector2(5,14),new Vector2(region.Name.Length*6.5f+10,20)),new Color(.04f,.08f,.07f,.85f));DrawString(ThemeDB.FallbackFont,p,region.Name,HorizontalAlignment.Left,-1,11,Colors.Beige);
   }
-  // Arrowheads follow the real curving route; north is towards later progression.
-  foreach(double z in new[]{-200d,-550,-1150,-1740,-2350}){
-   var at=Map(World.RouteX(z),z);var forward=(Map(World.RouteX(z-32),z-32)-at).Normalized();var side=new Vector2(-forward.Y,forward.X);
-   DrawColoredPolygon(new[]{at+forward*6,at-forward*4+side*3,at-forward*4-side*3},gold);
-  }
-  var note=new Vector2(Size.X-265,14);DrawRect(new Rect2(note-new Vector2(7,14),new Vector2(258,47)),new Color(.05f,.08f,.075f,.92f));
-  DrawString(ThemeDB.FallbackFont,note,"NORTH / RIVER CROSSING CLOSED",HorizontalAlignment.Left,-1,11,new Color(.83f,.88f,.85f));
-  DrawString(ThemeDB.FallbackFont,note+new Vector2(0,17),"Gold route: 1 > 2 > 3 > 4 > city depths",HorizontalAlignment.Left,-1,10,gold);
-  DrawRect(new Rect2(new Vector2(10,Size.Y-48),new Vector2(380,43)),new Color(.05f,.08f,.075f,.93f));
-  DrawString(ThemeDB.FallbackFont,new Vector2(18,Size.Y-33),"WEST SIDE: PLAYABLE DISTRICTS / FEWER NAMED SITES",HorizontalAlignment.Left,-1,10,new Color(.80f,.85f,.77f));
-  DrawString(ThemeDB.FallbackFont,new Vector2(18,Size.Y-18),"Square: roadside stop   /   Dark blocks: buildings",HorizontalAlignment.Left,-1,10,new Color(.88f,.84f,.69f));
-  float scale=Size.X*400/3200;DrawLine(new Vector2(410,Size.Y-14),new Vector2(410+scale,Size.Y-14),Colors.Beige,2);
-  DrawString(ThemeDB.FallbackFont,new Vector2(410,Size.Y-21),"400 m",HorizontalAlignment.Left,-1,10,Colors.Beige);
+ }
+ Texture2D atlasMapTexture;
+ void DrawAtlasMap(){
+  atlasMapTexture??=GD.Load<Texture2D>("res://WorldMap/reference.png");DrawTextureRect(atlasMapTexture,AtlasMapRect,false);
+  if(Heat)for(int x=(int)ExpeditionWorld.MinX;x<ExpeditionWorld.MaxX;x+=128)for(int z=(int)ExpeditionWorld.MinZ;z<ExpeditionWorld.MaxZ;z+=128){float heat=(float)World.SpawnHeat(x,z,NightHeat);DrawRect(new Rect2(Map(x,z),new Vector2(AtlasMapRect.Size.X*128/9000+1,AtlasMapRect.Size.Y*128/9000+1)),new Color(.85f,.15f,.08f,heat*.55f));}
  }
 }

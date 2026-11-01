@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 public partial class MigrationScene {
- const double WoodlandZ=-690;double WoodlandX=>game.World.RouteX(WoodlandZ)-65;
+ const double WoodlandZ=-690;double WoodlandX=>game.World.SafeStoryX(game.World.RouteX(WoodlandZ)-65,WoodlandZ,28);
  const string WoodlandJournal="woodland-camp/journal";
  string WoodlandEnemy(int i)=>$"story/woodland/{game.Save.Seed}/{i}";
  bool woodlandFixture;Node3D woodlandRoot;

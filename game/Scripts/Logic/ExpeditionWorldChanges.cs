@@ -28,5 +28,5 @@ using System.Runtime.Serialization;
 }
 partial class ExpeditionWorld {
  public ExpeditionWorldChanges Changes;
- public double Height(double x,double z){double h=BaseHeight(x,z);if(Changes!=null){double w=Changes.LegacyTerrainWeight(x,z);if(w>0)h=h*(1-w)+LegacyBaseHeight(x,z)*w;}return Changes==null?h:Changes.Height(x,z,h);}
+ public double Height(double x,double z){double h=BaseHeight(x,z);return Changes==null?h:Changes.Height(x,z,h);}
 }

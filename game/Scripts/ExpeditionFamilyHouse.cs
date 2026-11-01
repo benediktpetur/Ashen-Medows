@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 public partial class MigrationScene {
- const string FamilyRoom="story/family-house";const double FamilyZ=-930;double FamilyX=>game.World.RouteX(FamilyZ)+55;double familyFloor;Node3D familyHome,familyGarageDoor,familySafeDoor,familyShelf;OmniLight3D familyLamp;
+ const string FamilyRoom="story/family-house";const double FamilyZ=-930;double FamilyX=>game.World.SafeStoryX(game.World.RouteX(FamilyZ)+55,FamilyZ,32);double familyFloor;Node3D familyHome,familyGarageDoor,familySafeDoor,familyShelf;OmniLight3D familyLamp;
  bool InFamilyRoom=>dungeon?.Id==FamilyRoom;string FamilyInfectedId=>$"story/family/frail/{game.Save.Seed}";
  bool InFamilyLot(double x,double z)=>x>FamilyX-9&&x<FamilyX+18&&z>FamilyZ-9&&z<FamilyZ+28;
  Vector3 FamilyPoint(float x,float y,float z)=>new((float)FamilyX+x,(float)familyFloor+y,(float)FamilyZ+z);

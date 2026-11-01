@@ -18,7 +18,7 @@ public partial class MigrationScene {
   var wanted=new Dictionary<(int,int),bool>();var order=new List<(int,int)>();var centers=ActiveSurfaceCenters();
   // Interleave players by ring so a new remote area cannot starve local streaming.
   for(int r=0;r<=3;r++)foreach(var center in centers){int x=ExpeditionWorld.Cell(center.X),z=ExpeditionWorld.Cell(center.Z);for(int dx=-r;dx<=r;dx++)for(int dz=-r;dz<=r;dz++){
-   if(Math.Max(Math.Abs(dx),Math.Abs(dz))!=r||!game.World.InBlock((x+dx)*64+32,(z+dz)*64+32))continue;var key=(x+dx,z+dz);bool full=LocalChunk(key.Item1,key.Item2);if(!wanted.ContainsKey(key)){wanted[key]=full;order.Add(key);}else wanted[key]|=full;
+   if(Math.Max(Math.Abs(dx),Math.Abs(dz))!=r||!game.World.ChunkIntersects(x+dx,z+dz))continue;var key=(x+dx,z+dz);bool full=LocalChunk(key.Item1,key.Item2);if(!wanted.ContainsKey(key)){wanted[key]=full;order.Add(key);}else wanted[key]|=full;
   }}
   foreach(var key in chunks.Keys.ToArray())if(!wanted.TryGetValue(key,out bool full)||chunks[key].GetMeta("simulation_only",false).AsBool()==full)RemoveChunk(key);
   int budget=immediate?49:4;foreach(var key in order){if(budget<=0)break;if(chunks.ContainsKey(key))continue;chunks[key]=CreateChunk(key.Item1,key.Item2,!wanted[key]);budget--;}

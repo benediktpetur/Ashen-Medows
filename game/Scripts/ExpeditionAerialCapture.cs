@@ -13,7 +13,7 @@ public partial class MigrationScene {
   for(int row=0;row<8;row++)for(int col=0;col<8;col++){
    double x=ExpeditionWorld.MinX+200+col*400,z=ExpeditionWorld.MinZ+200+row*400;Teleport(x,z);ClearEnemies();
    for(int cx=ExpeditionWorld.Cell(x-200);cx<=ExpeditionWorld.Cell(x+200);cx++)for(int cz=ExpeditionWorld.Cell(z-200);cz<=ExpeditionWorld.Cell(z+200);cz++){
-    if(!chunks.ContainsKey((cx,cz))&&game.World.InBlock(cx*64+32,cz*64+32))chunks[(cx,cz)]=CreateChunk(cx,cz);
+    if(!chunks.ContainsKey((cx,cz))&&game.World.ChunkIntersects(cx,cz))chunks[(cx,cz)]=CreateChunk(cx,cz);
    }
    eye.Position=new((float)x,1000,(float)z);eye.LookAt(new Vector3((float)x,0,(float)z),Vector3.Forward);
    for(int frame=0;frame<3;frame++)await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);

@@ -12,12 +12,15 @@ public partial class MigrationScene {
  Color GroundTone(double x,double z){
   var w=game.World;int tier=w.Tier(x,z);
   if(w.IsRiver(x,z))return SurfaceTone(6);
+  if(w.MainRoad(x,z)||w.BriarRoad(x,z))return SurfaceTone(w.District(x,z)==2&&!ExpeditionWorldAtlas.Highway(x,z)?1:2);
+  if(w.MainRoad(x,z,3))return SurfaceTone(3);
   if(w.Changes.OnPath(x,z))return SurfaceTone(1);
   if(w.BriarRoad(x,z)||w.UrbanStreet(x,z))return SurfaceTone(2);
   if(w.ResidentialPaved(x,z))return SurfaceTone(ExpeditionWorld.GridStreetDistance(x)<5||ExpeditionWorld.GridStreetDistance(z)<5?2:3);
   if(w.ResidentialApproach(x,z)||w.BriarApproach(x,z))return SurfaceTone(5);
   if(w.UrbanStreet(x,z,2)||w.BriarRoad(x,z,3))return SurfaceTone(3);
   if(tier>=3)return SurfaceTone(tier==3?5:3);
+  if(w.District(x,z)==5)return SurfaceTone(0);
   return SurfaceTone(tier==2?4:0);
  }
  void GroundQuad(SurfaceTool st,Vector3 a,Vector3 b,Vector3 c,Vector3 d,Color color){
@@ -33,11 +36,9 @@ public partial class MigrationScene {
  }
  void HouseApproach(Node3D house){
   // All residential houses face along local +Z. Briar Lane meets its central
-  // lane; other homes meet the existing 128m neighbourhood street grid.
-  var direction=house.Basis*Vector3.Back;double street;
-  if(house.Name.ToString().StartsWith("BriarLaneHouse"))street=ExpeditionWorld.SpawnX;
-  else street=Math.Round((house.Position.X+Math.Sign(direction.X)*32)/128)*128;
-  float end=(float)Math.Abs(street-house.Position.X)/Math.Max(.01f,Math.Abs(direction.X))-7;
+  // lane; other homes meet the nearest paved street extracted from the map.
+  var street=game.World.NearestStreet(house.Position.X,house.Position.Z);
+  float end=(float)(ExpeditionGame.Distance(street.X,street.Z,house.Position.X,house.Position.Z)/Math.Max(.1f,house.Scale.Z));
   if(end<=13)return;
   var st=new SurfaceTool();st.Begin(Mesh.PrimitiveType.Triangles);
   for(float z=13;z<end;z+=1){float next=Math.Min(z+1,end);

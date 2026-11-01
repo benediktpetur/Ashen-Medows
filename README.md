@@ -1,3 +1,5 @@
+Current world: the user-designed 9 km atlas, with river city, suburbs, industry/rail yards, countryside and eastern lakes. See [world implementation and validation](WORLD-ATLAS-IMPLEMENTATION.md). The starting house uses editable construction pieces.
+
 # Ashen Meadow Godot Expedition
 
 The [interaction, hammer and trading update](INTERACTION-AND-TRADING.md) uses E for interaction, a construction hammer for building and owner-only removal, weapon damage for furniture/walls, and nearby-player trade with mutual confirmation. Use the rebuilt local game in `build/game`.

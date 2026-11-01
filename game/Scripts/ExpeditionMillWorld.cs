@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 public partial class MigrationScene {
- const double MillZ=-780;double MillX=>game.World.RouteX(MillZ)+90;string MillBossId=>"boss/mill/"+game.Save.Seed;
+ const double MillZ=-780;double MillX=>game.World.SafeStoryX(game.World.RouteX(MillZ)+90,MillZ,38);string MillBossId=>"boss/mill/"+game.Save.Seed;
  Node3D millRoot;int millSeed;double millFloor;
  bool IsMillBoss(string id)=>id!=null&&id.StartsWith("boss/mill/");
  bool InMill(double x,double z,double radius=32)=>ExpeditionGame.Distance(x,z,MillX,MillZ)<radius;

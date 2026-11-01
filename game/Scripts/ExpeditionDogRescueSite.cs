@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 public partial class MigrationScene {
- double KennelX=>game.World.RouteX(-610)+95;const double KennelZ=-610;
+ double KennelX=>game.World.SafeStoryX(game.World.RouteX(-610)+95,-610,20);const double KennelZ=-610;
  bool KennelClear=>Dog.KennelGuards==7;
  string KennelGuardId(int i)=>$"story/kennel/{game.Save.Seed}/{i}";
  void KennelGuardKilled(string id){for(int i=0;i<3;i++)if(id==KennelGuardId(i)){Dog.KennelGuards|=1<<i;game.Persist();break;}}

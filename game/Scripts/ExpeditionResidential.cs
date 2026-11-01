@@ -12,8 +12,8 @@ public partial class MigrationScene {
    if(!simulation&&p.Style%2==0){double sx=((ix&1)==0?ix*64:(ix+1)*64)+((ix&1)==0?9:-9);var pole=Ground(sx,p.Z-20);Tube(root,pole,pole+Vector3.Up*4,.045f,Steel);Box(root,pole+Vector3.Up*4,new(.5f,.15f,.35f),new(.62f,.53f,.35f));}
   }
   if(simulation)return;BatchResidentialMeshes(root);
-  var st=new SurfaceTool();st.Begin(Mesh.PrimitiveType.Triangles);int count=0;for(int x=cx*64;x<(cx+1)*64;x+=4)for(int z=cz*64;z<(cz+1)*64;z+=4){double xx=x+2,zz=z+2;if(!game.World.ResidentialPaved(xx,zz)||InBriarLane(xx,zz)&&Math.Abs(xx-1152)>7)continue;bool walk=ExpeditionWorld.GridStreetDistance(xx)>5&&ExpeditionWorld.GridStreetDistance(zz)>5;Color c=SurfaceTone(walk?3:2);foreach(var v in new[]{Ground(x,z),Ground(x+4,z),Ground(x+4,z+4),Ground(x,z),Ground(x+4,z+4),Ground(x,z+4)}){st.SetColor(c);st.AddVertex(v+Vector3.Up*.055f);}count++;}if(count>0){st.GenerateNormals();root.AddChild(new MeshInstance3D{Mesh=st.Commit(),MaterialOverride=TerrainInk()});}
-  for(int t=0;t<4;t++){double z=cz*64+8+t*16,x=Math.Round((cx*64+32)/128.0)*128;if(x>=cx*64&&x<(cx+1)*64&&game.World.ResidentialPaved(x,z)&&!InBriarLane(x,z))Box(root,Ground(x,z)+Vector3.Up*.085f,new(.12f,.025f,3),new(.53f,.47f,.31f));double hz=Math.Round((cz*64+32)/128.0)*128,hx=cx*64+8+t*16;if(hz>=cz*64&&hz<(cz+1)*64&&game.World.ResidentialPaved(hx,hz)&&!InBriarLane(hx,hz))Box(root,Ground(hx,hz)+Vector3.Up*.085f,new(3,.025f,.12f),new(.53f,.47f,.31f));}
+  var st=new SurfaceTool();st.Begin(Mesh.PrimitiveType.Triangles);int count=0;for(int x=cx*64;x<(cx+1)*64;x+=4)for(int z=cz*64;z<(cz+1)*64;z+=4){double xx=x+2,zz=z+2;if(!game.World.ResidentialPaved(xx,zz)||InBriarLane(xx,zz))continue;bool walk=false;Color c=SurfaceTone(walk?3:2);foreach(var v in new[]{Ground(x,z),Ground(x+4,z),Ground(x+4,z+4),Ground(x,z),Ground(x+4,z+4),Ground(x,z+4)}){st.SetColor(c);st.AddVertex(v+Vector3.Up*.055f);}count++;}if(count>0){st.GenerateNormals();root.AddChild(new MeshInstance3D{Mesh=st.Commit(),MaterialOverride=TerrainInk()});}
+
 
  }
  void BatchResidentialMeshes(Node3D root){

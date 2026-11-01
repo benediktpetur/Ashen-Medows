@@ -25,11 +25,11 @@ public partial class MigrationScene {
  // Sample the actual paved surface along every span, rather than joining distant
  // route points with a chord that can cut through a bend or a junction.
  bool RailingSpan(int z,out Vector3 a,out Vector3 b){
-  a=Ground(game.World.RouteX(z)+11,z);b=Ground(game.World.RouteX(z+2)+11,z+2);
+  double x=ExpeditionWorldAtlas.HighwayX(z),next=ExpeditionWorldAtlas.HighwayX(z+2);a=b=Vector3.Zero;if(!double.IsFinite(x)||!double.IsFinite(next))return false;a=Ground(x+30,z);b=Ground(next+30,z+2);
   if(a.DistanceTo(b)>4||Math.Abs(a.Y-b.Y)>.6f)return false;
   for(int i=0;i<=16;i++){
    var p=a.Lerp(b,i/16f);
-   if(!game.World.Playable(p.X,p.Z)||game.World.Tier(p.X,p.Z)>2||
+   if(game.World.StreetDistance(p.X,p.Z)>35||!game.World.Playable(p.X,p.Z)||game.World.Tier(p.X,p.Z)>2||
       game.World.SurfaceClearance(p.X,p.Z,2)||SuburbPaved(p.X,p.Z)||
       game.World.ResidentialInterior(p.X,p.Z)||game.World.NearRoadsideStop(p.X,p.Z,4)||
       InEncounterLot(p.X,p.Z)||InCrashLot(p.X,p.Z)||InCheckpointLot(p.X,p.Z)||
@@ -49,7 +49,7 @@ public partial class MigrationScene {
  }
  void RoadsideRailings(Node3D root,int cx,int cz,bool simulation){
   for(int z=cz*64;z<(cz+1)*64;z+=2){
-   double x=game.World.RouteX(z)+11;
+   double x=ExpeditionWorldAtlas.HighwayX(z)+30;
    if(x<cx*64||x>=(cx+1)*64||!RailingSpan(z,out var a,out var b))continue;
    var section=new Node3D{Name="RoadsideRailing_"+z};root.AddChild(section);
    RailingMember(section,a,a+Vector3.Up*1.15f,.055f,simulation);

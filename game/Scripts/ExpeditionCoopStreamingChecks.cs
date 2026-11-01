@@ -26,7 +26,7 @@ public partial class MigrationScene {
   SendCoopPersonal(a.Id,CoopProfileJson(a.Game),"",far,true);
   RpcId(a.Id,nameof(CoopCheckStage),"explore",far);
   await CoopWait(()=>game.Skills.Defeated.Contains("coop-check/far-infected"),"Remote gunfire failed",20);
-  await CoopWait(()=>game.Building.Pieces.Count==2,"Remote building failed",20);
+  await CoopWait(()=>game.Building.Pieces.Count(p=>!p.Id.StartsWith("starter-house/"))==2,"Remote building failed",20);
   await CoopWait(()=>game.World.Changes.Paths.Count>0,"Remote earthwork failed",20);
   await CoopDelay(2);
   if(Distance(a.Body.Position,HostPosition)<500)throw new Exception("Guest was pulled back to host");
@@ -48,7 +48,7 @@ public partial class MigrationScene {
   CoopRequest("interact");await CoopDelay(.3);CoopRequest("path");
   BuildPiece piece=null;foreach(int dx in new[]{7,-7,10,-10})foreach(int dz in new[]{0,3,-3}){var candidate=new BuildPiece{Kind=0,X=target.X+dx,Z=target.Z+dz,Y=game.World.Height(target.X+dx,target.Z+dz),Yaw=45};if(game.Building.Placement(candidate).Valid&&!StaticPlacementBlocked(candidate)){piece=candidate;break;}}
   if(piece==null)throw new Exception("No clear remote building position");CoopRequest("place",Json.Write(piece));
-  await CoopWait(()=>game.Building.Pieces.Count==2,"Remote structure snapshot missing");
+  await CoopWait(()=>game.Building.Pieces.Count(p=>!p.Id.StartsWith("starter-house/"))==2,"Remote structure snapshot missing");
   // Send legitimate movement updates while distant; old tether code would reject these.
   for(int i=0;i<40;i++){player.Position+=Vector3.Right*.04f;await ToSignal(GetTree(),SceneTree.SignalName.PhysicsFrame);}
  }

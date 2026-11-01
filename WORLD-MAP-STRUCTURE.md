@@ -1,3 +1,5 @@
+> Historical 30 October layout and cleanup record. The playable geography is now the 9 km user-designed atlas described in [WORLD-ATLAS-IMPLEMENTATION.md](WORLD-ATLAS-IMPLEMENTATION.md). The old tier bands, closed river boundary and counts below no longer describe the current map.
+
 # World structure and cleanup — 30 October 2026
 
 The in-game M map now shows the four surface regions as numbered district cards, the actual curving main route with northbound progression arrows, static building footprints, and the new roadside stop markers. The north river boundary is labelled closed. A legend distinguishes roadside stops and buildings, and the distance scale is separate from the home marker. Terrain shading and minor street lines are quieter so the structure reads first. Heatmap, journey and location-pin overlays remain available. No terrain coordinates or story locations moved in this map update.
