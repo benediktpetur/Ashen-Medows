@@ -24,7 +24,7 @@ public partial class MigrationScene {
  Node3D CrashRabbit(Node3D parent,Vector3 at){var n=new Node3D{Name="MilosRabbit",Position=at};parent.AddChild(n);var c=new Color(.66f,.57f,.43f);Ellipsoid(n,new(0,.1f,0),new(.12f,.16f,.08f),c);Ellipsoid(n,new(0,.28f,0),new(.1f,.1f,.08f),c);foreach(float x in new[]{-.055f,.055f}){Ellipsoid(n,new(x,.42f,0),new(.035f,.12f,.035f),c);Ellipsoid(n,new(x,.29f,-.075f),new(.012f,.012f,.01f),Ink);}return n;}
  void DrawCrash(){if(!LetterNodeLive(crashRoot))return;crashLid.Rotation=new(Crash.Opened?-1.7f:0,0,0);crashBoy.Visible=Crash.Opened;crashToy.Visible=Crash.Opened&&!Crash.Toy;crashGirlToy.Visible=Crash.Given;}
  string CrashOperation(){if(!CrashEnabled||dungeon!=null||!LetterNodeLive(crashRoot)||Math.Abs(player.Position.Y-crashFloor)>2)return "";var p=crashRoot.ToLocal(player.Position);if(p.DistanceTo(new Vector3(0,0,3.4f))<2.8)return "trunk";if(p.DistanceTo(new Vector3(1.8f,0,.3f))<2.4)return "girl";return "";}
- string CrashPrompt()=>CrashOperation() switch{"girl"=>"F / SPEAK TO SOPHIE","trunk"=>Crash.Opened?"F / EVAN / MILO'S RABBIT":"F / OPEN THE TRUNK",_=>""};
+ string CrashPrompt()=>CrashOperation() switch{"girl"=>"E / SPEAK TO SOPHIE","trunk"=>Crash.Opened?"E / EVAN / MILO'S RABBIT":"E / OPEN THE TRUNK",_=>""};
  bool CrashInteract(){string op=CrashOperation();if(op=="")return false;if(!CoopRequest("crash",op))CrashAction(op);return true;}
  void CrashSync(){game.Persist();if(CoopHost&&coopActors.Count>0)Rpc(nameof(CoopWorldUpdate),Json.Write(WorldSnapshot()));}
  void CrashPage(int page){if(CoopHost&&coopActor>0)RpcId(coopActor,nameof(CoopCrashPanel),page);else ShowCrashPage(page);}

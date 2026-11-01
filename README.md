@@ -1,5 +1,11 @@
 # Ashen Meadow Godot Expedition
 
+The [interaction, hammer and trading update](INTERACTION-AND-TRADING.md) uses E for interaction, a construction hammer for building and owner-only removal, weapon damage for furniture/walls, and nearby-player trade with mutual confirmation. Use the rebuilt local game in `build/game`.
+
+The 30 October [world population and map pass](WORLD-POPULATION-PASS.md) adds roadside destinations with finite searchable supplies, neighbourhood yard details, roadside shop foundations and clearer map markers. Screenshots from the rebuilt Windows game are in `Ingame Screenshots/World Population - 2026-10-30`.
+
+The [world structure map and west-side audit](WORLD-MAP-STRUCTURE.md) documents the numbered progression, real building footprints, western content distribution and recoverable cleanup of obsolete builds. The latest map capture is in `Ingame Screenshots/Map Structure - 2026-10-30`.
+
 The 27 October static-art pass adds 159 reviewed generated models to matching item/crafting previews and selected world props. Existing animation, collision and functional architecture remain. See [BATCH-MODELS.md](BATCH-MODELS.md) for coverage, exclusions and validation.
 
 Surface progression is **suburbs → woodland outside the city → highway/industrial zone → dense city**. See [REGIONS.md](REGIONS.md) for the regional map pass.

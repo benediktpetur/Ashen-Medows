@@ -30,7 +30,7 @@ public partial class MigrationScene {
   if(Checkpoint.Robbery==1){Checkpoint.RobberyTime+=dt;if(Checkpoint.RobberyTime>=4){Checkpoint.Robbery=2;CheckpointSay("RAE: Leave the food. Keep walking.\nThe traveller backs away without his pack.");game.Persist();CheckpointSync();}}
  }
  string CheckpointOperation(){if(!CheckpointEnabled||dungeon!=null||!LetterNodeLive(checkpointRoot)||Math.Abs(player.Position.Y-checkpointFloor)>2)return "";if(Distance(player.Position,CheckpointPoint(8,0,-5.6f))<2.5)return "room";return !Checkpoint.Hostile&&!CheckpointCleared&&Distance(player.Position,CheckpointPoint(0,0,6))<5?"open":"";}
- string CheckpointPrompt()=>CheckpointOperation() switch{"open"=>Checkpoint.Paid?"F / SPEAK TO THE CHECKPOINT GUARDS":"F / CHECKPOINT / FOOD TOLL","room"=>"F / EXAMINE THE LOCKED ROOM",_=>""};
+ string CheckpointPrompt()=>CheckpointOperation() switch{"open"=>Checkpoint.Paid?"E / SPEAK TO THE CHECKPOINT GUARDS":"E / CHECKPOINT / FOOD TOLL","room"=>"E / EXAMINE THE LOCKED ROOM",_=>""};
  bool CheckpointInteract(){string op=CheckpointOperation();if(op=="")return false;if(!CoopRequest("checkpoint",op))CheckpointAction(op);return true;}
  void CheckpointAction(string op){if(CoopClient)return;
   bool gate=CheckpointOperation()=="open",room=CheckpointOperation()=="room";

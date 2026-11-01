@@ -38,7 +38,7 @@ public partial class MigrationScene {
   if(simulation)PhysicsObstacle(pine,new CylinderShape3D{Radius=.45f,Height=4},new(0,2,0));else ArtPine(pine,6+i,i);
   props.Add(new(){Id=id,Kind=0,Tier=1,Node=pine,Position=pine.Position});
  }}
- string FirstDayPrompt(){if(dungeon!=null||buildMode)return "";if(NearProp(38,3)!=null)return "F / TRAILHEAD WATER & FIELD NOTES";if(NearProp(39,2.5f)!=null)return "F / DRAW WELL WATER / BOIL BEFORE DRINKING";return "";}
+ string FirstDayPrompt(){if(dungeon!=null||buildMode)return "";if(NearProp(38,3)!=null)return "E / TRAILHEAD WATER & FIELD NOTES";if(NearProp(39,2.5f)!=null)return "E / DRAW WELL WATER / BOIL BEFORE DRINKING";return "";}
  bool FirstDayInteract(){if(dungeon!=null||buildMode)return false;if(NearProp(38,3)!=null){if(CoopHost&&coopActor>0){game.FirstDayAction("water");return true;}ShowFirstDay(true);return true;}
   if(NearProp(39,2.5f)!=null){if(!CoopRequest("interact"))game.Change(()=>{if(game.Life.RawWater<20){game.Life.RawWater++;game.Notice="Well water / untreated. Boil at a workbench (Y) or your campfire (F).";}else game.Notice="Carrying enough untreated water / purify your supply first";});return true;}return false;}
  void FirstDayCraft(int index){if(index<0||index>=ExpeditionRecipe.All.Length)return;var r=ExpeditionRecipe.All[index];if(!game.Knows(r)){if(!CoopRequest("research",index.ToString()))game.Research(index);}else if(!CoopRequest("craft",index.ToString()))game.CraftRecipe(r);game.TickFirstDay();ShowFirstDay();}
@@ -59,7 +59,7 @@ public partial class MigrationScene {
     Button(grid,(known?"PLACE / ":"RESEARCH / ")+r.Name,()=>{if(!game.Knows(r)){if(!CoopRequest("research",Array.IndexOf(ExpeditionRecipe.All,r).ToString()))game.Research(Array.IndexOf(ExpeditionRecipe.All,r));ShowFirstDay();}else{CloseMenu();selectedBuild=target;buildMode=true;}});
    }
   }
-  if(step==6){Text(b,$"Carrying / food {game.Life.Food}, clean water {game.Craft.Water}, untreated {game.Life.RawWater}. F at a storage chest deposits supplies.");Button(b,"WATER & HEALTH",ShowWounds);}
+  if(step==6){Text(b,$"Carrying / food {game.Life.Food}, clean water {game.Craft.Water}, untreated {game.Life.RawWater}. E at a storage chest deposits supplies.");Button(b,"WATER & HEALTH",ShowWounds);}
   if(step==7)Text(b,"YOU HAVE A FOOTHOLD. A drink, a weapon, tools, shelter and tomorrow’s supplies. Nothing makes you invincible. But you have somewhere to return to. F5 plans your next expedition; the woodland leads northwest.");
   Text(b,game.Notice);Button(b,game.Life.FirstDayHidden?"SHOW FIRST-DAY GUIDANCE":"TUCK GUIDANCE AWAY / NO PENALTY",()=>{string action=game.Life.FirstDayHidden?"show":"hide";if(!CoopRequest("firstday",action))game.FirstDayAction(action);ShowFirstDay();});Button(b,"BACK TO WORLD",CloseMenu);
  }

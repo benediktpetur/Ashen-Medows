@@ -17,7 +17,7 @@ sealed class BuildDefinition {
  static BuildDefinition(){for(int i=0;i<All.Length;i++)All[i].BaseKind=i;ExpeditionBlueprints.Extend();}
 }
 [DataContract] sealed class BuildPiece {
- [DataMember] public string Id;[DataMember] public bool Open;[DataMember] public double Health=-1,Charge,Progress;[DataMember] public int[] Stock;
+ [DataMember] public string Id,Builder;[DataMember] public bool Open;[DataMember] public double Health=-1,Charge,Progress;[DataMember] public int[] Stock;
  [DataMember] public int DoorSwing=1;
  [DataMember] public int Kind;[DataMember] public double X,Y,Z,Yaw;
  [OnDeserializing] void Defaults(StreamingContext context){Health=-1;}

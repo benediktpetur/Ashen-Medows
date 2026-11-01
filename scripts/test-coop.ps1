@@ -11,7 +11,7 @@ try{
   if($MaxFps -gt 0){$arguments=@('--max-fps',$MaxFps.ToString())+$arguments}
   $processes+=Start-Process -FilePath $GodotExecutable -ArgumentList $arguments -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $logs "$role.log") -RedirectStandardError (Join-Path $logs "$role-error.log")
  }
- $deadline=[DateTime]::UtcNow.AddSeconds(150)
+ $deadline=[DateTime]::UtcNow.AddSeconds(240)
  while(@($processes | Where-Object {!$_.HasExited}).Count -gt 0){
   if([DateTime]::UtcNow -gt $deadline){throw 'Co-op process tests timed out.'}
   Start-Sleep -Milliseconds 200

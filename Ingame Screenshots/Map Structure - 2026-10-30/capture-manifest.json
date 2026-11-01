@@ -1,0 +1,7 @@
+{
+  "source": "Current exported Windows build",
+  "captured_utc": "2026-10-30T13:12:38.7327399Z",
+  "map_sha256": "BEB9A73387B7EF0C599DBD337109760DA6814FE0E1A35374F6F4EB605D66A404",
+  "pack_sha256": "065CEF0FE6D8EACD47F9BED34DB76ABDF10A0659EAA0C51EE1EF7564CA9D3986",
+  "validation": "Population checks and all six engine captures passed"
+}

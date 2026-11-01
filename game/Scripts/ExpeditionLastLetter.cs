@@ -42,7 +42,7 @@ public partial class MigrationScene {
    if(LastLetter.Stage<3&&Distance(player.Position,LetterHomePoint(2.3f,0,-1.2f))<2.5)return LastLetter.Stage==1?"deliver":"wife";
   }return "";
  }
- string LetterPrompt()=>LetterOperation() switch{"accept"=>"F / HEAR THE DYING MAN / TAKE HIS LETTER","man"=>LastLetter.Stage>=2?"F / EXAMINE DANIEL'S COT":"F / REREAD DANIEL'S LETTER","brother"=>"F / SPEAK TO SAMUEL","deliver"=>"F / DELIVER DANIEL'S LETTER","wife"=>"F / SPEAK TO RUTH","body"=>"F / EXAMINE THE MAN IN THE PEW","empty"=>"F / SEARCH THE QUIET SAFEHOUSE",_=>""};
+ string LetterPrompt()=>LetterOperation() switch{"accept"=>"E / HEAR THE DYING MAN / TAKE HIS LETTER","man"=>LastLetter.Stage>=2?"E / EXAMINE DANIEL'S COT":"E / REREAD DANIEL'S LETTER","brother"=>"E / SPEAK TO SAMUEL","deliver"=>"E / DELIVER DANIEL'S LETTER","wife"=>"E / SPEAK TO RUTH","body"=>"E / EXAMINE THE MAN IN THE PEW","empty"=>"E / SEARCH THE QUIET SAFEHOUSE",_=>""};
  bool LetterInteract(){string op=LetterOperation();if(op=="")return false;if(!CoopRequest("lastletter",op))LetterAction(op);return true;}
  void LetterAction(string op){if(CoopClient||op!=LetterOperation())return;
   switch(op){

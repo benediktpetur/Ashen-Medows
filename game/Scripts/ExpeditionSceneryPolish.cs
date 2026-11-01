@@ -6,7 +6,7 @@ using System.Linq;
 public partial class MigrationScene {
  Mesh scrubMesh,flowerMesh;ShaderMaterial undergrowthMaterial;
  bool SceneryClear(double x,double z,float radius=.8f){
-  var w=game.World;if(!w.Playable(x,z)||w.IsRiver(x,z)||w.SurfaceClearance(x,z,radius)||w.BriarRoad(x,z,3.6)||w.MainRoad(x,z,w.Tier(x,z)>=3?3.1:1.4)||w.UrbanStreet(x,z,2.1)||InSuburbHome(x,z)||ForestBuildClearance(x,z))return false;
+  var w=game.World;if(w.NearRoadsideStop(x,z,1)||!w.Playable(x,z)||w.IsRiver(x,z)||w.SurfaceClearance(x,z,radius)||w.BriarRoad(x,z,3.6)||w.MainRoad(x,z,w.Tier(x,z)>=3?3.1:1.4)||w.UrbanStreet(x,z,2.1)||InSuburbHome(x,z)||ForestBuildClearance(x,z))return false;
   if(InLivingLot(x,z)||InEncounterLot(x,z)||InCrashLot(x,z)||InCheckpointLot(x,z)||InBirthdayLot(x,z)||InLetterLot(x,z)||InFeverLot(x,z)||InWoodlandCamp(x,z)||InFamilyLot(x,z)||InMill(x,z,35))return false;
   if(w.Tier(x,z)>=3){double bx=Math.Floor(x/32)*32+16,bz=Math.Floor(z/32)*32+16;if(w.BuildingCell(bx,bz)&&Math.Abs(x-bx)<w.BuildingHalf(bx,bz)+radius&&Math.Abs(z-bz)<w.BuildingHalf(bx,bz)+radius)return false;
    double shopZ=Math.Round((z-8)/64)*64+8;if(Math.Abs(z-shopZ)<4&&Math.Abs(Math.Abs(x-w.RouteX(shopZ))-14)<5)return false;
@@ -48,6 +48,7 @@ public partial class MigrationScene {
   Box(house,new(point.X,bottom+height/2,point.Z),new(.10f,height,.13f),Wood);
  }
  void HouseSceneryDetails(Node3D house,int style){
+  NeighbourhoodYardDetails(house,style);
   var detail=new Node3D{Name="HouseFinishDetails"};house.AddChild(detail);var trim=new Color(.29f,.30f,.29f);
   foreach(int side in new[]{-1,1}){
    Box(detail,new(side*6.35f,3.35f,0),new(.14f,.14f,12.1f),trim);

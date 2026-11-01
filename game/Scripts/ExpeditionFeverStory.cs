@@ -55,7 +55,7 @@ public partial class MigrationScene {
   if(Fever.Stage==3&&Distance(player.Position,FeverPoint(-2.6f,0,1.4f))<2)return "tend";
   return Distance(player.Position,FeverPoint(2.4f,0,1.4f))<1.8?"notebook":"";
  }
- string FeverPrompt()=>FeverOperation() switch{"accept"=>"F / HELP THE BOY","resume"=>"F / CONTINUE TO THE HOUSE","boy"=>"FOLLOW NOAH / HE WAITS IF YOU FALL BEHIND","door"=>"F / EXAMINE THE BOARDED DOOR","tend"=>"F / CHECK HIS SISTER","notebook"=>"F / READ THE HOUSEHOLD NOTEBOOK",_=>""};
+ string FeverPrompt()=>FeverOperation() switch{"accept"=>"E / HELP THE BOY","resume"=>"E / CONTINUE TO THE HOUSE","boy"=>"FOLLOW NOAH / HE WAITS IF YOU FALL BEHIND","door"=>"E / EXAMINE THE BOARDED DOOR","tend"=>"E / CHECK HIS SISTER","notebook"=>"E / READ THE HOUSEHOLD NOTEBOOK",_=>""};
  bool FeverInteract(){string op=FeverOperation();if(op=="")return false;if(Fever.ArcVersion>0&&op is "accept" or "door"){ShowFeverChoices(op=="accept");return true;}if(!CoopRequest("fever",op))FeverAction(op);return true;}
  void FeverAction(string op){if(CoopClient)return;if(Fever.ArcVersion>0){FeverArcAction(op);return;}if(op!=FeverOperation())return;
   switch(op){case "accept":Fever.Owner=CommunityOwner;FeverStage(2,"NOAH: Thank you. I'm Noah. It's this way. Please stay close.");break;

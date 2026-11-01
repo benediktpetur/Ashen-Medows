@@ -6,7 +6,7 @@ public partial class MigrationScene {
  int lastHeldWeapon=-1;bool axeEquipped,axePending;double hurtShake;double axeSwingStarted=-10,hitUntil;Label hitMarker;double feedbackHealth=-1;
  readonly List<(Node3D Node,Vector3 Velocity,double Until)> impactBits=new();
  readonly List<(Node3D Node,double Until)> remains=new();
- void BuildHeldTool(){if(lastHeldWeapon!=game.Craft.Weapon){lastHeldWeapon=game.Craft.Weapon;weaponRoot.Position=new(.23f,-.23f,-.65f);aiming=false;viewGunApplied=false;}weaponRoot.Rotation=Vector3.Zero;if(!axeEquipped){ArtGun();return;}ClearChildren(weaponRoot);FieldHarvestToolArt(weaponRoot,game.Craft.HarvestTool,game.Craft.ToolLevels[game.Craft.HarvestTool]);weaponRoot.Scale=Vector3.One;}
+ void BuildHeldTool(){if(lastHeldWeapon!=game.Craft.Weapon){lastHeldWeapon=game.Craft.Weapon;weaponRoot.Position=new(.23f,-.23f,-.65f);aiming=false;viewGunApplied=false;}weaponRoot.Rotation=Vector3.Zero;if(buildMode){ConstructionHammerArt();return;}if(!axeEquipped){ArtGun();return;}ClearChildren(weaponRoot);FieldHarvestToolArt(weaponRoot,game.Craft.HarvestTool,game.Craft.ToolLevels[game.Craft.HarvestTool]);weaponRoot.Scale=Vector3.One;}
  void BeginAxeSwing(){if(axePending||game.Clock<nextChop)return;AxeSwing();axePending=true;}
  void AxeSwing(){if(coopExecuting)return;axeSwingStarted=Time.GetTicksMsec()/1000.0;}
  WorldProp AimedTree(){

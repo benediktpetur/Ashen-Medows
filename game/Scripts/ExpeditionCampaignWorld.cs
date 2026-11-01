@@ -39,11 +39,11 @@ public partial class MigrationScene {
  Color stoneColor()=>new(.32f,.34f,.31f);
  string CampaignGate(int index)=>index==0?!game.World.Changes.MillDefeated?"Defeat The Foreman at the lumber mill first":"Ready":!game.World.Changes.CampaignBosses.Contains(index-1)?"Defeat "+ExpeditionCampaign.Names[index-1]+" first":"Ready";
  string CampaignPrompt(){
-  if(InHeartRoom){if(Distance(player.Position,new(0,0,4))<2)return "F / RETURN TO PUMP STATION";if(Distance(player.Position,new(0,0,-19))<3)return game.World.Changes.CampaignBosses.Contains(2)?"F / SECURE THE SOUTH BANK":"F / ACTIVATE PUMP / THE BROODHEART";return "";}
+  if(InHeartRoom){if(Distance(player.Position,new(0,0,4))<2)return "E / RETURN TO PUMP STATION";if(Distance(player.Position,new(0,0,-19))<3)return game.World.Changes.CampaignBosses.Contains(2)?"E / SECURE THE SOUTH BANK":"E / ACTIVATE PUMP / THE BROODHEART";return "";}
   if(dungeon!=null)return "";
-  if(NearProp(30,3)!=null)return "F / SURVIVOR FIELD GUIDE / YOUR JOURNEY";
+  if(NearProp(30,3)!=null)return "E / SURVIVOR FIELD GUIDE / YOUR JOURNEY";
   var site=NearProp(29,4);if(site==null)return "";
-  return game.World.Changes.CampaignBosses.Contains(site.Material)?"F / CLEARED SITE / YOUR JOURNEY":site.Material==2?"F / DESCEND TO THE PUMPING HEART":"F / CHALLENGE "+ExpeditionCampaign.Names[site.Material].ToUpperInvariant();
+  return game.World.Changes.CampaignBosses.Contains(site.Material)?"E / CLEARED SITE / YOUR JOURNEY":site.Material==2?"E / DESCEND TO THE PUMPING HEART":"E / CHALLENGE "+ExpeditionCampaign.Names[site.Material].ToUpperInvariant();
  }
  bool CampaignInteract(){
   string prompt=CampaignPrompt();if(prompt=="")return InHeartRoom;
@@ -87,7 +87,7 @@ public partial class MigrationScene {
   foreach(float z in new[]{-28f,6f})Box(dungeonRoot,new(0,2.4f,z),new(28,4.8f,.4f),Steel,true);
   for(int side=-1;side<=1;side+=2){Box(dungeonRoot,new(side*8,1.2f,-12),new(2.5f,2.4f,3),Steel,true);}
   var altar=new Node3D{Position=new(0,0,-20)};dungeonRoot.AddChild(altar);Bevel(altar,new(0,.7f,0),new(2,1.4f,.8f),Steel);Box(altar,new(0,1.3f,-.42f),new(1.6f,.3f,.04f),new(.29f,.65f,.40f));
-  dungeonRoot.AddChild(new Label3D{Text="RESTORE PUMP PRESSURE / F",Position=new(0,2.7f,-20),FontSize=32,PixelSize=.01f});
+  dungeonRoot.AddChild(new Label3D{Text="RESTORE PUMP PRESSURE / E",Position=new(0,2.7f,-20),FontSize=32,PixelSize=.01f});
   for(int side=-1;side<=1;side+=2)dungeonRoot.AddChild(new OmniLight3D{Position=new(side*9,3,-12),LightColor=new(.42f,.58f,.43f),LightEnergy=2,OmniRange=22});
   Box(dungeonRoot,new(0,1.3f,5.6f),new(3,2.6f,.1f),new(.18f,.5f,.36f));player.Position=new(0,.1f,3);player.Velocity=Vector3.Zero;lamp.Visible=true;
   if(CoopHost)CoopRoomChanged();

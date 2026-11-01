@@ -43,7 +43,7 @@ public partial class MigrationScene {
   var boy=root.GetNode<Node3D>("Noah");boy.Visible=t.Index==2&&Fever.CitySeen&&!t.Fallen&&!Fever.Offscreen;root.GetNode<Node3D>("Resident0").Position=t.Index==2&&Fever.CitySeen&&!Fever.Redemption?new(-7,0,-3):root.GetNode<Node3D>("Resident0").Position;
  }}
  WorldProp NearLiving()=>dungeon==null?props.Where(p=>p.Kind is 32 or 33&&Distance(p.Position,player.Position)<(p.Kind==32?8:3)).OrderBy(p=>Distance(p.Position,player.Position)).FirstOrDefault():null;
- string LivingPrompt()=>NearLiving() is WorldProp p?p.Kind==33?"F / EXAMINE THE TEDDY AND WOODLAND GRAVE":"F / "+ExpeditionGame.SettlementNames[p.Material].ToUpperInvariant()+" / COMMUNITY":"";
+ string LivingPrompt()=>NearLiving() is WorldProp p?p.Kind==33?"E / EXAMINE THE TEDDY AND WOODLAND GRAVE":"E / "+ExpeditionGame.SettlementNames[p.Material].ToUpperInvariant()+" / COMMUNITY":"";
  bool LivingInteract(){if(!LivingEnabled)return false;var p=NearLiving();if(p==null)return false;if(p.Kind==33){if(!CoopRequest("living","grave"))LivingAction("grave");return true;}if(!CoopRequest("living",p.Material+"|visit"))LivingAction(p.Material+"|visit");return true;}
  void LivingAction(string data){if(CoopClient||!LivingEnabled)return;var p=NearLiving();if(p==null)return;
   if(data=="grave"&&p.Kind==33){Fever.GraveRead=true;game.Change(()=>game.WorldDecision("lily/grave","Lily's grave. Her teddy and Noah's bloodstained coat. He stayed with her until the fever ended; then buried her and left alone."));if(CoopHost&&coopActor>0)RpcId(coopActor,nameof(CoopLivingPanel),-1);else ShowLivingPanel(-1);return;}

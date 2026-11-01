@@ -27,7 +27,7 @@ public partial class MigrationScene {
   if(Distance(player.Position,BirthdayPoint(-3,0,2.7f))<1.8)return Birthday.MusicStopped?"silent":"music";
   if(Distance(player.Position,BirthdayPoint(0,0,-3.8f))<2)return "banner";return "";
  }
- string BirthdayPrompt()=>BirthdayOperation() switch{"cake"=>"F / TAKE A SLICE OF CAKE","music"=>"F / STOP THE MUSIC BOX","silent"=>"THE MUSIC BOX IS SILENT","banner"=>"F / READ THE BIRTHDAY BANNER",_=>""};
+ string BirthdayPrompt()=>BirthdayOperation() switch{"cake"=>"E / TAKE A SLICE OF CAKE","music"=>"E / STOP THE MUSIC BOX","silent"=>"THE MUSIC BOX IS SILENT","banner"=>"E / READ THE BIRTHDAY BANNER",_=>""};
  bool BirthdayInteract(){string op=BirthdayOperation();if(op=="")return false;if(!CoopRequest("birthday",op))BirthdayAction(op);return true;}
  void BirthdayAction(string op){if(CoopClient||op!=BirthdayOperation())return;switch(op){
   case "cake":if(!game.Change(()=>{Birthday.CakeTouched=true;Birthday.MusicStopped=true;game.Life.Food++;}))return;var sammy=infected.FirstOrDefault(e=>e.Id==SammyId);if(sammy!=null){sammy.BossState="birthday-rise";sammy.BossTime=.75;sammy.Memory=8;sammy.Target=player.Position;sammy.Cooldown=1;}Noise(32);game.Notice=sammy!=null?"The music stops. A chair scrapes across the floor.":"One slice packed. The room is quiet.";Sound(4);break;

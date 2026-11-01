@@ -24,8 +24,8 @@ public partial class MigrationScene {
   int budget=immediate?49:4;foreach(var key in order){if(budget<=0)break;if(chunks.ContainsKey(key))continue;chunks[key]=CreateChunk(key.Item1,key.Item2,!wanted[key]);budget--;}
   foreach(var actor in coopActors.Values)actor.Body.Visible=Distance(actor.Body.Position,local)<220;foreach(var prop in props)if(prop.Kind!=0&&prop.Kind!=7&&prop.Kind!=42)prop.Node.Visible=Distance(prop.Position,local)<240;
  }
- void PhysicsObstacle(Node3D root,Shape3D shape,Vector3 position){var body=new StaticBody3D();body.AddChild(new CollisionShape3D{Shape=shape,Position=position});root.AddChild(body);}
- void SimulationStreetCollisions(Node3D root,int cx,int cz){int z=cz*64+8;double x=game.World.RouteX(z);if(x<cx*64||x>=(cx+1)*64||game.World.Tier(x,z)<3||!game.World.Playable(x,z))return;foreach(int side in new[]{-1,1}){var shop=new Node3D{Position=Ground(x+side*14,z),RotationDegrees=new Vector3(0,side<0?-90:90,0)};root.AddChild(shop);PhysicsObstacle(shop,new BoxShape3D{Size=new Vector3(7,3.5f,5)},new Vector3(0,1.75f,0));}}
+ void PhysicsObstacle(Node3D root,Shape3D shape,Vector3 position){var body=new StaticBody3D();body.AddChild(new CollisionShape3D{Shape=shape,Position=position});root.AddChild(body);RegisterDamageObstacle(root,body,shape,position);}
+ void SimulationStreetCollisions(Node3D root,int cx,int cz){int z=cz*64+8;double x=game.World.RouteX(z);if(x<cx*64||x>=(cx+1)*64||game.World.Tier(x,z)<3||!game.World.Playable(x,z))return;foreach(int side in new[]{-1,1}){var shop=new Node3D{Position=Ground(x+side*14,z),RotationDegrees=new Vector3(0,side<0?-90:90,0)};root.AddChild(shop);HouseFoundation(shop,new(7,5),true);PhysicsObstacle(shop,new BoxShape3D{Size=new Vector3(7,3.5f,5)},new Vector3(0,1.75f,0));}}
  void SpawnCoopInfected(){if(dungeon!=null)return;var centers=ActiveSurfaceCenters();
   foreach(var enemy in infected.ToArray())if(!centers.Any(p=>Distance(enemy.Body.Position,p)<CoopCullRadius)||enemy.Night>0&&!game.Night)RemoveEnemy(enemy);
   var areas=new List<(long,Vector3)>{(1,HostPosition)};areas.AddRange(coopActors.Values.OrderBy(a=>a.Id).Select(a=>(a.Id,a.Body.Position)));
