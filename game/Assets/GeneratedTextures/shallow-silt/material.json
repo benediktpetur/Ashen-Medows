@@ -1,0 +1,15 @@
+{
+  "key": "texture-shallow-silt",
+  "name": "Shallow lakebed silt",
+  "type": "albedo",
+  "width": 768,
+  "height": 768,
+  "outputs": [
+    "albedo.png",
+    "tile-proof.png"
+  ],
+  "edge_error": 0,
+  "derived_normals": null,
+  "recommended_roughness": 0.9,
+  "integration": "Review tiling and scale before applying in game"
+}

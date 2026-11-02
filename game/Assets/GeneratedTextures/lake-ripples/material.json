@@ -1,0 +1,16 @@
+{
+  "key": "texture-lake-ripples",
+  "name": "Gentle lake ripple height",
+  "type": "height",
+  "width": 768,
+  "height": 768,
+  "outputs": [
+    "height.png",
+    "normal.png",
+    "tile-proof.png"
+  ],
+  "edge_error": 0,
+  "derived_normals": "Approximate from AI height draft; not measured PBR",
+  "recommended_roughness": 0.16,
+  "integration": "Review tiling and scale before applying in game"
+}

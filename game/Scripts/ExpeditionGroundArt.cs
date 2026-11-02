@@ -6,7 +6,7 @@ public partial class MigrationScene {
  static Color SurfaceTone(int kind)=>kind switch {
   1=>new(.32f,.26f,.18f,.125f),2=>new(.19f,.20f,.20f,.25f),
   3=>new(.47f,.45f,.39f,.375f),4=>new(.28f,.25f,.17f,.5f),
-  5=>new(.38f,.35f,.28f,.625f),6=>new(.12f,.25f,.31f,.75f),
+  5=>new(.38f,.35f,.28f,.625f),6=>new(.12f,.25f,.31f,.75f),7=>new(.32f,.29f,.21f,.875f),
   _=>new(.26f,.30f,.16f,0)
  };
  Color GroundTone(double x,double z){
@@ -19,6 +19,7 @@ public partial class MigrationScene {
   if(w.ResidentialPaved(x,z))return SurfaceTone(ExpeditionWorld.GridStreetDistance(x)<5||ExpeditionWorld.GridStreetDistance(z)<5?2:3);
   if(w.ResidentialApproach(x,z)||w.BriarApproach(x,z))return SurfaceTone(5);
   if(w.UrbanStreet(x,z,2)||w.BriarRoad(x,z,3))return SurfaceTone(3);
+  if(w.WaterDistance(x,z)<12)return SurfaceTone(7);
   if(tier>=3)return SurfaceTone(tier==3?5:3);
   if(w.District(x,z)==5)return SurfaceTone(0);
   return SurfaceTone(tier==2?4:0);

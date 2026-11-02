@@ -1,0 +1,15 @@
+{
+  "key": "texture-shore-foam",
+  "name": "Shoreline foam mask",
+  "type": "mask",
+  "width": 768,
+  "height": 768,
+  "outputs": [
+    "mask.png",
+    "tile-proof.png"
+  ],
+  "edge_error": 0,
+  "derived_normals": null,
+  "recommended_roughness": 0.25,
+  "integration": "Review tiling and scale before applying in game"
+}

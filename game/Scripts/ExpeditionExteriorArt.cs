@@ -7,6 +7,8 @@ public partial class MigrationScene {
  Material ExteriorFinish(int kind,Color color,int variant=0){
   var key=(kind,color,variant);if(exteriorMaterials.TryGetValue(key,out var cached))return cached;
   var material=new ShaderMaterial{Shader=GD.Load<Shader>("res://Shaders/exterior-surfaces.gdshader")};
+  string texture=kind==0?"siding":kind==2?"brick":kind==4?"concrete":kind==5?"plaster":null;
+  if(texture!=null){material.SetShaderParameter("generated_map",GeneratedTexture(texture));material.SetShaderParameter("use_generated",true);}
   material.SetShaderParameter("paint",color);material.SetShaderParameter("surface_kind",kind);material.SetShaderParameter("variation",(float)variant);
   exteriorMaterials[key]=material;return material;
  }

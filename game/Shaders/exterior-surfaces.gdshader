@@ -4,6 +4,8 @@ render_mode specular_disabled;
 uniform vec4 paint : source_color = vec4(.45,.43,.38,1.0);
 uniform int surface_kind = 0;
 uniform float variation = 0.0;
+uniform sampler2D generated_map : source_color, filter_linear_mipmap, repeat_enable;
+uniform bool use_generated = false;
 varying vec3 world_point;
 varying vec3 world_face;
 
@@ -45,9 +47,15 @@ void fragment(){
   ink=mix(.65,1.0,smoothstep(.004,.014,min(panel.x,panel.y)));
   color*=.90+grain(uv*2.0)*.13;
  }
+ if(use_generated){
+  vec2 sample_uv=vec2(uv.x/2.4,-uv.y/2.4);
+  vec3 generated=texture(generated_map,sample_uv).rgb;
+  color=mix(paint.rgb,generated*(vec3(.45)+paint.rgb),.82);
+  ink=1.0;
+ }
  float hatch=smoothstep(.94,.995,fract((uv.x+uv.y*.8)*29.0))*grain(floor(uv*3.0));
  // Fade sub-pixel seams and hatching instead of letting distant roofs shimmer.
- color=mix(paint.rgb*.94,color,detail);ink=mix(1.0,ink,detail);
+ if(!use_generated)color=mix(paint.rgb*.94,color,detail);ink=mix(1.0,ink,detail);
  ALBEDO=color*ink*(1.0-hatch*.07*detail);ROUGHNESS=1.0;
 }
 void light(){float n=dot(NORMAL,LIGHT);float band=n>.55?1.0:(n>.05?.72:.36);DIFFUSE_LIGHT+=LIGHT_COLOR*band*ATTENUATION/3.14159265;}

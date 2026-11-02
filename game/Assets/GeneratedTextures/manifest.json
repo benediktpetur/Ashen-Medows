@@ -1,0 +1,178 @@
+{
+  "imported": "2026-11-02",
+  "materials": [
+    {
+      "key": "texture-asphalt",
+      "type": "albedo",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-asphalt",
+      "files": [
+        {
+          "path": "asphalt/albedo.png",
+          "sha256": "10d40339de9899d3732113ecd350dcb81241df4e4c80b948d7abf1409ec8c8ad"
+        }
+      ]
+    },
+    {
+      "key": "texture-brick",
+      "type": "albedo",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-brick",
+      "files": [
+        {
+          "path": "brick/albedo.png",
+          "sha256": "0df58f01a066c3ce31b4ab2a8a0f68369909ef5baacc0393ce6afc2d37e2e8d2"
+        }
+      ]
+    },
+    {
+      "key": "texture-concrete",
+      "type": "albedo",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-concrete",
+      "files": [
+        {
+          "path": "concrete/albedo.png",
+          "sha256": "0892e5820eaa495f21a84564848d4572033fb458399f8621b4df6f3ab9f337a6"
+        }
+      ]
+    },
+    {
+      "key": "texture-grass",
+      "type": "albedo",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-grass",
+      "files": [
+        {
+          "path": "grass/albedo.png",
+          "sha256": "15dddfdd1cfcdbbc612e0a04cd9d46ab1bebfcbed5a2134bf55cc6c646148e9d"
+        }
+      ]
+    },
+    {
+      "key": "texture-gravel",
+      "type": "albedo",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-gravel",
+      "files": [
+        {
+          "path": "gravel/albedo.png",
+          "sha256": "b8a6e99068162efc840f80b8f987e3e1a3b20ad7916e2acbcb15de1072f8a15c"
+        }
+      ]
+    },
+    {
+      "key": "texture-lake-ripples",
+      "type": "height",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-lake-ripples",
+      "files": [
+        {
+          "path": "lake-ripples/height.png",
+          "sha256": "6eda8088454a64c9a7e33006eaae4aefaeaa1735991bb47386f56f2b16778aa8"
+        },
+        {
+          "path": "lake-ripples/normal.png",
+          "sha256": "07a4dd19a2ad14649be8769ee846feae683d72cf61506129838024a5c8f03909"
+        }
+      ]
+    },
+    {
+      "key": "texture-lake-water",
+      "type": "albedo",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-lake-water",
+      "files": [
+        {
+          "path": "lake-water/albedo.png",
+          "sha256": "31268e66e84dbc17fa1eeb469b68d83ac0dbdb2e444049f7fad1724474550f3c"
+        }
+      ]
+    },
+    {
+      "key": "texture-plaster",
+      "type": "albedo",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-plaster",
+      "files": [
+        {
+          "path": "plaster/albedo.png",
+          "sha256": "9a07b6c254703f2923e4603d80bb69323436bed841d4c651de20a8dd6cc584f8"
+        }
+      ]
+    },
+    {
+      "key": "texture-shallow-silt",
+      "type": "albedo",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-shallow-silt",
+      "files": [
+        {
+          "path": "shallow-silt/albedo.png",
+          "sha256": "77eb992d0eda0c4374bf0cf0698fb4028734f3734ad906d1f24437a35f8ecbde"
+        }
+      ]
+    },
+    {
+      "key": "texture-shore-foam",
+      "type": "mask",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-shore-foam",
+      "files": [
+        {
+          "path": "shore-foam/mask.png",
+          "sha256": "dd455c9b6b8a486ae62c4c91d5109b316583edff1205ed778296d1514204e23b"
+        }
+      ]
+    },
+    {
+      "key": "texture-shore-pebbles",
+      "type": "albedo",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-shore-pebbles",
+      "files": [
+        {
+          "path": "shore-pebbles/albedo.png",
+          "sha256": "1afdc2a5426226dee560d8145c4ba65ad2925b5b272e47db54e6d08f45e5c131"
+        }
+      ]
+    },
+    {
+      "key": "texture-siding",
+      "type": "albedo",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-siding",
+      "files": [
+        {
+          "path": "siding/albedo.png",
+          "sha256": "2cda4c4e24d0b41edfad2abb3999d2c30a08eae1c7bad7bc18fe19eb8e7251ff"
+        }
+      ]
+    },
+    {
+      "key": "texture-soil",
+      "type": "albedo",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-soil",
+      "files": [
+        {
+          "path": "soil/albedo.png",
+          "sha256": "9d9efc523c9faa65eda5294ca51588fa793a6d26e337f92f686fc17f35c59732"
+        }
+      ]
+    },
+    {
+      "key": "texture-water-detail",
+      "type": "height",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-water-detail",
+      "files": [
+        {
+          "path": "water-detail/height.png",
+          "sha256": "5a6d9b6cf109f29f5f284c680c889b83bcc880eb99c0a031765e0d54fd3fe7d4"
+        },
+        {
+          "path": "water-detail/normal.png",
+          "sha256": "d8ee391c357a39348f88137f0f30ab5430e580d7348cbfaea6454887d6221498"
+        }
+      ]
+    },
+    {
+      "key": "texture-wet-shore-mud",
+      "type": "albedo",
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Textures\\texture-wet-shore-mud",
+      "files": [
+        {
+          "path": "wet-shore-mud/albedo.png",
+          "sha256": "c3c0e0bc4031acecbf664030be57d9920a874776045601a51e9412e36851764c"
+        }
+      ]
+    }
+  ]
+}
