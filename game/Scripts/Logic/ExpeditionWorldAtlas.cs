@@ -40,10 +40,16 @@ partial class ExpeditionWorld {
   if(d==2&&v>.76)h+=30*TerrainSmooth((v-.76)/.20);
   return h;
  }
+ // Raster district/nearest-street changes must not introduce steps along the highway.
+ double AtlasHighwayGrade(double z){
+  const double spacing=128;double z0=Math.Floor(z/spacing)*spacing,t=(z-z0)/spacing;
+  double At(double zz){double xx=ExpeditionWorldAtlas.HighwayX(zz);if(!double.IsFinite(xx))xx=ExpeditionWorldAtlas.HighwayX(z);double height=AtlasRawHeight(xx,zz),water=WaterDistance(xx,zz);return water<70?WaterLevel+5+(height-WaterLevel-5)*TerrainSmooth(Math.Max(0,water)/70):height;}
+  return At(z0)*(1-t)+At(z0+spacing)*t;
+ }
  double AtlasHeight(double x,double z){
   double h=AtlasRawHeight(x,z),water=WaterDistance(x,z),road=StreetDistance(x,z);
   if(water<35){double blend=1-TerrainSmooth(Math.Max(0,water)/35);double bed=WaterLevel-4-Math.Min(8,Math.Max(0,-water)*.06);h=h*(1-blend)+bed*blend;}
-  if(road<20){var at=NearestStreet(x,z);double grade=AtlasRawHeight(at.X,at.Z);if(water<70)grade=WaterLevel+5+(grade-WaterLevel-5)*TerrainSmooth(Math.Max(0,water)/70);double blend=1-TerrainSmooth(Math.Max(0,road)/20);h=h*(1-blend)+grade*blend;}
+  if(road<20){var at=NearestStreet(x,z);double grade=AtlasRawHeight(at.X,at.Z);if(ExpeditionWorldAtlas.Highway(x,z))grade=AtlasHighwayGrade(z);else if(water<70)grade=WaterLevel+5+(grade-WaterLevel-5)*TerrainSmooth(Math.Max(0,water)/70);double blend=1-TerrainSmooth(Math.Max(0,road)/20);h=h*(1-blend)+grade*blend;}
   return h;
  }
  public string RegionName(double x,double z)=>ExpeditionWorldAtlas.Name(x,z);
