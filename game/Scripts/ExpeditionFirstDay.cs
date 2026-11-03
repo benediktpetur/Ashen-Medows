@@ -36,7 +36,7 @@ public partial class MigrationScene {
   string id=$"first-day/{game.Save.Seed}/pine/{i}";if(game.World.Changes.Cut(id))continue;
   var pine=new Node3D{Position=Ground(x,z)};chunk.AddChild(pine);
   if(simulation)PhysicsObstacle(pine,new CylinderShape3D{Radius=.45f,Height=4},new(0,2,0));else ArtPine(pine,6+i,i);
-  props.Add(new(){Id=id,Kind=0,Tier=1,Node=pine,Position=pine.Position});
+  props.Add(new(){Id=id,Kind=0,TreeHeight=6+i,Tier=1,Node=pine,Position=pine.Position});
  }}
  string FirstDayPrompt(){if(dungeon!=null||buildMode)return "";if(NearProp(38,3)!=null)return "E / TRAILHEAD WATER & FIELD NOTES";if(NearProp(39,2.5f)!=null)return "E / DRAW WELL WATER / BOIL BEFORE DRINKING";return "";}
  bool FirstDayInteract(){if(dungeon!=null||buildMode)return false;if(NearProp(38,3)!=null){if(CoopHost&&coopActor>0){game.FirstDayAction("water");return true;}ShowFirstDay(true);return true;}
