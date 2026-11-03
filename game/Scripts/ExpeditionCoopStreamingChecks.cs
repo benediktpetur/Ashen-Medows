@@ -7,8 +7,8 @@ public partial class MigrationScene {
   a.Body.Position=Ground(game.World.RouteX(-640),-640)+Vector3.Up*.2f;a.Target=a.Body.Position;
   SendCoopPersonal(a.Id,CoopProfileJson(a.Game),"Independent exploration check",a.Body.Position,true);
   await CoopWait(()=>chunks.Count>90,"Remote physics chunks were not streamed",20);WithCoopActor(a,SpawnObjects);
-  bool clear=false;foreach(var node in props.Where(p=>p.Kind==1&&Distance(p.Position,a.Body.Position)<60).ToArray()){
-   a.Body.Position=node.Position+Vector3.Up*.2f;a.Yaw=a.Pitch=0;WithCoopActor(a,()=>clear=OutdoorFree(player.Position.X,player.Position.Z)&&ToolPoint(out _));if(clear)break;
+  string resourceId=null;bool clear=false;foreach(var node in props.Where(p=>p.Kind==1&&Distance(p.Position,a.Body.Position)<60).ToArray()){
+   a.Body.Position=node.Position+Vector3.Up*.2f;a.Yaw=a.Pitch=0;WithCoopActor(a,()=>clear=OutdoorFree(player.Position.X,player.Position.Z)&&ToolPoint(out _));if(clear){resourceId=node.Id;break;}
   }
   if(!clear)throw new Exception("No clear exploration fixture location");
   var far=a.Body.Position;
@@ -30,7 +30,7 @@ public partial class MigrationScene {
   await CoopWait(()=>game.World.Changes.Paths.Count>0,"Remote earthwork failed",20);
   await CoopDelay(2);
   if(Distance(a.Body.Position,HostPosition)<500)throw new Exception("Guest was pulled back to host");
-  if(!game.Craft.Gathered.Any(id=>id.Contains("/node/")&&id.EndsWith(":"+(int)Math.Round(far.Z/32))))throw new Exception("Remote resource claim not retained");
+  await CoopWait(()=>game.Craft.Gathered.Contains(resourceId),"Remote resource claim not retained: "+resourceId,20);
   foreach(var e in infected.Where(e=>Distance(e.Body.Position,far)<80).ToArray())RemoveEnemy(e);ExpeditionBag bag=null;foreach(int dx in new[]{0,6,-6,12,-12}){var candidate=new ExpeditionBag{Id="far-bag",Seed=game.Save.Seed,X=far.X+dx,Z=far.Z};if(CampSafe(candidate)){bag=candidate;break;}}if(bag==null)throw new Exception("No safe distant camp fixture");WithCoopActor(a,()=>{game.Life.Camps.Add(bag);game.Life.Respawn=bag.Id;CoopDie();});
   if(Distance(a.Body.Position,Ground(bag.X,bag.Z))>2)throw new Exception("Remote sleeping bag respawn was replaced with host position");
   a.Game.Life.Respawn=null;
@@ -45,7 +45,7 @@ public partial class MigrationScene {
   await AimCoopFixture(enemy,1.3f,true);
   CoopRequest("shoot","ads");
   await CoopWait(()=>game.Skills.Defeated.Contains("coop-check/far-infected"),"Remote kill reward missing");aiming=false;
-  CoopRequest("interact");await CoopDelay(.3);CoopRequest("path");
+  int gatheredBefore=game.Craft.Gathered.Count;CoopRequest("interact");await CoopWait(()=>game.Craft.Gathered.Count>gatheredBefore,"Remote gather result missing");CoopRequest("path");
   BuildPiece piece=null;foreach(int dx in new[]{7,-7,10,-10})foreach(int dz in new[]{0,3,-3}){var candidate=new BuildPiece{Kind=0,X=target.X+dx,Z=target.Z+dz,Y=game.World.Height(target.X+dx,target.Z+dz),Yaw=45};if(game.Building.Placement(candidate).Valid&&!StaticPlacementBlocked(candidate)){piece=candidate;break;}}
   if(piece==null)throw new Exception("No clear remote building position");CoopRequest("place",Json.Write(piece));
   await CoopWait(()=>game.Building.Pieces.Count(p=>!p.Id.StartsWith("starter-house/"))==2,"Remote structure snapshot missing");
