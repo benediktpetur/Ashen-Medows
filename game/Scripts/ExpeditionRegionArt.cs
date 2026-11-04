@@ -15,7 +15,7 @@ public partial class MigrationScene {
  // The regional shell keeps the existing solid footprint and collider. Doors are
  // visual loading bays; enterable/story buildings retain their authored layouts.
  void ArtBuilding(Node3D root,int x,int z,float size,float h,int tier){
-  if(tier!=3){DefaultRegionBuilding(root,x,z,size,h,tier);return;}
+  if(tier==4){GeneratedCityBuilding(root,x,z,size,h);return;}if(tier!=3){DefaultRegionBuilding(root,x,z,size,h,tier);return;}
   var n=new Node3D{Name="IndustrialWarehouse",Position=Ground(x,z)};root.AddChild(n);string damageId=$"building/{game.Save.Seed}/{x}/{z}";n.SetMeta("world_structure_id",damageId);RegisterDamageNode(n,damageId,600);if(n.IsQueuedForDeletion())return;
   var wall=new Color(.39f,.40f,.38f);var metal=new Color(.27f,.30f,.31f);
   Box(n,new(0,h/2,0),new(size,h,size),wall,true).MaterialOverride=ExteriorFinish(3,wall);

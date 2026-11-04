@@ -1,0 +1,17 @@
+{
+  "approved": ["tower-f9c9aea1776a", "tower-f17a9cde1984", "tower-3537fcc786a9", "tower-f213242edc52"],
+  "deferred": {
+    "tower-61093ef521da": "Large untextured white rear/side faces and reconstructed solid base.",
+    "tower-f778f73f6752": "Incomplete side geometry with large white faces and stretched texture.",
+    "tower-0d6d14ba37a9": "Collapsed reconstruction: detached upper fragments, stretched vertical surfaces and missing facade.",
+    "tower-98840e26f47a": "Mostly white untextured box with a partial facade.",
+    "tower-663234b12b8c": "Detached facade strips with most building volume missing.",
+    "tower-2ee5b2f88ccd": "Narrow detached facade strip rather than a complete building.",
+    "tower-2bf057d020de": "Large white side/roof surfaces and smeared untextured base.",
+    "tower-e7a0de93dd9d": "Malformed disconnected geometry and large white surfaces.",
+    "tower-caff1aa2f3cf": "Mostly white untextured block with partial facade details.",
+    "tower-2fe386832e57": "White untextured sides and stretched facade reconstruction.",
+    "tower-73a7c9099f57": "Detached facade sheets and large untextured white faces.",
+    "tower-0e0791f4fcd1": "Fragmented facade planes with missing building volume."
+  }
+}

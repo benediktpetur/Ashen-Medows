@@ -331,3 +331,14 @@ The current build has 34 weapons, 179 recipes and 193 item models. Research bran
 ## Expedition loop
 
 F5 opens departure planning and a supply/weather checklist, with destination and return-refuge tracking on HUD/map. G throws a resource-cost stone distraction outside building mode. Existing specialist sites gain finite timed shutters with quiet/loud choices and themed upgrade supplies. Ordinary infected search their last seen/heard position. Shared seeded weather adds rain, fog and cold wind; physical cover, armor and warmth affect gradual exposure. F7 camp life offers three paid shared improvement stages, personal resident spaces, a hearth/workyard, evening routines and written homecoming greetings. Real structural damage adds visible wear marks which repairs remove. See EXPEDITION-LOOP.md for controls, costs, effects and persistence.
+
+## Restoring abandoned cars
+
+Approach an unburned roadside or driveway car and press E to inspect it. Craft any mechanic tool (F3), collect 12 raw scrap metal and 4 glass from other wrecks, then choose REPAIR CAR. Burned or dismantled cars cannot be restored. Repairing replaces the original wreck once per world; it cannot respawn as a second salvage source. Story scene cars remain scenery.
+
+Press E beside the restored car and choose ENTER DRIVER SEAT. W/S drive forward or reverse, A/D steer, and E dismounts. Terrain, water boundaries and obstacles restrict movement. Cars use the existing rover movement, condition, cargo, timber repair and repair-station systems. Car position, condition and cargo persist with the world. Repairs and driver claims are validated by the co-op host. No fuel is consumed by the existing driving system.
+
+Validation: `--car-check` covers missing tool/parts, distance, repair costs, duplicate protection, mounting, movement, serialization, dismount and burned wreck rejection.
+
+### Backpack and storage
+Press I to browse your backpack and equip or use carried items. At a chest or refrigerator, press E for side-by-side backpack and storage grids. Click an item or drag it into the other container; choose Move 1, Move 10, or Full Stack. Each stored resource, provision, water, dressing or reserve ammunition type holds up to 200 × container tier. Transfers conserve items and are host-authoritative in multiplayer. Equipment and specialist supplies remain in the full backpack.

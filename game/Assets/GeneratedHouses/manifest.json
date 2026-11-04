@@ -1,0 +1,72 @@
+[
+  {
+    "key": "house-abandoned-cottage",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-abandoned-cottage\\textured.glb",
+    "sha256": "860212e571d7f0df23c109c7712df1b8ee7a51aeda37e6ae69ef96ac5a1a6cb0"
+  },
+  {
+    "key": "house-blue-suburban-house",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-blue-suburban-house\\textured.glb",
+    "sha256": "3aa249f59dfbce9f0c5b208aff99dde3e11204d2d5dd796b585e218800c5eab0"
+  },
+  {
+    "key": "house-corner-townhouse",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-corner-townhouse\\textured.glb",
+    "sha256": "eace6c6e31a1e118b5b1d8b404b26327c0aa012ff4f4a4bd2766c17e5fb1e0e9"
+  },
+  {
+    "key": "house-courtyard-house",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-courtyard-house\\textured.glb",
+    "sha256": "88fba7ac1a34a7f045870fb2c3167e36f0d1026af71b2c012c79e36958ec64db"
+  },
+  {
+    "key": "house-duplex",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-duplex\\textured.glb",
+    "sha256": "b3614ae51e3de0c05609142e7aac526643517eece5761629e1ae92a874e2b7ef"
+  },
+  {
+    "key": "house-farmhouse",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-farmhouse\\textured.glb",
+    "sha256": "82f805f22cc4d2fb787fd1c55b5631ddf3321c1539628f11013f8635f9a45d38"
+  },
+  {
+    "key": "house-large-family-house",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-large-family-house\\textured.glb",
+    "sha256": "bea4688605cdf0103d4d6b9b0b66643204f37508b615a20054d78ff5abea468c"
+  },
+  {
+    "key": "house-row-house",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-row-house\\textured.glb",
+    "sha256": "d380bcc17f80a86cb0f3b970d06ce6bab337ceccefcf1491a779de1ac7b40f6a"
+  },
+  {
+    "key": "house-rural-timber-house",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-rural-timber-house\\textured.glb",
+    "sha256": "5ae97f79c09683ea2c9c42a95d7413d3a113b1264acce799ea99a424a38c1a1d"
+  },
+  {
+    "key": "house-split-level-house",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-split-level-house\\textured.glb",
+    "sha256": "4fecb38660c7c5b820e421528ec5745d42b95bdeeee63405d26b48e551aefe7a"
+  },
+  {
+    "key": "house-stone-cottage",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-stone-cottage\\textured.glb",
+    "sha256": "53117e097370cfc80d3cb76a69944604ed67b29a478fbef6e90d166afba1ed00"
+  },
+  {
+    "key": "house-timber-bungalow",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-timber-bungalow\\textured.glb",
+    "sha256": "029c0f718f4313cab49688528dd19c79a33ce1f04be0e5e860b0852ba7847b2c"
+  },
+  {
+    "key": "house-woodland-cabin",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-woodland-cabin\\textured.glb",
+    "sha256": "e1c33916258cab4f46ff3d0179a4cec0f67b16abd23802733b5781b5fa4e3925"
+  },
+  {
+    "key": "house-workers-house",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - AI Houses - 2026-11-01\\Models\\Full 9B Catalogue\\environment\\house-workers-house\\textured.glb",
+    "sha256": "ca5749d25c7f37a53dfe0e8ffad67445d749bff3fe14aa107cd6ccb6fd74c25e"
+  }
+]

@@ -7,6 +7,10 @@ public partial class MigrationScene {
  await ToSignal(GetTree(),SceneTree.SignalName.PhysicsFrame);await ToSignal(GetTree(),SceneTree.SignalName.PhysicsFrame);
  MigrationChecks.Assert(AimedBuildPiece()==anchor,"Real floor collider resolves its owning blueprint");snap=true;heightBuild=3;selectedBuild=1;UpdateGhost();MigrationChecks.Assert(Math.Abs(ghost.Y-200)<.001&&Math.Abs(ghost.Z-3)<.001,"Actual placement ghost anchors adjacent floors despite stale height adjustment");
  heightBuild=0;selectedBuild=2;UpdateGhost();MigrationChecks.Assert(Math.Abs(ghost.Z-1.5)<.001&&Math.Abs(ghost.Y-200.2)<.001,"Actual wall ghost attaches at floor edge");
+ var wallAnchor=ExpeditionBuildSnap.Connect(anchor,2,0,1.4,0,1,0,0);wallAnchor.Id="check/wall";game.Building.Pieces.Add(wallAnchor);SyncStructures();camera.LookAt(new Vector3(0,(float)wallAnchor.CenterY,(float)wallAnchor.Z));
+ await ToSignal(GetTree(),SceneTree.SignalName.PhysicsFrame);await ToSignal(GetTree(),SceneTree.SignalName.PhysicsFrame);
+ MigrationChecks.Assert(AimedBuildPiece()==wallAnchor,"Real wall side collider resolves blueprint");heightBuild=3;selectedBuild=7;UpdateGhost();MigrationChecks.Assert(Math.Abs(ghost.Y-wallAnchor.Y-wallAnchor.Def.H)<.001&&Math.Abs(ghost.X-anchor.X)<.001&&Math.Abs(ghost.Z-anchor.Z)<.001,"Actual roof ghost snaps to wall top despite side aim and stale height adjustment");
+ game.Building.Pieces.Remove(wallAnchor);SyncStructures();camera.LookAt(new Vector3(0,200.2f,1.2f));await ToSignal(GetTree(),SceneTree.SignalName.PhysicsFrame);await ToSignal(GetTree(),SceneTree.SignalName.PhysicsFrame);
  AssignLegacyBuilders();buildMode=true;demolitionMode=true;UpdateGhost();MigrationChecks.Assert(placement.Reason.Contains("DEMOLISH")&&ghostMesh!=null,"Demolition highlights real aimed structure");RemoveStructure();MigrationChecks.Assert(game.Building.Pieces.Count==0,"Demolition removes aimed structure and persists change");demolitionMode=false;ClearGhost();CloseMenu();GD.Print("PASS / real collider targeting, anchored ghost elevation, wall edge preview and demolition");SetProcess(false);SetPhysicsProcess(false);ClearChildren(worldRoot);ClearChildren(terrainRoot);ClearChildren(buildRoot);props.Clear();chunks.Clear();await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);await ToSignal(GetTree(),SceneTree.SignalName.PhysicsFrame);GetTree().Quit();}catch(Exception e){GD.PushError(e.ToString());GetTree().Quit(1);}}
  void BuildingUsabilityChecks(){
   for(int turn=0;turn<4;turn++){
@@ -14,6 +18,10 @@ public partial class MigrationScene {
    double a=yaw*Math.PI/180;var wall=ExpeditionBuildSnap.Connect(ground,2,Math.Sin(a)*1.4,Math.Cos(a)*1.4,0,1,0,0);
    MigrationChecks.Assert(b.Placement(wall).Valid,"Wall snaps supported at rotated deck edge / "+yaw);b.Pieces.Add(wall);
    var roof=ExpeditionBuildSnap.Connect(wall,7,wall.X,wall.Z,0,1,0,0,b.Pieces);MigrationChecks.Assert(b.Placement(roof).Valid,"Roof connects to wall top / "+yaw);MigrationChecks.Assert(Math.Abs(roof.X)<.001&&Math.Abs(roof.Z)<.001,"Roof centers over room rather than outside wall");
+   foreach(int side in new[]{-1,1}){
+    var sideRoof=ExpeditionBuildSnap.Connect(wall,7,wall.X,wall.Z,side*Math.Sin(a),0,side*Math.Cos(a),0,b.Pieces);
+    MigrationChecks.Assert(b.Placement(sideRoof).Valid&&Math.Abs(sideRoof.Y-wall.Y-wall.Def.H)<.001&&Math.Abs(sideRoof.X)<.001&&Math.Abs(sideRoof.Z)<.001,"Wall side aim snaps roof onto top over room / "+yaw+" / "+side);
+   }
    var next=ExpeditionBuildSnap.Connect(ground,0,0,0,Math.Cos(a),0,-Math.Sin(a),0);MigrationChecks.Assert(b.Placement(next).Valid,"Foundations connect flush when rotated / "+yaw);
   }
   foreach(double yaw in new[]{0.0,37.0,90.0}){

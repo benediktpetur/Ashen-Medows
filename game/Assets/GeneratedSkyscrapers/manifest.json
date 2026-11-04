@@ -1,0 +1,30 @@
+[
+  {
+    "key": "tower-f9c9aea1776a",
+    "resource": "res://Assets/GeneratedSkyscrapers/tower-f9c9aea1776a.glb",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h45m49s_seed422653767_A sky scraper that l-f9c9aea1776a\\textured.glb",
+    "reference": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Setup\\Images\\2026-11-03-15h45m49s_seed422653767_A sky scraper that looks like its out of a zombie.jpg",
+    "sha256": "7996bbe36bfb8feb80960537f6db56e4b806bd054096db587eafd384f2d9e851"
+  },
+  {
+    "key": "tower-f17a9cde1984",
+    "resource": "res://Assets/GeneratedSkyscrapers/tower-f17a9cde1984.glb",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h46m52s_seed427586702_A sky scraper that l-f17a9cde1984\\textured.glb",
+    "reference": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Setup\\Images\\2026-11-03-15h46m52s_seed427586702_A sky scraper that looks like its out of a zombie.jpg",
+    "sha256": "258f9387626a0fc7fc4a69000b4382afee96d4308f0d231229cb878d7f62aba4"
+  },
+  {
+    "key": "tower-3537fcc786a9",
+    "resource": "res://Assets/GeneratedSkyscrapers/tower-3537fcc786a9.glb",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h47m32s_seed504731099_A sky scraper that l-3537fcc786a9\\textured.glb",
+    "reference": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Setup\\Images\\2026-11-03-15h47m32s_seed504731099_A sky scraper that looks like its out of a zombie.jpg",
+    "sha256": "7d07e7fa40b7c8961007f2f3ee21a397efa3c0ddb287861cff8800b8d4d539a7"
+  },
+  {
+    "key": "tower-f213242edc52",
+    "resource": "res://Assets/GeneratedSkyscrapers/tower-f213242edc52.glb",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h49m33s_seed585270202_A sky scraper that l-f213242edc52\\textured.glb",
+    "reference": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Setup\\Images\\2026-11-03-15h49m33s_seed585270202_A sky scraper that looks like its out of a zombie.jpg",
+    "sha256": "f5baaf481c73e2defb557d3f7301e79d631001da143c4e07b1f3eb65da8b423b"
+  }
+]

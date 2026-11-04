@@ -1,0 +1,62 @@
+[
+  {
+    "key": "tower-61093ef521da",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h50m34s_seed457206595_A sky scraper that l-61093ef521da\\textured.glb",
+    "reason": "Large untextured white rear/side faces and reconstructed solid base."
+  },
+  {
+    "key": "tower-f778f73f6752",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h50m48s_seed306873313_A sky scraper that l-f778f73f6752\\textured.glb",
+    "reason": "Incomplete side geometry with large white faces and stretched texture."
+  },
+  {
+    "key": "tower-0d6d14ba37a9",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h52m42s_seed863710062_A sky scraper that l-0d6d14ba37a9\\textured.glb",
+    "reason": "Collapsed reconstruction: detached upper fragments, stretched vertical surfaces and missing facade."
+  },
+  {
+    "key": "tower-98840e26f47a",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h52m42s_seed863710062_A sky scraper that l-98840e26f47a\\textured.glb",
+    "reason": "Mostly white untextured box with a partial facade."
+  },
+  {
+    "key": "tower-663234b12b8c",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h52m42s_seed863710062_A sky scraper that l-663234b12b8c\\textured.glb",
+    "reason": "Detached facade strips with most building volume missing."
+  },
+  {
+    "key": "tower-2ee5b2f88ccd",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h52m42s_seed863710062_A sky scraper that l-2ee5b2f88ccd\\textured.glb",
+    "reason": "Narrow detached facade strip rather than a complete building."
+  },
+  {
+    "key": "tower-2bf057d020de",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h52m42s_seed863710062_A sky scraper that l-2bf057d020de\\textured.glb",
+    "reason": "Large white side/roof surfaces and smeared untextured base."
+  },
+  {
+    "key": "tower-e7a0de93dd9d",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h52m42s_seed863710062_A sky scraper that l-e7a0de93dd9d\\textured.glb",
+    "reason": "Malformed disconnected geometry and large white surfaces."
+  },
+  {
+    "key": "tower-caff1aa2f3cf",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h52m42s_seed863710062_A sky scraper that l-caff1aa2f3cf\\textured.glb",
+    "reason": "Mostly white untextured block with partial facade details."
+  },
+  {
+    "key": "tower-2fe386832e57",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h52m42s_seed863710062_A sky scraper that l-2fe386832e57\\textured.glb",
+    "reason": "White untextured sides and stretched facade reconstruction."
+  },
+  {
+    "key": "tower-73a7c9099f57",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h52m42s_seed863710062_A sky scraper that l-73a7c9099f57\\textured.glb",
+    "reason": "Detached facade sheets and large untextured white faces."
+  },
+  {
+    "key": "tower-0e0791f4fcd1",
+    "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 9B Images to 3D\\Models\\2026-11-03-15h52m42s_seed863710062_A sky scraper that l-0e0791f4fcd1\\textured.glb",
+    "reason": "Fragmented facade planes with missing building volume."
+  }
+]

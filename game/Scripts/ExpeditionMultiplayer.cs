@@ -43,7 +43,7 @@ using System.Runtime.Serialization;
 }
 
 public partial class MigrationScene {
- const int CoopProtocol=46,CoopPort=28748;
+ const int CoopProtocol=47,CoopPort=28748;
  ENetMultiplayerPeer coopPeer;bool coopReady,coopApplying,coopExecuting,coopHosting;
  bool CoopActive=>coopPeer!=null;
  bool CoopClient=>CoopActive&&!coopHosting;
@@ -139,6 +139,7 @@ public partial class MigrationScene {
   case "fieldkit":FieldKitAction(data);break;case "fieldthrow":ThrowFieldItem();break;case "distract":ThrowDistraction();break;case "journey":JourneyAction(data);break;case "camplife":CampLifeAction();break;case "hunting":HuntingAction(data);break;
   case "weaponpart":if(shotClock<=0&&reloadClock<=0){var part=data.Split('|');if(part.Length==2&&int.TryParse(part[0],out int partId)&&(part[1]=="fit"||part[1]=="remove"))game.FitPart(partId,part[1]=="remove");}break;
   case "research":if(int.TryParse(data,out int research))game.Research(research);break;
+  case "restorecar":RestoreWreck(data);break;
   case "drive":DriveBlueprint(data);break;
   case "dismount":if(vehicleDrivers.TryGetValue(data,out long driver)&&driver==coopActor)vehicleDrivers.Remove(data);break;
   case "baseuse":UseBlueprint(data);break;
