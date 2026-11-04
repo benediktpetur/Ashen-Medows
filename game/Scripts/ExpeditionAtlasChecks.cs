@@ -5,6 +5,10 @@ public partial class MigrationScene {
  async void RunAtlasChecks(){try{
   game.NoDiskSave=true;paused=true;SetProcess(false);SetPhysicsProcess(false);CloseMenu();ClearEnemies();
   MigrationChecks.Assert(game.Healthy,"Atlas profile initialized: "+game.Notice);
+  var atlasTestPath="user://tests/atlas-ui-"+Guid.NewGuid()+".cfg";
+  var atlasTest=new ExpeditionMapCanvas{World=game.World,Size=new Vector2(880,460),AtlasPreferencesPath=atlasTestPath};
+  AddChild(atlasTest);atlasTest.LoadAtlasPreferences();atlasTest.CheckAtlasInteractions();atlasTest.QueueFree();DirAccess.RemoveAbsolute(ProjectSettings.GlobalizePath(atlasTestPath));
+  ShowMap();CloseMenu();GD.Print("PASS / interactive atlas / zoom / custom markers / saved visibility / menu construction");
   var w=game.World;var starter=game.Building.Pieces.Where(p=>p.Id.StartsWith("starter-house/")).ToArray();MigrationChecks.Assert(starter.Count(p=>p.Def.BaseKind==0)==9&&starter.Count(p=>p.Def.BaseKind==7)==9,"Editable starter house has complete floors and roofs");MigrationChecks.Assert(game.Building.Evaluate(game.Building.Pieces).Valid,"Starter house is structurally supported");int houses=0,city=0,industry=0,wet=0,bridges=0;
   foreach(double x in new[]{ExpeditionWorld.MinX+7,ExpeditionWorld.MaxX-7})foreach(double z in new[]{ExpeditionWorld.MinZ+7,ExpeditionWorld.MaxZ-7})MigrationChecks.Assert(w.ChunkIntersects(ExpeditionWorld.Cell(x),ExpeditionWorld.Cell(z)),"Partial boundary chunks retain terrain collision");
   for(int ix=(int)Math.Floor(ExpeditionWorld.MinX/64);ix<ExpeditionWorld.MaxX/64;ix++)for(int iz=(int)Math.Floor(ExpeditionWorld.MinZ/64);iz<ExpeditionWorld.MaxZ/64;iz++){
