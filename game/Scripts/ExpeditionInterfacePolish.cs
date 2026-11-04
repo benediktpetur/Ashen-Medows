@@ -13,7 +13,7 @@ public partial class MigrationScene {
   Button(navigation,"JOURNAL / N",ShowJournal);Button(navigation,"MAP / M",()=>{if(dungeon==null)ShowMap();else game.Notice="Return to the surface to use the world map";});
   b.AddChild(new HSeparator());
   var settings=new GridContainer{Columns=2};b.AddChild(settings);Button(settings,"OPTIONS",ShowOptions);Button(settings,"CONTROLS / F2",ShowControls);
-  Button(settings,"MULTIPLAYER / F8",ShowMultiplayer);Button(settings,"WORLD & SAVES",ShowWorldManagement);
+  Button(settings,"PLAYER MODEL / F9",ShowPlayerCharacter);Button(settings,"MULTIPLAYER / F8",ShowMultiplayer);Button(settings,"WORLD & SAVES",ShowWorldManagement);
   Button(b,"SAVE PROGRESS",()=>{game.Notice=game.Persist()?"Progress saved":game.Notice;ShowCleanPause();});
   if(!string.IsNullOrWhiteSpace(game.Notice))Text(b,game.Notice);
   Button(b,"SAVE & QUIT",()=>{if(CoopActive)StopCoop("Session closed");game.Persist();GetTree().Quit();});
@@ -30,6 +30,7 @@ public partial class MigrationScene {
   var b=Panel("CONTROLS / FIELD REFERENCE");
   var scroll=new ScrollContainer{CustomMinimumSize=new(890,430)};b.AddChild(scroll);var list=new VBoxContainer{CustomMinimumSize=new(870,0)};list.AddThemeConstantOverride("separation",12);scroll.AddChild(list);
   foreach(var entry in new[]{
+   ("PLAYER MODEL","F9  View your survivor, rotate the model, and preview walking or crouching"),
    ("MOVE","W A S D  Move     Shift  Sprint     Space  Jump     Ctrl  Hold to crouch"),
    ("INTERACT","F  Interact     G  Throw a stone distraction     L  Flashlight"),
    ("COMBAT","Left mouse  Attack     Right mouse  Aim     Shift while aiming  Hold breath\nR  Reload     1 / 2 / 3  Combat classes     Q  Chain-sword special"),

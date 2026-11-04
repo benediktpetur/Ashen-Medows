@@ -5,7 +5,7 @@ using System.Linq;
 public partial class MigrationScene {
  bool viewGunApplied;InkCrosshair weaponCrosshair;Label handlingLabel,ammoTypeLabel;
  readonly System.Collections.Generic.List<(Node3D Node,double Until)> bulletMarks=new();
- bool Scoped=>aiming&&!axeEquipped&&!buildMode&&ExpeditionGame.IsGun(game.Craft.Weapon)&&(game.Craft.Weapon is 4 or 5||game.PartsFor(game.Craft.Weapon).Any(p=>p.Slot=="Optic"));
+ bool Scoped=>aiming&&!axeEquipped&&!buildMode&&ExpeditionGame.IsGun(game.Craft.Weapon)&&(game.Craft.Weapon is 2 or 3 or 4 or 5||game.PartsFor(game.Craft.Weapon).Any(p=>p.Slot=="Optic"));
  bool GunActorGrounded(CharacterBody3D body){var query=PhysicsRayQueryParameters3D.Create(body.Position+Vector3.Up*.08f,body.Position-Vector3.Up*.25f);query.Exclude=new(){body.GetRid()};return GetWorld3D().DirectSpaceState.IntersectRay(query).Count>0;}
  void TickGunplay(double dt,bool moving,bool sprint){
   double speed=new Vector2(player.Velocity.X,player.Velocity.Z).Length();

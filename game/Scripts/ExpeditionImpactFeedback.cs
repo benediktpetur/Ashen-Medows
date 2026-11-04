@@ -9,7 +9,7 @@ public partial class MigrationScene {
  string heldViewKey="";
  void BuildHeldTool(){
   if(coopExecuting)return;
-  string key=game.Craft.Weapon+"/"+buildMode+"/"+axeEquipped+"/"+game.Craft.HarvestTool+"/"+string.Join(",",game.Craft.ToolLevels)+"/"+string.Join(",",game.Craft.FittedParts.TryGetValue(game.Craft.Weapon,out var parts)?parts.OrderBy(id=>id):Enumerable.Empty<int>());
+  string key=handStyle+"/"+game.Craft.Weapon+"/"+buildMode+"/"+axeEquipped+"/"+game.Craft.HarvestTool+"/"+string.Join(",",game.Craft.ToolLevels)+"/"+string.Join(",",game.Craft.FittedParts.TryGetValue(game.Craft.Weapon,out var parts)?parts.OrderBy(id=>id):Enumerable.Empty<int>());
   if(heldViewKey==key&&weaponRoot.GetChildCount()>0)return;
   if(lastHeldWeapon!=game.Craft.Weapon){lastHeldWeapon=game.Craft.Weapon;aiming=false;viewGunApplied=false;}
   RebuildHeldView();heldViewKey=key;

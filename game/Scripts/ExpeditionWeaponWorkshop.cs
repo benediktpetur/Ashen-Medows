@@ -15,7 +15,7 @@ public partial class MigrationScene {
   Button(b,"RESEARCH TREE",ShowResearchTree);Button(b,"BACK",SurvivorInventory);
  }
  void NewWorkshopWeapon(Node3D n,int id,bool hands){
-  int basis=id switch{28=>0,29=>3,30=>7,31=>3,32=>18,_=>21};var body=new Node3D{Name="WorkshopWeapon"};n.AddChild(body);ItemWeapon(body,basis,false);
+  int basis=id switch{28=>0,29=>3,30=>7,31=>3,32=>18,_=>21};var body=new Node3D{Name="WorkshopWeapon"};n.AddChild(body);ProceduralWeaponModel(body,basis,false);
   if(id==28){Tube(body,new(-.06f,.005f,-.12f),new(.06f,.005f,-.12f),.062f,Steel);for(int i=0;i<6;i++){float angle=i*Mathf.Tau/6;Tube(body,new(-.062f,Mathf.Sin(angle)*.04f, -.12f+Mathf.Cos(angle)*.04f),new(-.064f,Mathf.Sin(angle)*.04f,-.12f+Mathf.Cos(angle)*.04f),.012f,Ink);}}
   if(id==29){body.Scale=new(1,1,.7f);Bevel(body,new(0,-.17f,-.15f),new(.055f,.29f,.075f),Steel);Tube(body,new(-.05f,-.02f,.22f),new(-.05f,-.02f,.42f),.012f,Steel);}
   if(id==30){Bevel(body,new(0,-.045f,-.48f),new(.11f,.09f,.24f),Wood);for(int i=0;i<7;i++)Box(body,new(0,-.045f,-.38f-i*.035f),new(.12f,.095f,.008f),Ink);Tube(body,new(0,-.055f,-.3f),new(0,-.055f,-.8f),.019f,Steel);}
@@ -33,5 +33,5 @@ public partial class MigrationScene {
   case "Grip":for(int i=0;i<7;i++)Tube(n,new(-.035f,-.06f+i*.018f,0),new(.035f,-.06f+i*.018f,0),.009f,Cloth);break;
   default:Bevel(n,Vector3.Zero,new(.1f,.09f,.19f),Steel);for(int i=0;i<4;i++)Box(n,new(0,.048f,-.06f+i*.04f),new(.11f,.012f,.008f),Ink);break;
  }}
- void FittedWeaponArt(Node3D target,int weapon){foreach(int id in game.Craft.FittedParts.GetValueOrDefault(weapon)??new()){var part=WeaponPart.All[id];var mount=new Node3D{Name="Fitted"+part.Slot,Position=part.Slot switch{"Muzzle"=>new(0,0,weapon is 0 or 28?-.36f:-.79f),"Optic"=>new(0,.15f,-.1f),"Magazine"=>new(0,-.22f,-.12f),"Stock"=>new(0,-.02f,.3f),"Grip"=>new(0,-.1f,.02f),"String"=>new(-.14f,.35f,-.35f),"Head"=>new(0,.05f,weapon==33?-1.3f:weapon is 14 or 21?-1.0f:-.8f),_=>new(0,.05f,-.65f)}};target.AddChild(mount);WeaponPartModel(mount,id);}}
+ void FittedWeaponArt(Node3D target,int weapon){foreach(int id in game.Craft.FittedParts.GetValueOrDefault(weapon)??new()){var part=WeaponPart.All[id];var mount=new Node3D{Name="Fitted"+part.Slot,Position=part.Slot switch{"Muzzle"=>new(0,0,weapon is 0 or 28?-.36f:-.79f),"Optic"=>new(0,.15f,-.1f),"Magazine"=>new(0,-.22f,-.12f),"Stock"=>new(0,-.02f,.3f),"Grip"=>new(0,-.1f,.02f),"String"=>new(-.14f,.35f,-.35f),"Head"=>new(0,.05f,weapon==33?-1.3f:weapon is 14 or 21?-1.0f:-.8f),_=>new(0,.05f,-.65f)}};if(target==weaponRoot&&generatedHeldModel&&part.Slot=="Muzzle")mount.Position=generatedMuzzle+new Vector3(0,0,-.01f);target.AddChild(mount);WeaponPartModel(mount,id);}}
 }

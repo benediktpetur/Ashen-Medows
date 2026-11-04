@@ -47,11 +47,12 @@ public partial class MigrationScene {
  void ItemModel(Node3D root,string kind,int index=0,int tier=1,string appearance=""){
   var procedural=new Node3D{Name="ProceduralItem"};root.AddChild(procedural);
   ProceduralItemModel(procedural,kind,index,tier,appearance);
-  // Authored relic appearances and moving first-person weapons keep their dedicated art.
+  // Authored relic appearances keep their dedicated art; ordinary weapons share the held-model assembly.
   if(appearance!="")return;
   var item=ExpeditionItemDefinition.All().FirstOrDefault(i=>i.Kind==kind&&i.Index==index&&i.Tier==tier);
   if(item==null)return;
   Aabb target=default;bool found=false;BatchBounds(procedural,Transform3D.Identity,ref target,ref found);
+  if(found&&kind=="weapon"&&GeneratedWeaponDisplay(root,index,target)){procedural.Visible=false;return;}
   if(found&&AttachBatchModel(root,"catalog-"+item.Key,target))procedural.Visible=false;
  }
  void BatchResource(Node3D root,int material){

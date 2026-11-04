@@ -1,0 +1,668 @@
+{
+  "assets": {
+    "source-5": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\weapons\\Pistols\\salvage-semi-automatic-pistol\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-5.glb",
+      "cleanup": "default"
+    },
+    "source-4": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\weapons\\Rifles\\wood-stock-assault-rifle-01\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-4.glb",
+      "cleanup": "default"
+    },
+    "source-3": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\weapons\\Rifles\\scoped-assault-rifle-02\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-3.glb",
+      "cleanup": "default"
+    },
+    "source-2": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\weapons\\Rifles\\optic-assault-rifle-03\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-2.glb",
+      "cleanup": "default"
+    },
+    "source-52": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-5-experimental-rifle-option-01\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-52.glb",
+      "cleanup": "default"
+    },
+    "source-7": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\weapons\\Bows\\short-bow-with-arrow\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-7.glb",
+      "cleanup": "bow"
+    },
+    "source-56": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-7-scrap-shotgun-option-01\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-56.glb",
+      "cleanup": "default"
+    },
+    "source-58": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-8-sturdy-stick-option-01\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-58.glb",
+      "cleanup": "default"
+    },
+    "source-11": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-10-wooden-club-option-02\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-11.glb",
+      "cleanup": "default"
+    },
+    "source-0": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\weapons\\Spears\\stone-tipped-spear\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-0.glb",
+      "cleanup": "default"
+    },
+    "source-12": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-13-baseball-bat-option-01\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-12.glb",
+      "cleanup": "default"
+    },
+    "source-15": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-14-claw-hammer-option-02\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-15.glb",
+      "cleanup": "default"
+    },
+    "source-16": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-15-iron-rod-option-01\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-16.glb",
+      "cleanup": "default"
+    },
+    "source-18": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-16-iron-spear-option-01\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-18.glb",
+      "cleanup": "default"
+    },
+    "source-27": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-20-machete-option-02\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-27.glb",
+      "cleanup": "default"
+    },
+    "source-8": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Items\\Tools\\Knives\\skinning-knife-bone-blade\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-8.glb",
+      "cleanup": "default"
+    },
+    "source-9": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\Items\\Tools\\Knives\\skinning-knife-steel-blade\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-9.glb",
+      "cleanup": "default"
+    },
+    "source-33": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-24-scrap-sword-option-02\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-33.glb",
+      "cleanup": "sword"
+    },
+    "source-40": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-28-9mm-salvage-revolver-option-01\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-40.glb",
+      "cleanup": "default"
+    },
+    "source-43": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-29-9mm-compact-smg-option-02\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-43.glb",
+      "cleanup": "default"
+    },
+    "source-1": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Styled Collection\\weapons\\Shotguns\\wood-stock-pump-shotgun\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-1.glb",
+      "cleanup": "default"
+    },
+    "source-50": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-34-salvaged-flamethrower-option-01\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-50.glb",
+      "cleanup": "default"
+    },
+    "source-85": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-weapon-mod-4-10-hardened-cutting-chain-option-02\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-85.glb",
+      "cleanup": "default"
+    },
+    "source-83": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\items\\catalog-weapon-mod-3-9-balanced-bow-limbs-option-02\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-83.glb",
+      "cleanup": "default"
+    },
+    "rock": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\AshenMeadow-Godot\\Ashen-Medows\\game\\Assets\\Hunyuan\\Static\\world-rock.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/rock.glb",
+      "cleanup": "default"
+    },
+    "hammer-shaft": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-14-claw-hammer-option-02\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/hammer-shaft.glb",
+      "cleanup": "shaft"
+    },
+    "source-45": {
+      "source": "C:\\Users\\bened\\Desktop\\Forrit i vinslu\\Leikur\\Ashen Meadows - 3D Batch\\Models\\Natural Colour Concepts\\weapons\\catalog-weapon-31-battle-rifle-option-02\\textured.glb",
+      "resource": "res://Assets/Hunyuan/Weapons/source-45.glb",
+      "cleanup": "default"
+    }
+  },
+  "weapons": {
+    "0": {
+      "asset": "source-5",
+      "length": 0.34,
+      "rotation": [
+        0,
+        -90,
+        8.4
+      ],
+      "anchor": [
+        0.25,
+        -0.25,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "1": {
+      "asset": "source-4",
+      "length": 1.02,
+      "rotation": [
+        0,
+        90,
+        -37
+      ],
+      "anchor": [
+        -0.12,
+        -0.1,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "2": {
+      "asset": "source-3",
+      "length": 1.03,
+      "rotation": [
+        0,
+        90,
+        -31
+      ],
+      "anchor": [
+        -0.12,
+        -0.1,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "3": {
+      "asset": "source-2",
+      "length": 0.86,
+      "rotation": [
+        0,
+        90,
+        -6
+      ],
+      "anchor": [
+        -0.1,
+        -0.12,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "4": {
+      "asset": "source-3",
+      "length": 1.15,
+      "rotation": [
+        0,
+        90,
+        -31
+      ],
+      "anchor": [
+        -0.12,
+        -0.1,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "5": {
+      "asset": "source-52",
+      "length": 0.94,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "anchor": [
+        -0.12,
+        -0.13,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "6": {
+      "asset": "source-7",
+      "length": 1.2,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "anchor": [
+        0.27,
+        0,
+        0
+      ],
+      "axis": 1,
+      "note": "Reviewed existing model reused with weapon-specific fitting and details"
+    },
+    "7": {
+      "asset": "source-56",
+      "length": 0.92,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "anchor": [
+        -0.16,
+        -0.08,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "8": {
+      "asset": "source-58",
+      "length": 0.86,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "anchor": [
+        -0.35,
+        0,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "10": {
+      "asset": "source-11",
+      "length": 1.02,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "anchor": [
+        -0.35,
+        0,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "11": {
+      "asset": "source-0",
+      "length": 1.9,
+      "rotation": [
+        -40,
+        0,
+        0
+      ],
+      "anchor": [
+        0,
+        -0.25,
+        0.3
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "12": {
+      "asset": "source-7",
+      "length": 1.08,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "anchor": [
+        0.27,
+        0,
+        0
+      ],
+      "axis": 1,
+      "note": "Reviewed matching generated asset"
+    },
+    "13": {
+      "asset": "source-12",
+      "length": 1.0,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "anchor": [
+        -0.36,
+        0,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "14": {
+      "asset": "source-15",
+      "length": 0.66,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "anchor": [
+        -0.32,
+        0,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "15": {
+      "asset": "source-16",
+      "length": 1.0,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "anchor": [
+        -0.34,
+        0,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "16": {
+      "asset": "source-18",
+      "length": 1.95,
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "anchor": [
+        0.33,
+        0,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "18": {
+      "asset": "source-7",
+      "length": 1.3,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "anchor": [
+        0.27,
+        0,
+        0
+      ],
+      "axis": 1,
+      "note": "Reviewed existing model reused with weapon-specific fitting and details"
+    },
+    "20": {
+      "asset": "source-27",
+      "length": 0.61,
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "anchor": [
+        0.28,
+        0,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "21": {
+      "asset": "hammer-shaft",
+      "length": 1.04,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "anchor": [
+        -0.34,
+        0,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed existing model reused with weapon-specific fitting and details"
+    },
+    "22": {
+      "asset": "source-8",
+      "length": 0.31,
+      "rotation": [
+        0,
+        90,
+        -45
+      ],
+      "anchor": [
+        -0.25,
+        -0.25,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "23": {
+      "asset": "source-9",
+      "length": 0.36,
+      "rotation": [
+        0,
+        90,
+        -45
+      ],
+      "anchor": [
+        -0.25,
+        -0.25,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "24": {
+      "asset": "source-33",
+      "length": 1.03,
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "anchor": [
+        0.4,
+        0,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "25": {
+      "asset": "source-33",
+      "length": 1.15,
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "anchor": [
+        0.4,
+        0,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed existing model reused with weapon-specific fitting and details"
+    },
+    "26": {
+      "asset": "source-33",
+      "length": 1.38,
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "anchor": [
+        0.4,
+        0,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed existing model reused with weapon-specific fitting and details"
+    },
+    "28": {
+      "asset": "source-40",
+      "length": 0.36,
+      "rotation": [
+        0,
+        90,
+        -9.4
+      ],
+      "anchor": [
+        -0.29,
+        -0.26,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "29": {
+      "asset": "source-43",
+      "length": 0.69,
+      "rotation": [
+        0,
+        -90,
+        3.7
+      ],
+      "anchor": [
+        0.04,
+        -0.12,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "30": {
+      "asset": "source-1",
+      "length": 1.03,
+      "rotation": [
+        0,
+        90,
+        -34
+      ],
+      "anchor": [
+        -0.15,
+        -0.12,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "31": {
+      "asset": "source-45",
+      "length": 1.08,
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "anchor": [
+        0.06,
+        -0.1,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "32": {
+      "asset": "source-7",
+      "length": 1.25,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "anchor": [
+        0.27,
+        0,
+        0
+      ],
+      "axis": 1,
+      "note": "Reviewed existing model reused with weapon-specific fitting and details"
+    },
+    "33": {
+      "asset": "hammer-shaft",
+      "length": 1.28,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "anchor": [
+        -0.34,
+        0,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed existing model reused with weapon-specific fitting and details"
+    },
+    "34": {
+      "asset": "source-50",
+      "length": 1.0,
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "anchor": [
+        0.08,
+        -0.11,
+        0
+      ],
+      "axis": 2,
+      "note": "Reviewed matching generated asset"
+    },
+    "17": {
+      "asset": "source-85",
+      "assembly": "chainsaw",
+      "note": "Generated cutting-chain mesh with authored motor and grips"
+    },
+    "27": {
+      "asset": "source-85",
+      "assembly": "chain-sword",
+      "note": "Generated cutting-chain mesh with authored motor and grips"
+    },
+    "19": {
+      "asset": "source-83",
+      "assembly": "crossbow",
+      "note": "Generated crossbow limbs with authored stock, rail and moving bolt"
+    },
+    "9": {
+      "asset": "rock",
+      "length": 0.14,
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "anchor": [
+        0,
+        -0.12,
+        0
+      ],
+      "axis": -1,
+      "note": "Existing generated rock fitted as a hand stone"
+    }
+  }
+}

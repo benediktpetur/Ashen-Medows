@@ -1,0 +1,137 @@
+{
+  "source-5": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "8383eb0fa380e64adbf0b6f93b08c38d20b32ef563c0865d3873d26194c2680f"
+  },
+  "source-4": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "36619d937e23880bba3cb5d2d8d80859967faebff22aeb237da4f43530eb6c53"
+  },
+  "source-3": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "9d8b7435a25671039880da51715bfa5965474cae2148cd8b805cb52288ff4154"
+  },
+  "source-2": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "4e78e5343e8b43bb7a08a14bf829bc919d8a489c2a5e8089b361fc912ea41040"
+  },
+  "source-52": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "b8951d0052dfbcde61e5996ec589effa8e6cc655d868b4b00047295f4a0daa15"
+  },
+  "source-7": {
+    "triangles_before": 40000,
+    "triangles_removed": 13770,
+    "sha256": "93e45aa1be5ccdada2196c4a6e849ee43fde5770cfda53c1197a9f6b183d7d67"
+  },
+  "source-56": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "34aea3fdbfdc54c114cc07a7eeca1700b981dd609695ffe4baed935414ba1660"
+  },
+  "source-58": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "48919c8e08eaf736fcf3d89387512711f4c9ff6d619ac716d69d055c21dcad9d"
+  },
+  "source-11": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "f59b304edc64098946d635d8c7327cf50dd1ba91b8d98fae46ac6c4d6a80e13c"
+  },
+  "source-0": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "4cecf7da99aedb9cc3b22f9e5b308939c12ced6a55522d28ac8c5ff6aa0d225a"
+  },
+  "source-12": {
+    "triangles_before": 39350,
+    "triangles_removed": 2,
+    "sha256": "57ec72e278cde7249e7b294ba97201275ce3fa54beb5c6100104bbf5a0014065"
+  },
+  "source-15": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "48a61409463e0aa319327963e181a87ff92d1ace0d0f81ec682807b98e60814c"
+  },
+  "source-16": {
+    "triangles_before": 40000,
+    "triangles_removed": 2,
+    "sha256": "019d9fe69a52545aa8d94af36094fc76c9ccc49e91a3739095bc6c068d20e593"
+  },
+  "source-18": {
+    "triangles_before": 27640,
+    "triangles_removed": 4,
+    "sha256": "70a9c7122ef534445875103eeb1346f74824f5949e0a59a2ef869d4f82326fe9"
+  },
+  "source-27": {
+    "triangles_before": 40000,
+    "triangles_removed": 1,
+    "sha256": "bfc0264a0cce49bb392e5b2412a1bcaf3b80ccf3c3a488a44de40e8fe8dd53dc"
+  },
+  "source-8": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "706d10ced18f66ee5be2381d6dcfa6f00646f7fbc1f3d212d7d73a55bd52ded7"
+  },
+  "source-9": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "ee02e79030beb85a6cc126b75d027fcd0654729667b084545eb688b6de5a4f63"
+  },
+  "source-33": {
+    "triangles_before": 37804,
+    "triangles_removed": 3,
+    "sha256": "89bf19cb77b295f2f9ca3c33a08c3ee2b8a9747465394654018a058a90a131d4"
+  },
+  "source-40": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "fe8d2188876a7bda0dd60884deee770136616f0fc3611de912467309c50b855e"
+  },
+  "source-43": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "ad8f87c7319070d0fb38b8e616312a6b5bf359a593aeab997c8c368748661ef3"
+  },
+  "source-1": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "7f6cbc228541a24bb96f96be1f5c8336b3ef6454abe4baf000666813e8889852"
+  },
+  "source-50": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "8d728540a691663be2296cda7bbdc32685aa1e9305a759e768f4048afae7386f"
+  },
+  "source-85": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "d8655eea38cf49f5ff4b19232ea1a56e5327bfb696677b067f5f7a379fd945ad"
+  },
+  "source-83": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "c20419ad97c348455bcdec0ba75181b0158aa406e6d107ff4ead234106f58b81"
+  },
+  "rock": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "a2627d603b98f9da7932c29e3aabd6a71efe6136bfd02b22d7d0341b76a7fed6"
+  },
+  "hammer-shaft": {
+    "triangles_before": 40000,
+    "triangles_removed": 23317,
+    "sha256": "5e229d89b61dffc5e208bff3e5d10e45ca85ace82d622ee5774c7e08444f7b31"
+  },
+  "source-45": {
+    "triangles_before": 40000,
+    "triangles_removed": 0,
+    "sha256": "85f0a3986f682bb4c6f37120a54f9b04eb59f8098f9a5d16591ae6b42c5b1be5"
+  }
+}

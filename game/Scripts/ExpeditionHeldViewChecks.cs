@@ -9,6 +9,7 @@ public partial class MigrationScene {
    axeEquipped=buildMode=aiming=false;
    for(int id=0;id<ExpeditionGame.GunNames.Length;id++){
     game.Craft.Weapon=id;RebuildHeldView();var profile=ProfileFor(id);
+    MigrationChecks.Assert(generatedHeldModel&&weaponRoot.FindChild("GeneratedHeldWeapon",true,false)!=null,"Generated mesh equipped / "+id);
     MigrationChecks.Assert(rightGrip!=null&&(leftGrip!=null)==profile.Support,"Weapon-specific grip / "+ExpeditionGame.GunNames[id]);
     MigrationChecks.Assert(weaponRoot.FindChildren("*","GeometryInstance3D",true,false).Count>0,"First-person geometry / "+id);
     if(ExpeditionGame.IsMelee(id)){
@@ -19,6 +20,7 @@ public partial class MigrationScene {
      for(float t=0;t<duration;t+=.005f){var a=AttackPose(profile,t,duration,contact);var b=AttackPose(profile,t+.005f,duration,contact);MigrationChecks.Assert(a.Position.IsFinite()&&a.Angles.IsFinite()&&a.Position.DistanceTo(b.Position)<.065f&&a.Angles.DistanceTo(b.Angles)<16,"Continuous attack pose / "+id);}
     }
    }
+   game.Craft.Weapon=12;RebuildHeldView();var liveArrow=bowArrow;var liveGrip=rightGrip;var display=new Node3D();AddChild(display);ItemModel(display,"weapon",19,ExpeditionGame.GunTier(19));MigrationChecks.Assert(display.FindChild("GeneratedWeaponDisplay",true,false)!=null&&bowArrow==liveArrow&&rightGrip==liveGrip&&game.Craft.Weapon==12,"Inventory uses generated assembly without altering equipped bow rig");display.QueueFree();
    game.Craft.Weapon=23;RebuildHeldView();shotClock=reloadClock=0;double stamina=game.Stamina;game.Stamina=0;heldAttackAt=-10;BeginMelee();MigrationChecks.Assert(heldAttackAt==-10,"Rejected melee does not animate");game.Stamina=stamina;
    RebuildHeldView();BuildHeldTool();StartHeldAttack();double active=heldAttackAt;var grip=rightGrip;BuildHeldTool();MigrationChecks.Assert(rightGrip==grip&&heldAttackAt==active,"Repeated co-op profile refresh preserves grip and animation");
    GD.Print("PASS / all 35 first-person weapons / grip layouts / continuous attacks / contact travel / recovery / rejected attacks");
@@ -28,8 +30,10 @@ public partial class MigrationScene {
   CloseMenu();ClearEnemies();game.NoDiskSave=true;game.World.Changes.Time=900;SetProcess(false);SetPhysicsProcess(false);heldPreview=true;
   Teleport(ExpeditionWorld.SpawnX,ExpeditionWorld.SpawnZ);player.Rotation=Vector3.Zero;camera.Position=new(0,StandingEye,0);camera.Rotation=Vector3.Zero;pitch=0;camera.Fov=75;
   hudRoot.Visible=false;axeEquipped=buildMode=aiming=false;player.Velocity=Vector3.Zero;
-  async Task Shot(string name){heldAimBlend=aiming?1:0;TickHeldView(0);await ArtShot(name);}
+  async Task Shot(string name){heldAimBlend=aiming?1:0;GunView(0,true);await ArtShot(name);}
+  var selection=OS.GetCmdlineUserArgs().FirstOrDefault(a=>a.StartsWith("--held-view-only="));
   for(int id=0;id<ExpeditionGame.GunNames.Length;id++){
+   if(selection!=null&&!selection.Substring(17).Split(',').Contains(id.ToString()))continue;
    game.Craft.Weapon=id;RebuildHeldView();heldClock=10;game.Handling.SinceShot=10;heldAttackAt=-10;reloadClock=0;aiming=false;camera.Fov=75;
    await Shot($"held-{id:00}-idle");
    if(ExpeditionGame.IsMelee(id)){
