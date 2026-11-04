@@ -45,6 +45,7 @@ public partial class MigrationScene {
    MigrationChecks.Assert(contact.Hp<500&&contact.Stagger>=.55&&game.Craft.Stock(4)==cells-1&&game.Craft.Fuel==fuel-1,"Electric chain contact consumes power, damages and staggers");
    game.Craft.GiveAmmo(4,-game.Craft.Stock(4));shotClock=0;fuel=game.Craft.Fuel;BeginMelee();MigrationChecks.Assert(game.Craft.Fuel==fuel&&primitiveStrikes.Count==0,"Unpowered chain sword cannot consume fuel or attack");
    for(int id=22;id<=27;id++){var rig=new Node3D();AddChild(rig);BladeModel(rig,id,false);MigrationChecks.Assert(rig.GetChildCount()>0&&ExpeditionRecipe.All.Any(r=>r.Kind=="weapon"&&r.Result==id),"Blade has recipe and geometry");rig.QueueFree();}
+   HeldViewChecks();
    GD.Print("PASS / typed ammo migration, distinct reloads/magazines/storage/crafting/save, breath/sway/stamina/recovery, repeatable recoil/bloom, flame costs/cooldown/wall occlusion, electric chain contact and six blade models");
   }finally{if(wall!=null){RemoveChild(wall);wall.QueueFree();}ClearEnemies();primitiveStrikes.Clear();game=original;viewGunApplied=oldView;camera.Transform=eye;Teleport(0,12);}
  }

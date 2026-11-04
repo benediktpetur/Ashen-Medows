@@ -5,7 +5,7 @@ using System.Linq;
 public partial class MigrationScene {
  bool viewGunApplied;InkCrosshair weaponCrosshair;Label handlingLabel,ammoTypeLabel;
  readonly System.Collections.Generic.List<(Node3D Node,double Until)> bulletMarks=new();
- bool Scoped=>aiming&&!axeEquipped&&(game.Craft.Weapon is 4 or 5||game.PartsFor(game.Craft.Weapon).Any(p=>p.Slot=="Optic"));
+ bool Scoped=>aiming&&!axeEquipped&&!buildMode&&ExpeditionGame.IsGun(game.Craft.Weapon)&&(game.Craft.Weapon is 4 or 5||game.PartsFor(game.Craft.Weapon).Any(p=>p.Slot=="Optic"));
  bool GunActorGrounded(CharacterBody3D body){var query=PhysicsRayQueryParameters3D.Create(body.Position+Vector3.Up*.08f,body.Position-Vector3.Up*.25f);query.Exclude=new(){body.GetRid()};return GetWorld3D().DirectSpaceState.IntersectRay(query).Count>0;}
  void TickGunplay(double dt,bool moving,bool sprint){
   double speed=new Vector2(player.Velocity.X,player.Velocity.Z).Length();
@@ -24,9 +24,9 @@ public partial class MigrationScene {
   if((testing||coopCheck)&&!force||paused||coopExecuting)return;
   var h=game.Handling;bool gun=ExpeditionGame.IsGun(game.Craft.Weapon)&&!axeEquipped&&!buildMode;
   viewGunApplied=gun;
-  if(gun){var offset=h.AimOffset();double brake=game.PartFactor(game.Craft.Weapon,p=>p.Recoil);offset.X-=h.RecoilX*(1-brake);offset.Y-=h.RecoilY*(1-brake);camera.Rotation=new(pitch+(float)(offset.Y*Math.PI/180),(float)(-offset.X*Math.PI/180),0);float kick=(float)Math.Max(0,1-h.SinceShot/.16);weaponRoot.RotationDegrees=new(kick*6,0,kick*2);}
+  if(gun){var offset=h.AimOffset();double brake=game.PartFactor(game.Craft.Weapon,p=>p.Recoil);offset.X-=h.RecoilX*(1-brake);offset.Y-=h.RecoilY*(1-brake);camera.Rotation=new(pitch+(float)(offset.Y*Math.PI/180),(float)(-offset.X*Math.PI/180),0);}
   else camera.Rotation=new(pitch,0,0);
-  float blend=(float)(1-Math.Exp(-dt*14));camera.Fov=Mathf.Lerp(camera.Fov,Scoped?32:aiming?52:75,blend);weaponRoot.Position=weaponRoot.Position.Lerp(aiming?new Vector3(0,-.15f,-.65f):new Vector3(.23f,-.23f,-.65f),blend);
+  float blend=(float)(1-Math.Exp(-dt*14));camera.Fov=Mathf.Lerp(camera.Fov,Scoped?32:aiming&&!axeEquipped&&!buildMode&&!ExpeditionGame.IsMelee(game.Craft.Weapon)?52:viewFov,blend);TickHeldView(dt);
   if(weaponCrosshair!=null){weaponCrosshair.Scoped=Scoped;weaponCrosshair.Spread=gun?(float)Math.Min(55,h.Spread(game)*6):0;weaponCrosshair.QueueRedraw();}
   if(handlingLabel==null){handlingLabel=HudLabel(13);ammoTypeLabel=HudLabel(11);}
   var size=GetViewport().GetVisibleRect().Size;

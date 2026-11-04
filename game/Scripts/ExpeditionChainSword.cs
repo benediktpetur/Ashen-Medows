@@ -63,7 +63,7 @@ public partial class MigrationScene {
  [Rpc(MultiplayerApi.RpcMode.Authority,TransferMode=MultiplayerPeer.TransferModeEnum.Reliable)]void CoopElectricFx(Vector3 point){if(CoopClient)ElectricFx(point);}
  void DrawChainEffects(double dt){
   if(paused&&!CoopActive)return;chainFlameVisual=Math.Max(0,chainFlameVisual-dt);
-  if(chainFlameVisual>0&&game.Craft.Weapon==27)weaponRoot.RotationDegrees=new(0,180,12);
+
   foreach(var fx in chainFx.ToArray()){
    fx.Time-=dt;if(fx.Time<=0){fx.Node.QueueFree();chainFx.Remove(fx);continue;}
    if(!fx.Flame)continue;
@@ -77,15 +77,21 @@ public partial class MigrationScene {
  void ClearChainCombat(){foreach(var mark in bulletMarks)mark.Node.QueueFree();bulletMarks.Clear();flameBursts.Clear();burns.Clear();foreach(var fx in chainFx)fx.Node.QueueFree();chainFx.Clear();chainFlameVisual=0;}
  void BladeModel(Node3D root,int id,bool hands){
   bool knife=id is 22 or 23;var metal=id==22?new Color(.4f,.42f,.37f):Steel;
-  Tube(root,new(0,-.05f,.15f),new(0,0,-.12f),.035f,Cloth);Bevel(root,new(0,0,-.13f),new(knife?.15f:.3f,.04f,.05f),metal);
+  Tube(root,new(0,-.05f,.15f),new(0,0,-.12f),knife?.018f:id==27?.028f:.022f,Cloth);Bevel(root,new(0,0,-.13f),new(knife?.09f:.25f,.03f,.04f),metal);
   if(id==27){
    Bevel(root,new(0,.02f,-.19f),new(.21f,.24f,.31f),new(.22f,.3f,.31f));Bevel(root,new(0,.02f,-.77f),new(.05f,.15f,.9f),Steel);
    for(int i=0;i<19;i++)Box(root,new(0,(i%2==0?1:-1)*.10f,-.35f-i*.043f),new(.07f,.05f,.035f),Ink);
    for(int i=0;i<5;i++)Box(root,new(.033f,.04f,-.42f-i*.15f),new(.015f,.05f,.07f),new(.2f,.7f,.9f));
    Tube(root,new(0,.06f,-.03f),new(0,.06f,.23f),.065f,Steel,.08f);Tube(root,new(0,.06f,.22f),new(0,.06f,.25f),.055f,Ink);
   }else{
-   float length=knife?.38f:id==26?1.13f:.9f;
-   FigureMesh(root,"blade/"+id,b=>{b.Panel(metal,new(-.04f,0,-.16f),new(.04f,0,-.16f),new(.035f,0,-length),new(0,0,-length-.16f),new(-.035f,0,-length));b.Panel(metal*.7f,new(-.04f,.025f,-.16f),new(.04f,.025f,-.16f),new(.035f,.025f,-length),new(0,.01f,-length-.16f),new(-.035f,.025f,-length));});
+   float length=id==22?.19f:id==23?.27f:id==26?1.13f:.9f;
+   FigureMesh(root,"blade-v2/"+id,b=>{
+    float width=id==22?.045f:knife?.032f:id==26?.048f:.041f;
+    var points=new[]{new Vector3(-width,0,-.16f),new Vector3(width,0,-.16f),new Vector3(width*.72f,0,-length),new Vector3(0,0,-length-(knife?.10f:.16f)),new Vector3(-width*.72f,0,-length)};
+    var top=new Vector3(0,.014f,(-.16f-length)*.5f);var bottom=top with {Y=-.014f};
+    void Face(Vector3 x,Vector3 y,Vector3 z,Color color,Vector3 normal){if((z-x).Cross(y-x).Dot(normal)<0)b.Triangle(x,z,y,color);else b.Triangle(x,y,z,color);}
+    for(int i=0;i<points.Length;i++){var x=points[i];var y=points[(i+1)%points.Length];Face(top,x,y,metal,Vector3.Up);Face(bottom,y,x,metal*.72f,Vector3.Down);}
+   });
    if(id>=25)for(int i=0;i<3;i++)Box(root,new(0,.028f,-.27f-i*.13f),new(.015f,.005f,.04f),id==26?new(.66f,.57f,.30f):Ink);
   }
   if(hands)RebuiltFirstPersonArms(root,false);

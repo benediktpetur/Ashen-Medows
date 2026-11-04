@@ -107,3 +107,11 @@ Weapon workshop: `--workshop-check` validates acyclic and reachable predecessors
 
 
 Expedition loop: standard builds run --journey-check for seeded weather, physical cover/exposure, hearing/sight, last-position searches, resource-cost stone projectiles, destination/return records, timed themed lockers, loud alerts, camp resource costs/art/condition repair and persistence. Gameplay integration and two-process co-op passed; Windows exported --journey-check passes and exits cleanly. Exported --journey-preview captures five current-build views under Ingame Screenshots/Expedition Loop with PCK hash metadata.
+
+2026-11-04 first-person weapon pass: all 35 weapons now have explicit framing and grip profiles, camera-anchored sleeves and mirrored closed glove meshes. Knives/spears thrust; clubs, swords and hammers have distinct windup/contact/follow-through/recovery poses aligned with existing hit timing; powered saws stay braced. Gun recoil, smooth aiming, reload support-hand motion, bowstring/nocked-arrow release and a horizontal crossbow model are covered. Blade meshes are closed and properly shaded; handheld stones, grips and knife blades use smaller proportions. Co-op profile refreshes reuse an unchanged rig rather than restarting its animation.
+
+Options now persist field of view (65–100 degrees), extra weapon distance (0–20 cm), weapon sway (0–100%) and hand/sleeve visibility in interface.cfg. Existing interface and audio settings remain available.
+
+Validation: Debug build has zero warnings/errors; --gunplay-check covers all 35 grip layouts, continuous attack poses, contact travel, recovery, rejected attacks and rig reuse during profile refreshes. Full --integration-check and scripts/test-coop.ps1 passed. --held-view-preview captures every weapon at idle plus melee windup/contact/follow-through or aiming/release/recoil/reload, and harvesting/construction tools; --info-preview captures the view settings UI.
+
+The Windows Desktop build was exported to build/game/AshenMeadow.exe. The exported executable also passed --gunplay-check, including the complete first-person weapon checks.
