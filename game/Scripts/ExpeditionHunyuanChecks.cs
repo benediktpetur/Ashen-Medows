@@ -10,7 +10,7 @@ public partial class MigrationScene {
   hudRoot.Visible=weaponRoot.Visible=terrainRoot.Visible=worldRoot.Visible=buildRoot.Visible=false;if(distantTerrain!=null)distantTerrain.Visible=false;
   var stage=new Node3D();AddChild(stage);Box(stage,new(0,-.1f,0),new(40,.2f,40),new(.25f,.27f,.23f));
   stage.AddChild(new DirectionalLight3D{RotationDegrees=new(-30,140,0),LightEnergy=.8f});
-  string[] keys=new[]{"survivor-player-survivor"}.Concat(HunyuanZombies).Concat(HunyuanSpecial.Values).Distinct().ToArray();
+  string[] keys=new[]{HunyuanSurvivorKey}.Concat(HunyuanZombies).Concat(HunyuanSpecial.Values).Distinct().ToArray();
   int checkedModels=0;
   for(int group=0;group<keys.Length;group+=4){
    var row=new Node3D();stage.AddChild(row);
