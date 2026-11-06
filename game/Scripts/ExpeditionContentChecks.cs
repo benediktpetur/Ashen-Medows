@@ -7,6 +7,28 @@ public partial class MigrationScene {
   MigrationChecks.Assert(ExpeditionContentSite.All.Length==28&&ExpeditionContentSite.All.Count(s=>s.Town>=0)==12,"Authored content and field job catalogue complete");foreach(int seed in new[]{1,17,99,431,432,2026}){var w=new ExpeditionWorld(seed);var copy=new ExpeditionWorld(seed);for(int i=0;i<28;i++){var p=ExpeditionContentSite.Place(w,i);var q=ExpeditionContentSite.Place(copy,i);MigrationChecks.Assert(p==q&&w.Playable(p.X,p.Z)&&w.Tier(p.X,p.Z)==ExpeditionContentSite.All[i].Tier,"Content placement is seeded, playable and tier-appropriate / "+seed+" / "+i);MigrationChecks.Assert(!ExpeditionEncounter.InLot(w,p.X,p.Z,18)&&!ExpeditionCampaign.InLot(w,p.X,p.Z,18),"New locations preserve old story and boss lots");MigrationChecks.Assert(ExpeditionGame.Distance(p.X,p.Z,w.RouteX(-780)+90,-780)>=65,"New locations preserve the Foreman lumber mill");for(int j=0;j<i;j++){var other=ExpeditionContentSite.Place(w,j);MigrationChecks.Assert(ExpeditionGame.Distance(p.X,p.Z,other.X,other.Z)>=52,"Landmarks do not overlap");}}}
   contentFixture=livingFixture=true;game=new ExpeditionGame(ProjectSettings.GlobalizePath("user://tests/content-"+Guid.NewGuid()+".json")){NoDiskSave=true};game.Normalize();ClearEnemies();game.Craft.Materials=Enumerable.Repeat(100,7).ToArray();game.Craft.Fuel=10;game.Life.Bandages=20;game.Life.Food=30;game.Craft.Water=30;game.Craft.UnlockedTier=5;game.Career.Level=10;
   void Visit(int i){var p=ExpeditionContentSite.Place(game.World,i);Teleport(p.X,p.Z+6);SpawnContentAtlas();player.Position=props.First(p=>p.Kind==36&&p.Material==i).Position+Vector3.Up*.05f;}
+  var remakes=new Node3D{Position=new Vector3(0,400,0)};
+  AddChild(remakes);
+  try{
+   foreach(var (site,parts) in new[]{
+    ("The Orchard Tool Shed",new[]{"foundation-timber","feature-greenhouse-frame"}),
+    ("South Meadow Post Office",new[]{"shopfront-frame"}),
+    ("Harbour Quarantine Works",new[]{"feature-quarantine-fence"}),
+    ("Ashfall Freight Terminal",new[]{"floor-grating"})
+   }){
+    ClearChildren(remakes);
+    int index=Array.FindIndex(ExpeditionContentSite.All,entry=>entry.Name==site);
+    MigrationChecks.Assert(index>=0,"Remade asset landmark exists / "+site);
+    DressContentSite(remakes,index);
+    foreach(string part in parts)MigrationChecks.Assert(remakes.FindChild(part,true,false)!=null,"Remade world art appears at "+site+" / "+part);
+   }
+   ClearChildren(remakes);
+   ModularHouseWall(remakes,"asset-check","rear-2",Vector3.Zero,0,3,"Timber",HouseWallOpening.Window,false,protectedWall:true);
+   ModularHouseWall(remakes,"asset-check","steel",new(4,0,0),0,3,"Industrial",HouseWallOpening.Window,false,protectedWall:true);
+   foreach(string insert in new[]{"window-broken-pane","window-steel-frame"})
+    MigrationChecks.Assert(remakes.FindChild(insert,true,false)!=null,"Remade window insert appears in a world opening / "+insert);
+  }finally{remakes.QueueFree();}
+  GD.Print("PASS / remade world landmark parts and window inserts");
   Visit(0);ContentAction("open:0");CloseMenu();int food=game.Life.Food,weapons=game.Craft.Weapons.Count;ContentAction("strip:0");ContentAction("strip:0");MigrationChecks.Assert(Field(0).Read&&Field(0).Stripped&&game.Life.Food==food+1&&game.Craft.Weapons.Count==weapons,"Meadow cache gives real loot once and no early guns");
   var t=Town(0);Teleport(t.X,t.Z);SpawnLivingWorld();ContentAction("job:6:accept");MigrationChecks.Assert(Field(6).Accepted&&Field(6).Seen,"Named settlement request pins real destination");Visit(6);ContentAction("recover:6");MigrationChecks.Assert(!Field(6).Recovered,"Cache cannot bypass real guardians");foreach(var e in infected.Where(e=>e.Id.StartsWith("field-site/6/")).ToArray())KillEnemy(e);ContentAction("recover:6");MigrationChecks.Assert(Field(6).Recovered&&!Field(6).Stripped,"Cleared sealed case can be reserved");Teleport(t.X,t.Z);int stores=t.Food,pay=game.Craft.Materials[4];ContentAction("job:6:return");ContentAction("job:6:return");MigrationChecks.Assert(Field(6).Delivered&&t.Food==stores+4&&game.Craft.Materials[4]==pay+3,"Field delivery spends case once, restocks community and pays acting character");
   Visit(8);int fuel=game.Craft.Fuel;ContentAction("power:8");ContentAction("power:8");MigrationChecks.Assert(game.Craft.Fuel==fuel-2&&Field(8).PowerLeft==60,"Noisy generator starts once with real fuel");TickContentAtlas(30);MigrationChecks.Assert(!Field(8).Repaired&&Field(8).PowerLeft==30,"Generator requires active time in area");TickContentAtlas(30);MigrationChecks.Assert(Field(8).Repaired,"Cold cabinet opens after full generator run");

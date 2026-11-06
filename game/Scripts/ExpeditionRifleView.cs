@@ -8,13 +8,13 @@ public partial class MigrationScene {
  const float RifleDrawDuration=.42f;
  static readonly Vector3 RifleMagazineSeat=new(0,-.108f,.004f);
  static readonly Vector3 RifleMagazineGrip=new(-.036f,-.079f,.004f);
- RifleArm rightRifleArm,leftRifleArm;
+ HeldArm rightHeldArm,leftHeldArm;
  Node3D rifleMagazine;
  ArrayMesh trailReceiverMesh,trailMagazineMesh;
  double rifleDrawAt;
  int rifleDrawShotSerial;
 
- sealed class RifleArm {
+ sealed class HeldArm {
   public Skeleton3D Sleeve,Hand;
   public Vector3 Shoulder;
   public bool Generated;
@@ -49,8 +49,6 @@ public partial class MigrationScene {
   rightGrip.RotationDegrees=new(0,0,-10);
   leftGrip.Position=leftGripRest=new(-.039f,-.092f,-.255f);
   leftGrip.RotationDegrees=new(-67,0,0);
-  rightRifleArm=BuildRifleArm(rightGrip,false);
-  leftRifleArm=BuildRifleArm(leftGrip,true);
   rifleDrawAt=heldClock;
   rifleDrawShotSerial=game.Handling.Serial;
  }
@@ -107,8 +105,7 @@ public partial class MigrationScene {
   return result;
  }
 
- RifleArm BuildRifleArm(Node3D grip,bool left){
-  if(BuildGeneratedRifleArm(grip,left) is {} generated)return generated;
+ HeldArm BuildRifleArm(Node3D grip,bool left){
   var hand=grip.GetNode<MeshInstance3D>("AnatomicalHand");
   var handRig=new Skeleton3D{Name="RifleHandRig"};
   grip.AddChild(handRig);
@@ -145,12 +142,12 @@ public partial class MigrationScene {
   sleeve.Reparent(sleeveRig,false);
   sleeve.Mesh=sleeveMesh;sleeve.Skin=sleeveSkin;sleeve.Skeleton=new NodePath("..");
   sleeve.CustomAabb=new Aabb(new Vector3(-2,-2,-3),new Vector3(4,4,5));
-  return new RifleArm{Sleeve=sleeveRig,Hand=handRig,Shoulder=new Vector3(.32f*mirror,-.49f,.10f)};
+  return new HeldArm{Sleeve=sleeveRig,Hand=handRig,Shoulder=new Vector3(.32f*mirror,-.49f,.10f)};
  }
 
  static readonly float[] RifleFingerRows={.032f,.011f,-.010f,-.029f};
- void PoseRifleArm(RifleArm arm,Node3D grip,bool left,float open,float trigger){
-  if(arm.Generated){PoseGeneratedRifleArm(arm,grip,left,open,trigger);return;}
+ void PoseRifleArm(HeldArm arm,Node3D grip,bool left,float open,float trigger){
+  if(arm.Generated){PoseGeneratedHeldArm(arm,grip,left,open,trigger);return;}
   var wrist=camera.ToLocal(grip.ToGlobal(HeldWrist(left)));
   var shoulder=arm.Shoulder;
   // Bias the elbow outward and down while keeping the cuff on the animated wrist.
@@ -207,7 +204,7 @@ public partial class MigrationScene {
   }
   rifleMagazine.Position=magazine.Position;rifleMagazine.RotationDegrees=magazine.Angles;
   leftGrip.Position=hand.Position;leftGrip.RotationDegrees=hand.Angles;
-  PoseRifleArm(rightRifleArm,rightGrip,false,0,trigger);
-  PoseRifleArm(leftRifleArm,leftGrip,true,open,0);
+  PoseRifleArm(rightHeldArm,rightGrip,false,0,trigger);
+  PoseRifleArm(leftHeldArm,leftGrip,true,open,0);
  }
 }

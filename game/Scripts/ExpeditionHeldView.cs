@@ -21,17 +21,17 @@ public partial class MigrationScene {
   var right=new Vector3(.035f,-.105f,.025f);var support=new Vector3(-.045f,-.06f,-.39f);
   HeldProfile P(HeldMotion motion,Vector3 pos,Vector3 angles,Vector3 r,Vector3 l,bool two,float kick=1)=>new(motion,pos,angles,r,l,two,kick);
   var result=id switch {
-   0=>P(HeldMotion.Pistol,new(.20f,-.20f,-.46f),new(0,-3,0),right,new(-.04f,-.12f,.04f),true,.8f),
+   0=>P(HeldMotion.Pistol,new(.20f,-.20f,-.46f),new(0,-3,0),right,new(-.025f,-.135f,.04f),true,.8f),
    TrailRifle=>P(HeldMotion.Rifle,new(.22f,-.205f,-.52f),new(0,-3,0),right,support,true,1.2f),
    2=>P(HeldMotion.Rifle,new(.21f,-.23f,-.47f),new(0,-3,0),right,support,true,1.25f),
    3=>P(HeldMotion.Rifle,new(.22f,-.23f,-.44f),new(0,-3,0),right,support,true,.65f),
    4=>P(HeldMotion.Rifle,new(.22f,-.24f,-.47f),new(0,-3,0),right,new(-.045f,-.06f,-.43f),true,1.4f),
    5=>P(HeldMotion.Rifle,new(.21f,-.24f,-.47f),new(0,-3,0),right,support,true,1),
-   7=>P(HeldMotion.Shotgun,new(.23f,-.24f,-.44f),new(0,-3,0),new(.04f,-.09f,-.07f),new(-.06f,-.07f,-.43f),true,1.8f),
-   28=>P(HeldMotion.Pistol,new(.20f,-.21f,-.45f),new(0,-3,0),right,new(-.04f,-.12f,.04f),true,1.25f),
+   7=>P(HeldMotion.Shotgun,new(.23f,-.24f,-.44f),new(0,-3,0),new(.04f,-.09f,-.07f),new(-.021f,-.010f,-.35f),true,1.8f),
+   28=>P(HeldMotion.Pistol,new(.20f,-.21f,-.45f),new(0,-3,0),right,new(-.026f,-.132f,.05f),true,1.25f),
    29=>P(HeldMotion.Rifle,new(.21f,-.22f,-.44f),new(0,-3,0),right,new(-.045f,-.06f,-.28f),true,.5f),
-   30=>P(HeldMotion.Shotgun,new(.23f,-.24f,-.46f),new(0,-3,0),new(.04f,-.09f,-.07f),new(-.06f,-.09f,-.49f),true,1.65f),
-   31=>P(HeldMotion.Rifle,new(.23f,-.24f,-.48f),new(0,-3,0),right,new(-.05f,-.07f,-.47f),true,1.15f),
+   30=>P(HeldMotion.Shotgun,new(.23f,-.24f,-.46f),new(0,-3,0),new(.04f,-.09f,-.07f),new(-.037f,-.103f,-.43f),true,1.65f),
+   31=>P(HeldMotion.Rifle,new(.23f,-.24f,-.48f),new(0,-3,0),right,new(-.024f,.029f,-.42f),true,1.15f),
    34=>P(HeldMotion.Flame,new(.25f,-.25f,-.48f),new(0,-4,0),new(.04f,-.13f,.01f),new(-.08f,-.08f,-.34f),true,.18f),
    6 or 12 or 18 or 32=>P(HeldMotion.Bow,new(-.23f,-.16f,-.49f),new(0,4,-7),new(.13f,-.025f,.13f),new(-.035f,-.04f,-.35f),true,.25f),
    19=>P(HeldMotion.Crossbow,new(.23f,-.22f,-.45f),new(0,-3,0),new(.04f,-.12f,.04f),new(-.04f,-.09f,-.37f),true,.45f),
@@ -62,20 +62,30 @@ public partial class MigrationScene {
   heldProfile=ProfileFor(game.Craft.Weapon);
   if(buildMode)heldProfile=new(HeldMotion.Hammer,new(.27f,-.27f,-.43f),new(35,-12,-8),new(.035f,-.16f,-.06f),Vector3.Zero,false,1);
   else if(axeEquipped)heldProfile=new(HeldMotion.Hammer,new(.28f,-.29f,-.46f),new(45,-12,-10),new(.04f,-.15f,-.07f),new(-.04f,-.05f,-.35f),true,1);
-  rifleMagazine=null;rightRifleArm=leftRifleArm=null;
+  if(axeEquipped&&!buildMode&&game.Craft.HarvestTool==0)
+   heldProfile=heldProfile with {RightGrip=new(.032f,-.135f,-.118f),LeftGrip=new(-.030f,-.017f,-.36f)};
+  rifleMagazine=null;rightHeldArm=leftHeldArm=null;
   ClearChildren(weaponRoot);weaponRoot.Scale=Vector3.One;generatedHeldModel=false;
   if(viewArms!=null){camera.RemoveChild(viewArms);viewArms.QueueFree();}
   viewArms=new Node3D{Name="FirstPersonSleeves"};camera.AddChild(viewArms);
   if(buildMode){Tube(weaponRoot,new(0,-.3f,.05f),new(0,.15f,-.35f),.035f,Wood);Bevel(weaponRoot,new(0,.15f,-.35f),new(.32f,.13f,.13f),Steel);Box(weaponRoot,new(-.18f,.15f,-.35f),new(.05f,.16f,.16f),Steel);}
-  else if(axeEquipped)FieldHarvestToolArt(weaponRoot,game.Craft.HarvestTool,game.Craft.ToolLevels[game.Craft.HarvestTool]);
+  else if(axeEquipped){
+   int family=game.Craft.HarvestTool;
+   var mount=weaponRoot;
+   if(family==0){
+    mount=new Node3D{Name="ChoppingAxeMount",Position=new(0,-.22f,.07f),RotationDegrees=new(-65,0,0)};
+    weaponRoot.AddChild(mount);
+   }
+   FieldHarvestToolArt(mount,family,game.Craft.ToolLevels[family]);
+  }
   else if(TryGeneratedHeldWeapon()){FittedWeaponArt(weaponRoot,game.Craft.Weapon);}
   else if(heldProfile.Motion==HeldMotion.Bow)FirstPersonBow();
   else if(heldProfile.Motion==HeldMotion.Crossbow)FirstPersonCrossbow();
   else {ItemWeapon(weaponRoot,game.Craft.Weapon,false);FittedWeaponArt(weaponRoot,game.Craft.Weapon);}
   rightGrip=BuildGrip("Right",heldProfile.RightGrip,false);leftGrip=heldProfile.Support?BuildGrip("Left",heldProfile.LeftGrip,true):null;leftGripRest=heldProfile.LeftGrip;
   if(!axeEquipped&&!buildMode&&game.Craft.Weapon==TrailRifle&&generatedHeldModel)BuildRifleView();
-  rightSleeve=rifleMagazine==null?FieldJacketSleeve():null;
-  leftSleeve=rifleMagazine==null&&leftGrip!=null?FieldJacketSleeve():null;
+  rightHeldArm=BuildHeldArm(rightGrip,false,out rightSleeve);
+  leftHeldArm=BuildHeldArm(leftGrip,true,out leftSleeve);
   foreach(var node in weaponRoot.FindChildren("*","GeometryInstance3D",true,false))if(node is GeometryInstance3D geometry){geometry.CastShadow=GeometryInstance3D.ShadowCastingSetting.Off;if(geometry.MaterialOverride is ShaderMaterial original){var material=(ShaderMaterial)original.Duplicate();var outline=new ShaderMaterial{Shader=GD.Load<Shader>("res://Shaders/character-outline.gdshader")};outline.SetShaderParameter("ink_width",.00065f);material.NextPass=outline;geometry.MaterialOverride=material;}}
 
   heldAttackAt=-10;heldAttackWeapon=-1;heldBowShotAt=-10;heldReloadDuration=0;viewSway=Vector3.Zero;heldAimBlend=0;
@@ -89,19 +99,37 @@ public partial class MigrationScene {
   if(left&&heldProfile.Motion==HeldMotion.Saw&&game.Craft.Weapon==17)grip.RotationDegrees=new(0,0,90);
   if(heldProfile.Motion==HeldMotion.Bow)grip.RotationDegrees=left?Vector3.Zero:new(0,-15,10);
   if(heldProfile.Motion==HeldMotion.Pistol)grip.RotationDegrees=new(0,0,left?24:-24);
-  NaturalHeldHand(grip,left,heldProfile.Motion);return grip;
+  return grip;
+ }
+
+ HeldArm BuildHeldArm(Node3D grip,bool left,out MeshInstance3D sleeve){
+  sleeve=null;
+  if(grip==null)return null;
+  var generated=BuildGeneratedHeldArm(grip,left);
+  if(generated!=null)return generated;
+  NaturalHeldHand(grip,left,heldProfile.Motion);
+  if(rifleMagazine!=null)return BuildRifleArm(grip,left);
+  sleeve=FieldJacketSleeve();
+  return null;
  }
 
  static void ConnectSegment(MeshInstance3D mesh,Vector3 start,Vector3 end){var delta=end-start;float length=delta.Length();mesh.Position=(start+end)*.5f;mesh.Quaternion=new Quaternion(Vector3.Up,delta.Normalized());mesh.Scale=new(1,Math.Max(.001f,length),1);}
  void UpdateHeldSleeves(){
   if(viewArms==null||rightGrip==null)return;
-  void PoseSleeve(Node3D grip,MeshInstance3D sleeve,int side){
+  float release=(float)(heldClock-heldBowShotAt);
+  float trigger=ExpeditionGame.IsGun(game.Craft.Weapon)&&!axeEquipped&&!buildMode?1-Ease((float)(game.Handling.SinceShot/.095)):0;
+  void PoseArm(Node3D grip,HeldArm arm,MeshInstance3D sleeve,int side){
+   if(arm!=null){
+    float open=heldProfile.Motion==HeldMotion.Bow&&side>0&&release>=0?1-Ease(release/.25f):0;
+    PoseGeneratedHeldArm(arm,grip,side<0,open,trigger);
+    return;
+   }
    var wrist=camera.ToLocal(grip.ToGlobal(HeldWrist(side<0)));
    var reach=new Vector3(side*.16f,-.29f,.27f).Normalized();
    ConnectSegment(sleeve,wrist+reach*.43f,wrist-reach*.026f);
   }
   if(rifleMagazine==null){
-   PoseSleeve(rightGrip,rightSleeve,1);if(leftGrip!=null)PoseSleeve(leftGrip,leftSleeve,-1);
+   PoseArm(rightGrip,rightHeldArm,rightSleeve,1);if(leftGrip!=null)PoseArm(leftGrip,leftHeldArm,leftSleeve,-1);
   }
   viewArms.Visible=weaponRoot.Visible&&!Scoped&&showFirstPersonHands;rightGrip.Visible=showFirstPersonHands;if(leftGrip!=null)leftGrip.Visible=showFirstPersonHands;
  }

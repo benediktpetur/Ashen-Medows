@@ -11,6 +11,8 @@ public partial class MigrationScene {
     game.Craft.Weapon=id;RebuildHeldView();var profile=ProfileFor(id);
     MigrationChecks.Assert(generatedHeldModel&&weaponRoot.FindChild("GeneratedHeldWeapon",true,false)!=null,"Generated mesh equipped / "+id);
     MigrationChecks.Assert(rightGrip!=null&&(leftGrip!=null)==profile.Support,"Weapon-specific grip / "+ExpeditionGame.GunNames[id]);
+    if(handStyle==1)MigrationChecks.Assert(rightHeldArm?.Generated==true&&(!profile.Support||leftHeldArm?.Generated==true),
+     "Generated first-person arms for "+ExpeditionGame.GunNames[id]);
     MigrationChecks.Assert(weaponRoot.FindChildren("*","GeometryInstance3D",true,false).Count>0,"First-person geometry / "+id);
     if(ExpeditionGame.IsMelee(id)){
      float duration=(float)ExpeditionGame.WeaponDelay(id),contact=id==17?.06f:.19f;
@@ -21,11 +23,13 @@ public partial class MigrationScene {
     }
    }
    game.Craft.Weapon=TrailRifle;RebuildHeldView();
-   MigrationChecks.Assert(rifleMagazine!=null&&rightRifleArm.Hand.GetBoneCount()==(rightRifleArm.Generated?12:6)&&rightRifleArm.Generated==leftRifleArm.Generated,"Trail Rifle uses skinned hands and sleeves");
-   int triggerBone=rightRifleArm.Generated?2:1;
-   var triggerRest=rightRifleArm.Hand.GetBonePoseRotation(triggerBone);
+   if(handStyle==1)MigrationChecks.Assert(rightHeldArm?.Generated==true&&leftHeldArm?.Generated==true,
+    "The default Trail Rifle uses both generated arms");
+   MigrationChecks.Assert(rifleMagazine!=null&&rightHeldArm.Hand.GetBoneCount()==(rightHeldArm.Generated?12:6)&&rightHeldArm.Generated==leftHeldArm.Generated,"Trail Rifle uses skinned hands and sleeves");
+   int triggerBone=rightHeldArm.Generated?2:1;
+   var triggerRest=rightHeldArm.Hand.GetBonePoseRotation(triggerBone);
    PoseRifleHands(-1,1);
-   MigrationChecks.Assert(!triggerRest.IsEqualApprox(rightRifleArm.Hand.GetBonePoseRotation(triggerBone)),"Trigger finger moves on fire");
+   MigrationChecks.Assert(!triggerRest.IsEqualApprox(rightHeldArm.Hand.GetBonePoseRotation(triggerBone)),"Trigger finger moves on fire");
    var firingGrip=rightGrip.Transform;
    PoseRifleHands(.31f,0);
    MigrationChecks.Assert(rifleMagazine.Position.Y<RifleMagazineSeat.Y-.10f&&rightGrip.Transform.IsEqualApprox(firingGrip)&&

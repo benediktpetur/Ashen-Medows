@@ -3,9 +3,9 @@ using System;
 using System.Linq;
 
 public partial class MigrationScene {
- const string GeneratedRifleArmPath="res://Assets/Hunyuan/Actors/generated-fps-arm.glb";
- readonly ArrayMesh[] generatedRifleArmMeshes=new ArrayMesh[2];
- Material generatedRifleArmMaterial;
+ const string GeneratedHeldArmPath="res://Assets/Hunyuan/Actors/generated-fps-arm.glb";
+ readonly ArrayMesh[] generatedHeldArmMeshes=new ArrayMesh[2];
+ Material generatedHeldArmMaterial;
 
  // The landmarks are measured on the front orthographic projection of the generated mesh.
  static readonly Vector2 ArmWrist=new(354,316);
@@ -28,10 +28,10 @@ public partial class MigrationScene {
  }
  static Vector2 ArmProjection(Vector3 v)=>new(295+(v.X+.001892f)*250.74f,285-(v.Y-.00134f)*250.74f);
 
- ArrayMesh LoadGeneratedRifleArm(bool left){
+ ArrayMesh LoadGeneratedHeldArm(bool left){
   int side=left?0:1;
-  if(generatedRifleArmMeshes[side]!=null)return generatedRifleArmMeshes[side];
-  var scene=GD.Load<PackedScene>(GeneratedRifleArmPath)?.Instantiate<Node3D>();
+  if(generatedHeldArmMeshes[side]!=null)return generatedHeldArmMeshes[side];
+  var scene=GD.Load<PackedScene>(GeneratedHeldArmPath)?.Instantiate<Node3D>();
   if(scene==null)return null;
   try{
    var source=scene.FindChildren("*","MeshInstance3D",true,false).OfType<MeshInstance3D>().FirstOrDefault();
@@ -78,21 +78,19 @@ public partial class MigrationScene {
    arrays[(int)Mesh.ArrayType.Weights]=weights;
    var mesh=new ArrayMesh();
    mesh.AddSurfaceFromArrays(Mesh.PrimitiveType.Triangles,arrays);
-   if(generatedRifleArmMaterial==null&&source.GetActiveMaterial(0) is StandardMaterial3D material){
+   if(generatedHeldArmMaterial==null&&source.GetActiveMaterial(0) is StandardMaterial3D material){
     var copy=(StandardMaterial3D)material.Duplicate();copy.Metallic=0;copy.Roughness=.88f;
-    generatedRifleArmMaterial=copy;
+    generatedHeldArmMaterial=copy;
    }
-   return generatedRifleArmMeshes[side]=mesh;
+   return generatedHeldArmMeshes[side]=mesh;
   }finally{scene.Free();}
  }
 
- RifleArm BuildGeneratedRifleArm(Node3D grip,bool left){
-  if(handStyle!=1||!ResourceLoader.Exists(GeneratedRifleArmPath))return null;
-  var mesh=LoadGeneratedRifleArm(left);
+ HeldArm BuildGeneratedHeldArm(Node3D grip,bool left){
+  if(handStyle!=1||!ResourceLoader.Exists(GeneratedHeldArmPath))return null;
+  var mesh=LoadGeneratedHeldArm(left);
   if(mesh==null)return null;
-  var previous=grip.GetNodeOrNull<MeshInstance3D>("AnatomicalHand");
-  if(previous!=null){grip.RemoveChild(previous);previous.QueueFree();}
-  var skeleton=new Skeleton3D{Name="GeneratedRifleArm",Position=HeldWrist(left)};
+  var skeleton=new Skeleton3D{Name="GeneratedHeldArm",Position=HeldWrist(left)};
   grip.AddChild(skeleton);
   var skin=new Skin();
   AddViewBone(skeleton,skin,"Sleeve",Vector3.Zero);
@@ -113,13 +111,13 @@ public partial class MigrationScene {
    skeleton.SetBonePosePosition(parent+1,midPivot-basePivot);
   }
   skeleton.AddChild(new MeshInstance3D{
-   Name="GeneratedSleeveAndHand",Mesh=mesh,MaterialOverride=generatedRifleArmMaterial,Skin=skin,Skeleton=new NodePath(".."),
+   Name="GeneratedSleeveAndHand",Mesh=mesh,MaterialOverride=generatedHeldArmMaterial,Skin=skin,Skeleton=new NodePath(".."),
    CastShadow=GeometryInstance3D.ShadowCastingSetting.Off,CustomAabb=new Aabb(new Vector3(-2,-2,-2),new Vector3(4,4,4))
   });
-  return new RifleArm{Hand=skeleton,Shoulder=new Vector3(left?-.33f:.33f,-.53f,.075f),Generated=true};
+  return new HeldArm{Hand=skeleton,Shoulder=new Vector3(left?-.33f:.33f,-.53f,.075f),Generated=true};
  }
 
- void PoseGeneratedRifleArm(RifleArm arm,Node3D grip,bool left,float open,float trigger){
+ void PoseGeneratedHeldArm(HeldArm arm,Node3D grip,bool left,float open,float trigger){
   var skeleton=arm.Hand;
   var wrist=HeldWrist(left);
   var target=grip.ToLocal(camera.ToGlobal(arm.Shoulder))-wrist;
@@ -127,12 +125,18 @@ public partial class MigrationScene {
   // The bind frame points down the sleeve, so scale acts only along its length.
   skeleton.SetBonePoseRotation(0,new Quaternion(Vector3.Up,target.Normalized()));
   skeleton.SetBonePoseScale(0,new Vector3(1,target.Length()/rest.Length(),1));
+  float fingers=heldProfile.Motion switch{
+   HeldMotion.Stone=>.72f,
+   HeldMotion.Rifle or HeldMotion.Shotgun or HeldMotion.Crossbow or HeldMotion.Flame when left=>.90f,
+   HeldMotion.Bow when !left=>1.22f,
+   _=>1.12f
+  };
   for(int i=0;i<ArmDigits.Length;i++){
    var digit=ArmDigits[i];
    var direction=ArmLocal(digit[2],0,left)-ArmLocal(digit[0],0,left);
    var axis=direction.Normalized().Cross(Vector3.Forward).Normalized();
-   float curl=i==4?.58f:1.12f;
-   if(!left&&i==0)curl=.85f+trigger*.24f;
+   float curl=i==4?.58f:fingers;
+   if(!left&&i==0&&!axeEquipped&&!buildMode&&ExpeditionGame.IsGun(game.Craft.Weapon))curl=.85f+trigger*.24f;
    curl*=1-open*.76f;
    skeleton.SetBonePoseRotation(2+i*2,new Quaternion(axis,curl));
    skeleton.SetBonePoseRotation(3+i*2,new Quaternion(axis,curl*.72f));

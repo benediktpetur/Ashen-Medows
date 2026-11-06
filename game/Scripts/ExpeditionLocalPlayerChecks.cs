@@ -20,7 +20,18 @@ public partial class MigrationScene {
      "Crouch puts the knee in front of the hip and folds the shin back / "+side);
    }
    showPlayerBody=false;UpdatePlayerModel(0,true);MigrationChecks.Assert(!localPlayerLegs.Visible,"Player body option hides local geometry");showPlayerBody=true;
-   game.Craft.Weapon=0;for(int option=0;option<3;option++){handStyle=option;RebuildHeldView();var hand=rightGrip.GetNode<MeshInstance3D>("AnatomicalHand");MigrationChecks.Assert(hand.Mesh.GetAabb().Size.Length()<.3f&&hand.Mesh.SurfaceGetArrays(0)[(int)Mesh.ArrayType.Vertex].AsVector3Array().All(p=>p.IsFinite()),"Anatomical hand proportions and finite geometry / "+option);MigrationChecks.Assert(rightSleeve.Mesh is ArrayMesh&&rightSleeve.MaterialOverride is StandardMaterial3D{AlbedoTexture:not null},"Textured field jacket sleeves / "+option);}
+   game.Craft.Weapon=0;
+   for(int option=0;option<3;option++){
+    handStyle=option;
+    RebuildHeldView();
+    if(option==1){
+     MigrationChecks.Assert(rightHeldArm?.Generated==true&&leftHeldArm?.Generated==true,"Fingerless style uses generated gloves and sleeves");
+     continue;
+    }
+    var hand=rightGrip.GetNode<MeshInstance3D>("AnatomicalHand");
+    MigrationChecks.Assert(hand.Mesh.GetAabb().Size.Length()<.3f&&hand.Mesh.SurfaceGetArrays(0)[(int)Mesh.ArrayType.Vertex].AsVector3Array().All(p=>p.IsFinite()),"Anatomical hand proportions and finite geometry / "+option);
+    MigrationChecks.Assert(rightSleeve.Mesh is ArrayMesh&&rightSleeve.MaterialOverride is StandardMaterial3D{AlbedoTexture:not null},"Textured field jacket sleeves / "+option);
+   }
    ShowPlayerCharacter();MigrationChecks.Assert(paused&&menu.FindChild("PlayerCharacterPreview",true,false)!=null,"Full player model preview is accessible");CloseMenu();
   }finally{game.Craft.Weapon=weapon;handStyle=style;game.Sneaking=sneaking;player.Velocity=velocity;showPlayerBody=body;RebuildHeldView();UpdatePlayerModel(0,true);}
   GD.Print("PASS / generated local player / animated first-person legs / crouch / visibility / three anatomical hand styles / character preview");
