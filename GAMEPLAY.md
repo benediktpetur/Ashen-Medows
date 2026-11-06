@@ -36,7 +36,9 @@ The world streams 64m chunks with a 7�--7 active window (49 maximum), generate
 
 ## Persistence and import
 
-Godot user:// uses the stable custom AshenMeadowExpedition application-data folder. Its expedition/profile.json contains the character, per-seed world edits and building lists. Writes are atomic with a .bak; corrupt files are protected from replacement. If the existing save is corrupted, repair/restore it outside the game rather than saving a replacement over it. Mutation failures roll back costs/state.
+Choose a character, then a world, when Ashen Meadow opens. Each character has a separate inventory, skill progression and list of worlds. You can name a new world and enter its seed. Buildings, world changes and your position are saved per world. From the pause menu, use World & Saves → Save & Return to Character Select to switch.
+
+The original expedition/profile.json appears as Existing Survivor. New characters save in expedition/characters under the same AshenMeadowExpedition application-data folder. Saves use atomic writes and .bak backups. Corrupt saves are protected from replacement.
 
 Esc → Import Old Expedition Character reads the selected legacy profile and compatible buildings in the sibling worlds directory. Import is explicit and replaces the active character; choose the legacy Expedition profile, not the unrelated Survival profile. Old source data remains untouched. Different procedural object geometry means some imported edits may have different visual placement. Standalone legacy and Godot save locations remain separate.
 

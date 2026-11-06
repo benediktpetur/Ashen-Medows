@@ -21,7 +21,7 @@ public partial class MigrationScene {
  async void RunInteractionChecks(){try{
   game.NoDiskSave=true;paused=true;SetProcess(false);SetPhysicsProcess(false);CloseMenu();ClearEnemies();TradeRuleChecks();
   Teleport(ExpeditionWorld.SpawnX,ExpeditionWorld.SpawnZ);var furniture=props.First(p=>p.Id=="briar/BriarLaneHouse0/furniture/0");
-  player.Position=furniture.Position+new Vector3(0,0,2);camera.GlobalPosition=player.Position+Vector3.Up;camera.LookAt(furniture.Position);
+  player.Position=furniture.Position+furniture.Node.GlobalBasis.X.Normalized()*2;camera.GlobalPosition=player.Position+Vector3.Up;camera.LookAt(furniture.Position);
   for(int i=0;i<3;i++)await ToSignal(GetTree(),SceneTree.SignalName.PhysicsFrame);
   MigrationChecks.Assert(AimedFurniture()==furniture,"Furniture target uses actual collider");
   paused=false;_UnhandledInput(new InputEventKey{PhysicalKeycode=Key.E,Pressed=true});

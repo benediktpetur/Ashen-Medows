@@ -4,8 +4,48 @@ using System.Linq;
 using Godot;
 static class MigrationChecks {
  public static void Run(){ExpeditionNewSystemsChecks.Run();ExpeditionWorld.Check();ExpeditionBuilding.Check();ExpeditionRecipe.Check();ExpeditionSurvivor.Check();ExpeditionLootSave.Check();string folder=ProjectSettings.GlobalizePath("user://tests/logic-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(folder);try{
+ CheckGodMode(Path.Combine(folder,"godmode.json"));
+ CheckSaveSlots(folder);
  var g=new ExpeditionGame(Path.Combine(folder,"profile.json"));g.Craft.Researched.AddRange(ExpeditionRecipe.All.Select(ExpeditionGame.ResearchId));for(int i=0;i<7;i++)g.Craft.Materials[i]=100;Assert(!g.Craft.Can(ExpeditionRecipe.All[1]),"Locked tier bypass");g.CraftRecipe(ExpeditionRecipe.All[0]);Assert(g.Craft.BenchTier==1,"Bench craft");g.Gather("forest",3,2,5);g.CraftRecipe(ExpeditionRecipe.All[1]);Assert(g.Craft.BenchTier==2,"Tier 2 progression");foreach(var r in ExpeditionRecipe.All)if(r.Kind=="bag")g.CraftRecipe(r);Assert(g.Life.Bags==1,"Bag recipe");g.AddBag(0,12,b=>true);g.Life.Bags++;g.AddBag(50,12,b=>true);g.Save.X=0;g.Save.Z=12;g.Craft.Water=2;g.Life.Food=3;Assert(g.Travel(g.Life.Camps[1],b=>true)=="Travelled","Travel");Assert(g.Life.TravelCooldown==600&&g.Craft.Water==1,"Travel costs");g.Save.X=0;g.Save.Z=12;Assert(g.Travel(g.Life.Camps[1],b=>true).Contains("cooldown"),"Cooldown bypass");g.Life.TravelCooldown=0;g.World.Changes.Time=2250;Assert(g.Night&&g.Travel(g.Life.Camps[1],b=>true).Contains("daylight"),"Night gate");g.World.Changes.Time=0;g.Life.Wounds.Add(new ExpeditionWound());Assert(g.Travel(g.Life.Camps[1],b=>true).Contains("wounds"),"Wound travel bypass");g.Life.TickWounds(180);Assert(g.Life.Wounds[0].Blood==420,"Wound timing");g.Life.Wounds.Add(new ExpeditionWound());g.Life.TickWounds(60);Assert(g.Life.Wounds[0].Blood==300,"Multiple bite timing");double hp=g.Life.Health;g.Life.Patch();Assert(g.Life.Health==hp&&g.Life.Wounds[0].Recovery==1200,"Bandage instant healing");g.Life.Patch();g.Life.TickWounds(1199);Assert(g.Life.Wounds.Count==2,"Early recovery");g.Life.TickWounds(1);Assert(g.Life.Wounds.Count==0,"Wound recovery");g.Skills.Strength.Level=3;g.Skills.Strength.Xp=50;g.Die(b=>true);Assert(g.Save.X==50&&g.Skills.Strength.Level==3&&g.Skills.Strength.Xp==0,"Bag respawn/death XP");g.Building.Pieces.Add(new BuildPiece{Kind=0,X=0,Y=g.World.Height(0,0),Z=0});Assert(g.Persist(),"Save");var loaded=new ExpeditionGame(g.PathName);Assert(loaded.Building.Pieces.Count==g.Building.Pieces.Count&&loaded.Building.Pieces.Any(p=>p.X==0&&p.Z==0)&&loaded.Craft.BenchTier==2&&loaded.Life.Camps.Count==2,"Reload persistence");g.Life.Health=50;g.LastDamage=g.Clock;g.Tick(1,false);Assert(g.Life.Health==50,"Immediate regen");g.LastDamage=g.Clock-61;g.Tick(10,false);Assert(g.Life.Health>50&&g.Life.Health<51,"Slow recovery");g.Kill("night",2,2);Assert(g.Life.NightEssence==2,"Night catalyst");g.Career.Level=Math.Max(2,g.Career.Level);g.Craft.Weapon=3;g.Craft.Weapons.Add(3);g.Craft.Ammo=0;int reserve=g.Craft.Reserve;g.Reload();Assert(g.Craft.Ammo==Math.Min(24,reserve)&&g.Craft.Ammo+g.Craft.Reserve==reserve,"Ammo conservation");string corrupt=Path.Combine(folder,"corrupt.json");File.WriteAllText(corrupt,"not json");var protectedGame=new ExpeditionGame(corrupt);Assert(!protectedGame.Healthy&&!protectedGame.Persist()&&File.ReadAllText(corrupt)=="not json","Corrupt save overwritten");string blocked=Path.Combine(folder,"blocked");Directory.CreateDirectory(blocked);var rollback=new ExpeditionGame(blocked);rollback.Craft.Materials[0]=9;Assert(!rollback.Change(()=>rollback.Craft.Materials[0]-=4)&&rollback.Craft.Materials[0]==9,"Save failure rollback");string legacy=Path.Combine(folder,"legacy.json");File.WriteAllText(legacy,Json.Write(g.Profile));var imported=new ExpeditionGame(Path.Combine(folder,"imported.json"));Assert(imported.ImportLegacy(legacy,folder)&&imported.Skills.Strength.Level==3&&imported.Craft.BenchTier==2,"Legacy import");
  }finally{Directory.Delete(folder,true);}}
+ static void CheckSaveSlots(string folder){
+  var first=new ExpeditionGame(Path.Combine(folder,"survivor-a.json"));
+  first.Save.CharacterName="First";
+  int original=first.Save.Seed;
+  first.Save.X=0;
+  first.Save.Z=12;
+  first.Craft.Materials[0]=21;
+  first.World.Changes.Time=500;
+  Assert(first.SelectSavedWorld(719,"Test World"),"New world saves");
+  Assert(first.World.Changes.Time==0&&first.Craft.Materials[0]==21,"World is fresh and inventory travels");
+  first.Save.X=5;
+  first.Save.Z=12;
+  Assert(first.Persist(),"World position saves");
+  var loaded=new ExpeditionGame(first.PathName);
+  Assert(loaded.Save.CharacterName=="First"&&loaded.SavedWorldName(719)=="Test World"&&loaded.SavedWorldSeeds().Length==2,"Character and named worlds survive restart");
+  Assert(loaded.SelectSavedWorld(original)&&loaded.Save.X==0&&loaded.Save.Z==12&&loaded.World.Changes.Time==500,"Original world restores its position and time");
+  Assert(loaded.SelectSavedWorld(719)&&loaded.Save.X==5&&loaded.Save.Z==12,"New world restores its own position");
+  var second=new ExpeditionGame(Path.Combine(folder,"survivor-b.json"));
+  Assert(second.SavedWorldSeeds().Length==1&&second.Craft.Materials[0]!=21,"Character saves are isolated");
+ }
+ static void CheckGodMode(string path){
+  var game=new ExpeditionGame(path);
+  game.Craft.Materials[0]=200;
+  Assert(game.Change(game.GrantGodModeItems),"God mode grant saves");
+  int armorCount=game.Profile.Items.Count;
+  Assert(game.Change(game.GrantGodModeItems)&&game.Profile.Items.Count==armorCount,"God mode refill preserves unique items");
+  var loaded=new ExpeditionGame(path);
+  Assert(!loaded.GodMode&&loaded.GunsUnlocked&&loaded.Craft.Weapons.Count==ExpeditionGame.GunNames.Length,"Weapons persist and god mode resets");
+  Assert(loaded.Craft.Materials[0]==200&&loaded.Craft.Materials[1]>=100&&ExpeditionRecipe.All.All(loaded.Knows),"God mode stocks supplies and unlocks blueprints");
+  loaded.GodMode=true;
+  loaded.Hurt(5);
+  loaded.Life.Hunger=loaded.Life.Hydration=0;
+  Assert(!loaded.TickConditions(10000)&&loaded.Life.Health==loaded.MaxHealth&&loaded.Life.Wounds.Count==0,"God mode protects against wounds and starvation");
+  loaded.GodMode=false;
+  loaded.Shield=0;
+  loaded.Hurt(5);
+  Assert(loaded.Life.Health<loaded.MaxHealth&&loaded.Life.Wounds.Count==1,"Normal damage resumes");
+ }
  internal static void Assert(bool check,string message){if(!check)throw new Exception(message);}
 }
 public partial class MigrationScene {

@@ -1,29 +1,54 @@
 using Godot;
 using System;
 using System.Linq;
-using System.Collections.Generic;
 public partial class MigrationScene {
  Node3D localPlayerVisual;
  MeshInstance3D localPlayerShadowBody;
- readonly List<GeometryInstance3D> localPlayerBodyCore=new();
+ MeshInstance3D localPlayerLegs;
+ ArrayMesh localPlayerLegMesh;
  bool showPlayerBody=true;
  float localStride,localWalkPhase;
  void InitPlayerModel(){
   if(localPlayerVisual!=null&&GodotObject.IsInstanceValid(localPlayerVisual))localPlayerVisual.QueueFree();
   localPlayerVisual=new Node3D{Name="LocalPlayerModel"};player.AddChild(localPlayerVisual);ArtCharacter(localPlayerVisual,1,0,true);
-  localPlayerBodyCore.Clear();
-  // A fitted inner outfit closes the reconstruction's open seams from the eye view.
-  foreach(string path in new[]{"LeftLeg","RightLeg"})foreach(var geometry in localPlayerVisual.GetNode<Node3D>(path).FindChildren("*","GeometryInstance3D",true,false).OfType<GeometryInstance3D>()){geometry.Visible=true;geometry.MaterialOverride=new StandardMaterial3D{VertexColorUseAsAlbedo=true,AlbedoColor=new(.63f,.66f,.65f),Roughness=.94f};geometry.CastShadow=GeometryInstance3D.ShadowCastingSetting.Off;localPlayerBodyCore.Add(geometry);}
-  foreach(var geometry in localPlayerVisual.GetNode<Node3D>("Torso").GetChildren().OfType<GeometryInstance3D>())geometry.Visible=false;
+  localPlayerLegs=localPlayerShadowBody=null;
   var rig=localPlayerVisual.GetNodeOrNull<HunyuanActorRig>("HunyuanModel");if(rig?.Skeleton==null)return;
   var source=rig.FindChildren("*","MeshInstance3D",true,false).OfType<MeshInstance3D>().FirstOrDefault();if(source==null)return;
   localPlayerShadowBody=source;source.CastShadow=GeometryInstance3D.ShadowCastingSetting.ShadowsOnly;
+  localPlayerLegMesh??=FirstPersonLegMesh(source.Mesh);
+  localPlayerLegs=new MeshInstance3D{
+   Name="FirstPersonLegs",Mesh=localPlayerLegMesh,Skeleton=source.Skeleton,Skin=source.Skin,
+   CastShadow=GeometryInstance3D.ShadowCastingSetting.Off
+  };
+  source.GetParent().AddChild(localPlayerLegs);
   UpdatePlayerModel(0,true);
+ }
+ // Use the same trousers, boots, and skin weights as the shadow and co-op model.
+ // Keep the upper body out of the camera when the player looks down.
+ static ArrayMesh FirstPersonLegMesh(Mesh body){
+  var legs=new ArrayMesh();
+  for(int surface=0;surface<body.GetSurfaceCount();surface++){
+   var arrays=body.SurfaceGetArrays(surface);
+   var vertices=arrays[(int)Mesh.ArrayType.Vertex].AsVector3Array();
+   var indices=arrays[(int)Mesh.ArrayType.Index].AsInt32Array();
+   var legIndices=new System.Collections.Generic.List<int>();
+   for(int i=0;i<indices.Length;i+=3){
+    int a=indices[i],b=indices[i+1],c=indices[i+2];
+    if(Math.Max(vertices[a].Y,Math.Max(vertices[b].Y,vertices[c].Y))>.83f||
+     !FieldJacketLowerBody(vertices[a])||!FieldJacketLowerBody(vertices[b])||!FieldJacketLowerBody(vertices[c]))continue;
+    legIndices.Add(a);legIndices.Add(b);legIndices.Add(c);
+   }
+   if(legIndices.Count==0)continue;
+   arrays[(int)Mesh.ArrayType.Index]=legIndices.ToArray();
+   legs.AddSurfaceFromArrays(Mesh.PrimitiveType.Triangles,arrays);
+   legs.SurfaceSetMaterial(legs.GetSurfaceCount()-1,body.SurfaceGetMaterial(surface));
+  }
+  return legs;
  }
  void UpdatePlayerModel(double dt,bool force=false){
   if(coopExecuting||localPlayerVisual==null||!GodotObject.IsInstanceValid(localPlayerVisual))return;
-  if(!paused||force){float speed=new Vector2(player.Velocity.X,player.Velocity.Z).Length();localStride=Mathf.Lerp(localStride,Math.Clamp(speed/4.8f,0,1.25f),(float)(1-Math.Exp(-dt*12)));localWalkPhase+=(float)dt*(speed>6?10:7)*Math.Clamp(speed/4.8f,.2f,1.4f);PoseFigure(localPlayerVisual,localWalkPhase,localStride,false);CrouchFigure(localPlayerVisual,game.Sneaking);localPlayerVisual.Position+=new Vector3(0,0,.20f);if(!player.IsOnFloor()&&Math.Abs(player.Velocity.Y)>.5f)foreach(string side in new[]{"Left","Right"})localPlayerVisual.GetNode<Node3D>(side+"Leg/Knee").Rotation=new(.28f,0,0);}
-  if(localPlayerShadowBody!=null)localPlayerShadowBody.Visible=mountedBlueprint==null;foreach(var core in localPlayerBodyCore)core.Visible=showPlayerBody&&mountedBlueprint==null;
+  if(!paused||force){float speed=new Vector2(player.Velocity.X,player.Velocity.Z).Length();localStride=Mathf.Lerp(localStride,Math.Clamp(speed/4.8f,0,1.25f),(float)(1-Math.Exp(-dt*12)));localWalkPhase+=(float)dt*(speed>6?10:7)*Math.Clamp(speed/4.8f,.2f,1.4f);PoseFigure(localPlayerVisual,localWalkPhase,localStride,false);CrouchFigure(localPlayerVisual,game.Sneaking);localPlayerVisual.Position+=new Vector3(0,0,.20f);if(!player.IsOnFloor()&&Math.Abs(player.Velocity.Y)>.5f&&!game.Sneaking)foreach(string side in new[]{"Left","Right"})localPlayerVisual.GetNode<Node3D>(side+"Leg/Knee").Rotation=new(-.28f,0,0);}
+  if(localPlayerShadowBody!=null)localPlayerShadowBody.Visible=mountedBlueprint==null;if(localPlayerLegs!=null)localPlayerLegs.Visible=showPlayerBody&&mountedBlueprint==null;
  }
  sealed partial class PlayerModelPreviewAnimator:Node {
   internal MigrationScene Scene;internal Node3D Visual;internal int Pose;float phase;

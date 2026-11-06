@@ -77,21 +77,35 @@ public partial class MigrationScene {
  void CitySceneryDetails(Node3D root,Vector3 position,float size,float height,uint hash){
   var detail=new Node3D{Name="CityFinishDetails",Position=position};root.AddChild(detail);
   // One shared mesh per silhouette/style, rather than dozens of extra draws.
-  FigureMesh(detail,$"city-finish/{size}/{height}/{hash%3}",b=>{
+  bool parapet=PlaceBatchPart(detail,"roof-parapet",new(0,height+.245f,size/2),new(size+.3f,.55f,.22f));
+  if(parapet){
+   PlaceBatchPart(detail,"roof-parapet",new(0,height+.245f,-size/2),new(size+.3f,.55f,.22f),180);
+   foreach(int side in new[]{-1,1})PlaceBatchPart(detail,"roof-parapet",new(side*size/2,height+.245f,0),new(size,.55f,.22f),side*90);
+  }
+  bool pipeArt=PlaceBatchPart(detail,"roof-downpipe",new(size/2+.12f,.2f,size*.3f),new(.15f,height+.2f,.15f));
+  string roofPart=(hash%3) switch{0=>"roof-tank",1=>"roof-vent",_=>"roof-air-unit"};
+  PlaceBatchPart(detail,"roof-skylight",new(-size*.16f,height+.18f,size*.16f),new(1.5f,.24f,1.3f));
+  PlaceBatchPart(detail,"roof-hatch",new(-size*.2f,height+.18f,-size*.17f),new(.95f,.14f,.98f));
+  bool roofArt=PlaceBatchPart(detail,roofPart,new(size*.22f,height+.18f,size*.15f),new(2.2f,1.1f,1.6f));
+  FigureMesh(detail,$"city-finish/{size}/{height}/{hash%3}/{roofArt}/{pipeArt}/{parapet}",b=>{
    void Part(Vector3 p,Vector3 dimensions,Color color){var radius=new Vector2(dimensions.X/Mathf.Sqrt(2),dimensions.Z/Mathf.Sqrt(2));b.Loft(color,new[]{p-Vector3.Up*dimensions.Y/2,p+Vector3.Up*dimensions.Y/2},new[]{radius,radius},4);}
    var trim=new Color(.25f,.28f,.28f);
    foreach(int side in new[]{-1,1}){
     Part(new(side*(size/2+.045f),3.45f,0),new(.16f,.28f,size+.2f),trim);
     Part(new(0,3.45f,side*(size/2+.045f)),new(size+.2f,.28f,.16f),trim);
-    Part(new(side*size/2,height+.52f,0),new(.22f,.55f,size+.3f),trim);
-    Part(new(0,height+.52f,side*size/2),new(size+.3f,.55f,.22f),trim);
+    if(!parapet){
+     Part(new(side*size/2,height+.52f,0),new(.22f,.55f,size+.3f),trim);
+     Part(new(0,height+.52f,side*size/2),new(size+.3f,.55f,.22f),trim);
+    }
    }
    Part(new(0,2.55f,-size/2-.38f),new(3,.18f,.9f),new(.36f,.30f,.24f));
-   Part(new(size*.22f,height+.75f,size*.15f),new(2.2f,1,1.6f),new(.36f,.38f,.37f));
-   for(int i=0;i<5;i++)Part(new(size*.22f-.8f+i*.4f,height+1.26f,size*.15f),new(.06f,.03f,1.3f),Ink);
-   b.Limb(trim,new(size/2+.12f,.2f,size*.3f),new(size/2+.12f,height+.4f,size*.3f),.065f,.065f,.065f,.065f,6);
+   if(!roofArt){
+    Part(new(size*.22f,height+.75f,size*.15f),new(2.2f,1,1.6f),new(.36f,.38f,.37f));
+    for(int i=0;i<5;i++)Part(new(size*.22f-.8f+i*.4f,height+1.26f,size*.15f),new(.06f,.03f,1.3f),Ink);
+   }
+   if(!pipeArt)b.Limb(trim,new(size/2+.12f,.2f,size*.3f),new(size/2+.12f,height+.4f,size*.3f),.065f,.065f,.065f,.065f,6);
   });
-  detail.GetChild<MeshInstance3D>(0).VisibilityRangeEnd=145;
+  detail.GetChild<MeshInstance3D>(detail.GetChildCount()-1).VisibilityRangeEnd=145;
  }
  void IndustrialYardDetails(Node3D root,int x,int z,float size,int tier,bool simulation){
   if(tier!=3)return;

@@ -21,7 +21,19 @@ public partial class MigrationScene {
    leader.Body.Position=new(0,200,-.6f);player.Position=new(0,200,0);leader.AttackState="dog-lunge";leader.AttackTime=.01;TickDog(leader,.02);MigrationChecks.Assert(game.Life.Health<health&&game.Life.Wounds.Count==1,"Physical dog bite");
    leader.AttackState="dog-lunge";leader.AttackTime=.01;TickDog(leader,.02);MigrationChecks.Assert(game.Life.Wounds.Count==1,"Pack bites do not stack unavoidable wound timers");
    MigrationChecks.Assert(leader.Visual.HasNode("DogJaw")&&leader.Visual.HasNode("Leg3")&&DogCue(false).Data.Length>1000,"Hound geometry and sound");
-   int food=game.Life.Food;AnimalLoot(leader);AnimalLoot(leader);MigrationChecks.Assert(game.Life.Food==food,"Infected dogs never yield edible meat");
+   foreach(var species in new[]{"dog","zombie-bear","zombie-bunny"}){
+    var animal=leader;
+    if(species!="dog"){
+     AddEnemy($"fauna/{species}/check/pack/0",0,7,2);
+     animal=infected[^1];
+    }
+    MigrationChecks.Assert(Species(animal.Id)==species&&animal.Visual.HasNode("HunyuanModel"),species+" textured model");
+    int fur=game.Craft.HuntStock[2],rotten=game.Craft.HuntStock[ExpeditionGame.RottenMeatIndex],meat=game.Craft.HuntStock[0];
+    AnimalLoot(animal);AnimalLoot(animal);
+    MigrationChecks.Assert(game.HarvestAnimal(animal.Id,animal.Body.Position.X,animal.Body.Position.Z),species+" carcass harvest");
+    MigrationChecks.Assert(game.Craft.HuntStock[2]>fur&&game.Craft.HuntStock[ExpeditionGame.RottenMeatIndex]>rotten&&game.Craft.HuntStock[0]==meat,species+" yields fur and rotten meat");
+    MigrationChecks.Assert(!game.HarvestAnimal(animal.Id,animal.Body.Position.X,animal.Body.Position.Z),species+" cannot be harvested twice");
+   }
    GD.Print("PASS / zombie dog packs: tier sizes, alert isolation, noise investigation, staggered warning/lunge, dodge, bite/wound cap, mesh/audio and contaminated loot");
   }finally{ClearEnemies();floor?.QueueFree();game=original;player.Position=location;}
  }

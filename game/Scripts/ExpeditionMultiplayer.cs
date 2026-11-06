@@ -82,7 +82,7 @@ public partial class MigrationScene {
  }
  static string CleanName(string text)=>new string((text??"Survivor").Where(c=>char.IsLetterOrDigit(c)||c==' '||c=='_'||c=='-').Take(24).ToArray()) is string s&&s.Length>0?s:"Survivor";
  void StartCoop(bool host,string address,int port){
-  if(CoopActive)return;if(!game.Healthy){game.Notice="Repair the protected character save before joining co-op.";return;}
+  if(CoopActive)return;if(game.GodMode){game.Notice="Use /godmode off before starting co-op.";return;}if(!game.Healthy){game.Notice="Repair the protected character save before joining co-op.";return;}
   ExitDungeon();game.Persist();coopPeer=new ENetMultiplayerPeer();Error error=host?coopPeer.CreateServer(port,7):coopPeer.CreateClient(address,port);
   if(error!=Error.Ok){coopPeer.Dispose();coopPeer=null;game.Notice="Networking failed / "+error;GD.Print(game.Notice);return;}
   coopHosting=host;Multiplayer.MultiplayerPeer=coopPeer;coopSequence=0;coopPositionRevision=0;coopWireSequence=0;coopReceivedSequence=-1;coopFrameParts=null;coopConnectClock=0;coopReady=host;

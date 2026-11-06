@@ -6,7 +6,8 @@ static class ExpeditionThreatEcology {
   "mossback"=>ThreatHabitat.Forest,
   "howler"=>ThreatHabitat.Forest|ThreatHabitat.Road|ThreatHabitat.Ruins|ThreatHabitat.Residential,
   "bilecaster"=>ThreatHabitat.Sewer|ThreatHabitat.Medical|ThreatHabitat.Contaminated,
-  "gravecrawler"=>ThreatHabitat.Graves|ThreatHabitat.Ruins,
+  "forest-stalker"=>ThreatHabitat.Forest,
+  "gravecrawler"=>ThreatHabitat.Forest|ThreatHabitat.Graves|ThreatHabitat.Ruins,
   "roadbreaker"=>ThreatHabitat.Road|ThreatHabitat.Industrial,
   "cinder"=>ThreatHabitat.Industrial,
   "riot"=>ThreatHabitat.Checkpoint,
@@ -44,7 +45,8 @@ static class ExpeditionThreatEcology {
   "mossback"=>"Dense woodland away from the main route",
   "howler"=>"Woodland, roads, abandoned homes and ruins",
   "bilecaster"=>"Medical sites, drains, sewers and contaminated works",
-  "gravecrawler"=>"Grave sites and ruined buildings",
+  "forest-stalker"=>"Dense surface woodland",
+  "gravecrawler"=>"Dense woodland, grave sites and ruins",
   "roadbreaker"=>"Highways, garages and industrial works",
   "cinder"=>"Garages, rail yards, utility sites and industrial works",
   "riot"=>"Checkpoints, civic security sites, hospital security and tower interiors",
@@ -52,7 +54,7 @@ static class ExpeditionThreatEcology {
   "blooddrinker"=>"Hospitals, medical sites and abandoned city housing",
   "palehunter"=>"City homes/ruins at night; suitable Tier 5 underground areas",
   _=>"Ordinary infected"};
- public static bool Eligible(ExpeditionThreat t,int tier,int night,ThreatHabitat habitat,bool underground)=>tier>=t.Min&&tier<=t.Max&&(!t.NightOnly||night>0||underground&&tier>=5)&&(ForKind(t.Kind)&habitat)!=0;
+ public static bool Eligible(ExpeditionThreat t,int tier,int night,ThreatHabitat habitat,bool underground)=>tier>=t.Min&&tier<=t.Max&&(!underground||t.Kind!="forest-stalker")&&(!t.NightOnly||night>0||underground&&tier>=5)&&(ForKind(t.Kind)&habitat)!=0;
  public static string Choose(string id,int tier,int night,ThreatHabitat habitat,bool underground=false){
   if(tier<2)return null;uint hash=(uint)(id+"/threat-ecology").GetHashCodeStable();if(hash%5!=0)return null;
   var pool=ExpeditionThreat.All.Where(t=>Eligible(t,tier,night,habitat,underground)).ToArray();return pool.Length==0?null:pool[(hash>>8)%(uint)pool.Length].Kind;

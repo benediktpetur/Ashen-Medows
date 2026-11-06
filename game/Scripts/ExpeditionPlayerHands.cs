@@ -1,9 +1,12 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 public partial class MigrationScene {
  int handStyle=1; // Bare, fingerless, full gloves.
- MeshInstance3D rightUpperSleeve,leftUpperSleeve;
+ ArrayMesh fieldJacketSleeveMesh;
+ StandardMaterial3D fieldJacketSleeveMaterial;
+ ShaderMaterial heldHandMaterial;
  static Vector3 HeldWrist(bool left)=>new(left?-.102f:.102f,-.016f,.010f);
  void NaturalHeldHand(Node3D grip,bool left,HeldMotion motion){
   string key=$"held-hands-v2/{handStyle}/{left}/{motion}";
@@ -25,7 +28,7 @@ public partial class MigrationScene {
    if(left){var mirrored=new FigureSculpt();mirrored.Append(hand,new Transform3D(Basis.Identity.Scaled(new Vector3(-1,1,1)),Vector3.Zero));hand=mirrored;}
    characterMeshes[key]=mesh=hand.Mesh();
   }
-  grip.AddChild(new MeshInstance3D{Name="AnatomicalHand",Mesh=mesh,MaterialOverride=new StandardMaterial3D{VertexColorUseAsAlbedo=true,Roughness=.78f,Metallic=0},CastShadow=GeometryInstance3D.ShadowCastingSetting.Off});
+  grip.AddChild(new MeshInstance3D{Name="AnatomicalHand",Mesh=mesh,MaterialOverride=heldHandMaterial??=new ShaderMaterial{Shader=GD.Load<Shader>("res://Shaders/held-hand.gdshader")},CastShadow=GeometryInstance3D.ShadowCastingSetting.Off});
  }
  static void SculptHeldDigit(FigureSculpt output,Vector3[] controls,float radius,Color skin,Color glove,int style){
   var points=new List<Vector3>();
@@ -44,13 +47,19 @@ public partial class MigrationScene {
   }
   Color tip=style==2?glove:skin;for(int j=0;j<sides;j++)output.Triangle(points[^1],rings[^1][j],rings[^1][(j+1)%sides],tip);
  }
- MeshInstance3D AnatomicalSleeve(float bottom,float top,bool cuff){
-  string key=$"held-sleeve-v2/{bottom}/{top}/{cuff}";
-  if(!characterMeshes.TryGetValue(key,out var mesh)){
-   var sculpt=new FigureSculpt();var centers=new Vector3[7];var radii=new Vector2[7];
-   for(int i=0;i<7;i++){float t=i/6f;centers[i]=new(0,t-.5f,0);float r=Mathf.Lerp(bottom,top,t)*(i is 1 or 4?1.035f:1);radii[i]=new(r,r*.92f);}
-   sculpt.Loft(Colors.White,centers,radii,20);characterMeshes[key]=mesh=sculpt.Mesh();
+ MeshInstance3D FieldJacketSleeve(){
+  if(fieldJacketSleeveMesh==null){
+   var scene=GD.Load<PackedScene>(HunyuanPath("field-jacket-fps-sleeve")).Instantiate<Node3D>();
+   try{
+    fieldJacketSleeveMesh=(ArrayMesh)scene.FindChildren("*","MeshInstance3D",true,false).OfType<MeshInstance3D>().First().Mesh;
+   }finally{scene.Free();}
+   fieldJacketSleeveMaterial=new StandardMaterial3D{
+    AlbedoTexture=GD.Load<Texture2D>("res://Assets/Hunyuan/Actors/survivor-field-jacket_0.png"),
+    Roughness=.95f
+   };
   }
-  var instance=new MeshInstance3D{Mesh=mesh,MaterialOverride=new StandardMaterial3D{AlbedoColor=cuff?new(.18f,.21f,.18f):new(.31f,.34f,.29f),Roughness=.94f},CastShadow=GeometryInstance3D.ShadowCastingSetting.Off};viewArms.AddChild(instance);return instance;
+  var sleeve=new MeshInstance3D{Name="FieldJacketSleeve",Mesh=fieldJacketSleeveMesh,MaterialOverride=fieldJacketSleeveMaterial,CastShadow=GeometryInstance3D.ShadowCastingSetting.Off};
+  viewArms.AddChild(sleeve);
+  return sleeve;
  }
 }

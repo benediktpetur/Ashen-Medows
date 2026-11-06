@@ -27,7 +27,7 @@ public partial class MigrationScene {
   if(e.BossState.EndsWith("-windup")){
    SpecialMove(e,Vector3.Zero,dt);var direction=e.BossAim-e.Body.Position;if(direction.LengthSquared()>.01)e.Body.Rotation=new(0,Mathf.Atan2(-direction.X,-direction.Z),0);
    if(e.BossTime<=0){
-    if(kind=="roadbreaker"||kind=="palehunter"){e.BossState="threat-rush";e.BossTime=kind=="palehunter"?.75:1.2;e.BossHits.Clear();}
+    if(kind is "roadbreaker" or "palehunter" or "forest-stalker"){e.BossState="threat-rush";e.BossTime=kind is "palehunter" or "forest-stalker"?.75:1.2;e.BossHits.Clear();}
     else{if(kind=="howler"){HearNoise(e.Body.Position,80);EnemySound(e.Body.Position,0);}
      if(kind=="bilecaster"){CreateMillPool(e.BossAim,6);ImpactParticles(e.Body.Position+Vector3.Up*1.45f,new(.38f,.65f,.13f),10,.05f);}
      if(kind=="wirebound")foreach(var p in targets)if(Distance(p.Body.Position,e.BossAim)<2.2f&&SpecialLine(e.Body.Position,p.Body)){p.Game.Stamina=Math.Max(0,p.Game.Stamina-35);MillDamage(p.Game,p.Body,8,false);}
@@ -35,7 +35,7 @@ public partial class MigrationScene {
     }
    }PoseNewThreat(e);return true;
   }
-  if(visible&&e.BossTime<=0&&e.Stagger<=0&&e.AttackState==""&&((kind=="howler"&&distance<20)||(kind=="bilecaster"&&distance>6&&distance<23)||(kind=="wirebound"&&distance<6)||(kind=="roadbreaker"&&distance>4&&distance<16)||(kind=="palehunter"&&distance>3&&distance<13))){
+  if(visible&&e.BossTime<=0&&e.Stagger<=0&&e.AttackState==""&&((kind=="howler"&&distance<20)||(kind=="bilecaster"&&distance>6&&distance<23)||(kind=="wirebound"&&distance<6)||(kind=="roadbreaker"&&distance>4&&distance<16)||((kind is "palehunter" or "forest-stalker")&&distance>3&&distance<13))){
    e.BossState=kind+"-windup";e.BossTime=kind=="howler"?1.8:kind=="bilecaster"?1.4:1.2;e.BossAim=target.Body.Position;e.Memory=10;PoseNewThreat(e);return true;
   }
   if(kind=="palehunter"&&visible&&distance>6&&distance<20&&e.BossTime>0){var flank=target.Body.Position+target.Body.Basis.X*4;SpecialMove(e,PursuitDirection(e,flank,dt).Normalized()*4,dt);PoseNewThreat(e);return true;}

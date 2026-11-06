@@ -10,23 +10,32 @@ public partial class MigrationScene {
   foreach(var center in centers){int cx=(int)Math.Floor(center.X/64),cz=(int)Math.Floor(center.Z/64);int local=infected.Count(e=>Species(e.Id)!=""&&Distance(e.Body.Position,center)<112);
    for(int dx=-1;dx<=1;dx++)for(int dz=-1;dz<=1;dz++){int x=cx+dx,z=cz+dz;uint h=game.World.Hash(x+1741,z-217);double px=x*64+10+h%42,pz=z*64+10+(h>>8)%42;int tier=game.World.Tier(px,pz);if(!game.World.Playable(px,pz)||Distance(Ground(px,pz),center)>100||!ChunkLoaded(Ground(px,pz)))continue;
     if(tier>=3&&(h%3!=0||Math.Abs(px-game.World.RouteX(pz))>95))continue;
-    string kind=tier==1?(h%3==0?"rabbit":"deer"):tier==2?(Math.Abs(px-game.World.RouteX(pz))<55&&h%4==0?"dog":h%3==0?"wolf":"boar"):"dog";int count=kind=="rabbit"?2:kind=="deer"&&h%4==0?2:kind=="wolf"?2:kind=="dog"?DogPackSize(tier,h):1;if(kind=="dog"&&centers.Any(c=>Distance(c,Ground(px,pz))<28))continue;
+    string kind=tier==1?(h%3==0?"rabbit":"deer"):tier==2?(Math.Abs(px-game.World.RouteX(pz))<55&&h%4==0?"dog":h%3==0?"wolf":"boar"):"dog";if(kind=="dog"&&tier>=3&&(h>>16)%4==0)kind="zombie-bear";
+    else if(tier==2&&kind=="boar"&&(h>>16)%3==0)kind="zombie-bunny";
+    int count=kind is "rabbit" or "zombie-bunny"?2:kind=="deer"&&h%4==0?2:kind=="wolf"?2:kind=="dog"?DogPackSize(tier,h):1;if((kind is "dog" or "zombie-bear" or "zombie-bunny")&&centers.Any(c=>Distance(c,Ground(px,pz))<28))continue;
     for(int i=0;i<count&&local<14&&infected.Count<(CoopHost?CoopMaxEnemies:85);i++){string id=$"fauna/{kind}/{game.Save.Seed}/{x}:{z}/{i}";int before=infected.Count;AddEnemy(id,px+i*2,pz+i*2,tier);if(infected.Count>before)local++;}
    }
   }
  }
  bool AnimalSight(Infected e,float range){if(Distance(e.Body.Position,player.Position)>range)return false;var q=PhysicsRayQueryParameters3D.Create(e.Body.Position+Vector3.Up*.45f,player.Position+Vector3.Up*.9f);q.Exclude=new Godot.Collections.Array<Rid>{e.Body.GetRid()};var hit=GetWorld3D().DirectSpaceState.IntersectRay(q);return hit.Count==0||hit["collider"].AsGodotObject()==player;}
  void TickAnimal(Infected e,double dt){if(FieldStunned(e)||FieldReturning(e,dt))return;if(Species(e.Id)=="dog"){TickDog(e,dt);return;}string kind=Species(e.Id);bool passive=Peaceful(e.Id);float d=Distance(e.Body.Position,player.Position);e.Cooldown=Math.Max(0,e.Cooldown-dt);e.Stagger=Math.Max(0,e.Stagger-dt);e.Memory=Math.Max(0,e.Memory-dt);
-  if(AnimalSight(e,passive?12:kind=="dog"?22:13)){e.Memory=passive?5:7;e.Target=player.Position;}
+  if(AnimalSight(e,passive?12:kind=="zombie-bear"?18:13)){e.Memory=passive?5:7;e.Target=player.Position;}
   if(!passive&&d<5&&e.Cooldown<=0&&e.AttackState==""){e.AttackState="animal-windup";e.AttackTime=.75;EnemySound(e.Body.Position,kind=="wolf"?3:4);}bool windup=e.AttackState=="animal-windup";if(windup){e.AttackTime-=dt;if(e.AttackTime<=0){e.AttackState="animal-charge";e.AttackTime=.45;e.BossAim=player.Position;e.Cooldown=3;}}else if(e.AttackState=="animal-charge"){e.AttackTime-=dt;if(e.AttackTime<=0)e.AttackState="";}
   bool charging=e.AttackState=="animal-charge";bool alert=e.Memory>0;var target=alert?(passive?e.Body.Position+(e.Body.Position-e.Target).Normalized()*14:e.Target):e.Home+new Vector3((float)Math.Sin(game.Clock*.10+e.Home.X)*7,0,(float)Math.Cos(game.Clock*.08+e.Home.Z)*7);
-  if(charging)target=e.BossAim;var delta=target-e.Body.Position;delta.Y=0;float speed=alert?(kind=="rabbit"?4.3f:kind=="deer"?4.8f:kind=="dog"?3.5f:2.6f):kind=="rabbit"?.55f:.65f;if(charging)speed=kind=="wolf"?5.8f:5.2f;var v=!windup&&delta.Length()>.6f&&e.Stagger<=0?delta.Normalized()*speed:Vector3.Zero;v.Y=e.Body.IsOnFloor()?0:e.Body.Velocity.Y-18*(float)dt;e.Body.Velocity=v;e.Body.MoveAndSlide();
+  if(charging)target=e.BossAim;var delta=target-e.Body.Position;delta.Y=0;float speed=alert?(kind is "rabbit" or "zombie-bunny"?4.3f:kind=="deer"?4.8f:2.6f):kind=="rabbit"?.55f:.65f;if(charging)speed=kind=="wolf"?5.8f:5.2f;var v=!windup&&delta.Length()>.6f&&e.Stagger<=0?delta.Normalized()*speed:Vector3.Zero;v.Y=e.Body.IsOnFloor()?0:e.Body.Velocity.Y-18*(float)dt;e.Body.Velocity=v;e.Body.MoveAndSlide();
   if(e.Body.Position.Y<game.World.Height(e.Body.Position.X,e.Body.Position.Z)-8)e.Body.Position=Ground(e.Body.Position.X,e.Body.Position.Z);if(delta.LengthSquared()>.01)e.Body.Rotation=new(0,Mathf.Atan2(-delta.X,-delta.Z),0);AnimateAnimal(e);
-  if(!passive&&charging&&d<1.5f&&AnimalSight(e,1.5f)&&Math.Abs(e.Body.Position.Y-player.Position.Y)<1){if(kind=="dog")game.Hurt(2);else{game.Life.Health-=kind=="wolf"?12:10;game.LastDamage=game.Clock;game.Notice=kind=="wolf"?"Wolf bite / impact damage":"Boar charge / impact damage";}e.AttackState="";e.Cooldown=3;if(game.Life.Health<=0)Die();}
+  if(!passive&&charging&&d<1.5f&&AnimalSight(e,1.5f)&&Math.Abs(e.Body.Position.Y-player.Position.Y)<1){if(!game.GodMode){game.Life.Health-=kind switch {"wolf"=>12,"zombie-bear"=>24,"zombie-bunny"=>6,_=>10};game.LastDamage=game.Clock;}
+   game.Notice=kind switch {"wolf"=>"Wolf bite / impact damage","zombie-bear"=>"Zombie bear maul","zombie-bunny"=>"Zombie bunny bite",_=>"Boar charge / impact damage"};e.AttackState="";e.Cooldown=3;if(game.Life.Health<=0)Die();}
  }
- void AnimalLoot(Infected e){string kind=Species(e.Id);if(game.World.Changes.Carcasses.Any(c=>c.Id==e.Id))return;game.Change(()=>{if(!game.Skills.Defeated.Contains(e.Id))game.Skills.Defeated.Add(e.Id);game.World.Changes.Carcasses.Add(new AnimalCarcass{Id=e.Id,Species=kind,X=e.Body.Position.X,Y=e.Body.Position.Y,Z=e.Body.Position.Z,Yaw=e.Body.RotationDegrees.Y,At=game.World.Changes.Time,Harvested=kind=="dog"});});game.Notice=kind=="dog"?"Infected dog / contaminated remains discarded":"Hunted "+kind+" / approach the carcass and press E to harvest";DrawHuntingCarcasses();}
- void AnimateAnimal(Infected e){if(e.Visual.GetChildCount()==0)return;if(Species(e.Id)=="dog")PoseDog(e);float phase=(float)(game.Clock*(e.Memory>0?10:4)+e.Home.X);for(int i=0;i<4;i++){var leg=e.Visual.GetNodeOrNull<Node3D>("Leg"+i);if(leg!=null)leg.Rotation=new Vector3(Mathf.Sin(phase+(i==0||i==3?0:Mathf.Pi))*(e.Memory>0?.5f:.18f),0,0);}}
- void AnimalArt(Node3D root,string kind){bool rabbit=kind=="rabbit",deer=kind=="deer",dog=kind is "dog" or "companion" or "wolf";float y=rabbit?.28f:deer?.95f:.57f,len=rabbit?.22f:deer?.60f:.46f,width=rabbit?.13f:deer?.22f:dog?.17f:.29f;Color fur=kind=="wolf"?new(.43f,.43f,.37f):rabbit?new(.48f,.44f,.36f):deer?new(.49f,.35f,.22f):dog?new(.27f,.28f,.24f):new(.30f,.25f,.19f);
+ void AnimalLoot(Infected e){string kind=Species(e.Id);if(game.World.Changes.Carcasses.Any(c=>c.Id==e.Id))return;game.Change(()=>{if(!game.Skills.Defeated.Contains(e.Id))game.Skills.Defeated.Add(e.Id);game.World.Changes.Carcasses.Add(new AnimalCarcass{Id=e.Id,Species=kind,X=e.Body.Position.X,Y=e.Body.Position.Y,Z=e.Body.Position.Z,Yaw=e.Body.RotationDegrees.Y,At=game.World.Changes.Time});});game.Notice="Animal down / approach the carcass and press E to harvest";DrawHuntingCarcasses();}
+ void AnimateAnimal(Infected e){if(e.Visual.GetChildCount()==0)return;if(Species(e.Id)=="dog")PoseDog(e);float phase=(float)(game.Clock*(e.Memory>0?10:4)+e.Home.X);
+  if(e.Visual.GetNodeOrNull<Node3D>("HunyuanModel") is {} model){
+   float stride=e.Body.Velocity.LengthSquared()>.5f?Mathf.Sin(phase):0;
+   model.Position=Vector3.Up*(Math.Abs(stride)*(Species(e.Id)=="zombie-bunny"?.10f:.035f));
+   model.RotationDegrees=new(e.AttackState=="animal-windup"?-10:e.AttackState=="animal-charge"?10:0,0,stride*4);
+  }
+  for(int i=0;i<4;i++){var leg=e.Visual.GetNodeOrNull<Node3D>("Leg"+i);if(leg!=null)leg.Rotation=new Vector3(Mathf.Sin(phase+(i==0||i==3?0:Mathf.Pi))*(e.Memory>0?.5f:.18f),0,0);}}
+ void AnimalArt(Node3D root,string kind){bool rabbit=kind is "rabbit" or "zombie-bunny",deer=kind=="deer",dog=kind is "dog" or "companion" or "wolf";float y=rabbit?.28f:deer?.95f:.57f,len=rabbit?.22f:deer?.60f:.46f,width=rabbit?.13f:deer?.22f:dog?.17f:.29f;Color fur=kind=="wolf"?new(.43f,.43f,.37f):rabbit?new(.48f,.44f,.36f):deer?new(.49f,.35f,.22f):dog?new(.27f,.28f,.24f):new(.30f,.25f,.19f);
   FigureMesh(root,"fauna-v1/"+kind+"/body",b=>{
    var body=new FigureSculpt();body.Loft(fur,new[]{new Vector3(0,-len,0),new Vector3(0,-len*.65f,0),Vector3.Zero,new Vector3(0,len*.65f,0),new Vector3(0,len,0)},new[]{new Vector2(width*.45f,width*.6f),new Vector2(width,width*.95f),new Vector2(width,width*1.15f),new Vector2(width*.85f,width),new Vector2(width*.35f,width*.5f)},20);b.Append(body,new Transform3D(Basis.FromEuler(new Vector3(Mathf.Pi/2,0,0)),new Vector3(0,y,0)));
    b.Limb(fur,new(0,y,-len*.72f),new(0,y+(deer?.36f:rabbit?.12f:.12f),-len-.10f),width*.65f,width*.65f,width*.46f,width*.46f,16);
@@ -41,5 +50,10 @@ public partial class MigrationScene {
   });
   if(kind=="dog")DogDetails(root);
   for(int i=0;i<4;i++){int s=i%2==0?-1:1;var leg=new Node3D{Name="Leg"+i,Position=new(s*width*.70f,y-.08f,(i<2?-1:1)*len*.63f)};root.AddChild(leg);FigureMesh(leg,"fauna-v1/"+kind+"/leg/"+i,b=>{float h=y-.10f;b.Limb(fur,Vector3.Zero,new(0,-h*.5f,.045f),rabbit?.04f:.05f,rabbit?.045f:.055f,.028f,.03f,12);b.Limb(fur,new(0,-h*.5f,.045f),new(0,-h,-.025f),.028f,.03f,.02f,.023f,12);b.Limb(new Color(.19f,.17f,.14f),new(0,-h,-.025f),new(0,-h,-.09f),rabbit?.03f:.033f,.03f,.03f,.025f,12);});}
+  switch(kind){
+   case "dog": ApplyHunyuan(root,"zombie-dog",false,.80f);break;
+   case "zombie-bear": ApplyHunyuan(root,kind,false,1.45f);break;
+   case "zombie-bunny": ApplyHunyuan(root,kind,false,.42f);break;
+  }
  }
 }

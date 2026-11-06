@@ -11,7 +11,7 @@ using System.Runtime.Serialization;
 }
 
 public partial class MigrationScene {
- float EnemyHeadHeight(Infected e)=>IsMillBoss(e.Id)?3.7f:IsCampaignBoss(e.Id)?e.Tier==5?2.8f:2.45f:IsSammy(e.Id)?.86f:InfectedKind(e)=="gravecrawler"?.85f:InfectedKind(e)=="worm"?100:DormantWeeper(e)?.9f:InfectedKind(e) is "bloater" or "bruiser"?1.7f:1.35f;
+ float EnemyHeadHeight(Infected e)=>IsMillBoss(e.Id)?3.7f:IsCampaignBoss(e.Id)?e.Tier==5?2.8f:2.45f:IsSammy(e.Id)?.86f:InfectedKind(e)=="gravecrawler"?.85f:InfectedKind(e)=="forest-stalker"?1.05f:InfectedKind(e)=="worm"?100:DormantWeeper(e)?.9f:InfectedKind(e) is "bloater" or "bruiser"?1.7f:1.35f;
  string InfectedKind(Infected e)=>ExpeditionCampaign.Kind(e.Id,e.Tier,e.Night);
  bool IsCampaignBoss(string id)=>ExpeditionCampaign.BossIndex(id)>=0;
  bool DormantWeeper(Infected e)=>InfectedKind(e)=="weeper"&&e.BossState=="weeping";
@@ -21,7 +21,7 @@ public partial class MigrationScene {
   if(IsMegaNest(e.Id))return;string kind=InfectedKind(e);if(kind=="walker")return;
   e.Hp=e.MaxHp=ExpeditionCampaign.Hp(kind,e.Tier);
   if(kind=="weeper")e.BossState="weeping";
-  if(ExpeditionThreat.Find(kind) is {} spec){e.BossState=kind is "mossback" or "gravecrawler"?"threat-hidden":"threat-hunt";e.BossTime=3;var capsule=e.Body.GetChild<CollisionShape3D>(0);if(kind=="gravecrawler"){capsule.Shape=new CapsuleShape3D{Radius=.38f,Height=1.1f};capsule.Position=new(0,.55f,0);}return;}
+  if(ExpeditionThreat.Find(kind) is {} spec){e.BossState=kind is "mossback" or "gravecrawler"?"threat-hidden":"threat-hunt";e.BossTime=3;var capsule=e.Body.GetChild<CollisionShape3D>(0);if(kind=="gravecrawler"){capsule.Shape=new CapsuleShape3D{Radius=.38f,Height=1.1f};capsule.Position=new(0,.55f,0);}else if(kind=="forest-stalker"){capsule.Shape=new CapsuleShape3D{Radius=.42f,Height=1.45f};capsule.Position=new(0,.725f,0);}return;}
   var shape=e.Body.GetChild<CollisionShape3D>(0);
   if(kind=="weeper"){shape.Shape=new CapsuleShape3D{Radius=.4f,Height=1.2f};shape.Position=new(0,.6f,0);}
   if(kind=="worm"){shape.Shape=new CapsuleShape3D{Radius=.15f,Height=.3f};shape.Position=new(0,.15f,0);e.BossTime=90;}

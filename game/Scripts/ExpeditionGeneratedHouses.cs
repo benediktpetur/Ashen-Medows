@@ -157,6 +157,24 @@ public partial class MigrationScene {
   damageHouse=new Node3D{Name="GeneratedHouseDamageCheck",Position=new(5000,0,5000)};AddChild(damageHouse);GeneratedHouse(damageHouse,0,false);await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
   MigrationChecks.Assert(!damageHouse.GetChildren().Any(n=>n.HasMeta("world_damage_id")&&n.GetMeta("world_damage_id").AsString()==id),"Destroyed generated section stays absent after streaming");
   RemoveChunkFurniture(damageHouse);damageHouse.Free();ObjectHealth.Remove(id);
+  var modular=new Node3D{Name="ModularHouseDamageCheck"};
+  AddChild(modular);
+  ModularHouseWall(modular,"test-house","front-entry",Vector3.Zero,0,3,"Brick",HouseWallOpening.Door,false);
+  ModularHouseWall(modular,"test-house","front-solid",Vector3.Right*3,0,3,"Brick",HouseWallOpening.Solid,false);
+  var entry=modular.GetNode<StaticBody3D>("Wall_front-entry");
+  var solid=modular.GetNode<StaticBody3D>("Wall_front-solid");
+  MigrationChecks.Assert(entry.GetMeta("wall_asset").AsString()=="Wall-Brick-2"&&
+   entry.GetChildren().OfType<CollisionShape3D>().Count()==3&&solid.GetMeta("wall_asset").AsString()=="Wall-Brick-1","Modular slots resolve by family and opening");
+  int stone=game.Craft.Materials[1];
+  WeaponStructureHit(entry,180);
+  WeaponStructureHit(entry,180);
+  await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
+  MigrationChecks.Assert(game.Craft.Materials[1]==stone+2&&!modular.HasNode("Wall_front-entry")&&modular.HasNode("Wall_front-solid"),"Wall destruction removes only its own art and collision and awards salvage once");
+  ModularHouseWall(modular,"test-house","front-entry",Vector3.Zero,0,3,"Brick",HouseWallOpening.Door,true);
+  await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
+  MigrationChecks.Assert(!modular.HasNode("Wall_front-entry"),"Destroyed modular wall stays gone when streamed back");
+  ObjectHealth.Remove("wall/test-house/modular/front-entry");
+  modular.Free();
   GD.Print($"PASS / generated houses: {HouseKeys().Length} textured shells, lot fit, open entrances and mesh collision");
   if(OS.GetCmdlineUserArgs().Contains("--house-preview")){
    paused=true;hudRoot.Visible=false;weaponRoot.Visible=false;

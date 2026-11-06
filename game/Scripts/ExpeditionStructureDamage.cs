@@ -47,7 +47,18 @@ public partial class MigrationScene {
    if(node.HasMeta("world_damage_id")){
     string id=node.GetMeta("world_damage_id").AsString();double max=node.GetMeta("world_max_health").AsDouble();double hp=ObjectHealth.TryGetValue(id,out var stored)?stored:max;
     if(hp<=0)return true;
-    if(game.Change(()=>ObjectHealth[id]=Math.Max(0,hp-damage))){game.Notice=ObjectHealth[id]>0?$"STRUCTURE / {ObjectHealth[id]:0}/{max:0} HP":"World structure destroyed";SyncDamageState();}return true;
+    double remaining=Math.Max(0,hp-damage);
+    int salvage=node.HasMeta("wall_salvage_material")?node.GetMeta("wall_salvage_material").AsInt32():-1;
+    if(game.Change(()=>{
+     ObjectHealth[id]=remaining;
+     if(remaining==0&&salvage>=0)game.Craft.Materials[salvage]+=2;
+    })){
+     game.Notice=remaining>0?$"STRUCTURE / {remaining:0}/{max:0} HP":salvage switch{
+      0=>"Wall destroyed / +2 wood",1=>"Wall destroyed / +2 stone",_=>"World structure destroyed"
+     };
+     SyncDamageState();
+    }
+    return true;
    }
   }
   return false;

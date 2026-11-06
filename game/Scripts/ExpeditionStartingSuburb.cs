@@ -21,6 +21,7 @@ public partial class MigrationScene {
   for(int i=0;i<8;i++){double z=ExpeditionWorld.SpawnZ-12-i*25,x=ExpeditionWorld.SpawnX+(i%2==0?-11:11);if(ExpeditionWorld.Cell(x)!=cx||ExpeditionWorld.Cell(z)!=cz)continue;var p=Ground(x,z);Tube(root,p,p+Vector3.Up*4.6f,.045f,Steel);Tube(root,p+Vector3.Up*4.6f,p+new Vector3(i%2==0?1.3f:-1.3f,4.6f,0),.04f,Steel);Box(root,p+new Vector3(i%2==0?1.3f:-1.3f,4.55f,0),new(.5f,.13f,.3f),new(.65f,.56f,.35f));if(i%3==0)root.AddChild(new OmniLight3D{Position=p+Vector3.Up*4.3f,LightColor=new(1,.71f,.38f),LightEnergy=.35f,OmniRange=9,DistanceFadeEnabled=true,DistanceFadeBegin=45,ShadowEnabled=false});}
  }
  void SuburbHouse(Node3D n,int i,bool simulation){
+  if(n.Name!="BriarLaneHouse1"){ModularHouse(n,i,simulation);return;}
   if(GeneratedHouse(n,i,simulation))return;
   var siding=new[]{new Color(.46f,.48f,.39f),new Color(.39f,.43f,.46f),new Color(.55f,.47f,.36f),new Color(.55f,.51f,.43f),new Color(.39f,.47f,.43f),new Color(.48f,.35f,.29f),new Color(.48f,.48f,.50f),new Color(.62f,.57f,.45f)}[i%8];
   void Part(Vector3 p,Vector3 size,Color color,bool solid=true){if(simulation){if(solid)PhysicsObstacle(n,new BoxShape3D{Size=size},p);}else Box(n,p,size,color,solid).MaterialOverride=ExteriorFinish(color.IsEqualApprox(siding)||color.IsEqualApprox(Wood)?0:4,color,i%8);}

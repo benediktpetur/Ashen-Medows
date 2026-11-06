@@ -28,17 +28,19 @@ public partial class MigrationScene {
   if(!crouched)return; // PoseFigure restores the standing pose before this call.
   foreach(string side in new[]{"Left","Right"}){
    var leg=figure.GetNode<Node3D>(side+"Leg");
-   leg.Rotation=new(-1.22f,0,side=="Left"?.04f:-.04f);
-   leg.GetNode<Node3D>("Knee").Rotation=new(1.92f,0,0);
+   // The character faces -Z. Thighs move forward and shins fold back toward the hips.
+   leg.Rotation=new(.98f,0,side=="Left"?.07f:-.07f);
+   leg.GetNode<Node3D>("Knee").Rotation=new(-1.23f,0,0);
   }
   var left=figure.GetNode<Node3D>("LeftLeg");var right=figure.GetNode<Node3D>("RightLeg");
   float sole=Math.Min(left.Position.Y+FigureSoleHeight(left),right.Position.Y+FigureSoleHeight(right));
   figure.Position=Vector3.Down*sole;
-  figure.GetNode<Node3D>("Torso").Rotation=new(-1.05f,0,0);
-  if(head!=null)head.Rotation=new(1.05f,0,0);
+  var torso=figure.GetNode<Node3D>("Torso");
+  torso.Rotation=new(-.55f,0,0);
+  if(head!=null)head.Rotation=new(.55f,0,0);
   foreach(string side in new[]{"Left","Right"}){
-   var arm=figure.GetNode<Node3D>(side+"Arm");arm.Position+=new Vector3(0,-.18f,-.2f);arm.Rotation=new(-.5f,0,side=="Left"?.08f:-.08f);
-   arm.GetNode<Node3D>("Elbow").Rotation=new(.7f,0,0);
+   var arm=figure.GetNode<Node3D>(side+"Arm");arm.Position=torso.Position+torso.Basis*(arm.Position-torso.Position);arm.Rotation=new(.42f,0,side=="Left"?.08f:-.08f);
+   arm.GetNode<Node3D>("Elbow").Rotation=new(.40f,0,0);
   }
  }
 }

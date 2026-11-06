@@ -21,7 +21,7 @@ public partial class MigrationScene {
   millSeed=game.Save.Seed;millFloor=game.World.Height(MillX,MillZ);for(int a=-1;a<=1;a++)for(int b=-1;b<=1;b++)millFloor=Math.Max(millFloor,game.World.Height(MillX+a*24,MillZ+b*24));millFloor+=.25;
   millRoot=new Node3D{Position=new((float)MillX,(float)millFloor,(float)MillZ)};worldRoot.AddChild(millRoot);Box(millRoot,new(0,-.25f,0),new(50,.5f,50),new(.24f,.22f,.16f),true);for(int i=-6;i<=6;i++)Box(millRoot,new(i*3.6f,.01f,0),new(.04f,.02f,48),Wood*.65f);
   // Open-sided saw shed, real log-pile obstacles and a traversable southern entrance.
-  for(int side=-1;side<=1;side+=2){Box(millRoot,new(side*24,1.2f,0),new(.3f,2.4f,46),Wood,true);for(int z=-18;z<=18;z+=12)Box(millRoot,new(side*24,2.4f,z),new(.35f,4.8f,.35f),Wood);}
+  for(int side=-1;side<=1;side+=2){AuthoredWall(millRoot,"story/mill",new(side*24,1.2f,0),new(.3f,2.4f,46),"Timber");for(int z=-18;z<=18;z+=12)Box(millRoot,new(side*24,2.4f,z),new(.35f,4.8f,.35f),Wood);}
   for(int side=-1;side<=1;side+=2){var pile=new Node3D{Position=new(side*12,0,-6)};millRoot.AddChild(pile);for(int row=0;row<3;row++)for(int i=0;i<4-row;i++)Tube(pile,new((i-(3-row)*.5f)*.65f,.35f+row*.60f,-3),new((i-(3-row)*.5f)*.65f,.35f+row*.60f,3),.34f,Wood);PhysicsObstacle(pile,new BoxShape3D{Size=new(2.5f,1.9f,6)},new(0,.95f,0));}
   Box(millRoot,new(0,5.4f,-19),new(24,.25f,10),new(.26f,.29f,.25f));for(int side=-1;side<=1;side+=2)Box(millRoot,new(side*10,2.7f,-19),new(.3f,5.4f,.3f),Wood,true);Bevel(millRoot,new(0,.8f,-19),new(8,.4f,2),Steel);for(int i=-3;i<=3;i++)Tube(millRoot,new(i,.9f,-20),new(i,.9f,-18),.12f,Steel);millRoot.AddChild(new Label3D{Text="ASHEN LUMBER / KEEP OUT",Position=new(0,4.5f,-14),FontSize=50,PixelSize=.02f,Modulate=new(.86f,.72f,.42f)});
   MillEntranceRamp();

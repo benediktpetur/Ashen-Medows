@@ -30,6 +30,12 @@ public partial class MigrationScene {
  }
  void PoseNewThreat(Infected e){
   if(!e.Visual.HasNode("Torso"))return;string kind=InfectedKind(e);bool hidden=e.BossState=="threat-hidden",crawl=kind=="gravecrawler";PoseFigure(e.Visual,(float)game.Clock*5,e.BossState=="threat-rush"?1:e.Memory>0?.5f:0,true);e.Visual.Position=Vector3.Zero;
+  if((kind is "forest-stalker" or "gravecrawler")&&e.Visual.GetNodeOrNull<Node3D>("HunyuanModel") is {} model){
+   float stride=e.Body.Velocity.LengthSquared()>.5f?Mathf.Sin((float)game.Clock*14):0;
+   model.Position=Vector3.Up*(Math.Abs(stride)*.045f);
+   model.RotationDegrees=new(e.BossState.EndsWith("-windup")?-12:e.BossState=="threat-rush"?14:0,0,stride*5);
+   return;
+  }
   var torso=e.Visual.GetNode<Node3D>("Torso");if(hidden||crawl){e.Visual.Position=new(0,-.45f,0);torso.RotationDegrees=new(-38,0,0);foreach(string side in new[]{"Left","Right"}){e.Visual.GetNode<Node3D>(side+"Leg").Rotation=new(-1.0f,0,0);e.Visual.GetNode<Node3D>(side+"Leg/Knee").Rotation=new(1.65f,0,0);}}
   if(e.BossState.EndsWith("-windup")||e.AttackState=="windup"){torso.RotationDegrees=new(kind=="howler"?18:-22,0,0);foreach(string side in new[]{"Left","Right"})e.Visual.GetNode<Node3D>(side+"Arm").RotationDegrees=new(-105,0,side=="Left"?-20:20);}
   if(kind=="cinder"&&e.BossState=="cinder-death")torso.RotationDegrees=new(22,0,0);

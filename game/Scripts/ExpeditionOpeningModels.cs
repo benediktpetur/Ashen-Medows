@@ -4,9 +4,17 @@ using System.Linq;
 public partial class MigrationScene {
  Node3D OpeningStructure(BuildPiece p,bool preview){var root=new Node3D{Position=new((float)p.X,(float)p.Y,(float)p.Z),RotationDegrees=new(0,(float)p.Yaw,0)};var d=p.Def;
   Color surface=d.Tier<=2?Wood:d.Tier==3?new(.31f,.34f,.32f):d.Tier==4?new(.47f,.47f,.40f):new(.25f,.31f,.21f),frame=d.Tier<=2?Wood*.8f:Steel;
+  bool starter=!preview&&p.Id?.StartsWith("starter-house/",StringComparison.Ordinal)==true;
+  string asset=d.Opening=="window"?"Wall-Clapboard-3":"Wall-Clapboard-2";
+  bool hasArt=starter&&AddModularWallArt(root,asset,new((float)d.W,(float)d.H,(float)d.D));
+  if(starter)root.SetMeta("wall_asset",asset);
   foreach(var part in ExpeditionOpenings.Parts(p)){var position=new Vector3((float)part.X,(float)part.Y,(float)part.Z);var size=new Vector3((float)part.W,(float)part.H,(float)part.D);Color color=part.Role switch{"frame" or "brace"=>frame,"seam"=>d.Tier<=2?Ink:d.Tier==3?new(.41f,.26f,.15f):Steel*.65f,"bolt" or "handle"=>Steel,"warning"=>new(.64f,.55f,.25f),"plate"=>new(.75f,.74f,.62f),_=>surface};
    var mesh=part.Solid?Box(root,position,size,color):Bevel(root,position,size,color);mesh.RotationDegrees=new(0,(float)part.Yaw,0);
    if(d.Tier<=2&&part.Role is "wall" or "leaf")mesh.MaterialOverride=d.Tier==1?ExteriorFinish(0,color):Textured(color,d.Opening=="gate"&&part.Role=="wall"?1:0,.8f);
+   if(starter&&!part.Moving){
+    if(hasArt)mesh.Visible=false;
+    else if(part.Solid)mesh.MaterialOverride=ModularWallPlaceholder();
+   }
    if(!preview&&part.Solid){var body=new StaticBody3D{Position=position,RotationDegrees=new(0,(float)part.Yaw,0)};body.AddChild(new CollisionShape3D{Shape=new BoxShape3D{Size=size}});root.AddChild(body);}
   }
   if(d.Tier==2&&d.Opening!="gate")for(int side=-1;side<=1;side+=2)for(int row=0;row<3;row++)Bevel(root,new(side*1.14f,.11f+row*.2f,-.02f),new(.66f,.18f,.25f),new(.38f,.39f,.33f));

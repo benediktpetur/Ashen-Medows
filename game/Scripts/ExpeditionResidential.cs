@@ -7,7 +7,7 @@ public partial class MigrationScene {
  void ResidentialChunk(Node3D root,int cx,int cz,bool simulation){
   int x0=(int)Math.Floor(cx*64/64.0)-1,x1=(int)Math.Floor((cx+1)*64/64.0)+1,z0=(int)Math.Floor(cz*64/64.0)-1,z1=(int)Math.Floor((cz+1)*64/64.0)+1;
   for(int ix=x0;ix<=x1;ix++)for(int iz=z0;iz<=z1;iz++){var p=game.World.Residential(ix,iz);if(p==null||ExpeditionWorld.Cell(p.X)!=cx||ExpeditionWorld.Cell(p.Z)!=cz)continue;if(game.World.Changes.PreservedResidentialLots?.Contains(p.Id)==true)continue;
-   double floor=game.World.Height(p.X,p.Z);foreach(int xx in new[]{-9,9})foreach(int zz in new[]{-9,9})floor=Math.Max(floor,game.World.Height(p.X+xx,p.Z+zz));var n=new Node3D{Name="Residential_"+ix+"_"+iz,Position=new((float)p.X,(float)floor+.05f,(float)p.Z),RotationDegrees=new(0,(float)p.Yaw,0),Scale=new((float)p.ScaleX,1,(float)p.ScaleZ)};n.SetMeta("house_id",p.Id);n.SetMeta("house_address",p.Address);root.AddChild(n);SuburbHouse(n,p.Style,simulation);ResidentialDetails(n,p.Style,simulation);
+   double floor=game.World.Height(p.X,p.Z);foreach(int xx in new[]{-9,9})foreach(int zz in new[]{-9,9})floor=Math.Max(floor,game.World.Height(p.X+xx,p.Z+zz));var n=new Node3D{Name="Residential_"+ix+"_"+iz,Position=new((float)p.X,(float)floor+.05f,(float)p.Z),RotationDegrees=new(0,(float)p.Yaw,0),Scale=new((float)p.ScaleX,1,(float)p.ScaleZ)};n.SetMeta("house_id",p.Id);n.SetMeta("house_address",p.Address);root.AddChild(n);ModularHouse(n,p.Style,simulation);ResidentialDetails(n,p.Style,simulation);
    double tx=p.X+((ix&1)==0?17:-17),tz=p.Z+16;string treeId=p.Id+"/yard-tree";if(!game.World.Changes.Cut(treeId)){var tree=new Node3D{Position=Ground(tx,tz)};root.AddChild(tree);if(simulation)PhysicsObstacle(tree,new CylinderShape3D{Radius=.45f,Height=5},new(0,2.5f,0));else ArtTree(tree,6+p.Style%3,ix*91+iz);props.Add(new(){Id=treeId,Kind=0,Tier=1,Position=tree.Position,Node=tree});}
    if(!simulation&&p.Style%2==0){double sx=((ix&1)==0?ix*64:(ix+1)*64)+((ix&1)==0?9:-9);var pole=Ground(sx,p.Z-20);Tube(root,pole,pole+Vector3.Up*4,.045f,Steel);Box(root,pole+Vector3.Up*4,new(.5f,.15f,.35f),new(.62f,.53f,.35f));}
   }
@@ -17,14 +17,19 @@ public partial class MigrationScene {
 
  }
  void BatchResidentialMeshes(Node3D root){
-  var groups=new Dictionary<(Vector3,ulong),List<MeshInstance3D>>();foreach(var mesh in root.FindChildren("*","MeshInstance3D",true,false).OfType<MeshInstance3D>()){if(mesh.HasMeta("world_damage_id")||!mesh.Visible||mesh.Mesh is not BoxMesh box||mesh.MaterialOverride==null||mesh.GetParent().HasMeta("salvage_furniture"))continue;Node owner=mesh.GetParent();while(owner!=null&&owner!=root&&!owner.HasMeta("house_id"))owner=owner.GetParent();if(owner==null||owner==root)continue;var key=(box.Size,mesh.MaterialOverride.GetInstanceId());if(!groups.TryGetValue(key,out var list))groups[key]=list=new();list.Add(mesh);}
+  var groups=new Dictionary<(Vector3,ulong),List<MeshInstance3D>>();foreach(var mesh in root.FindChildren("*","MeshInstance3D",true,false).OfType<MeshInstance3D>()){if(mesh.HasMeta("world_damage_id")||!mesh.Visible||mesh.Mesh is not BoxMesh box||mesh.MaterialOverride==null||mesh.GetParent().HasMeta("salvage_furniture"))continue;Node owner=mesh.GetParent();while(owner!=null&&owner!=root&&!owner.HasMeta("house_id")&&!owner.HasMeta("world_damage_id"))owner=owner.GetParent();if(owner==null||owner==root||owner.HasMeta("world_damage_id"))continue;var key=(box.Size,mesh.MaterialOverride.GetInstanceId());if(!groups.TryGetValue(key,out var list))groups[key]=list=new();list.Add(mesh);}
   foreach(var pair in groups){var list=pair.Value;if(list.Count<3)continue;var mm=new MultiMesh{TransformFormat=MultiMesh.TransformFormatEnum.Transform3D,Mesh=new BoxMesh{Size=pair.Key.Item1},InstanceCount=list.Count};var material=list[0].MaterialOverride;for(int i=0;i<list.Count;i++){var m=list[i];mm.SetInstanceTransform(i,root.GlobalTransform.AffineInverse()*m.GlobalTransform);m.GetParent().RemoveChild(m);m.Free();}root.AddChild(new MultiMeshInstance3D{Multimesh=mm,MaterialOverride=material,VisibilityRangeEnd=175});}
  }
  void ResidentialDetails(Node3D n,int style,bool simulation){
   // Additions change each home's outline, not only its wall color.
-  if(style%4==0){HouseFoundation(n,new(4.2f,5.2f),simulation,new(-7.8f,0,-1));var size=new Vector3(4,2.8f,5);var pos=new Vector3(-7.8f,1.4f,-1);if(simulation)PhysicsObstacle(n,new BoxShape3D{Size=size},pos);else{Box(n,pos,size,new(.35f,.36f,.31f),true);Box(n,new(-7.8f,2.9f,-1),new(4.5f,.2f,5.5f),Rust);Box(n,new(-7.8f,1.25f,1.55f),new(3,2.3f,.06f),new(.20f,.24f,.22f));}}
+  if(style%4==0){
+   HouseFoundation(n,new(4.2f,5.2f),simulation,new(-7.8f,0,-1));
+   var garage=new Node3D{Name="ResidentialGarage",Position=new(-7.8f,0,-1),RotationDegrees=new(0,180,0)};
+   n.AddChild(garage);
+   ModularMapShell(garage,n.GetMeta("house_id").AsString()+"/garage",4,5,2.8f,"Industrial",simulation,false);
+  }
   if(simulation)return;
-  if(style%4==1){for(int k=0;k<5;k++){float x=-4+k*1.7f;Box(n,new(x,.4f,-8),new(1.3f,.8f,1.1f),Wood);Ellipsoid(n,new(x,.95f,-8),new(.6f,.35f,.5f),Leaf);}}
+  if(style%4==1){for(int k=0;k<5;k++){float x=-4+k*1.7f;BatchPartBox(n,"street-planter",new(x,.4f,-8),new(1.3f,.8f,1.1f),Wood);Ellipsoid(n,new(x,.95f,-8),new(.6f,.35f,.5f),Leaf);}}
   if(style%4==2){Tube(n,new(-6,0,8),new(-6,2.7f,8),.035f,Steel);Tube(n,new(-6,2.7f,8),new(-5,2.7f,8),.025f,Steel);Box(n,new(-5,2.7f,8),new(.6f,.3f,.1f),new(.53f,.44f,.29f));}
   if(style%4==3){Box(n,new(3,.13f,8),new(3,.26f,2),new(.25f,.22f,.17f));for(int j=0;j<6;j++){Tube(n,new(2+j*.4f,.2f,8),new(2+j*.4f,.8f,8),.012f,Leaf);}}
   n.AddChild(new Label3D{Text=new[]{"THE GARDENER","REPAIR SHOP","EVACUATED","FIRST AID","NO ANSWER","KEEP QUIET","RADIO SILENT","BACK SOON"}[style%8],Position=new(-2,1.2f,5.65f),PixelSize=.003f,FontSize=21});

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 public partial class MigrationScene {
- void ArtCharacter(Node3D root,int tier,int night,bool survivor=false){HumanCharacter(root,tier,night,survivor);if(survivor){ApplyHunyuan(root,"survivor-player-survivor");}}
+ void ArtCharacter(Node3D root,int tier,int night,bool survivor=false){HumanCharacter(root,tier,night,survivor);if(survivor){ApplyHunyuan(root,"survivor-field-jacket");}}
  void AnimateCharacter(Infected e){if(InfectedKind(e)=="weeper"){PoseWeeper(e);return;}if(IsCheckpointGuard(e.Id)){CheckpointPose(e);return;}if(IsMillBoss(e.Id))return;if(Species(e.Id)!=""){AnimateAnimal(e);return;}if(e.Visual.GetChildCount()==0)return;PoseFigure(e.Visual,(float)(game.Clock*(e.Memory>0?6:3)+e.Home.X),e.Stagger>0||e.AttackState!=""?0:e.Memory>0?1:.45f,true);if(SammyPose(e))return;if(e.BossState=="woodland-kneel"){WoodlandPose(e);return;}if(e.Visual.HasNode("Torso")){var torso=e.Visual.GetNode<Node3D>("Torso");if(e.Stagger>0)torso.RotationDegrees=new(-25,0,12);else if(e.AttackState!=""){bool windup=e.AttackState=="windup";torso.RotationDegrees=new(windup?-18:20,0,windup?-12:10);foreach(string side in new[]{"Left","Right"})e.Visual.GetNode<Node3D>(side+"Arm").RotationDegrees=new(windup?-110:-55,0,side=="Left"?-18:18);}}}
  void ArtGun(){ClearChildren(weaponRoot);ItemWeapon(weaponRoot,game.Craft.Weapon,true);FittedWeaponArt(weaponRoot,game.Craft.Weapon);}
  void ItemWeapon(Node3D target,int weapon,bool hands=false){if(!hands&&BuildGeneratedWeapon(target,weapon,false))return;ProceduralWeaponModel(target,weapon,hands);}

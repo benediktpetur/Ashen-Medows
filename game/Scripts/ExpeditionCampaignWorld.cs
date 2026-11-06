@@ -21,7 +21,7 @@ public partial class MigrationScene {
    if(!NearActiveSurface(ground,210)||!uniqueObjects.Add(id))continue;
    var root=new Node3D{Position=ground};worldRoot.AddChild(root);
    Box(root,new(0,-.1f,0),new(44,.2f,44),i==0?new(.23f,.24f,.21f):new(.24f,.27f,.26f),true);
-   for(int side=-1;side<=1;side+=2)for(int z=-16;z<=16;z+=8){Box(root,new(side*21,1.1f,z),new(.25f,2.2f,5),Steel,true);}
+   for(int side=-1;side<=1;side+=2)for(int z=-16;z<=16;z+=8){AuthoredWall(root,"campaign/site/"+i,new(side*21,1.1f,z),new(.25f,2.2f,5),"Industrial");}
    if(i==0){
     for(int side=-1;side<=1;side+=2){var car=new Node3D{Position=new(side*11,0,-3),Rotation=new(0,side*.4f,0)};root.AddChild(car);ArtWreck(car,true);PhysicsObstacle(car,new BoxShape3D{Size=new(2.2f,1.5f,4.2f)},new(0,.75f,0));}
     Box(root,new(0,4,-17),new(12,.3f,5),Rust);for(int side=-1;side<=1;side+=2)Box(root,new(side*5,2,-17),new(.3f,4,.3f),Steel,true);

@@ -29,6 +29,8 @@ public partial class MigrationScene {
   // Story children, named survivors and their equipment retain their authored designs.
   if(IsSettlementActor(id)||IsTownGuard(id)||IsCheckpointGuard(id)||IsSammy(id)||IsEncounterGuardian(id)||Species(id)!="")return;
   string kind=ExpeditionCampaign.Kind(id,tier,night);if(kind=="worm")return;
+  if(kind=="forest-stalker"){ApplyHunyuan(root,kind,false,1.45f);return;}
+  if(kind=="gravecrawler"){ApplyHunyuan(root,"woodland-gravecrawler",false,1.10f);return;}
   if(HunyuanSpecial.TryGetValue(kind,out var special)){ApplyHunyuan(root,special,kind!="worm",kind=="worm"?.28f:1.70f);return;}
   int m=night==1?5:night==2?6:Math.Clamp(tier-1,0,4);uint h=(uint)id.GetHashCodeStable();if(night==0&&tier==2&&h%4==0)m=0;if(night==0&&tier==4)m=h%3==0?4:3;
   ApplyHunyuan(root,HunyuanZombies[m]);
@@ -76,18 +78,39 @@ public partial class MigrationScene {
     var bones=new int[vertices.Length*4];var weights=new float[vertices.Length*4];
     for(int v=0;v<vertices.Length;v++){
      vertices[v]=rotation*((p.transform*vertices[v]-center)*scale);if(v<normals.Length)normals[v]=(rotation*p.transform.Basis*normals[v]).Normalized();
-     if(articulated){var point=vertices[v];int a=0,b=0;float da=float.MaxValue,db=float.MaxValue;for(int j=0;j<rest.Length;j++){float d=HunyuanBoneDistance(point,j,rest);if(d<da){db=da;b=a;da=d;a=j;}else if(d<db){db=d;b=j;}}float w=Mathf.Pow((da+.012f)/(db+.012f),4);bones[v*4]=a;bones[v*4+1]=b;weights[v*4]=1/(1+w);weights[v*4+1]=w/(1+w);}
+     if(articulated){
+      var point=vertices[v];
+      int offset=v*4;
+      if(key=="survivor-field-jacket"&&FieldJacketLowerBody(point)){
+       int hip=point.X<0?2:4;
+       float shin=Ease((rest[hip+1].Y+.09f-point.Y)/.18f);
+       float waist=Ease((point.Y-.76f)/.18f);
+       bones[offset]=hip;bones[offset+1]=hip+1;bones[offset+2]=0;
+       weights[offset]=(1-shin)*(1-waist);weights[offset+1]=shin*(1-waist);weights[offset+2]=waist;
+      }else{
+       int a=0,b=0;float da=float.MaxValue,db=float.MaxValue;
+       for(int j=0;j<rest.Length;j++){
+        if(key=="survivor-field-jacket"&&j is >=2 and <=5)continue;
+        float d=HunyuanBoneDistance(point,j,rest);
+        if(d<da){db=da;b=a;da=d;a=j;}else if(d<db){db=d;b=j;}
+       }
+       float w=Mathf.Pow((da+.012f)/(db+.012f),4);
+       bones[offset]=a;bones[offset+1]=b;weights[offset]=1/(1+w);weights[offset+1]=w/(1+w);
+      }
+     }
     }
     arrays[(int)Mesh.ArrayType.Vertex]=vertices;if(normals.Length>0)arrays[(int)Mesh.ArrayType.Normal]=normals;
     // Tangents are recomputed by Godot's importer, but their basis must follow normalization.
     if(arrays[(int)Mesh.ArrayType.Tangent].VariantType!=Variant.Type.Nil){var tangents=arrays[(int)Mesh.ArrayType.Tangent].AsFloat32Array();for(int t=0;t<tangents.Length;t+=4){var d=(rotation*p.transform.Basis*new Vector3(tangents[t],tangents[t+1],tangents[t+2])).Normalized();tangents[t]=d.X;tangents[t+1]=d.Y;tangents[t+2]=d.Z;}arrays[(int)Mesh.ArrayType.Tangent]=tangents;}
     if(articulated){arrays[(int)Mesh.ArrayType.Bones]=bones;arrays[(int)Mesh.ArrayType.Weights]=weights;}
     result.AddSurfaceFromArrays(Mesh.PrimitiveType.Triangles,arrays);
-    var mat=p.node.GetActiveMaterial(s);if(mat is StandardMaterial3D standard){var copy=(StandardMaterial3D)standard.Duplicate();copy.Metallic=0;copy.Roughness=.92f;mat=copy;}result.SurfaceSetMaterial(result.GetSurfaceCount()-1,mat);
+    var mat=p.node.GetActiveMaterial(s);if(mat is StandardMaterial3D standard){var copy=(StandardMaterial3D)standard.Duplicate();copy.Metallic=0;copy.Roughness=.92f;if(key=="zombie-bunny")copy.AlbedoColor=new Color(.66f,.78f,.56f);mat=copy;}result.SurfaceSetMaterial(result.GetSurfaceCount()-1,mat);
    }
    return result;
   }finally{scene.Free();}
  }
+ // The lowered hands sit beside the thighs in this scan. Keep them out of the leg rig.
+ static bool FieldJacketLowerBody(Vector3 point)=>point.Y<.94f&&(point.Y<.67f||point.X>-.197f&&point.X<.228f);
  static float HunyuanBoneDistance(Vector3 p,int j,Vector3[] r){
   Vector3 a=r[j],b=j switch{0=>new(0,1.36f,0),1=>new(0,1.68f,0),2=>r[3],3=>new(-.12f,.06f,-.04f),4=>r[5],5=>new(.12f,.06f,-.04f),6=>r[7],7=>r[8],8=>new(-.28f,.65f,0),9=>r[10],10=>r[11],_=>new(.28f,.65f,0)};
   // Keep torso/legs distinct even for wide coats, swollen bellies and backpacks.

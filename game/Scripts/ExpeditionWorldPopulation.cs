@@ -10,7 +10,7 @@ public partial class MigrationScene {
   var post=At(-3.8f,9.2f);Tube(detail,post,post+Vector3.Up*.95f,.045f,Wood);
   Box(detail,post+Vector3.Up*1.02f,new(.45f,.3f,.55f),style%2==0?new(.31f,.37f,.34f):new(.42f,.29f,.23f));
   for(int row=0;row<2;row++){
-   var bed=At(-8.2f,-2+row*2.2f);Box(detail,bed+Vector3.Up*.18f,new(1.5f,.36f,1.25f),Wood);
+   var bed=At(-8.2f,-2+row*2.2f);BatchPartBox(detail,"street-planter",bed+Vector3.Up*.18f,new(1.5f,.36f,1.25f),Wood);
    Box(detail,bed+Vector3.Up*.38f,new(1.3f,.04f,1.05f),new(.22f,.16f,.11f));
    for(int j=0;j<3;j++)Ellipsoid(detail,bed+new Vector3(-.4f+j*.4f,.52f,0),new(.20f,.17f,.26f),new(.33f,.40f,.24f));
   }
@@ -19,6 +19,8 @@ public partial class MigrationScene {
  }
  bool PopulationBuildClear(RoadsideStop stop)=>!game.Building.Pieces.Any(p=>ExpeditionGame.Distance(p.X,p.Z,stop.X,stop.Z)<12);
  void PopulationBox(Node3D n,Vector3 p,Vector3 size,Color color,bool simulation){if(simulation)PhysicsObstacle(n,new BoxShape3D{Size=size},p);else Box(n,p,size,color,true);}
+ bool TryModularStreetArt(Node3D n,string key,Vector3 bottom,Vector3 size)=>
+  AddModularArt(n,"res://Assets/WorldModular/Street/"+key+".glb",size,bottom);
  void RoadsidePopulation(Node3D root,int cx,int cz,bool simulation){
   foreach(var stop in game.World.RoadsideStops()){
    if(ExpeditionWorld.Cell(stop.X)!=cx||ExpeditionWorld.Cell(stop.Z)!=cz||!PopulationBuildClear(stop))continue;
@@ -28,24 +30,36 @@ public partial class MigrationScene {
    Vector3 At(float x,float z,float y=0)=>new(x,(float)game.World.Height(stop.X+x,stop.Z+z)-floor+y,z);
    Color paint=stop.Tier<=2?new(.30f,.37f,.29f):new(.28f,.36f,.39f);
    float roof=Math.Max(At(-2.8f,1.7f).Y,At(2.8f,1.7f).Y)+2.7f;
+   bool shelterArt=!simulation&&stop.Tier>=3&&PlaceBatchPart(n,"street-bus-shelter",new(0,roof-2.7f,1),new(5.6f,2.78f,1.85f));
    foreach(int s in new[]{-1,1}){
-    var foot=At(s*2.8f,1.7f);float height=roof-foot.Y;PopulationBox(n,foot+Vector3.Up*height/2,new(.16f,height,.16f),Steel,simulation);
+    var foot=At(s*2.8f,1.7f);float height=roof-foot.Y;
+    PopulationBox(n,foot+Vector3.Up*height/2,new(.16f,height,.16f),Steel,simulation||shelterArt);
    }
-   PopulationBox(n,new(0,roof,1),new(6.4f,.16f,3.8f),paint,simulation);
+   PopulationBox(n,new(0,roof,1),new(6.4f,.16f,3.8f),paint,simulation||shelterArt);
    // Open front and sides preserve a walkable approach from the road.
    var seat=At(0,1.6f);
-   PopulationBox(n,seat+Vector3.Up*.5f,new(3.6f,.12f,.65f),Wood,simulation);
-   PopulationBox(n,seat+new Vector3(0,.95f,1.95f-1.6f),new(3.6f,.75f,.12f),Wood,simulation);
-   foreach(int s in new[]{-1,1})PopulationBox(n,seat+new Vector3(s*1.4f,.22f,0),new(.12f,.44f,.5f),Steel,simulation);
-   var bin=At(-3.8f,1.6f);PopulationBox(n,bin+Vector3.Up*.45f,new(.7f,.9f,.7f),paint,simulation);
+   bool benchArt=!simulation&&TryModularStreetArt(n,"street-bench",seat+new Vector3(0,0,.03f),new(3.6f,1.325f,.76f));
+   PopulationBox(n,seat+Vector3.Up*.5f,new(3.6f,.12f,.65f),Wood,simulation||benchArt);
+   PopulationBox(n,seat+new Vector3(0,.95f,1.95f-1.6f),new(3.6f,.75f,.12f),Wood,simulation||benchArt);
+   foreach(int s in new[]{-1,1})PopulationBox(n,seat+new Vector3(s*1.4f,.22f,0),new(.12f,.44f,.5f),Steel,simulation||benchArt);
+   var bin=At(-3.8f,1.6f);
+   bool binArt=!simulation&&TryModularStreetArt(n,"street-bin",bin,new(.7f,.96f,.7f));
+   PopulationBox(n,bin+Vector3.Up*.45f,new(.7f,.9f,.7f),paint,simulation||binArt);
    if(simulation)continue;
-   Box(n,bin+Vector3.Up*.92f,new(.77f,.08f,.77f),Ink);
+   BatchRoadsideDetails(n,stop);
+   if(!binArt)Box(n,bin+Vector3.Up*.92f,new(.77f,.08f,.77f),Ink);
    var board=At(2.25f,1.9f);Box(n,board+Vector3.Up*1.5f,new(.9f,1.1f,.08f),Wood);
    StoryPaper(n,board+new Vector3(0,1.5f,-.06f));
    n.AddChild(new Label3D{Text=stop.Name.ToUpperInvariant(),Position=new(0,roof-.25f,-.9f),FontSize=24,PixelSize=.006f,Billboard=BaseMaterial3D.BillboardModeEnum.Enabled,Modulate=new(.82f,.78f,.64f)});
    // Scattered personal effects give each stop a different silhouette.
    if(stop.Tier==2){for(int j=0;j<3;j++){var p=At(-3.6f+j*.25f,-1.6f);Tube(n,p,p+new Vector3(.15f,.12f,1.4f),.12f,Wood);}}
-   else if(stop.Tier>=3){var p=At(3.6f,1.6f);Box(n,p+Vector3.Up*.55f,new(.8f,1.1f,.7f),paint);Box(n,p+new Vector3(0,.75f,-.36f),new(.55f,.12f,.025f),Ink);}
+   else if(stop.Tier>=3){
+    var p=At(3.6f,1.6f);
+    if(!TryModularStreetArt(n,"street-cabinet",p,new(.8f,1.1f,.7f))){
+     Box(n,p+Vector3.Up*.55f,new(.8f,1.1f,.7f),paint);
+     Box(n,p+new Vector3(0,.75f,-.36f),new(.55f,.12f,.025f),Ink);
+    }
+   }
    else{var p=At(-3.7f,-1.2f);Box(n,p+Vector3.Up*.2f,new(1,.4f,.8f),Wood);Box(n,p+Vector3.Up*.44f,new(.85f,.08f,.7f),new(.23f,.16f,.10f));}
    foreach(var mesh in n.FindChildren("*","GeometryInstance3D",true,false).OfType<GeometryInstance3D>())mesh.VisibilityRangeEnd=140;
   }

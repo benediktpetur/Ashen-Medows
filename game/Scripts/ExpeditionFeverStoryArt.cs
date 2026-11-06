@@ -8,7 +8,7 @@ public partial class MigrationScene {
   for(int sign=-1;sign<=1;sign+=2){var roof=Box(n,new(sign*2.1f,3.8f,0),new(4.9f,.16f,10.7f),new(.24f,.27f,.22f));roof.RotationDegrees=new(0,0,-sign*25);roof.MaterialOverride=WillowShingles();}
   WillowGable(n,4.2f,2.9f,4.85f,5.2f);WillowGable(n,4.2f,2.9f,4.85f,-5.2f);WillowWindow(n,-2.5f,1.45f,5.15f,true);WillowWindow(n,2.5f,1.45f,5.15f,false,true);
   Box(n,new(0,-.08f,6.15f),new(4.3f,.16f,2.4f),Wood,true);for(int sign=-1;sign<=1;sign+=2){Tube(n,new(sign*1.9f,0,7.2f),new(sign*1.9f,2.5f,7.2f),.065f,new(.50f,.48f,.41f));Tube(n,new(sign*1.9f,2.1f,7.2f),new(sign*1.4f,2.6f,7.2f),.04f,Wood);}Box(n,new(0,2.6f,6.2f),new(4.6f,.15f,2.7f),new(.28f,.30f,.25f)).MaterialOverride=WillowShingles();FeverAccessRamp(n);
-  for(int sign=-1;sign<=1;sign+=2)Box(n,new(sign*2.45f,1.3f,-2),new(3.1f,2.6f,.18f),new(.43f,.42f,.35f),true);Box(n,new(0,2.5f,-2),new(1.8f,.2f,.18f),Wood,true);
+  for(int sign=-1;sign<=1;sign+=2)WillowPanel(n,new(sign*2.45f,1.3f,-2),new(3.1f,2.6f,.18f));WillowPanel(n,new(0,2.5f,-2),new(1.8f,.2f,.18f));
   feverDoor=new Node3D{Name="BracedDoor"};n.AddChild(feverDoor);Box(feverDoor,new(0,.48f,-2),new(1.7f,.96f,.14f),Wood,true);Box(feverDoor,new(0,1.8f,-2),new(1.7f,1.2f,.14f),Wood,true); // Real feeding slit between panels.
   PhysicsObstacle(feverDoor,new BoxShape3D{Size=new(1.7f,2.4f,.16f)},new(0,1.2f,-2));
   for(int i=0;i<3;i++){var plank=Box(feverDoor,new(0,.5f+i*.65f,-1.85f),new(2.5f,.13f,.1f),new(.38f,.29f,.18f));plank.RotationDegrees=new(0,0,i%2==0?18:-20);}Box(n,new(0,.97f,-1.8f),new(1.7f,.05f,.35f),new(.31f,.26f,.18f));Ellipsoid(n,new(-.45f,.999f,-1.77f),new(.18f,.008f,.12f),new(.31f,.23f,.12f));

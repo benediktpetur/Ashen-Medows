@@ -19,10 +19,14 @@ public partial class MigrationScene {
   Button(b,"SAVE & QUIT",()=>{if(CoopActive)StopCoop("Session closed");game.Persist();GetTree().Quit();});
  }
  void ShowWorldManagement(){
-  var b=Panel("WORLD & SAVES");Text(b,"Your character is saved outside the game’s installation. Each seed keeps its own buildings and world changes.");
+  var b=Panel("WORLD & SAVES");Text(b,"Your character is saved outside the game’s installation. Each world keeps its own buildings, world changes and position.");
   Button(b,"RETURN TO BRIAR LANE / STARTING SUBURB",()=>{if(CoopActive){game.Notice="Leave co-op before relocating.";ShowWorldManagement();return;}ExitDungeon(false);ClearEnemies();Teleport(ExpeditionWorld.HomeX,ExpeditionWorld.HomeZ);game.Persist();CloseMenu();});
-  Text(b,"World seed");var seed=new SpinBox{MinValue=1,MaxValue=999999,Value=game.Save.Seed};b.AddChild(seed);
-  Button(b,"OPEN SELECTED WORLD",()=>{if(CoopActive){game.Notice="Leave co-op before switching worlds.";ShowWorldManagement();return;}ExitDungeon(false);game.Change(()=>{game.Save.Seed=(int)seed.Value;game.Save.X=ExpeditionWorld.SpawnX;game.Save.Z=ExpeditionWorld.SpawnZ;game.Normalize();});ClearEnemies();ClearChildren(worldRoot);props.Clear();uniqueObjects.Clear();RebuildTerrain();SyncStructures();Teleport(ExpeditionWorld.SpawnX,ExpeditionWorld.SpawnZ);CloseMenu();});
+  Button(b,"SAVE & RETURN TO CHARACTER SELECT",()=>{
+   if(CoopActive){game.Notice="Leave co-op before switching characters or worlds.";ShowWorldManagement();return;}
+   if(!game.Persist()){ShowWorldManagement();return;}
+   var error=GetTree().ReloadCurrentScene();
+   if(error!=Error.Ok){game.Notice="Could not open character selection / "+error;ShowWorldManagement();}
+  });
   b.AddChild(new HSeparator());Text(b,"Legacy import replaces this character and keeps the previous save as a .bak backup.");Button(b,"IMPORT LEGACY CHARACTER",ImportDialog);
   Text(b,game.Notice);Button(b,"BACK",ShowPause);
  }
@@ -30,6 +34,7 @@ public partial class MigrationScene {
   var b=Panel("CONTROLS / FIELD REFERENCE");
   var scroll=new ScrollContainer{CustomMinimumSize=new(890,430)};b.AddChild(scroll);var list=new VBoxContainer{CustomMinimumSize=new(870,0)};list.AddThemeConstantOverride("separation",12);scroll.AddChild(list);
   foreach(var entry in new[]{
+   ("SOLO COMMANDS","F10  Open the command panel. Enter /godmode for invulnerability, flight and items."),
    ("PLAYER MODEL","F9  View your survivor, rotate the model, and preview walking or crouching"),
    ("MOVE","W A S D  Move     Shift  Sprint     Space  Jump     Ctrl  Hold to crouch"),
    ("INTERACT","F  Interact     G  Throw a stone distraction     L  Flashlight"),
