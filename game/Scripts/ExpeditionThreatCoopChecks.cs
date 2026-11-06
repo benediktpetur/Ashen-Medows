@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 public partial class MigrationScene {
  async Task NewThreatCoopChecks(CoopActor actor){
   ClearEnemies();EnterDungeon(HeartDungeon());player.Position=new(5,.1f,2);actor.Body.Position=new(0,.1f,0);actor.Game.Craft.Weapons.Add(0);actor.Game.Craft.Weapon=0;actor.Game.Craft.Ammo=6;actor.Game.Shield=40;actor.Shot=actor.Reload=0;
-  for(int i=0;i<10;i++){var t=ExpeditionThreat.All[i];AddEnemy(t.Kind=="riot"?"habitat/coop-ecology/riot-slot/ecology/riot":"special/"+t.Kind+"/coop-new",(i%5-2)*2.4,-7-(i/5)*5,t.Min);var e=infected.Last();e.BossState="threat-recover";e.BossTime=30;}
+  for(int i=0;i<ExpeditionThreat.All.Length;i++){var t=ExpeditionThreat.All[i];AddEnemy(t.Kind=="riot"?"habitat/coop-ecology/riot-slot/ecology/riot":"special/"+t.Kind+"/coop-new",(i%5-2)*2.4,-7-(i/5)*5,t.Min);var e=infected.Last();e.BossState="threat-recover";e.BossTime=30;}
   var howler=infected.Single(e=>InfectedKind(e)=="howler");howler.BossState="howler-windup";howler.BossTime=30;howler.Hp=howler.MaxHp=250;
   SendCoopPersonal(actor.Id,CoopProfileJson(actor.Game),"",actor.Body.Position,true);RpcId(actor.Id,nameof(CoopCheckStage),"campaign-threats",actor.Body.Position);
-  await CoopWait(()=>campaignAck>=6,"Ten enemy variants did not replicate",20);await CoopWait(()=>campaignAck>=7,"Guest could not interrupt howl",20);
+  await CoopWait(()=>campaignAck>=6,"Threat roster did not replicate",20);await CoopWait(()=>campaignAck>=7,"Guest could not interrupt howl",20);
   MigrationChecks.Assert(howler.Hp<250&&howler.BossState!="howler-windup","Guest shot interrupts shared howl");
   foreach(var e in infected)e.Memory=0;howler.BossState="howler-windup";howler.BossTime=0;TickCoopEnemies(.01);MigrationChecks.Assert(infected.Count(e=>e.Memory>0)>2,"Host howl alerts shared neighbors outside per-actor tick view");
   int hostAlloy=game.Craft.Materials[4],guestAlloy=actor.Game.Craft.Materials[4];var cinder=infected.Single(e=>InfectedKind(e)=="cinder");cinder.Hp=0;KillEnemy(cinder);await CoopWait(()=>!infected.Contains(cinder),"Cinder self-death retained a stale server enemy",10);await CoopWait(()=>campaignAck>=8,"Guest fire/death state missing",15);MigrationChecks.Assert(game.Craft.Materials[4]==hostAlloy+1&&actor.Game.Craft.Materials[4]==guestAlloy,"Delayed Cinder loot belongs to killer rather than nearest player");
   ClearEnemies();ClearMillPools();ExitDungeon();Teleport(0,12);actor.Body.Position=HostPosition+Vector3.Right*3;SendCoopPersonal(actor.Id,CoopProfileJson(actor.Game),"",actor.Body.Position,true);
-  GD.Print("PASS / two-process ten threats: all models/crawler collision, guest-interrupted howl, shared hearing, cinder warning/self-removal and replicated burning ground");
+  GD.Print($"PASS / two-process {ExpeditionThreat.All.Length} threats: all models/crawler collision, guest-interrupted howl, shared hearing, cinder warning/self-removal and replicated burning ground");
  }
  async Task ClientNewThreatChecks(){
   await CoopWait(()=>InHeartRoom&&ExpeditionThreat.All.All(t=>infected.Any(e=>InfectedKind(e)==t.Kind)),"New enemy replicas missing",15);
